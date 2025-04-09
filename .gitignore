@@ -21,6 +21,11 @@
 **/*.xml
 
 ./hardware/led_sandbox_sopc/
+./hardware/pin_assignment/CodeGenerated
+./hardware/pin_assignment/DE10_Lite_SystemBuilder.INI
+./hardware/pin_assignment/led_sandbox.qpf
+./hardware/pin_assignment/led_sandbox.sdc
+./hardware/pin_assignment/led_sandbox.v
 
 ./software/RemoteSystemsTempFiles/
 ./software/.metadata/
