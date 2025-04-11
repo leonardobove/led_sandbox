@@ -26,7 +26,7 @@ module led_matrix_driver (
     output reg D,
     output reg CLK,
     output reg LAT,
-    output reg OE,
+    output reg OE
 );
 
 
