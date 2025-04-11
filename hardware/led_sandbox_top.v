@@ -6,26 +6,37 @@
 module DE10_Lite_First_Computer(
 
 	//////////// CLOCK //////////
-	input 		          		ADC_CLK_10,
 	input 		          		MAX10_CLK1_50,
-	input 		          		MAX10_CLK2_50,
 
-	//////////// SEG7 //////////
-	output		     [7:0]		HEX0,
-	output		     [7:0]		HEX1,
-	output		     [7:0]		HEX2,
-	output		     [7:0]		HEX3,
-	output		     [7:0]		HEX4,
-	output		     [7:0]		HEX5,
+
 
 	//////////// KEY //////////
-	input 		     [1:0]		KEY,
+	//input 		     [1:0]		KEY,
 
 	//////////// LED //////////
-	output		     [9:0]		LEDR,
+	//output		     [9:0]		LEDR,
 
 	//////////// SW //////////
-	input 		     [9:0]		SW
+	//input 		     [9:0]		SW
+	
+	/////////// DRAM ////////
+	output            DRAM_CLK,
+	output            DRAM_CKE,
+	output   [12: 0]  DRAM_ADDR,
+	output   [ 1: 0]  DRAM_BA,
+	inout    [15: 0]  DRAM_DQ,
+	output            DRAM_LDQM,
+	output            DRAM_UDQM,
+	output            DRAM_CS_N,
+	output            DRAM_WE_N,
+	output            DRAM_CAS_N,
+	output            DRAM_RAS_N
+	
+	//////////ACCELEROMETER///////
+	input [1:0]GSENSOR_INT,
+	output GSENSOR_SCLK,
+	
+	inout GSENSOR_SDIO,
 );
 
 
@@ -42,5 +53,29 @@ module DE10_Lite_First_Computer(
 //=======================================================
 
 
+    led_sandbox_sopc u0 (
+        .clk_clk                         (MAX10_CLK1_50),                         //               clk.clk
+        .reset_reset_n                   (1'b1),                   					//             reset.reset_n
+
+		  	//SDRAM
+		.clk_sdram_clk									(DRAM_CLK),                  
+		.sdram_wire_addr								(DRAM_ADDR),                
+		.sdram_wire_ba									(DRAM_BA),                  
+		.sdram_wire_cas_n								(DRAM_CAS_N),               
+		.sdram_wire_cke								(DRAM_CKE),                 
+		.sdram_wire_cs_n								(DRAM_CS_N),                
+		.sdram_wire_dq									(DRAM_DQ),                  
+		.sdram_wire_dqm								({DRAM_UDQM,DRAM_LDQM}),               
+		.sdram_wire_ras_n								(DRAM_RAS_N),               
+		.sdram_wire_we_n								(DRAM_WE_N),
+		
+			//ACCELEROMETER
+		.accelerometer_spi_I2C_SDAT      (<connected-to-accelerometer_spi_I2C_SDAT>),      // accelerometer_spi.I2C_SDAT
+		.accelerometer_spi_I2C_SCLK      (<connected-to-accelerometer_spi_I2C_SCLK>),      //                  .I2C_SCLK
+		.accelerometer_spi_G_SENSOR_CS_N (<connected-to-accelerometer_spi_G_SENSOR_CS_N>), //                  .G_SENSOR_CS_N
+		.accelerometer_spi_G_SENSOR_INT  (<connected-to-accelerometer_spi_G_SENSOR_INT>)   //                  .G_SENSOR_INT
+    );
+
 
 endmodule
+
