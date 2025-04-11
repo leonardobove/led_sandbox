@@ -251,11 +251,8 @@ set_location_assignment PIN_U22 -to DRAM_RAS_N
 set_location_assignment PIN_J21 -to DRAM_UDQM
 set_location_assignment PIN_V20 -to DRAM_WE_N
 set_location_assignment PIN_AB16 -to GSENSOR_CS_N
-set_location_assignment PIN_Y14 -to GSENSOR_INT[1]
-set_location_assignment PIN_Y13 -to GSENSOR_INT[2]
+set_location_assignment PIN_Y13 -to GSENSOR_INT[1]
 set_location_assignment PIN_AB15 -to GSENSOR_SCLK
-set_location_assignment PIN_V11 -to GSENSOR_SDI
-set_location_assignment PIN_V12 -to GSENSOR_SDO
 set_location_assignment PIN_V10 -to GPIO[0]
 set_location_assignment PIN_W10 -to GPIO[1]
 set_location_assignment PIN_V9 -to GPIO[2]
@@ -292,5 +289,12 @@ set_location_assignment PIN_AB3 -to GPIO[32]
 set_location_assignment PIN_Y3 -to GPIO[33]
 set_location_assignment PIN_AB2 -to GPIO[34]
 set_location_assignment PIN_AA2 -to GPIO[35]
+set_location_assignment PIN_Y14 -to GSENSOR_INT[0]
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name QIP_FILE led_sandbox_sopc/synthesis/led_sandbox_sopc.qip
 set_global_assignment -name SDC_FILE led_sandbox.sdc
 set_global_assignment -name VERILOG_FILE led_sandbox_top.v
+set_location_assignment PIN_V12 -to GSENSOR_SDIO
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

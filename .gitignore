@@ -1,4 +1,4 @@
-**/db/
+cd **/db/
 **/incremental_db/
 **/simulation/
 **/.qsys_edit/
@@ -19,8 +19,11 @@
 **/*.hdb
 **/*.cmp
 **/*.xml
+**/*.regmap
+**/*.debuginfo
 
-./hardware/led_sandbox_sopc/
+
+./hardware/led_sandbox_sopc/synthesis/submodules/*
 ./hardware/pin_assignment/CodeGenerated
 ./hardware/pin_assignment/DE10_Lite_SystemBuilder.INI
 ./hardware/pin_assignment/led_sandbox.qpf
