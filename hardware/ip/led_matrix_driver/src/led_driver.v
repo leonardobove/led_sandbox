@@ -61,7 +61,7 @@ output wire o_next_pixel;
 
 //Internal signals
 reg[6 : 0] column_counter;
-reg[3 : 0] row_counter;
+reg[4 : 0] row_counter;
 reg[1 : 0] oe_counter;
 reg[1 : 0] state;
 
@@ -144,7 +144,7 @@ begin
                     o_LAT <= 0;
                     if(row_counter < (matrix_half_height - 1))
                     begin
-                        row_counter <= row_counter + 4'd1;
+                        row_counter <= row_counter + 5'd1;
                         column_counter <= 0;
                         state <= PLOTTING;
                     end
