@@ -66,8 +66,8 @@ reg[1 : 0] oe_counter;
 reg[1 : 0] state;
 
 // Parameters
-parameter matrix_width               = 8'd64;                      // 64 pixels
-parameter matrix_half_height         = 8'd16;                      // full height 32 pixels
+parameter matrix_width               = 7'd64;                      // 64 pixels
+parameter matrix_half_height         = 5'd16;                      // full height 32 pixels
 localparam LATCH_TIME                = 2'd2;                       //tempo per latchare riga
 localparam OE_TIME                   = 2'd2;                       //tempo per aggiornare l'uscita
 localparam RESET = 0, PLOTTING = 1, END_COLUMN = 2, END_MATRIX = 3;//Stati FSM
@@ -97,6 +97,8 @@ begin
         o_OE             <= 1'b1;
         oe_counter       <= 2'd0;
     end
+    else
+    begin
     case(state)
         RESET:
         begin
@@ -140,17 +142,17 @@ begin
             else
                 begin
                     o_LAT <= 0;
-                    if(row_counter == matrix_half_height)
-                    begin
-                        state <= END_MATRIX;
-                        row_counter <= row_counter;
-                        column_counter <= column_counter;
-                    end
-                    else
+                    if(row_counter < (matrix_half_height - 1))
                     begin
                         row_counter <= row_counter + 4'd1;
                         column_counter <= 0;
                         state <= PLOTTING;
+                    end
+                    else
+                    begin
+                        row_counter <= row_counter;
+                        column_counter <= 0;
+                        state <= END_MATRIX;
                     end
                 end
         end
@@ -181,8 +183,7 @@ begin
             oe_counter <= 0;
           end
     endcase
-
 end
-
+end
 
 endmodule

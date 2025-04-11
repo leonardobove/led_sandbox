@@ -79,7 +79,7 @@ begin
         // Aggiorna contatore: vai all'indirizzo successivo
 		  if(i_next_pixel)
         begin
-            pixel_addr <= pixel_addr + 1'b1;
+            pixel_addr <= pixel_addr + 31'd1;
         end
         else
 		  begin
