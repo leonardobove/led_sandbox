@@ -61,15 +61,15 @@ begin
         if (pixel_addr[0] == 1'b0)
         begin
             hi_colors <= i_colors;
-            o_RED_1 <= hi_colors[29:20];
+            o_RED_1   <= hi_colors[29:20];
             o_GREEN_1 <= hi_colors[19:10];
-            o_BLUE_1 <= hi_colors[9:0];
+            o_BLUE_1  <= hi_colors[9:0];
         end
-        else
+        if (pixel_addr[0] == 1'b1)
         begin
-            o_RED_2 <= i_colors[29:20];
+            o_RED_2   <= i_colors[29:20];
             o_GREEN_2 <= i_colors[19:10];
-            o_BLUE_2 <= i_colors[9:0];
+            o_BLUE_2  <= i_colors[9:0];
         end
         // Se si arriva all'ultimo indirizzo torna all'inizio di partenza.
         if (pixel_addr == end_address)
@@ -77,10 +77,14 @@ begin
             pixel_addr <= start_address;
         end
         // Aggiorna contatore: vai all'indirizzo successivo
-		if(i_next_pixel)
+		  if(i_next_pixel)
         begin
             pixel_addr <= pixel_addr + 1'b1;
         end
+        else
+		  begin
+		      pixel_addr <= pixel_addr;
+		  end
 	end
 end
 
