@@ -71,7 +71,6 @@ led_sandbox_sopc led_sandbox_system (
         .sdram_wire_we_n                 (DRAM_WE_N),                 //                  .we_n
         .clk_sdram_clk                   (DRAM_CLK)                   //         clk_sdram.clk
     );
-
-
+	 
 endmodule
 
