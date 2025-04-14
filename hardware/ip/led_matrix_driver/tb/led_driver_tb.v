@@ -5,10 +5,10 @@ module led_driver_tb;
     // Inputs
     reg i_clk;
     reg i_areset_n;
-    reg [9:0] i_R1, i_G1, i_B1, i_R2, i_G2, i_B2;
+    reg i_R1, i_G1, i_B1, i_R2, i_G2, i_B2;
 
     // Outputs
-    wire [9:0] o_R1, o_G1, o_B1, o_R2, o_G2, o_B2;
+    wire o_R1, o_G1, o_B1, o_R2, o_G2, o_B2;
     wire o_A, o_B, o_C, o_D, o_CLK, o_LAT, o_OE, o_next_pixel;
 
     // Instantiate the DUT (Device Under Test)
@@ -45,25 +45,29 @@ module led_driver_tb;
     initial begin
         // Initialize inputs
         i_areset_n = 0;
-        i_R1 = 10'd0; i_G1 = 10'd0; i_B1 = 10'd0;
-        i_R2 = 10'd0; i_G2 = 10'd0; i_B2 = 10'd0;
+        i_R1 = 1'd0; i_G1 = 1'd0; i_B1 = 1'd0;
+        i_R2 = 1'd0; i_G2 = 1'd0; i_B2 = 1'd0;
 
         // Apply reset
-        #20 i_areset_n = 1;
+        #40 i_areset_n = 1;
 
         // Test case 1: Provide some input values
-        #20 i_R1 = 10'd255; i_G1 = 10'd128; i_B1 = 10'd64;
-        i_R2 = 10'd32; i_G2 = 10'd16; i_B2 = 10'd8;
+        #40 i_R1 = 1'd1; i_G1 = 1'd0; i_B1 = 1'd0;
+        i_R2 = 1'd0; i_G2 = 1'd1; i_B2 = 1'd0;
 
         // Wait for FSM transitions
-        #200;
+        #12800;
 
         // Test case 2: Change input values
-        i_R1 = 10'd512; i_G1 = 10'd256; i_B1 = 10'd128;
-        i_R2 = 10'd64; i_G2 = 10'd32; i_B2 = 10'd16;
+        i_R1 = 1'd0; i_G1 = 1'd1; i_B1 = 1'd0;
+        i_R2 = 1'd0; i_G2 = 1'd0; i_B2 = 1'd1;
 
         // Wait for FSM transitions
-        #200;
+        #12800;
+
+        // Test case 3: Change input values
+        i_R1 = 1'd0; i_G1 = 1'd0; i_B1 = 1'd1;
+        i_R2 = 1'd1; i_G2 = 1'd0; i_B2 = 1'd0;
 
         // End simulation
         $stop;
