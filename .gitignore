@@ -1,4 +1,5 @@
-cd **/db/
+# Quartus project files
+**/db/
 **/incremental_db/
 **/simulation/
 **/.qsys_edit/
@@ -22,17 +23,30 @@ cd **/db/
 **/*.regmap
 **/*.debuginfo
 
+# Pin assignment tool files
+/hardware/led_sandbox_sopc/synthesis/submodules/*
+/hardware/pin_assignment/CodeGenerated
+/hardware/pin_assignment/DE10_Lite_SystemBuilder.INI
+/hardware/pin_assignment/*.qpf
+/hardware/pin_assignment/*.sdc
+/hardware/pin_assignment/*.v
 
-./hardware/led_sandbox_sopc/synthesis/submodules/*
-./hardware/pin_assignment/CodeGenerated
-./hardware/pin_assignment/DE10_Lite_SystemBuilder.INI
-./hardware/pin_assignment/led_sandbox.qpf
-./hardware/pin_assignment/led_sandbox.sdc
-./hardware/pin_assignment/led_sandbox.v
+# Eclipse files
+RemoteSystemsTempFiles
+.metadata
+readme.txt
+obj
+.settings
+.cproject
+.force_relink
+.project
+create-this-app
+*.map
+*.objdump
+*.html
+*_bsp
 
-./software/RemoteSystemsTempFiles/
-./software/.metadata/
-
+# Python environment
 python/bin/
 python/include/
 python/lib/
