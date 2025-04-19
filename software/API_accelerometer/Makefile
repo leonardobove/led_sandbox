@@ -139,11 +139,10 @@ ACDS_VERSION := 18.1
 # Define path to the application ELF. 
 # It may be used by the makefile fragments so is defined before including them. 
 # 
-ELF := API_accelerometer.elf
+ELF := api_accelerometer.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS += Scr/test_api.c
-C_SRCS += Scr/accelerometer.c
+C_SRCS := Scr/api_accelerometer.c
 CXX_SRCS :=
 ASM_SRCS :=
 
@@ -178,7 +177,7 @@ CRT0 :=
 SYS_LIB :=
 
 # Define path to the root of the BSP.
-BSP_ROOT_DIR := C:/Users/aless/OneDrive/Desktop/SISTEMI_EMBEDDED/led_sandbox/software/API_accelerometer_bsp/
+BSP_ROOT_DIR := C:/Users/aless/OneDrive/Desktop/SISTEMI_EMBEDDED/led_sandbox/software/api_accelerometer_bsp/
 
 # List of application specific include directories, library directories and library names
 APP_INCLUDE_DIRS :=

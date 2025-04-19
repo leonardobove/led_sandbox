@@ -5,12 +5,16 @@
  *      Author: aless
  */
 
-#include "../Inc/config.h"
+#include <stdint.h>
+#include <stdio.h>
+#include "system.h"
+#include "stdlib.h"
+#include "unistd.h" // per usleep()
 #include "../Inc/api_accelerometer.h"
 
 int main() {
-    int check = accelerometer_init();
-    if(check== -1){
+    alt_up_accelerometer_spi_dev* check = accelerometer_init();
+    if(check== NULL){
     	printf("apertura accelerometro fallita\n");
     	return 1;
     }
