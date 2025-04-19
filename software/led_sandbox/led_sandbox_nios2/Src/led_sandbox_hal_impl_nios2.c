@@ -16,6 +16,6 @@ void hal_init() {
 					(volatile uint32_t*)(&tick_flag));
 
 	// Initialize scheduler
-	hal_scheduler_init();
+	scheduler_init();
 }
 

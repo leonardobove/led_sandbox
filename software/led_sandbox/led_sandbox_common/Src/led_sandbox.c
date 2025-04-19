@@ -7,8 +7,9 @@
 
 #include <assert.h>
 
-#include "../Inc/hal.h"
-#include "../Inc/led_sandbox.h"
+#include "hal.h"
+#include "scheduler.h"
+#include "led_sandbox.h"
 
 // Task periods
 #define STATE_MACHINE_TASK_PERIOD_MS (1u)
@@ -24,7 +25,7 @@ void led_sandbox_init() {
 	hal_init();
 
 	// Register periodic tasks
-	assert(hal_scheduler_add_periodic_task(STATE_MACHINE_TASK_PERIOD_MS,
+	assert(scheduler_add_periodic_task(STATE_MACHINE_TASK_PERIOD_MS,
 										   state_machine_task));
 }
 

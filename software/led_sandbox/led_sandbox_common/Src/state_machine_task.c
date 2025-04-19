@@ -17,7 +17,7 @@ void state_machine_task() {
 	// Evaluate next state based on current state and inputs
 	switch (current_state) {
 		case RESET:
-			printf("Hello");
+			printf("eheheh");
 			break;
 
 		case IDLE:

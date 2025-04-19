@@ -5,30 +5,27 @@
  *      Author: leona
  */
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stddef.h>
 
 #include "../Inc/scheduler.h"
 
-// Structure that defines a periodic task and its period
-static struct {
-    CallbackType cb;
-    int32_t tick_counter;
-    int32_t counter_reset;
-} periodic_tasks[MAX_PERIODIC_TASKS];
+// Static array of periodic tasks
+static periodic_task_t periodic_tasks[MAX_PERIODIC_TASKS]; 
 
 // Number of registered tasks
 static uint16_t num_tasks = 0;
 
-// Structure that defines a one-shot event
-static struct {
-    CallbackType cb;
-    int32_t tick_counter;
-} oneshot_events[MAX_ONESHOT_EVENTS];
+// Static array of one-shot events
+static oneshot_event_t oneshot_events[MAX_ONESHOT_EVENTS];
 
 // Flag used to check when one system tick has elapsed
 volatile uint32_t tick_flag = 0;
 
-void hal_scheduler_init() {
+void scheduler_init() {
     for (size_t i = 0u; i < MAX_PERIODIC_TASKS; ++i)
     {
         periodic_tasks[i].cb = NULL;
@@ -43,7 +40,7 @@ void hal_scheduler_init() {
     }
 }
 
-bool hal_scheduler_add_periodic_task(uint16_t ms_period, CallbackType callback) {
+bool scheduler_add_periodic_task(uint16_t ms_period, CallbackType callback) {
     if (num_tasks == MAX_PERIODIC_TASKS) {
         return false;
     }
@@ -57,7 +54,7 @@ bool hal_scheduler_add_periodic_task(uint16_t ms_period, CallbackType callback) 
     return true;
 }
 
-bool hal_scheduler_add_oneshot_task(uint16_t ms_delay, CallbackType callback) 	{
+bool scheduler_add_oneshot_task(uint16_t ms_delay, CallbackType callback) 	{
     bool ret = false;
 
     for (size_t i = 0u; i < MAX_ONESHOT_EVENTS; ++i)
@@ -75,7 +72,7 @@ bool hal_scheduler_add_oneshot_task(uint16_t ms_delay, CallbackType callback) 	{
     return ret;
 }
 
-bool hal_scheduler_tick() {
+bool scheduler_tick() {
     for (uint16_t i = 0; i < num_tasks; i++) {
         periodic_tasks[i].tick_counter -= 1;
 
@@ -103,3 +100,7 @@ bool hal_scheduler_tick() {
 
     return true;
 }
+
+#ifdef __cplusplus
+}
+#endif

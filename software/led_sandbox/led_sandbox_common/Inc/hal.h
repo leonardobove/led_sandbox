@@ -15,8 +15,6 @@ extern "C" {
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "scheduler.h"
-
 // Initialize tasks scheduler and peripherals
 void hal_init();
 
