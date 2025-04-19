@@ -21,12 +21,12 @@
 
 
 void led_sandbox_init() {
-	// Initialize HAL
-	hal_init();
+    // Initialize HAL
+    hal_init();
 
-	// Register periodic tasks
-	assert(scheduler_add_periodic_task(STATE_MACHINE_TASK_PERIOD_MS,
-										   state_machine_task));
+    // Register periodic tasks
+    assert(scheduler_add_periodic_task(STATE_MACHINE_TASK_PERIOD_MS,
+                                           state_machine_task));
 }
 
 void led_sandbox_loop() {

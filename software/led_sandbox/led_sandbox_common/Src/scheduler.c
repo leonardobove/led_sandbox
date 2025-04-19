@@ -54,7 +54,7 @@ bool scheduler_add_periodic_task(uint16_t ms_period, CallbackType callback) {
     return true;
 }
 
-bool scheduler_add_oneshot_task(uint16_t ms_delay, CallbackType callback) 	{
+bool scheduler_add_oneshot_task(uint16_t ms_delay, CallbackType callback)     {
     bool ret = false;
 
     for (size_t i = 0u; i < MAX_ONESHOT_EVENTS; ++i)

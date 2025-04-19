@@ -4,20 +4,20 @@
 
 
 int main() {
-	led_sandbox_init();
+    led_sandbox_init();
 
-	while (1) {
-		// If tick has elapsed, call scheduler
-		if (tick_flag) {
-			scheduler_tick();
+    while (1) {
+        // If tick has elapsed, call scheduler
+        if (tick_flag) {
+            scheduler_tick();
 
-			// Reset tick flag
-			tick_flag = 0;
-		}
+            // Reset tick flag
+            tick_flag = 0;
+        }
 
-		// Call loop subroutine
-		led_sandbox_loop();
-	}
+        // Call loop subroutine
+        led_sandbox_loop();
+    }
 
-	return 0;
+    return 0;
 }
