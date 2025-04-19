@@ -1,0 +1,7 @@
+bdfparser==2.2.0
+libsixel-python==0.5.0
+numpy==2.2.4
+pillow==11.2.1
+pygame==2.6.1
+RGBMatrixEmulator==0.13.2
+tornado==6.4.2
