@@ -5,7 +5,7 @@
  *      Author: aless
  */
 
-#include "../Inc/api_accelerometer.h"
+#include "api_accelerometer.h"
 
 //static accelerometer_range_t current_range = ACCELEROMETER_RANGE_2G; //Default init has 2G
 

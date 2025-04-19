@@ -3,12 +3,11 @@
  *
  *  Created on: 17 apr 2025
  *      Author: aless
+ *
+ * Accelerometer sensor used: ADXL345.
+ * Scope of a measure: default +-2g. POssibility to edit up to +-16g.
+ * Sensitivity measure: (256*2)/Scope [LSB/g], default case: (256*2)/2 [LSB/g].
  */
-
-/*Accelerometer sensor used: ADXL345
- Scope of a measure: default +-2g. POssibility to edit up to +-16g
-  Sensitivity measure: (256*2)/Scope [LSB/g], default case: (256*2)/2 [LSB/g] */
-
 
 #ifndef INC_API_ACCELEROMETER_H_
 #define INC_API_ACCELEROMETER_H_
@@ -43,9 +42,9 @@ typedef struct {
 
 //**** API *****
 
-alt_up_accelerometer_spi_dev* accelerometer_init(void);				//initialize value
-//int accelerometer_set_range(accelerometer_range_t range);			// set range
-int32_t accelerometer_get_data_raw(accelerometer_data_t* data);		// get data in raw value
-int32_t accelerometer_get_data_g(accelerometer_data_t* data_g);  	// get data in g vale
+alt_up_accelerometer_spi_dev* accelerometer_init(void);		    // initialize value
+//int accelerometer_set_range(accelerometer_range_t range);	    // set range
+int32_t accelerometer_get_data_raw(accelerometer_data_t* data);	    // get data in raw value
+int32_t accelerometer_get_data_g(accelerometer_data_t* data_g);     // get data in g vale
 
 #endif /* INC_API_ACCELEROMETER_H_ */

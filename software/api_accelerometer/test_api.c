@@ -10,7 +10,7 @@
 #include "system.h"
 #include "stdlib.h"
 #include "unistd.h" // per usleep()
-#include "../Inc/api_accelerometer.h"
+#include "api_accelerometer.h"
 
 int main() {
     alt_up_accelerometer_spi_dev* check = accelerometer_init();
