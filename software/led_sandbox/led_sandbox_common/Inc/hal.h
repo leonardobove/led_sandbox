@@ -25,6 +25,9 @@ void hal_stop_timers();
 // Return the number of milliseconds elapsed since the start of the execution
 uint32_t hal_get_millis(); // TODO: add time-stamp timer
 
+uint32_t hal_read_switches();
+uint32_t hal_read_sliders();
+
 #ifdef __cplusplus
 }
 #endif
