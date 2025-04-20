@@ -57,3 +57,6 @@ lib64
 .ipynb_checkpoints/
 Scripts/
 docs/
+
+matrix_pixels.txt
+emulator_config.json

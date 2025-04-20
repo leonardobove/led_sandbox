@@ -17,9 +17,9 @@ extern "C" {
 
 #include "../Inc/hal.h"
 
-#define MAX_PERIODIC_TASKS 10u
-#define MAX_ONESHOT_EVENTS 8u
-#define TICKS_PER_MS 1
+#define MAX_PERIODIC_TASKS (10u)
+#define MAX_ONESHOT_EVENTS (8u)
+#define TICKS_PER_MS       (1u)
 
 typedef void (*CallbackType)(void);
 

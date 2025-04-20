@@ -13,10 +13,10 @@ class SampleBase(object):
         self.parser = argparse.ArgumentParser()
 
         self.parser.add_argument("-r", "--led-rows", action="store", help="Display rows. 16 for 16x32, 32 for 32x32. Default: 32", default=32, type=int)
-        self.parser.add_argument("--led-cols", action="store", help="Panel columns. Typically 32 or 64. (Default: 32)", default=32, type=int)
+        self.parser.add_argument("--led-cols", action="store", help="Panel columns. Typically 32 or 64. (Default: 32)", default=64, type=int)
         self.parser.add_argument("-c", "--led-chain", action="store", help="Daisy-chained boards. Default: 1.", default=1, type=int)
         self.parser.add_argument("-P", "--led-parallel", action="store", help="For Plus-models or RPi2: parallel chains. 1..3. Default: 1", default=1, type=int)
-        self.parser.add_argument("-p", "--led-pwm-bits", action="store", help="Bits used for PWM. Something between 1..11. Default: 11", default=11, type=int)
+        self.parser.add_argument("-p", "--led-pwm-bits", action="store", help="Bits used for PWM. Something between 1..11. Default: 11", default=1, type=int)
         self.parser.add_argument("-b", "--led-brightness", action="store", help="Sets brightness level. Default: 100. Range: 1..100", default=100, type=int)
         self.parser.add_argument("-m", "--led-gpio-mapping", help="Hardware Mapping: regular, adafruit-hat, adafruit-hat-pwm" , choices=['regular', 'regular-pi1', 'adafruit-hat', 'adafruit-hat-pwm'], type=str)
         self.parser.add_argument("--led-scan-mode", action="store", help="Progressive or interlaced scan. 0 Progressive, 1 Interlaced (default)", default=1, choices=range(2), type=int)
@@ -89,7 +89,8 @@ class AdafruitRGBMatrix64x32(SampleBase):
             lines = f.readlines()
 
         if len(lines) != self.options.cols * self.options.rows:
-            raise ValueError(f"Expected {self.options.cols * self.options.rows} pixels, got {len(lines)}.")
+            print(f"Expected {self.options.cols * self.options.rows} pixels, got {len(lines)}.")
+            return None
 
         image = Image.new("RGB", (self.options.cols, self.options.rows))
     
@@ -112,9 +113,11 @@ class AdafruitRGBMatrix64x32(SampleBase):
             mtime = os.path.getmtime(file_path)
             if mtime != last_mtime:
                 image = self.load_pixel_data(file_path=file_path)
+                if image is None:
+                    continue
                 self.matrix.SetImage(image)
                 last_mtime = mtime
-            time.sleep(0.01)  # Refresh every 10ms
+            time.sleep(0.001)  # Refresh every 10ms
 
 # Main function
 if __name__ == "__main__":

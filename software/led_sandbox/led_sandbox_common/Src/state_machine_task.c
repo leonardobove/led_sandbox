@@ -55,7 +55,6 @@ void state_machine_task() {
             break;
 
         default:
-            printf("default");
             break;
 
     }
@@ -71,16 +70,16 @@ void state_machine_task() {
     // Update FSM outputs
     switch (current_state) {
         case RESET:
-            printf("reset\n");
+            //printf("reset\n");
             break;
         case IDLE:
-            printf("idle\n");
+            //printf("idle\n");
             break;
         case GSENSOR_SANDBOX:
-            printf("gsensor\n");
+            //printf("gsensor\n");
             break;
         case GESTURE_RECOGNITION:
-            printf("gesture\n");
+            //printf("gesture\n");
             break;
     }
 }

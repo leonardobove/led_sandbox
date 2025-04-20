@@ -11,9 +11,9 @@
 #include <stdint.h>
 
 // Buttons and switches definitions useful for the FSM
-#define RESET_KEY                        (0u)
+#define RESET_KEY                       (0u)
 #define START_KEY                       (1u)
-#define GSENSOR_MODE_SLIDER                (0u)
+#define GSENSOR_MODE_SLIDER             (0u)
 #define GESTURE_RECOGNITION_MODE_SLIDER (1u)
 
 // Define FSM states and declare current/next state variables
