@@ -49,7 +49,7 @@ module led_sandbox_sopc_system_id (
 
   wire    [ 31: 0] readdata;
   //control_slave, which is an e_avalon_slave
-  assign readdata = address ? 1744629051 : 3;
+  assign readdata = address ? 1745148563 : 3;
 
 endmodule
 

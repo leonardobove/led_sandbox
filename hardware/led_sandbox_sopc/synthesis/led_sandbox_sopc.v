@@ -22,8 +22,14 @@ module led_sandbox_sopc (
 		output wire        sdram_wire_we_n                  //                  .we_n
 	);
 
-	wire         altpll_0_c0_clk;                                                                       // altpll_0:c0 -> [accelerometer_spi_0:clk, cpu:clk, irq_mapper:clk, irq_synchronizer:sender_clk, jtag_uart:clk, mm_interconnect_0:altpll_0_c0_clk, rst_controller:clk, sdram:clk, system_id:clock, systick_timer:clk]
-	wire         altpll_0_c2_clk;                                                                       // altpll_0:c2 -> [dma_0:clk, irq_synchronizer:receiver_clk, mm_interconnect_0:altpll_0_c2_clk, rst_controller_002:clk]
+	wire         altpll_0_c0_clk;                                                                       // altpll_0:c0 -> [accelerometer_spi_0:clk, cpu:clk, irq_mapper:clk, jtag_uart:clk, mm_interconnect_0:altpll_0_c0_clk, rst_controller:clk, sdram:clk, system_id:clock, systick_timer:clk]
+	wire         altpll_0_c2_clk;                                                                       // altpll_0:c2 -> [mm_interconnect_0:altpll_0_c2_clk, rst_controller_002:clk, video_dma_controller_0:clk]
+	wire         video_dma_controller_0_avalon_dma_master_waitrequest;                                  // mm_interconnect_0:video_dma_controller_0_avalon_dma_master_waitrequest -> video_dma_controller_0:master_waitrequest
+	wire   [7:0] video_dma_controller_0_avalon_dma_master_readdata;                                     // mm_interconnect_0:video_dma_controller_0_avalon_dma_master_readdata -> video_dma_controller_0:master_readdata
+	wire  [31:0] video_dma_controller_0_avalon_dma_master_address;                                      // video_dma_controller_0:master_address -> mm_interconnect_0:video_dma_controller_0_avalon_dma_master_address
+	wire         video_dma_controller_0_avalon_dma_master_read;                                         // video_dma_controller_0:master_read -> mm_interconnect_0:video_dma_controller_0_avalon_dma_master_read
+	wire         video_dma_controller_0_avalon_dma_master_readdatavalid;                                // mm_interconnect_0:video_dma_controller_0_avalon_dma_master_readdatavalid -> video_dma_controller_0:master_readdatavalid
+	wire         video_dma_controller_0_avalon_dma_master_lock;                                         // video_dma_controller_0:master_arbiterlock -> mm_interconnect_0:video_dma_controller_0_avalon_dma_master_lock
 	wire  [31:0] cpu_data_master_readdata;                                                              // mm_interconnect_0:cpu_data_master_readdata -> cpu:d_readdata
 	wire         cpu_data_master_waitrequest;                                                           // mm_interconnect_0:cpu_data_master_waitrequest -> cpu:d_waitrequest
 	wire         cpu_data_master_debugaccess;                                                           // cpu:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:cpu_data_master_debugaccess
@@ -36,41 +42,6 @@ module led_sandbox_sopc (
 	wire         cpu_instruction_master_waitrequest;                                                    // mm_interconnect_0:cpu_instruction_master_waitrequest -> cpu:i_waitrequest
 	wire  [27:0] cpu_instruction_master_address;                                                        // cpu:i_address -> mm_interconnect_0:cpu_instruction_master_address
 	wire         cpu_instruction_master_read;                                                           // cpu:i_read -> mm_interconnect_0:cpu_instruction_master_read
-	wire         dma_0_read_master_chipselect;                                                          // dma_0:read_chipselect -> mm_interconnect_0:dma_0_read_master_chipselect
-	wire  [15:0] dma_0_read_master_readdata;                                                            // mm_interconnect_0:dma_0_read_master_readdata -> dma_0:read_readdata
-	wire         dma_0_read_master_waitrequest;                                                         // mm_interconnect_0:dma_0_read_master_waitrequest -> dma_0:read_waitrequest
-	wire  [26:0] dma_0_read_master_address;                                                             // dma_0:read_address -> mm_interconnect_0:dma_0_read_master_address
-	wire         dma_0_read_master_read;                                                                // dma_0:read_read_n -> mm_interconnect_0:dma_0_read_master_read
-	wire         dma_0_read_master_readdatavalid;                                                       // mm_interconnect_0:dma_0_read_master_readdatavalid -> dma_0:read_readdatavalid
-	wire   [7:0] mm_interconnect_0_accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_readdata;    // accelerometer_spi_0:readdata -> mm_interconnect_0:accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_readdata
-	wire         mm_interconnect_0_accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_waitrequest; // accelerometer_spi_0:waitrequest -> mm_interconnect_0:accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_waitrequest
-	wire   [0:0] mm_interconnect_0_accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_address;     // mm_interconnect_0:accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_address -> accelerometer_spi_0:address
-	wire         mm_interconnect_0_accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_read;        // mm_interconnect_0:accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_read -> accelerometer_spi_0:read
-	wire   [0:0] mm_interconnect_0_accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_byteenable;  // mm_interconnect_0:accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_byteenable -> accelerometer_spi_0:byteenable
-	wire         mm_interconnect_0_accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_write;       // mm_interconnect_0:accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_write -> accelerometer_spi_0:write
-	wire   [7:0] mm_interconnect_0_accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_writedata;   // mm_interconnect_0:accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_writedata -> accelerometer_spi_0:writedata
-	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_chipselect;                              // mm_interconnect_0:jtag_uart_avalon_jtag_slave_chipselect -> jtag_uart:av_chipselect
-	wire  [31:0] mm_interconnect_0_jtag_uart_avalon_jtag_slave_readdata;                                // jtag_uart:av_readdata -> mm_interconnect_0:jtag_uart_avalon_jtag_slave_readdata
-	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_waitrequest;                             // jtag_uart:av_waitrequest -> mm_interconnect_0:jtag_uart_avalon_jtag_slave_waitrequest
-	wire   [0:0] mm_interconnect_0_jtag_uart_avalon_jtag_slave_address;                                 // mm_interconnect_0:jtag_uart_avalon_jtag_slave_address -> jtag_uart:av_address
-	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_read;                                    // mm_interconnect_0:jtag_uart_avalon_jtag_slave_read -> jtag_uart:av_read_n
-	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_write;                                   // mm_interconnect_0:jtag_uart_avalon_jtag_slave_write -> jtag_uart:av_write_n
-	wire  [31:0] mm_interconnect_0_jtag_uart_avalon_jtag_slave_writedata;                               // mm_interconnect_0:jtag_uart_avalon_jtag_slave_writedata -> jtag_uart:av_writedata
-	wire  [31:0] mm_interconnect_0_system_id_control_slave_readdata;                                    // system_id:readdata -> mm_interconnect_0:system_id_control_slave_readdata
-	wire   [0:0] mm_interconnect_0_system_id_control_slave_address;                                     // mm_interconnect_0:system_id_control_slave_address -> system_id:address
-	wire  [31:0] mm_interconnect_0_cpu_debug_mem_slave_readdata;                                        // cpu:debug_mem_slave_readdata -> mm_interconnect_0:cpu_debug_mem_slave_readdata
-	wire         mm_interconnect_0_cpu_debug_mem_slave_waitrequest;                                     // cpu:debug_mem_slave_waitrequest -> mm_interconnect_0:cpu_debug_mem_slave_waitrequest
-	wire         mm_interconnect_0_cpu_debug_mem_slave_debugaccess;                                     // mm_interconnect_0:cpu_debug_mem_slave_debugaccess -> cpu:debug_mem_slave_debugaccess
-	wire   [8:0] mm_interconnect_0_cpu_debug_mem_slave_address;                                         // mm_interconnect_0:cpu_debug_mem_slave_address -> cpu:debug_mem_slave_address
-	wire         mm_interconnect_0_cpu_debug_mem_slave_read;                                            // mm_interconnect_0:cpu_debug_mem_slave_read -> cpu:debug_mem_slave_read
-	wire   [3:0] mm_interconnect_0_cpu_debug_mem_slave_byteenable;                                      // mm_interconnect_0:cpu_debug_mem_slave_byteenable -> cpu:debug_mem_slave_byteenable
-	wire         mm_interconnect_0_cpu_debug_mem_slave_write;                                           // mm_interconnect_0:cpu_debug_mem_slave_write -> cpu:debug_mem_slave_write
-	wire  [31:0] mm_interconnect_0_cpu_debug_mem_slave_writedata;                                       // mm_interconnect_0:cpu_debug_mem_slave_writedata -> cpu:debug_mem_slave_writedata
-	wire  [31:0] mm_interconnect_0_altpll_0_pll_slave_readdata;                                         // altpll_0:readdata -> mm_interconnect_0:altpll_0_pll_slave_readdata
-	wire   [1:0] mm_interconnect_0_altpll_0_pll_slave_address;                                          // mm_interconnect_0:altpll_0_pll_slave_address -> altpll_0:address
-	wire         mm_interconnect_0_altpll_0_pll_slave_read;                                             // mm_interconnect_0:altpll_0_pll_slave_read -> altpll_0:read
-	wire         mm_interconnect_0_altpll_0_pll_slave_write;                                            // mm_interconnect_0:altpll_0_pll_slave_write -> altpll_0:write
-	wire  [31:0] mm_interconnect_0_altpll_0_pll_slave_writedata;                                        // mm_interconnect_0:altpll_0_pll_slave_writedata -> altpll_0:writedata
 	wire         mm_interconnect_0_sdram_s1_chipselect;                                                 // mm_interconnect_0:sdram_s1_chipselect -> sdram:az_cs
 	wire  [15:0] mm_interconnect_0_sdram_s1_readdata;                                                   // sdram:za_data -> mm_interconnect_0:sdram_s1_readdata
 	wire         mm_interconnect_0_sdram_s1_waitrequest;                                                // sdram:za_waitrequest -> mm_interconnect_0:sdram_s1_waitrequest
@@ -80,27 +51,55 @@ module led_sandbox_sopc (
 	wire         mm_interconnect_0_sdram_s1_readdatavalid;                                              // sdram:za_valid -> mm_interconnect_0:sdram_s1_readdatavalid
 	wire         mm_interconnect_0_sdram_s1_write;                                                      // mm_interconnect_0:sdram_s1_write -> sdram:az_wr_n
 	wire  [15:0] mm_interconnect_0_sdram_s1_writedata;                                                  // mm_interconnect_0:sdram_s1_writedata -> sdram:az_data
+	wire  [31:0] mm_interconnect_0_cpu_debug_mem_slave_readdata;                                        // cpu:debug_mem_slave_readdata -> mm_interconnect_0:cpu_debug_mem_slave_readdata
+	wire         mm_interconnect_0_cpu_debug_mem_slave_waitrequest;                                     // cpu:debug_mem_slave_waitrequest -> mm_interconnect_0:cpu_debug_mem_slave_waitrequest
+	wire         mm_interconnect_0_cpu_debug_mem_slave_debugaccess;                                     // mm_interconnect_0:cpu_debug_mem_slave_debugaccess -> cpu:debug_mem_slave_debugaccess
+	wire   [8:0] mm_interconnect_0_cpu_debug_mem_slave_address;                                         // mm_interconnect_0:cpu_debug_mem_slave_address -> cpu:debug_mem_slave_address
+	wire         mm_interconnect_0_cpu_debug_mem_slave_read;                                            // mm_interconnect_0:cpu_debug_mem_slave_read -> cpu:debug_mem_slave_read
+	wire   [3:0] mm_interconnect_0_cpu_debug_mem_slave_byteenable;                                      // mm_interconnect_0:cpu_debug_mem_slave_byteenable -> cpu:debug_mem_slave_byteenable
+	wire         mm_interconnect_0_cpu_debug_mem_slave_write;                                           // mm_interconnect_0:cpu_debug_mem_slave_write -> cpu:debug_mem_slave_write
+	wire  [31:0] mm_interconnect_0_cpu_debug_mem_slave_writedata;                                       // mm_interconnect_0:cpu_debug_mem_slave_writedata -> cpu:debug_mem_slave_writedata
+	wire   [7:0] mm_interconnect_0_accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_readdata;    // accelerometer_spi_0:readdata -> mm_interconnect_0:accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_readdata
+	wire         mm_interconnect_0_accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_waitrequest; // accelerometer_spi_0:waitrequest -> mm_interconnect_0:accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_waitrequest
+	wire   [0:0] mm_interconnect_0_accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_address;     // mm_interconnect_0:accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_address -> accelerometer_spi_0:address
+	wire         mm_interconnect_0_accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_read;        // mm_interconnect_0:accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_read -> accelerometer_spi_0:read
+	wire   [0:0] mm_interconnect_0_accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_byteenable;  // mm_interconnect_0:accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_byteenable -> accelerometer_spi_0:byteenable
+	wire         mm_interconnect_0_accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_write;       // mm_interconnect_0:accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_write -> accelerometer_spi_0:write
+	wire   [7:0] mm_interconnect_0_accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_writedata;   // mm_interconnect_0:accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_writedata -> accelerometer_spi_0:writedata
+	wire  [31:0] mm_interconnect_0_video_dma_controller_0_avalon_dma_control_slave_readdata;            // video_dma_controller_0:slave_readdata -> mm_interconnect_0:video_dma_controller_0_avalon_dma_control_slave_readdata
+	wire   [1:0] mm_interconnect_0_video_dma_controller_0_avalon_dma_control_slave_address;             // mm_interconnect_0:video_dma_controller_0_avalon_dma_control_slave_address -> video_dma_controller_0:slave_address
+	wire         mm_interconnect_0_video_dma_controller_0_avalon_dma_control_slave_read;                // mm_interconnect_0:video_dma_controller_0_avalon_dma_control_slave_read -> video_dma_controller_0:slave_read
+	wire   [3:0] mm_interconnect_0_video_dma_controller_0_avalon_dma_control_slave_byteenable;          // mm_interconnect_0:video_dma_controller_0_avalon_dma_control_slave_byteenable -> video_dma_controller_0:slave_byteenable
+	wire         mm_interconnect_0_video_dma_controller_0_avalon_dma_control_slave_write;               // mm_interconnect_0:video_dma_controller_0_avalon_dma_control_slave_write -> video_dma_controller_0:slave_write
+	wire  [31:0] mm_interconnect_0_video_dma_controller_0_avalon_dma_control_slave_writedata;           // mm_interconnect_0:video_dma_controller_0_avalon_dma_control_slave_writedata -> video_dma_controller_0:slave_writedata
+	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_chipselect;                              // mm_interconnect_0:jtag_uart_avalon_jtag_slave_chipselect -> jtag_uart:av_chipselect
+	wire  [31:0] mm_interconnect_0_jtag_uart_avalon_jtag_slave_readdata;                                // jtag_uart:av_readdata -> mm_interconnect_0:jtag_uart_avalon_jtag_slave_readdata
+	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_waitrequest;                             // jtag_uart:av_waitrequest -> mm_interconnect_0:jtag_uart_avalon_jtag_slave_waitrequest
+	wire   [0:0] mm_interconnect_0_jtag_uart_avalon_jtag_slave_address;                                 // mm_interconnect_0:jtag_uart_avalon_jtag_slave_address -> jtag_uart:av_address
+	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_read;                                    // mm_interconnect_0:jtag_uart_avalon_jtag_slave_read -> jtag_uart:av_read_n
+	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_write;                                   // mm_interconnect_0:jtag_uart_avalon_jtag_slave_write -> jtag_uart:av_write_n
+	wire  [31:0] mm_interconnect_0_jtag_uart_avalon_jtag_slave_writedata;                               // mm_interconnect_0:jtag_uart_avalon_jtag_slave_writedata -> jtag_uart:av_writedata
+	wire  [31:0] mm_interconnect_0_system_id_control_slave_readdata;                                    // system_id:readdata -> mm_interconnect_0:system_id_control_slave_readdata
+	wire   [0:0] mm_interconnect_0_system_id_control_slave_address;                                     // mm_interconnect_0:system_id_control_slave_address -> system_id:address
+	wire  [31:0] mm_interconnect_0_altpll_0_pll_slave_readdata;                                         // altpll_0:readdata -> mm_interconnect_0:altpll_0_pll_slave_readdata
+	wire   [1:0] mm_interconnect_0_altpll_0_pll_slave_address;                                          // mm_interconnect_0:altpll_0_pll_slave_address -> altpll_0:address
+	wire         mm_interconnect_0_altpll_0_pll_slave_read;                                             // mm_interconnect_0:altpll_0_pll_slave_read -> altpll_0:read
+	wire         mm_interconnect_0_altpll_0_pll_slave_write;                                            // mm_interconnect_0:altpll_0_pll_slave_write -> altpll_0:write
+	wire  [31:0] mm_interconnect_0_altpll_0_pll_slave_writedata;                                        // mm_interconnect_0:altpll_0_pll_slave_writedata -> altpll_0:writedata
 	wire         mm_interconnect_0_systick_timer_s1_chipselect;                                         // mm_interconnect_0:systick_timer_s1_chipselect -> systick_timer:chipselect
 	wire  [15:0] mm_interconnect_0_systick_timer_s1_readdata;                                           // systick_timer:readdata -> mm_interconnect_0:systick_timer_s1_readdata
 	wire   [2:0] mm_interconnect_0_systick_timer_s1_address;                                            // mm_interconnect_0:systick_timer_s1_address -> systick_timer:address
 	wire         mm_interconnect_0_systick_timer_s1_write;                                              // mm_interconnect_0:systick_timer_s1_write -> systick_timer:write_n
 	wire  [15:0] mm_interconnect_0_systick_timer_s1_writedata;                                          // mm_interconnect_0:systick_timer_s1_writedata -> systick_timer:writedata
-	wire         mm_interconnect_0_dma_0_control_port_slave_chipselect;                                 // mm_interconnect_0:dma_0_control_port_slave_chipselect -> dma_0:dma_ctl_chipselect
-	wire  [26:0] mm_interconnect_0_dma_0_control_port_slave_readdata;                                   // dma_0:dma_ctl_readdata -> mm_interconnect_0:dma_0_control_port_slave_readdata
-	wire   [2:0] mm_interconnect_0_dma_0_control_port_slave_address;                                    // mm_interconnect_0:dma_0_control_port_slave_address -> dma_0:dma_ctl_address
-	wire         mm_interconnect_0_dma_0_control_port_slave_write;                                      // mm_interconnect_0:dma_0_control_port_slave_write -> dma_0:dma_ctl_write_n
-	wire  [26:0] mm_interconnect_0_dma_0_control_port_slave_writedata;                                  // mm_interconnect_0:dma_0_control_port_slave_writedata -> dma_0:dma_ctl_writedata
 	wire         irq_mapper_receiver0_irq;                                                              // accelerometer_spi_0:irq -> irq_mapper:receiver0_irq
 	wire         irq_mapper_receiver1_irq;                                                              // jtag_uart:av_irq -> irq_mapper:receiver1_irq
 	wire         irq_mapper_receiver2_irq;                                                              // systick_timer:irq -> irq_mapper:receiver2_irq
 	wire  [31:0] cpu_irq_irq;                                                                           // irq_mapper:sender_irq -> cpu:irq
-	wire         irq_mapper_receiver3_irq;                                                              // irq_synchronizer:sender_irq -> irq_mapper:receiver3_irq
-	wire   [0:0] irq_synchronizer_receiver_irq;                                                         // dma_0:dma_ctl_irq -> irq_synchronizer:receiver_irq
-	wire         rst_controller_reset_out_reset;                                                        // rst_controller:reset_out -> [accelerometer_spi_0:reset, cpu:reset_n, irq_mapper:reset, irq_synchronizer:sender_reset, jtag_uart:rst_n, mm_interconnect_0:cpu_reset_reset_bridge_in_reset_reset, rst_translator:in_reset, sdram:reset_n, system_id:reset_n, systick_timer:reset_n]
+	wire         rst_controller_reset_out_reset;                                                        // rst_controller:reset_out -> [accelerometer_spi_0:reset, cpu:reset_n, irq_mapper:reset, jtag_uart:rst_n, mm_interconnect_0:cpu_reset_reset_bridge_in_reset_reset, rst_translator:in_reset, sdram:reset_n, system_id:reset_n, systick_timer:reset_n]
 	wire         rst_controller_reset_out_reset_req;                                                    // rst_controller:reset_req -> [cpu:reset_req, rst_translator:reset_req_in]
 	wire         cpu_debug_reset_request_reset;                                                         // cpu:debug_reset_request -> [rst_controller:reset_in1, rst_controller_001:reset_in1, rst_controller_002:reset_in1]
 	wire         rst_controller_001_reset_out_reset;                                                    // rst_controller_001:reset_out -> [altpll_0:reset, mm_interconnect_0:altpll_0_inclk_interface_reset_reset_bridge_in_reset_reset]
-	wire         rst_controller_002_reset_out_reset;                                                    // rst_controller_002:reset_out -> [dma_0:system_reset_n, irq_synchronizer:receiver_reset, mm_interconnect_0:dma_0_reset_reset_bridge_in_reset_reset]
+	wire         rst_controller_002_reset_out_reset;                                                    // rst_controller_002:reset_out -> [mm_interconnect_0:video_dma_controller_0_reset_reset_bridge_in_reset_reset, video_dma_controller_0:reset]
 
 	led_sandbox_sopc_accelerometer_spi_0 accelerometer_spi_0 (
 		.clk           (altpll_0_c0_clk),                                                                       //                                 clk.clk
@@ -175,28 +174,6 @@ module led_sandbox_sopc (
 		.dummy_ci_port                       ()                                                   // custom_instruction_master.readra
 	);
 
-	led_sandbox_sopc_dma_0 dma_0 (
-		.clk                (altpll_0_c2_clk),                                       //                clk.clk
-		.system_reset_n     (~rst_controller_002_reset_out_reset),                   //              reset.reset_n
-		.dma_ctl_address    (mm_interconnect_0_dma_0_control_port_slave_address),    // control_port_slave.address
-		.dma_ctl_chipselect (mm_interconnect_0_dma_0_control_port_slave_chipselect), //                   .chipselect
-		.dma_ctl_readdata   (mm_interconnect_0_dma_0_control_port_slave_readdata),   //                   .readdata
-		.dma_ctl_write_n    (~mm_interconnect_0_dma_0_control_port_slave_write),     //                   .write_n
-		.dma_ctl_writedata  (mm_interconnect_0_dma_0_control_port_slave_writedata),  //                   .writedata
-		.dma_ctl_irq        (irq_synchronizer_receiver_irq),                         //                irq.irq
-		.read_address       (dma_0_read_master_address),                             //        read_master.address
-		.read_chipselect    (dma_0_read_master_chipselect),                          //                   .chipselect
-		.read_read_n        (dma_0_read_master_read),                                //                   .read_n
-		.read_readdata      (dma_0_read_master_readdata),                            //                   .readdata
-		.read_readdatavalid (dma_0_read_master_readdatavalid),                       //                   .readdatavalid
-		.read_waitrequest   (dma_0_read_master_waitrequest),                         //                   .waitrequest
-		.write_address      (),                                                      //       write_master.address
-		.write_chipselect   (),                                                      //                   .chipselect
-		.write_waitrequest  (),                                                      //                   .waitrequest
-		.write_write_n      (),                                                      //                   .write_n
-		.write_writedata    ()                                                       //                   .writedata
-	);
-
 	led_sandbox_sopc_jtag_uart jtag_uart (
 		.clk            (altpll_0_c0_clk),                                           //               clk.clk
 		.rst_n          (~rst_controller_reset_out_reset),                           //             reset.reset_n
@@ -251,13 +228,35 @@ module led_sandbox_sopc (
 		.irq        (irq_mapper_receiver2_irq)                       //   irq.irq
 	);
 
+	led_sandbox_sopc_video_dma_controller_0 video_dma_controller_0 (
+		.clk                  (altpll_0_c2_clk),                                                              //                      clk.clk
+		.reset                (rst_controller_002_reset_out_reset),                                           //                    reset.reset
+		.master_address       (video_dma_controller_0_avalon_dma_master_address),                             //        avalon_dma_master.address
+		.master_waitrequest   (video_dma_controller_0_avalon_dma_master_waitrequest),                         //                         .waitrequest
+		.master_arbiterlock   (video_dma_controller_0_avalon_dma_master_lock),                                //                         .lock
+		.master_read          (video_dma_controller_0_avalon_dma_master_read),                                //                         .read
+		.master_readdata      (video_dma_controller_0_avalon_dma_master_readdata),                            //                         .readdata
+		.master_readdatavalid (video_dma_controller_0_avalon_dma_master_readdatavalid),                       //                         .readdatavalid
+		.slave_address        (mm_interconnect_0_video_dma_controller_0_avalon_dma_control_slave_address),    // avalon_dma_control_slave.address
+		.slave_byteenable     (mm_interconnect_0_video_dma_controller_0_avalon_dma_control_slave_byteenable), //                         .byteenable
+		.slave_read           (mm_interconnect_0_video_dma_controller_0_avalon_dma_control_slave_read),       //                         .read
+		.slave_write          (mm_interconnect_0_video_dma_controller_0_avalon_dma_control_slave_write),      //                         .write
+		.slave_writedata      (mm_interconnect_0_video_dma_controller_0_avalon_dma_control_slave_writedata),  //                         .writedata
+		.slave_readdata       (mm_interconnect_0_video_dma_controller_0_avalon_dma_control_slave_readdata),   //                         .readdata
+		.stream_ready         (),                                                                             //      avalon_pixel_source.ready
+		.stream_data          (),                                                                             //                         .data
+		.stream_startofpacket (),                                                                             //                         .startofpacket
+		.stream_endofpacket   (),                                                                             //                         .endofpacket
+		.stream_valid         ()                                                                              //                         .valid
+	);
+
 	led_sandbox_sopc_mm_interconnect_0 mm_interconnect_0 (
 		.altpll_0_c0_clk                                                     (altpll_0_c0_clk),                                                                       //                                             altpll_0_c0.clk
 		.altpll_0_c2_clk                                                     (altpll_0_c2_clk),                                                                       //                                             altpll_0_c2.clk
 		.clk_50_clk_clk                                                      (clk_clk),                                                                               //                                              clk_50_clk.clk
 		.altpll_0_inclk_interface_reset_reset_bridge_in_reset_reset          (rst_controller_001_reset_out_reset),                                                    //    altpll_0_inclk_interface_reset_reset_bridge_in_reset.reset
 		.cpu_reset_reset_bridge_in_reset_reset                               (rst_controller_reset_out_reset),                                                        //                         cpu_reset_reset_bridge_in_reset.reset
-		.dma_0_reset_reset_bridge_in_reset_reset                             (rst_controller_002_reset_out_reset),                                                    //                       dma_0_reset_reset_bridge_in_reset.reset
+		.video_dma_controller_0_reset_reset_bridge_in_reset_reset            (rst_controller_002_reset_out_reset),                                                    //      video_dma_controller_0_reset_reset_bridge_in_reset.reset
 		.cpu_data_master_address                                             (cpu_data_master_address),                                                               //                                         cpu_data_master.address
 		.cpu_data_master_waitrequest                                         (cpu_data_master_waitrequest),                                                           //                                                        .waitrequest
 		.cpu_data_master_byteenable                                          (cpu_data_master_byteenable),                                                            //                                                        .byteenable
@@ -270,12 +269,12 @@ module led_sandbox_sopc (
 		.cpu_instruction_master_waitrequest                                  (cpu_instruction_master_waitrequest),                                                    //                                                        .waitrequest
 		.cpu_instruction_master_read                                         (cpu_instruction_master_read),                                                           //                                                        .read
 		.cpu_instruction_master_readdata                                     (cpu_instruction_master_readdata),                                                       //                                                        .readdata
-		.dma_0_read_master_address                                           (dma_0_read_master_address),                                                             //                                       dma_0_read_master.address
-		.dma_0_read_master_waitrequest                                       (dma_0_read_master_waitrequest),                                                         //                                                        .waitrequest
-		.dma_0_read_master_chipselect                                        (dma_0_read_master_chipselect),                                                          //                                                        .chipselect
-		.dma_0_read_master_read                                              (~dma_0_read_master_read),                                                               //                                                        .read
-		.dma_0_read_master_readdata                                          (dma_0_read_master_readdata),                                                            //                                                        .readdata
-		.dma_0_read_master_readdatavalid                                     (dma_0_read_master_readdatavalid),                                                       //                                                        .readdatavalid
+		.video_dma_controller_0_avalon_dma_master_address                    (video_dma_controller_0_avalon_dma_master_address),                                      //                video_dma_controller_0_avalon_dma_master.address
+		.video_dma_controller_0_avalon_dma_master_waitrequest                (video_dma_controller_0_avalon_dma_master_waitrequest),                                  //                                                        .waitrequest
+		.video_dma_controller_0_avalon_dma_master_read                       (video_dma_controller_0_avalon_dma_master_read),                                         //                                                        .read
+		.video_dma_controller_0_avalon_dma_master_readdata                   (video_dma_controller_0_avalon_dma_master_readdata),                                     //                                                        .readdata
+		.video_dma_controller_0_avalon_dma_master_readdatavalid              (video_dma_controller_0_avalon_dma_master_readdatavalid),                                //                                                        .readdatavalid
+		.video_dma_controller_0_avalon_dma_master_lock                       (video_dma_controller_0_avalon_dma_master_lock),                                         //                                                        .lock
 		.accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_address     (mm_interconnect_0_accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_address),     // accelerometer_spi_0_avalon_accelerometer_spi_mode_slave.address
 		.accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_write       (mm_interconnect_0_accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_write),       //                                                        .write
 		.accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_read        (mm_interconnect_0_accelerometer_spi_0_avalon_accelerometer_spi_mode_slave_read),        //                                                        .read
@@ -296,11 +295,6 @@ module led_sandbox_sopc (
 		.cpu_debug_mem_slave_byteenable                                      (mm_interconnect_0_cpu_debug_mem_slave_byteenable),                                      //                                                        .byteenable
 		.cpu_debug_mem_slave_waitrequest                                     (mm_interconnect_0_cpu_debug_mem_slave_waitrequest),                                     //                                                        .waitrequest
 		.cpu_debug_mem_slave_debugaccess                                     (mm_interconnect_0_cpu_debug_mem_slave_debugaccess),                                     //                                                        .debugaccess
-		.dma_0_control_port_slave_address                                    (mm_interconnect_0_dma_0_control_port_slave_address),                                    //                                dma_0_control_port_slave.address
-		.dma_0_control_port_slave_write                                      (mm_interconnect_0_dma_0_control_port_slave_write),                                      //                                                        .write
-		.dma_0_control_port_slave_readdata                                   (mm_interconnect_0_dma_0_control_port_slave_readdata),                                   //                                                        .readdata
-		.dma_0_control_port_slave_writedata                                  (mm_interconnect_0_dma_0_control_port_slave_writedata),                                  //                                                        .writedata
-		.dma_0_control_port_slave_chipselect                                 (mm_interconnect_0_dma_0_control_port_slave_chipselect),                                 //                                                        .chipselect
 		.jtag_uart_avalon_jtag_slave_address                                 (mm_interconnect_0_jtag_uart_avalon_jtag_slave_address),                                 //                             jtag_uart_avalon_jtag_slave.address
 		.jtag_uart_avalon_jtag_slave_write                                   (mm_interconnect_0_jtag_uart_avalon_jtag_slave_write),                                   //                                                        .write
 		.jtag_uart_avalon_jtag_slave_read                                    (mm_interconnect_0_jtag_uart_avalon_jtag_slave_read),                                    //                                                        .read
@@ -323,7 +317,13 @@ module led_sandbox_sopc (
 		.systick_timer_s1_write                                              (mm_interconnect_0_systick_timer_s1_write),                                              //                                                        .write
 		.systick_timer_s1_readdata                                           (mm_interconnect_0_systick_timer_s1_readdata),                                           //                                                        .readdata
 		.systick_timer_s1_writedata                                          (mm_interconnect_0_systick_timer_s1_writedata),                                          //                                                        .writedata
-		.systick_timer_s1_chipselect                                         (mm_interconnect_0_systick_timer_s1_chipselect)                                          //                                                        .chipselect
+		.systick_timer_s1_chipselect                                         (mm_interconnect_0_systick_timer_s1_chipselect),                                         //                                                        .chipselect
+		.video_dma_controller_0_avalon_dma_control_slave_address             (mm_interconnect_0_video_dma_controller_0_avalon_dma_control_slave_address),             //         video_dma_controller_0_avalon_dma_control_slave.address
+		.video_dma_controller_0_avalon_dma_control_slave_write               (mm_interconnect_0_video_dma_controller_0_avalon_dma_control_slave_write),               //                                                        .write
+		.video_dma_controller_0_avalon_dma_control_slave_read                (mm_interconnect_0_video_dma_controller_0_avalon_dma_control_slave_read),                //                                                        .read
+		.video_dma_controller_0_avalon_dma_control_slave_readdata            (mm_interconnect_0_video_dma_controller_0_avalon_dma_control_slave_readdata),            //                                                        .readdata
+		.video_dma_controller_0_avalon_dma_control_slave_writedata           (mm_interconnect_0_video_dma_controller_0_avalon_dma_control_slave_writedata),           //                                                        .writedata
+		.video_dma_controller_0_avalon_dma_control_slave_byteenable          (mm_interconnect_0_video_dma_controller_0_avalon_dma_control_slave_byteenable)           //                                                        .byteenable
 	);
 
 	led_sandbox_sopc_irq_mapper irq_mapper (
@@ -332,19 +332,7 @@ module led_sandbox_sopc (
 		.receiver0_irq (irq_mapper_receiver0_irq),       // receiver0.irq
 		.receiver1_irq (irq_mapper_receiver1_irq),       // receiver1.irq
 		.receiver2_irq (irq_mapper_receiver2_irq),       // receiver2.irq
-		.receiver3_irq (irq_mapper_receiver3_irq),       // receiver3.irq
 		.sender_irq    (cpu_irq_irq)                     //    sender.irq
-	);
-
-	altera_irq_clock_crosser #(
-		.IRQ_WIDTH (1)
-	) irq_synchronizer (
-		.receiver_clk   (altpll_0_c2_clk),                    //       receiver_clk.clk
-		.sender_clk     (altpll_0_c0_clk),                    //         sender_clk.clk
-		.receiver_reset (rst_controller_002_reset_out_reset), // receiver_clk_reset.reset
-		.sender_reset   (rst_controller_reset_out_reset),     //   sender_clk_reset.reset
-		.receiver_irq   (irq_synchronizer_receiver_irq),      //           receiver.irq
-		.sender_irq     (irq_mapper_receiver3_irq)            //             sender.irq
 	);
 
 	altera_reset_controller #(

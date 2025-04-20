@@ -27,14 +27,15 @@
 
 module led_matrix_driver (
     // Inputs
-    input address,
-    input clock,
-    input areset_n,
-    input write,
-    input [31:0] writedata,
-
-    // Outputs
-    output reg [31:0] readdata,
+    input      clock,
+    input      areset_n,
+    input[5:0] data,
+	input       valid,
+	input       endofpacket,
+	input       startofpacket,
+	 
+	//Output sink
+	output ready,
 
     // LED matrix external outputs
     output R1,
@@ -56,8 +57,8 @@ module led_matrix_driver (
 //TODO: add eventual parameters
 
 // local parameters
-localparam MAT_WIDTH = 7'd64;
-localparam MAT_HEIGHT = 6'd32;
+localparam MAT_WIDTH     = 7'd64;
+localparam MAT_HEIGHT    = 6'd32;
 
 // Internal signals
 reg [5:0] col_counter;
@@ -65,12 +66,12 @@ reg [3:0] row_counter;
 reg [5:0] pixels_rgb_colors; //TODO: Store here pixels rgb from avalon stream with DMA
 
 // LED matrix external outputs
-assign R1 = 1'b0;//pixels_rgb_colors[0];
-assign G1 = 1'b1;//pixels_rgb_colors[1];
-assign B1 = 1'b0;//pixels_rgb_colors[2];
-assign R2 = 1'b0;//pixels_rgb_colors[3];
-assign G2 = 1'b0;//pixels_rgb_colors[4];
-assign B2 = 1'b1;//pixels_rgb_colors[5];
+assign R1 = (curr_state == PUSH_ROW) ? data[3] : 1'b0;//pixels_rgb_colors[0];
+assign G1 = (curr_state == PUSH_ROW) ? data[4] : 1'b0;//pixels_rgb_colors[1];
+assign B1 = (curr_state == PUSH_ROW) ? data[5] : 1'b0;//pixels_rgb_colors[2];
+assign R2 = (curr_state == PUSH_ROW) ? data[0] : 1'b0;//pixels_rgb_colors[3];
+assign G2 = (curr_state == PUSH_ROW) ? data[1] : 1'b0;//pixels_rgb_colors[4];
+assign B2 = (curr_state == PUSH_ROW) ? data[2] : 1'b0;//pixels_rgb_colors[5];
 assign A = row_counter[0];
 assign B = row_counter[1];
 assign C = row_counter[2];
@@ -78,6 +79,8 @@ assign D = row_counter[3];
 assign CLK = clock & (curr_state == PUSH_ROW);
 assign LAT = (curr_state == LATCH_ROW) || (curr_state == RESET);
 assign OE_n = 1'b0;
+assign ready = (curr_state == PUSH_ROW);
+
 
 // Column counter
 always @ (posedge clock or negedge areset_n) begin
@@ -133,7 +136,14 @@ always @ (*) begin
         end
 
         IDLE: begin
-            next_state = PUSH_ROW; // TODO: add enable register
+		      if(valid && startofpacket)
+				begin
+					next_state = PUSH_ROW; // TODO: add enable register
+				end
+				else 
+				begin
+				next_state = IDLE;
+				end
         end
 
         PUSH_ROW: begin

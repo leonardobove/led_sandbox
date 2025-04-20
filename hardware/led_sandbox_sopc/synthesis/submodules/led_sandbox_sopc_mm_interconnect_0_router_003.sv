@@ -47,16 +47,16 @@ module led_sandbox_sopc_mm_interconnect_0_router_003_default_decode
      parameter DEFAULT_CHANNEL = 0,
                DEFAULT_WR_CHANNEL = -1,
                DEFAULT_RD_CHANNEL = -1,
-               DEFAULT_DESTID = 0 
+               DEFAULT_DESTID = 2 
    )
-  (output [63 - 61 : 0] default_destination_id,
+  (output [76 - 74 : 0] default_destination_id,
    output [8-1 : 0] default_wr_channel,
    output [8-1 : 0] default_rd_channel,
    output [8-1 : 0] default_src_channel
   );
 
   assign default_destination_id = 
-    DEFAULT_DESTID[63 - 61 : 0];
+    DEFAULT_DESTID[76 - 74 : 0];
 
   generate
     if (DEFAULT_CHANNEL == -1) begin : no_default_channel_assignment
@@ -93,7 +93,7 @@ module led_sandbox_sopc_mm_interconnect_0_router_003
     // Command Sink (Input)
     // -------------------
     input                       sink_valid,
-    input  [77-1 : 0]    sink_data,
+    input  [90-1 : 0]    sink_data,
     input                       sink_startofpacket,
     input                       sink_endofpacket,
     output                      sink_ready,
@@ -102,7 +102,7 @@ module led_sandbox_sopc_mm_interconnect_0_router_003
     // Command Source (Output)
     // -------------------
     output                          src_valid,
-    output reg [77-1    : 0] src_data,
+    output reg [90-1    : 0] src_data,
     output reg [8-1 : 0] src_channel,
     output                          src_startofpacket,
     output                          src_endofpacket,
@@ -112,18 +112,18 @@ module led_sandbox_sopc_mm_interconnect_0_router_003
     // -------------------------------------------------------
     // Local parameters and variables
     // -------------------------------------------------------
-    localparam PKT_ADDR_H = 36;
-    localparam PKT_ADDR_L = 9;
-    localparam PKT_DEST_ID_H = 63;
-    localparam PKT_DEST_ID_L = 61;
-    localparam PKT_PROTECTION_H = 67;
-    localparam PKT_PROTECTION_L = 65;
-    localparam ST_DATA_W = 77;
+    localparam PKT_ADDR_H = 49;
+    localparam PKT_ADDR_L = 18;
+    localparam PKT_DEST_ID_H = 76;
+    localparam PKT_DEST_ID_L = 74;
+    localparam PKT_PROTECTION_H = 80;
+    localparam PKT_PROTECTION_L = 78;
+    localparam ST_DATA_W = 90;
     localparam ST_CHANNEL_W = 8;
     localparam DECODER_TYPE = 1;
 
-    localparam PKT_TRANS_WRITE = 39;
-    localparam PKT_TRANS_READ  = 40;
+    localparam PKT_TRANS_WRITE = 52;
+    localparam PKT_TRANS_READ  = 53;
 
     localparam PKT_ADDR_W = PKT_ADDR_H-PKT_ADDR_L + 1;
     localparam PKT_DEST_ID_W = PKT_DEST_ID_H-PKT_DEST_ID_L + 1;
@@ -163,6 +163,11 @@ module led_sandbox_sopc_mm_interconnect_0_router_003
 
 
 
+    // -------------------------------------------------------
+    // Write and read transaction signals
+    // -------------------------------------------------------
+    wire read_transaction;
+    assign read_transaction  = sink_data[PKT_TRANS_READ];
 
 
     led_sandbox_sopc_mm_interconnect_0_router_003_default_decode the_default_decode(
@@ -184,8 +189,16 @@ module led_sandbox_sopc_mm_interconnect_0_router_003
 
 
 
+        if (destid == 2  && read_transaction) begin
+            src_channel = 8'b001;
+        end
+
         if (destid == 0 ) begin
-            src_channel = 8'b1;
+            src_channel = 8'b010;
+        end
+
+        if (destid == 1  && read_transaction) begin
+            src_channel = 8'b100;
         end
 
 
