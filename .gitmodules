@@ -1,6 +1,3 @@
-[submodule "software/led_sandbox/led_sandbox_posix/subprojects/Adafruit_PixelDust"]
-	path = software/led_sandbox/led_sandbox_posix/subprojects/Adafruit_PixelDust
-	url = git@github.com:leonardobove/Adafruit_PixelDust.git
 [submodule "software/led_sandbox/led_sandbox_common/subprojects/Adafruit_PixelDust"]
 	path = software/led_sandbox/led_sandbox_common/subprojects/Adafruit_PixelDust
 	url = git@github.com:leonardobove/Adafruit_PixelDust.git
