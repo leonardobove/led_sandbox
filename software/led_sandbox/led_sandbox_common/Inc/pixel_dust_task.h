@@ -18,19 +18,9 @@ extern "C" {
 #define N_GRAINS             (20u) // Number of grains of sand
 #define WIDTH                (64u) // Display width in pixels
 #define HEIGHT               (32u) // Display height in pixels
-#define MATRIX_FPS           (100u) // Maximum redraw rate, frames/second
+#define MATRIX_FPS          (100u) // Maximum redraw rate, frames/second
 #define ACCELEROMETER_SCALE (255u) // The accelerometer output values will be scaled by (ACCELEROMETER_SCALE / 256)
 #define GRAINS_ELASTICITY   (128u)
-
-// RGB 3-bit color definitions
-#define BLACK        (0b000)
-#define RED          (0b100)
-#define GREEN        (0b010)
-#define BLUE         (0b001)
-#define YELLOW       (0b110)
-#define CYAN         (0b011)
-#define PURPLE       (0b101)
-#define WHITE        (0b111)
 
 // Since we're not using the GFX library, it's necessary to buffer the
 // display contents ourselves (8 bits/pixel with the Charlieplex drivers).

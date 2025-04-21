@@ -11,7 +11,7 @@ static uint32_t has_reset = true;
 // Sand object, last 2 args are accelerometer scaling and grain elasticity
 Adafruit_PixelDust sand(WIDTH, HEIGHT, N_GRAINS, ACCELEROMETER_SCALE, GRAINS_ELASTICITY);
 
-uint8_t pixel_buf[WIDTH * HEIGHT];
+uint8_t pixel_buf[WIDTH * HEIGHT]; //TODO: maybe it's not really necessary and I can use the class internal bitmap?
 
 // Variable to hold the return values from the accelerometer
 static accelerometer_output_t acceleration = {
@@ -59,9 +59,11 @@ void pixel_dust_task() {
         sand.iterate(acceleration.a_x, acceleration.a_y, acceleration.a_z);
 
         // Draw new grain positions in pixel_buf[]
+        grain_color_t color = BLACK;
         for(uint32_t i = 0; i < N_GRAINS; i++) {
             sand.getPosition(i, &x, &y);
-            pixel_buf[y * WIDTH + x] = RED;
+            sand.getColor(i, &color);
+            pixel_buf[y * WIDTH + x] = color;
         }
     } else {
         has_reset = true;
