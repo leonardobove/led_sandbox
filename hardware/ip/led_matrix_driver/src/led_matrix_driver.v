@@ -27,30 +27,39 @@
 
 module led_matrix_driver (
     // Inputs
-    input      clock,
-    input      areset_n,
-    input[5:0] data,
-	input       valid,
-	input       endofpacket,
-	input       startofpacket,
+    input       clock,
+    input       areset_n,
 	 
-	//Output sink
-	output ready,
+	 //Input sink
+    input[5:0]  data,
+	 input       valid,
+	 input       endofpacket,
+	 input       startofpacket,
+	 
+	 //Output sink
+	 output      ready,
+	 
+	 //Input Memory mapped
+	 input       write,
+	 input[31:0] writedata,
+	 
+	 //Output memory mapped
+	 output[31:0] readdata, 
 
     // LED matrix external outputs
-    output R1,
-    output G1,
-    output B1,
-    output R2,
-    output G2,
-    output B2,
-    output A,
-    output B,
-    output C,
-    output D,
-    output CLK,
-    output LAT,
-    output OE_n
+    output       R1,
+    output       G1,
+    output       B1,
+    output       R2,
+    output       G2,
+    output       B2,
+    output       A,
+    output       B,
+    output       C,
+    output       D,
+    output       CLK,
+    output       LAT,
+    output       OE_n
 );
 
 // Parameters
