@@ -29,3 +29,67 @@ We use a SOPC approach with hardware periferial driver and sw for physics elabor
 |  LAT |      14      |           | Latches the value until put low                 |
 |  OE  |      15      |           | Output enable. High until all led values loaded |
 |  GND |      16      |           | ground                                          |
+
+## Submodules
+
+The physical engine used to animate the pixels of the RGB matrix is taken from the Adafruit library.
+You'll need to checkout the required submodules:
+
+```
+git submodule update --init --recursive
+```
+
+
+## POSIX Emulator
+
+First, move to this directory, create a Python virtual environment (`python>=3.10`) and installed
+the required PIP packages:
+
+```
+python -m venv .
+source ./bin/activate
+pip install -r requirements.txt
+```
+
+To compile the POSIX OS compatible emulator, you'll need `meson` installed:
+
+```
+sudo apt install meson
+```
+
+Then move to `software/led_sandbox/led_sandbox_posix` and setup the meson build environment
+
+```
+meson setup build
+```
+
+and compile the project
+
+```
+meson compile -C build
+```
+
+Once you've done that, you can start the main process that emulates the code executed on the NIOS II
+processor
+
+```
+./led_sandbox
+```
+
+and then you can open another terminal (still with the python virtual environment activated), move
+to `software/led_sandbox/led_sandbox_posix/rgb_led_matrix_emulator` and start the Python-based RGB LED
+matrix emulator with the following
+
+```
+python rgb_led_matrix_emulator.py
+```
+
+You can now open a web browser at the address `localhost:8888` and see the emulated matrix.
+To control the NIOS II emulated software you can use your keyboard:
+- `a`: reset push-button
+- `s`: step-forward push-button
+- `0-9`: slider switches
+- `x/X`: decrease/increase X-axis acceleration
+- `y/Y`: decrease/increase Y-axis acceleration
+- `z/Z`: decrease/increase Z-axis acceleration
+ 
