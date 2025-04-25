@@ -11,11 +11,11 @@
 
 
 void hal_init() {
-	// Initialize system tick
-	system_tick_init(1/TICKS_PER_MS,
-					(volatile uint32_t*)(&tick_flag));
+    // Initialize system tick
+    system_tick_init(1/TICKS_PER_MS,
+                    (volatile uint32_t*)(&tick_flag));
 
-	// Initialize scheduler
-	hal_scheduler_init();
+    // Initialize scheduler
+    scheduler_init();
 }
 

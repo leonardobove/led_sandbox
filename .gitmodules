@@ -1,0 +1,3 @@
+[submodule "software/led_sandbox/led_sandbox_common/subprojects/Adafruit_PixelDust"]
+	path = software/led_sandbox/led_sandbox_common/subprojects/Adafruit_PixelDust
+	url = https://github.com/leonardobove/Adafruit_PixelDust.git

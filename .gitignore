@@ -47,13 +47,16 @@ create-this-app
 *_bsp
 
 # Python environment
-python/bin/
-python/include/
-python/lib/
-python/pyvenv.cfg
-python/etc/
-python/share/
-python/lib64
-python/.ipynb_checkpoints/
-python/Scripts/
-python/results/.ipynb_checkpoints/
+bin/
+include/
+lib/
+pyvenv.cfg
+etc/
+share/
+lib64
+.ipynb_checkpoints/
+Scripts/
+docs/
+
+matrix_pixels.txt
+emulator_config.json
