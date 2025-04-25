@@ -33,10 +33,10 @@ module led_sandbox_top (
 	output            DRAM_RAS_N,
 	
 	////////// ACCELEROMETER ///////
-	input     [1:0]   GSENSOR_INT,
+	input     [2:1]   GSENSOR_INT,
 	output            GSENSOR_SCLK,
 	output            GSENSOR_CS_N,	
-	inout             GSENSOR_SDIO
+	inout             GSENSOR_SDI
 );
 
 
@@ -54,10 +54,10 @@ module led_sandbox_top (
 
 	 
 led_sandbox_sopc led_sandbox_system (
-        .accelerometer_spi_I2C_SDAT      (GSENSOR_SDIO),      // accelerometer_spi.I2C_SDAT
+        .accelerometer_spi_I2C_SDAT      (GSENSOR_SDI),      // accelerometer_spi.I2C_SDAT
         .accelerometer_spi_I2C_SCLK      (GSENSOR_SCLK),      //                  .I2C_SCLK
         .accelerometer_spi_G_SENSOR_CS_N (GSENSOR_CS_N), //                  .G_SENSOR_CS_N
-        .accelerometer_spi_G_SENSOR_INT  (GSENSOR_INT[0]),  //                  .G_SENSOR_INT
+        .accelerometer_spi_G_SENSOR_INT  (GSENSOR_INT[1]),  //                  .G_SENSOR_INT
         .clk_clk                         (MAX10_CLK1_50),                         //               clk.clk
         .reset_reset_n                   (1'b1),                      //             reset.reset_n
         .sdram_wire_addr                 (DRAM_ADDR),                 //        sdram_wire.addr
