@@ -23,6 +23,9 @@
  * Therefore, the latch signal can be enabled for one clock cycle at the end of each row.
  *
  * This driver, if enabled, continuously refreshes the matrix (TODO: talk about the registers...)
+ * Avalon MM slave interface:
+ *                   0  Reset (R/W)
+ *                   1  Enable (R/W)
 */
 
 module led_matrix_driver (
@@ -30,21 +33,22 @@ module led_matrix_driver (
     input       clock,
     input       areset_n,
 	 
-	 //Input sink
+	//Input sink
+    input       address,
     input[5:0]  data,
-	 input       valid,
-	 input       endofpacket,
-	 input       startofpacket,
+	input       valid,
+	input       endofpacket,
+	input       startofpacket,
 	 
-	 //Output sink
-	 output      ready,
+	//Output sink
+	output      ready,
 	 
-	 //Input Memory mapped
-	 input       write,
-	 input[31:0] writedata,
+	//Input Memory mapped
+	input       write,
+	input[31:0] writedata,
 	 
-	 //Output memory mapped
-	 output[31:0] readdata, 
+	//Output memory mapped
+	output[31:0] readdata, 
 
     // LED matrix external outputs
     output       R1,
@@ -73,6 +77,8 @@ localparam MAT_HEIGHT    = 6'd32;
 reg [5:0] col_counter;
 reg [3:0] row_counter;
 reg [5:0] pixels_rgb_colors; //TODO: Store here pixels rgb from avalon stream with DMA
+reg enable_register;
+reg reset_register;
 
 // LED matrix external outputs
 assign R1 = (curr_state == PUSH_ROW) ? data[3] : 1'b0;//pixels_rgb_colors[0];
@@ -89,7 +95,42 @@ assign CLK = clock & (curr_state == PUSH_ROW);
 assign LAT = (curr_state == LATCH_ROW) || (curr_state == RESET);
 assign OE_n = 1'b0;
 assign ready = (curr_state == PUSH_ROW);
+assign reset_wr_strobe = write && (address == 1'b0); 
+assign enable_wr_strobe = write && (address == 1'b1);
+assign driving_enable = enable_register;
+assign sw_reset = reset_register;
 
+// Reset sw
+always @ (posedge clock or negedge areset_n)
+begin 
+    if (~areset_n)
+    begin
+        state <= (RESET);
+    end 
+    else
+    begin
+        if (reset_wr_strobe) 
+        begin
+            reset_register <= writedata[0];
+        end 
+    end
+end
+
+// Enable sw
+always @ (posedge clock or negedge areset_n)
+begin 
+    if (~areset_n)
+    begin
+        state <= (RESET);
+    end 
+    else
+    begin
+        if (enable_wr_strobe) 
+        begin
+            enable_register <= writedata[0];
+        end 
+    end
+end
 
 // Column counter
 always @ (posedge clock or negedge areset_n) begin
@@ -129,10 +170,12 @@ localparam RESET     = 2'd0,
 
 // Update FSM State
 always @ (posedge clock or negedge areset_n) begin
-    if (~areset_n) begin
+    if (~areset_n) 
+    begin
         curr_state <= RESET;
-    end else begin
-        // TODO: add enable
+    end 
+    else 
+    begin
         curr_state <= next_state;
     end
 end
@@ -145,28 +188,49 @@ always @ (*) begin
         end
 
         IDLE: begin
-		      if(valid && startofpacket)
+            if(~sw_reset)
+            begin
+		      if(valid && driving_enable)
 				begin
-					next_state = PUSH_ROW; // TODO: add enable register
+					next_state = PUSH_ROW;
 				end
-				else 
+				else
 				begin
 				next_state = IDLE;
 				end
+            end
+            else
+            begin
+                next_state = RESET;
+            end
         end
 
         PUSH_ROW: begin
+            if(driving_enable)
+            begin
             if (col_counter == (MAT_WIDTH - 1'b1))
                 next_state = LATCH_ROW;
             else
                 next_state = PUSH_ROW;
+            end
+            else 
+            begin
+                next_state = IDLE;
+            end
         end
 
         LATCH_ROW: begin
-            if (row_counter == ((MAT_HEIGHT >> 1'b1) - 1'b1))
-                next_state = PUSH_ROW; //TODO: go to IDLE in normal case (check registers for instructions)
+            if (driving_enable)
+            begin
+                if (row_counter == ((MAT_HEIGHT >> 1'b1) - 1'b1))
+                    next_state = PUSH_ROW;
+                else
+                    next_state = PUSH_ROW;
+            end
             else
-                next_state = PUSH_ROW;
+            begin
+                next_state = IDLE;
+            end
         end
 
         default: begin
