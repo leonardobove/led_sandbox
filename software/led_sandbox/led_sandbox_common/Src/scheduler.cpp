@@ -1,10 +1,9 @@
 /*
- * scheduler.c
+ * scheduler.cpp
  *
- *  Created on: 14 Apr 2025
- *      Author: leona
+ *  Created on: 26 apr 2025
+ *      Author: aless
  */
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -14,7 +13,7 @@ extern "C" {
 #include "../Inc/scheduler.h"
 
 // Static array of periodic tasks
-static periodic_task_t periodic_tasks[MAX_PERIODIC_TASKS]; 
+static periodic_task_t periodic_tasks[MAX_PERIODIC_TASKS];
 
 // Number of registered tasks
 static uint16_t num_tasks = 0;
@@ -104,3 +103,8 @@ bool scheduler_tick() {
 #ifdef __cplusplus
 }
 #endif
+
+
+
+
+

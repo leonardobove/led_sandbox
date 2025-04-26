@@ -7,10 +7,10 @@
 
 #include <assert.h>
 
-#include "hal.h"
-#include "scheduler.h"
-#include "led_sandbox.h"
-#include "pixel_dust_task.h"
+#include "../Inc/hal.h"
+#include "../Inc/scheduler.h"
+#include "../Inc/led_sandbox.h"
+#include "../Inc/pixel_dust_task.h"
 
 // Task periods
 #define STATE_MACHINE_TASK_PERIOD_MS (1u)

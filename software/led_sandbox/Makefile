@@ -142,13 +142,17 @@ ACDS_VERSION := 18.1
 ELF := led_sandbox.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS += led_sandbox_nios2/Src/main.c
-C_SRCS += led_sandbox_nios2/Src/led_sandbox_hal_impl_nios2.c
-C_SRCS += led_sandbox_nios2/Src/system_tick.c
-C_SRCS += led_sandbox_common/Src/led_sandbox.c
-C_SRCS += led_sandbox_common/Src/scheduler.c
+C_SRCS += led_sandbox_common/Src/accelerometer_average_task.c
 C_SRCS += led_sandbox_common/Src/state_machine_task.c
-CXX_SRCS :=
+C_SRCS += led_sandbox_nios2/Src/system_tick.c
+CXX_SRCS += led_sandbox_common/Src/led_sandbox.cpp
+CXX_SRCS += led_sandbox_common/Src/pixel_dust_task.cpp
+CXX_SRCS += led_sandbox_common/subprojects/Adafruit_PixelDust/Adafruit_PixelDust.cpp
+CXX_SRCS += led_sandbox_common/subprojects/Adafruit_PixelDust/raspberry_pi/demo1-snow.cpp
+CXX_SRCS += led_sandbox_common/subprojects/Adafruit_PixelDust/raspberry_pi/demo2-hourglass.cpp
+CXX_SRCS += led_sandbox_common/subprojects/Adafruit_PixelDust/raspberry_pi/demo3-logo.cpp
+CXX_SRCS += led_sandbox_common/subprojects/Adafruit_PixelDust/raspberry_pi/lis3dh.cpp
+CXX_SRCS += led_sandbox_common/Src/scheduler.cpp
 ASM_SRCS :=
 
 
@@ -182,7 +186,7 @@ CRT0 :=
 SYS_LIB :=
 
 # Define path to the root of the BSP.
-BSP_ROOT_DIR := C:/Users/leona/Desktop/led_sandbox/software/led_sandbox_bsp/
+BSP_ROOT_DIR := C:/Users/aless/OneDrive/Desktop/SISTEMI_EMBEDDED/led_sandbox/software/led_sandbox_bsp/
 
 # List of application specific include directories, library directories and library names
 APP_INCLUDE_DIRS :=
@@ -193,7 +197,7 @@ APP_LIBRARY_NAMES :=
 BUILD_PRE_PROCESS :=
 BUILD_POST_PROCESS :=
 
-QUARTUS_PROJECT_DIR := C:/Users/leona/Desktop/led_sandbox/sopc/
+QUARTUS_PROJECT_DIR := C:/Users/aless/OneDrive/Desktop/SISTEMI_EMBEDDED/led_sandbox/sopc/
 
 
 #END GENERATED
@@ -217,7 +221,7 @@ endif
 .PHONY : all
 
 all:
-    @$(ECHO) [$(APP_NAME) build complete]
+	@$(ECHO) [$(APP_NAME) build complete]
 
 all : build_pre_process libs app build_post_process 
 
@@ -313,10 +317,10 @@ ifneq ($(AVOID_NIOS2_GCC3_OPTIONS),)
 # If yes, remove the -msmallc option because it is
 # now handled by other means.
 ifneq ($(filter -msmallc,$(ALT_LDFLAGS)),)
-    ALT_LDFLAGS := $(filter-out -msmallc,$(ALT_LDFLAGS))
-    ALT_C_LIBRARY := smallc
+	ALT_LDFLAGS := $(filter-out -msmallc,$(ALT_LDFLAGS))
+	ALT_C_LIBRARY := smallc
 else
-    ALT_C_LIBRARY := c
+	ALT_C_LIBRARY := c
 endif
 
 # Put each BSP dependent library in a group to avoid circular dependencies.
@@ -463,26 +467,26 @@ include $(MEM_INIT_FILE)
 # Handle source files specified by --src-dir & --src-rdir differently, to
 # save some processing time in calling the adjust-path macro.
 
-OBJ_LIST_C         := $(patsubst %.c,%.o,$(filter %.c,$(C_SRCS)))
-OBJ_LIST_CPP    := $(patsubst %.cpp,%.o,$(filter %.cpp,$(CXX_SRCS)))
-OBJ_LIST_CXX     := $(patsubst %.cxx,%.o,$(filter %.cxx,$(CXX_SRCS)))
-OBJ_LIST_CC     := $(patsubst %.cc,%.o,$(filter %.cc,$(CXX_SRCS)))
-OBJ_LIST_S         := $(patsubst %.S,%.o,$(filter %.S,$(ASM_SRCS)))
-OBJ_LIST_SS        := $(patsubst %.s,%.o,$(filter %.s,$(ASM_SRCS)))
+OBJ_LIST_C 		:= $(patsubst %.c,%.o,$(filter %.c,$(C_SRCS)))
+OBJ_LIST_CPP	:= $(patsubst %.cpp,%.o,$(filter %.cpp,$(CXX_SRCS)))
+OBJ_LIST_CXX 	:= $(patsubst %.cxx,%.o,$(filter %.cxx,$(CXX_SRCS)))
+OBJ_LIST_CC 	:= $(patsubst %.cc,%.o,$(filter %.cc,$(CXX_SRCS)))
+OBJ_LIST_S 		:= $(patsubst %.S,%.o,$(filter %.S,$(ASM_SRCS)))
+OBJ_LIST_SS		:= $(patsubst %.s,%.o,$(filter %.s,$(ASM_SRCS)))
 
 OBJ_LIST := $(sort $(OBJ_LIST_C) $(OBJ_LIST_CPP) $(OBJ_LIST_CXX) \
-                $(OBJ_LIST_CC) $(OBJ_LIST_S) $(OBJ_LIST_SS))
+				$(OBJ_LIST_CC) $(OBJ_LIST_S) $(OBJ_LIST_SS))
 
-SDIR_OBJ_LIST_C        := $(patsubst %.c,%.o,$(filter %.c,$(SDIR_C_SRCS)))
-SDIR_OBJ_LIST_CPP    := $(patsubst %.cpp,%.o,$(filter %.cpp,$(SDIR_CXX_SRCS)))
-SDIR_OBJ_LIST_CXX     := $(patsubst %.cxx,%.o,$(filter %.cxx,$(SDIR_CXX_SRCS)))
-SDIR_OBJ_LIST_CC     := $(patsubst %.cc,%.o,$(filter %.cc,$(SDIR_CXX_SRCS)))
-SDIR_OBJ_LIST_S        := $(patsubst %.S,%.o,$(filter %.S,$(SDIR_ASM_SRCS)))
-SDIR_OBJ_LIST_SS    := $(patsubst %.s,%.o,$(filter %.s,$(SDIR_ASM_SRCS)))
+SDIR_OBJ_LIST_C		:= $(patsubst %.c,%.o,$(filter %.c,$(SDIR_C_SRCS)))
+SDIR_OBJ_LIST_CPP	:= $(patsubst %.cpp,%.o,$(filter %.cpp,$(SDIR_CXX_SRCS)))
+SDIR_OBJ_LIST_CXX 	:= $(patsubst %.cxx,%.o,$(filter %.cxx,$(SDIR_CXX_SRCS)))
+SDIR_OBJ_LIST_CC 	:= $(patsubst %.cc,%.o,$(filter %.cc,$(SDIR_CXX_SRCS)))
+SDIR_OBJ_LIST_S		:= $(patsubst %.S,%.o,$(filter %.S,$(SDIR_ASM_SRCS)))
+SDIR_OBJ_LIST_SS	:= $(patsubst %.s,%.o,$(filter %.s,$(SDIR_ASM_SRCS)))
 
 SDIR_OBJ_LIST := $(sort $(SDIR_OBJ_LIST_C) $(SDIR_OBJ_LIST_CPP) \
-                $(SDIR_OBJ_LIST_CXX) $(SDIR_OBJ_LIST_CC) $(SDIR_OBJ_LIST_S) \
-                $(SDIR_OBJ_LIST_SS))
+				$(SDIR_OBJ_LIST_CXX) $(SDIR_OBJ_LIST_CC) $(SDIR_OBJ_LIST_S) \
+				$(SDIR_OBJ_LIST_SS))
 
 # Relative-pathed objects that being with "../" are handled differently.
 #
@@ -512,54 +516,54 @@ SDIR_OBJ_LIST := $(sort $(SDIR_OBJ_LIST_C) $(SDIR_OBJ_LIST_CPP) \
 FLATTEN_OBJ_LIST := $(filter ../%,$(OBJ_LIST))
 FLATTEN_APP_OBJS := $(addprefix $(CONFIG_OBJ_DIR)/,$(notdir $(FLATTEN_OBJ_LIST)))
 
-REGULAR_OBJ_LIST         := $(filter-out $(FLATTEN_OBJ_LIST),$(OBJ_LIST))
-REGULAR_OBJ_LIST_C         := $(filter $(OBJ_LIST_C),$(REGULAR_OBJ_LIST))
-REGULAR_OBJ_LIST_CPP    := $(filter $(OBJ_LIST_CPP),$(REGULAR_OBJ_LIST))
-REGULAR_OBJ_LIST_CXX     := $(filter $(OBJ_LIST_CXX),$(REGULAR_OBJ_LIST))
-REGULAR_OBJ_LIST_CC     := $(filter $(OBJ_LIST_CC),$(REGULAR_OBJ_LIST))
-REGULAR_OBJ_LIST_S         := $(filter $(OBJ_LIST_S),$(REGULAR_OBJ_LIST))
-REGULAR_OBJ_LIST_SS        := $(filter $(OBJ_LIST_SS),$(REGULAR_OBJ_LIST))
+REGULAR_OBJ_LIST 		:= $(filter-out $(FLATTEN_OBJ_LIST),$(OBJ_LIST))
+REGULAR_OBJ_LIST_C 		:= $(filter $(OBJ_LIST_C),$(REGULAR_OBJ_LIST))
+REGULAR_OBJ_LIST_CPP	:= $(filter $(OBJ_LIST_CPP),$(REGULAR_OBJ_LIST))
+REGULAR_OBJ_LIST_CXX 	:= $(filter $(OBJ_LIST_CXX),$(REGULAR_OBJ_LIST))
+REGULAR_OBJ_LIST_CC 	:= $(filter $(OBJ_LIST_CC),$(REGULAR_OBJ_LIST))
+REGULAR_OBJ_LIST_S 		:= $(filter $(OBJ_LIST_S),$(REGULAR_OBJ_LIST))
+REGULAR_OBJ_LIST_SS		:= $(filter $(OBJ_LIST_SS),$(REGULAR_OBJ_LIST))
 
 FLATTEN_SDIR_OBJ_LIST := $(filter ../%,$(SDIR_OBJ_LIST))
 FLATTEN_SDIR_APP_OBJS := $(addprefix $(CONFIG_OBJ_DIR)/,$(notdir $(FLATTEN_SDIR_OBJ_LIST)))
 
-REGULAR_SDIR_OBJ_LIST         := $(filter-out $(FLATTEN_SDIR_OBJ_LIST),$(SDIR_OBJ_LIST))
-REGULAR_SDIR_OBJ_LIST_C     := $(filter $(SDIR_OBJ_LIST_C),$(REGULAR_SDIR_OBJ_LIST))
-REGULAR_SDIR_OBJ_LIST_CPP    := $(filter $(SDIR_OBJ_LIST_CPP),$(REGULAR_SDIR_OBJ_LIST))
-REGULAR_SDIR_OBJ_LIST_CXX     := $(filter $(SDIR_OBJ_LIST_CXX),$(REGULAR_SDIR_OBJ_LIST))
-REGULAR_SDIR_OBJ_LIST_CC     := $(filter $(SDIR_OBJ_LIST_CC),$(REGULAR_SDIR_OBJ_LIST))
-REGULAR_SDIR_OBJ_LIST_S     := $(filter $(SDIR_OBJ_LIST_S),$(REGULAR_SDIR_OBJ_LIST))
-REGULAR_SDIR_OBJ_LIST_SS    := $(filter $(SDIR_OBJ_LIST_SS),$(REGULAR_SDIR_OBJ_LIST))
+REGULAR_SDIR_OBJ_LIST 		:= $(filter-out $(FLATTEN_SDIR_OBJ_LIST),$(SDIR_OBJ_LIST))
+REGULAR_SDIR_OBJ_LIST_C 	:= $(filter $(SDIR_OBJ_LIST_C),$(REGULAR_SDIR_OBJ_LIST))
+REGULAR_SDIR_OBJ_LIST_CPP	:= $(filter $(SDIR_OBJ_LIST_CPP),$(REGULAR_SDIR_OBJ_LIST))
+REGULAR_SDIR_OBJ_LIST_CXX 	:= $(filter $(SDIR_OBJ_LIST_CXX),$(REGULAR_SDIR_OBJ_LIST))
+REGULAR_SDIR_OBJ_LIST_CC 	:= $(filter $(SDIR_OBJ_LIST_CC),$(REGULAR_SDIR_OBJ_LIST))
+REGULAR_SDIR_OBJ_LIST_S 	:= $(filter $(SDIR_OBJ_LIST_S),$(REGULAR_SDIR_OBJ_LIST))
+REGULAR_SDIR_OBJ_LIST_SS	:= $(filter $(SDIR_OBJ_LIST_SS),$(REGULAR_SDIR_OBJ_LIST))
 
 VPATH := $(sort $(dir $(FLATTEN_OBJ_LIST)) $(dir $(FLATTEN_SDIR_OBJ_LIST)))
 
 APP_OBJS_C := $(addprefix $(CONFIG_OBJ_DIR)/,\
-    $(REGULAR_SDIR_OBJ_LIST_C) \
-    $(foreach s,$(REGULAR_OBJ_LIST_C),$(call adjust-path,$s)))
+	$(REGULAR_SDIR_OBJ_LIST_C) \
+	$(foreach s,$(REGULAR_OBJ_LIST_C),$(call adjust-path,$s)))
 
 APP_OBJS_CPP := $(addprefix $(CONFIG_OBJ_DIR)/,\
-    $(REGULAR_SDIR_OBJ_LIST_CPP) \
-    $(foreach s,$(REGULAR_OBJ_LIST_CPP),$(call adjust-path,$s)))
+	$(REGULAR_SDIR_OBJ_LIST_CPP) \
+	$(foreach s,$(REGULAR_OBJ_LIST_CPP),$(call adjust-path,$s)))
 
 APP_OBJS_CXX := $(addprefix $(CONFIG_OBJ_DIR)/,\
-    $(REGULAR_SDIR_OBJ_LIST_CXX) \
-    $(foreach s,$(REGULAR_OBJ_LIST_CXX),$(call adjust-path,$s)))
+	$(REGULAR_SDIR_OBJ_LIST_CXX) \
+	$(foreach s,$(REGULAR_OBJ_LIST_CXX),$(call adjust-path,$s)))
 
 APP_OBJS_CC := $(addprefix $(CONFIG_OBJ_DIR)/,\
-    $(REGULAR_SDIR_OBJ_LIST_CC) \
-    $(foreach s,$(REGULAR_OBJ_LIST_CC),$(call adjust-path,$s)))
+	$(REGULAR_SDIR_OBJ_LIST_CC) \
+	$(foreach s,$(REGULAR_OBJ_LIST_CC),$(call adjust-path,$s)))
 
 APP_OBJS_S := $(addprefix $(CONFIG_OBJ_DIR)/,\
-    $(REGULAR_SDIR_OBJ_LIST_S) \
-    $(foreach s,$(REGULAR_OBJ_LIST_S),$(call adjust-path,$s)))
+	$(REGULAR_SDIR_OBJ_LIST_S) \
+	$(foreach s,$(REGULAR_OBJ_LIST_S),$(call adjust-path,$s)))
 
 APP_OBJS_SS := $(addprefix $(CONFIG_OBJ_DIR)/,\
-    $(REGULAR_SDIR_OBJ_LIST_SS) \
-    $(foreach s,$(REGULAR_OBJ_LIST_SS),$(call adjust-path,$s)))
+	$(REGULAR_SDIR_OBJ_LIST_SS) \
+	$(foreach s,$(REGULAR_OBJ_LIST_SS),$(call adjust-path,$s)))
 
 APP_OBJS := $(APP_OBJS_C) $(APP_OBJS_CPP) $(APP_OBJS_CXX) $(APP_OBJS_CC) \
-    $(APP_OBJS_S) $(APP_OBJS_SS) \
-    $(FLATTEN_APP_OBJS) $(FLATTEN_SDIR_APP_OBJS)
+	$(APP_OBJS_S) $(APP_OBJS_SS) \
+	$(FLATTEN_APP_OBJS) $(FLATTEN_SDIR_APP_OBJS)
 
 # Add any extra user-provided object files.
 APP_OBJS += $(OBJS)
@@ -602,10 +606,10 @@ endif
 #                           BUILD PRE/POST PROCESS
 #------------------------------------------------------------------------------
 build_pre_process :
-    $(BUILD_PRE_PROCESS)
+	$(BUILD_PRE_PROCESS)
 
 build_post_process :
-    $(BUILD_POST_PROCESS)
+	$(BUILD_POST_PROCESS)
 
 .PHONY: build_pre_process build_post_process
 
@@ -757,42 +761,42 @@ ifeq ($(MAKE_VERSION),3.81)
 .SECONDEXPANSION:
 
 $(APP_OBJS_C): $(CONFIG_OBJ_DIR)/%.o: $$(call adjust-path-mixed,%.c)
-    $(compile.c)
+	$(compile.c)
 
 $(APP_OBJS_CPP): $(CONFIG_OBJ_DIR)/%.o: $$(call adjust-path-mixed,%.cpp)
-    $(compile.cpp)
+	$(compile.cpp)
 
 $(APP_OBJS_CC): $(CONFIG_OBJ_DIR)/%.o: $$(call adjust-path-mixed,%.cc)
-    $(compile.cpp)
+	$(compile.cpp)
 
 $(APP_OBJS_CXX): $(CONFIG_OBJ_DIR)/%.o: $$(call adjust-path-mixed,%.cxx)
-    $(compile.cpp)
+	$(compile.cpp)
 
 $(APP_OBJS_S): $(CONFIG_OBJ_DIR)/%.o: $$(call adjust-path-mixed,%.S)
-    $(compile.s)
+	$(compile.s)
 
 $(APP_OBJS_SS): $(CONFIG_OBJ_DIR)/%.o: $$(call adjust-path-mixed,%.s)
-    $(compile.s)
+	$(compile.s)
 
 endif # MAKE_VERSION != 3.81
 
 $(CONFIG_OBJ_DIR)/%.o: %.c
-    $(compile.c)
+	$(compile.c)
 
 $(CONFIG_OBJ_DIR)/%.o: %.cpp
-    $(compile.cpp)
+	$(compile.cpp)
 
 $(CONFIG_OBJ_DIR)/%.o: %.cc
-    $(compile.cpp)
+	$(compile.cpp)
 
 $(CONFIG_OBJ_DIR)/%.o: %.cxx
-    $(compile.cpp)
+	$(compile.cpp)
 
 $(CONFIG_OBJ_DIR)/%.o: %.S
-    $(compile.s)
+	$(compile.s)
 
 $(CONFIG_OBJ_DIR)/%.o: %.s
-    $(compile.s)
+	$(compile.s)
 
 
 #------------------------------------------------------------------------------
@@ -800,44 +804,44 @@ $(CONFIG_OBJ_DIR)/%.o: %.s
 #------------------------------------------------------------------------------
 
 $(CONFIG_OBJ_DIR)/%.s: %.c
-    @$(ECHO) Info: Compiling $< to $@
-    @$(MKDIR) $(@D)
-    $(CC) -S $(APP_CPPFLAGS) $(APP_CFLAGS) -o $@ $<
+	@$(ECHO) Info: Compiling $< to $@
+	@$(MKDIR) $(@D)
+	$(CC) -S $(APP_CPPFLAGS) $(APP_CFLAGS) -o $@ $<
 
 $(CONFIG_OBJ_DIR)/%.s: %.cpp
-    @$(ECHO) Info: Compiling $< to $@
-    @$(MKDIR) $(@D)
-    $(CXX) -S $(APP_CPPFLAGS) $(APP_CXXFLAGS) $(APP_CFLAGS) -o $@ $<
+	@$(ECHO) Info: Compiling $< to $@
+	@$(MKDIR) $(@D)
+	$(CXX) -S $(APP_CPPFLAGS) $(APP_CXXFLAGS) $(APP_CFLAGS) -o $@ $<
 
 $(CONFIG_OBJ_DIR)/%.s: %.cc
-    @$(ECHO) Info: Compiling $< to $@
-    @$(MKDIR) $(@D)
-    $(CXX) -S $(APP_CPPFLAGS) $(APP_CXXFLAGS) $(APP_CFLAGS) -o $@ $<
+	@$(ECHO) Info: Compiling $< to $@
+	@$(MKDIR) $(@D)
+	$(CXX) -S $(APP_CPPFLAGS) $(APP_CXXFLAGS) $(APP_CFLAGS) -o $@ $<
 
 $(CONFIG_OBJ_DIR)/%.s: %.cxx
-    @$(ECHO) Info: Compiling $< to $@
-    @$(MKDIR) $(@D)
-    $(CXX) -S $(APP_CPPFLAGS) $(APP_CXXFLAGS) $(APP_CFLAGS) -o $@ $<
+	@$(ECHO) Info: Compiling $< to $@
+	@$(MKDIR) $(@D)
+	$(CXX) -S $(APP_CPPFLAGS) $(APP_CXXFLAGS) $(APP_CFLAGS) -o $@ $<
 
 $(CONFIG_OBJ_DIR)/%.i: %.c
-    @$(ECHO) Info: Compiling $< to $@
-    @$(MKDIR) $(@D)
-    $(CC) -E $(APP_CPPFLAGS) $(APP_CFLAGS) -o $@ $<
+	@$(ECHO) Info: Compiling $< to $@
+	@$(MKDIR) $(@D)
+	$(CC) -E $(APP_CPPFLAGS) $(APP_CFLAGS) -o $@ $<
 
 $(CONFIG_OBJ_DIR)/%.i: %.cpp
-    @$(ECHO) Info: Compiling $< to $@
-    @$(MKDIR) $(@D)
-    $(CXX) -E $(APP_CPPFLAGS) $(APP_CXXFLAGS) $(APP_CFLAGS) -o $@ $<
+	@$(ECHO) Info: Compiling $< to $@
+	@$(MKDIR) $(@D)
+	$(CXX) -E $(APP_CPPFLAGS) $(APP_CXXFLAGS) $(APP_CFLAGS) -o $@ $<
 
 $(CONFIG_OBJ_DIR)/%.i: %.cc
-    @$(ECHO) Info: Compiling $< to $@
-    @$(MKDIR) $(@D)
-    $(CXX) -E $(APP_CPPFLAGS) $(APP_CXXFLAGS) $(APP_CFLAGS) -o $@ $<
+	@$(ECHO) Info: Compiling $< to $@
+	@$(MKDIR) $(@D)
+	$(CXX) -E $(APP_CPPFLAGS) $(APP_CXXFLAGS) $(APP_CFLAGS) -o $@ $<
 
 $(CONFIG_OBJ_DIR)/%.i: %.cxx
-    @$(ECHO) Info: Compiling $< to $@
-    @$(MKDIR) $(@D)
-    $(CXX) -E $(APP_CPPFLAGS) $(APP_CXXFLAGS) $(APP_CFLAGS) -o $@ $<
+	@$(ECHO) Info: Compiling $< to $@
+	@$(MKDIR) $(@D)
+	$(CXX) -E $(APP_CPPFLAGS) $(APP_CXXFLAGS) $(APP_CFLAGS) -o $@ $<
 
 
 #------------------------------------------------------------------------------
@@ -846,23 +850,23 @@ $(CONFIG_OBJ_DIR)/%.i: %.cxx
 
 .PHONY : help
 help :
-    @$(ECHO) "Summary of Makefile targets"
-    @$(ECHO) "  Build targets:"
-    @$(ECHO) "    all (default)     - Application and all libraries (including BSP)"
-    @$(ECHO) "    bsp               - Just the BSP"
-    @$(ECHO) "    libs              - All libraries (including BSP)"
-    @$(ECHO) "    flash             - All flash files"
-    @$(ECHO) "    mem_init_generate - All memory initialization files"
-    @$(ECHO)
-    @$(ECHO) "  Clean targets:"
-    @$(ECHO) "    clean_all         - Application and all libraries (including BSP)"
-    @$(ECHO) "    clean             - Just the application"
-    @$(ECHO) "    clean_bsp         - Just the BSP"
-    @$(ECHO) "    clean_libs        - All libraries (including BSP)"
-    @$(ECHO)
-    @$(ECHO) "  Run targets:"
-    @$(ECHO) "    download-elf      - Download and run your elf executable"
-    @$(ECHO) "    program-flash     - Program flash contents to the board"
+	@$(ECHO) "Summary of Makefile targets"
+	@$(ECHO) "  Build targets:"
+	@$(ECHO) "    all (default)     - Application and all libraries (including BSP)"
+	@$(ECHO) "    bsp               - Just the BSP"
+	@$(ECHO) "    libs              - All libraries (including BSP)"
+	@$(ECHO) "    flash             - All flash files"
+	@$(ECHO) "    mem_init_generate - All memory initialization files"
+	@$(ECHO)
+	@$(ECHO) "  Clean targets:"
+	@$(ECHO) "    clean_all         - Application and all libraries (including BSP)"
+	@$(ECHO) "    clean             - Just the application"
+	@$(ECHO) "    clean_bsp         - Just the BSP"
+	@$(ECHO) "    clean_libs        - All libraries (including BSP)"
+	@$(ECHO)
+	@$(ECHO) "  Run targets:"
+	@$(ECHO) "    download-elf      - Download and run your elf executable"
+	@$(ECHO) "    program-flash     - Program flash contents to the board"
 
 # Handy rule to skip making libraries and just make application.
 .PHONY : app
@@ -882,8 +886,8 @@ elf_derived_files: default_mem_init
 # Handy rule for making just the BSP.
 .PHONY : bsp
 bsp :
-    @$(ECHO) Info: Building $(BSP_ROOT_DIR)
-    @$(MAKE) --no-print-directory -C $(BSP_ROOT_DIR)
+	@$(ECHO) Info: Building $(BSP_ROOT_DIR)
+	@$(MAKE) --no-print-directory -C $(BSP_ROOT_DIR)
 
 
 # Make sure all makeable libraries (including the BSP) are up-to-date.
@@ -894,13 +898,13 @@ libs : $(LIB_TARGETS)
 
 ifneq ($(strip $(LIB_TARGETS)),)
 $(LIB_TARGETS): %-recurs-make-lib:
-    @$(ECHO) Info: Building $*
-    $(MAKE) --no-print-directory -C $*
+	@$(ECHO) Info: Building $*
+	$(MAKE) --no-print-directory -C $*
 endif
 
 ifneq ($(strip $(APP_LDDEPS)),)
 $(APP_LDDEPS): libs
-    @true
+	@true
 endif
 
 # Rules to force your project to rebuild or relink
@@ -927,14 +931,14 @@ clean : clean_elf_derived_files
 endif
 
 clean :
-    @$(RM) -r $(ELF) $(OBJDUMP_NAME) $(LINKER_MAP_NAME) $(OBJ_ROOT_DIR) $(RUNTIME_ROOT_DIR) $(FORCE_REBUILD_DEP_LIST)
-    @$(ECHO) [$(APP_NAME) clean complete]
+	@$(RM) -r $(ELF) $(OBJDUMP_NAME) $(LINKER_MAP_NAME) $(OBJ_ROOT_DIR) $(RUNTIME_ROOT_DIR) $(FORCE_REBUILD_DEP_LIST)
+	@$(ECHO) [$(APP_NAME) clean complete]
 
 # Clean just the BSP.
 .PHONY : clean_bsp
 clean_bsp :
-    @$(ECHO) Info: Cleaning $(BSP_ROOT_DIR)
-    @$(MAKE) --no-print-directory -C $(BSP_ROOT_DIR) clean
+	@$(ECHO) Info: Cleaning $(BSP_ROOT_DIR)
+	@$(MAKE) --no-print-directory -C $(BSP_ROOT_DIR) clean
 
 # Clean all makeable libraries including the BSP.
 LIB_CLEAN_TARGETS := $(patsubst %,%-recurs-make-clean-lib,$(MAKEABLE_LIBRARY_ROOT_DIRS))
@@ -944,8 +948,8 @@ clean_libs : $(LIB_CLEAN_TARGETS)
 
 ifneq ($(strip $(LIB_CLEAN_TARGETS)),)
 $(LIB_CLEAN_TARGETS): %-recurs-make-clean-lib:
-    @$(ECHO) Info: Cleaning $*
-    $(MAKE) --no-print-directory -C $* clean
+	@$(ECHO) Info: Cleaning $*
+	$(MAKE) --no-print-directory -C $* clean
 endif
 
 .PHONY: clean_elf_derived_files
@@ -965,13 +969,13 @@ endif
 
 .PHONY : download-elf
 download-elf : $(ELF)
-    @if [ "$(DOWNLOAD)" = "none" ]; \
-    then \
-        $(ECHO) Downloading $(ELF) not supported; \
-    else \
-        $(ECHO) Info: Downloading $(ELF); \
-        $(DOWNLOAD) --go --cpu_name=$(CPU_NAME) $(DOWNLOAD_CABLE_FLAG) $(SOPC_SYSID_FLAG) $(DOWNLOAD_JDI_FLAG) $(WRITE_GMON_OPTION) $(ELF); \
-    fi
+	@if [ "$(DOWNLOAD)" = "none" ]; \
+	then \
+		$(ECHO) Downloading $(ELF) not supported; \
+	else \
+		$(ECHO) Info: Downloading $(ELF); \
+		$(DOWNLOAD) --go --cpu_name=$(CPU_NAME) $(DOWNLOAD_CABLE_FLAG) $(SOPC_SYSID_FLAG) $(DOWNLOAD_JDI_FLAG) $(WRITE_GMON_OPTION) $(ELF); \
+	fi
 
 # Delete the target of a rule if it has changed and its commands exit
 # with a nonzero exit status.
@@ -986,20 +990,20 @@ program-flash : $(PROGRAM_FLASH_TARGET)
 
 .PHONY : $(PROGRAM_FLASH_TARGET)
 $(PROGRAM_FLASH_TARGET) : flash
-    @if [ "$(FLASHPROG)" = "none" ]; \
-    then \
-        $(ECHO) Programming flash not supported; \
-    else \
-        $(ECHO) Info: Programming $(basename $@).flash; \
-        if [ -z "$($(basename $@)_EPCS_FLAGS)" ]; \
-        then \
-            $(ECHO) $(FLASHPROG) $(SOPC_SYSID_FLAG) --base=$($(basename $@)_START) $(basename $@).flash; \
-            $(FLASHPROG) $(DOWNLOAD_CABLE_FLAG) $(SOPC_SYSID_FLAG) --base=$($(basename $@)_START) $(basename $@).flash; \
-        else \
-            $(ECHO) $(FLASHPROG) $(SOPC_SYSID_FLAG) --epcs --base=$($(basename $@)_START) $(basename $@).flash; \
-            $(FLASHPROG) $(DOWNLOAD_CABLE_FLAG) $(SOPC_SYSID_FLAG) --epcs --base=$($(basename $@)_START) $(basename $@).flash; \
-        fi \
-    fi
+	@if [ "$(FLASHPROG)" = "none" ]; \
+	then \
+		$(ECHO) Programming flash not supported; \
+	else \
+		$(ECHO) Info: Programming $(basename $@).flash; \
+		if [ -z "$($(basename $@)_EPCS_FLAGS)" ]; \
+		then \
+			$(ECHO) $(FLASHPROG) $(SOPC_SYSID_FLAG) --base=$($(basename $@)_START) $(basename $@).flash; \
+			$(FLASHPROG) $(DOWNLOAD_CABLE_FLAG) $(SOPC_SYSID_FLAG) --base=$($(basename $@)_START) $(basename $@).flash; \
+		else \
+			$(ECHO) $(FLASHPROG) $(SOPC_SYSID_FLAG) --epcs --base=$($(basename $@)_START) $(basename $@).flash; \
+			$(FLASHPROG) $(DOWNLOAD_CABLE_FLAG) $(SOPC_SYSID_FLAG) --epcs --base=$($(basename $@)_START) $(basename $@).flash; \
+		fi \
+	fi
 
 
 # Rules for simulating with an HDL Simulator [QSYS only]
@@ -1040,21 +1044,21 @@ endif
 
 $(LOAD_SIM_SCRIPT): $(SPD) $(MEM_INIT_DESCRIPTOR_FILE)
 ifeq ($(SPD),)
-    $(error No SPD file specified. Ensure QUARTUS_PROJECT_DIR variable is set)
+	$(error No SPD file specified. Ensure QUARTUS_PROJECT_DIR variable is set)
 endif
-    @$(MKDIR) $(SIM_SCRIPT_DIR)
-    $(CREATE_TOP_SIM_SCRIPT) --spd=$(SPD) --mem-init-spd=$(abspath $(MEM_INIT_DESCRIPTOR_FILE)) --output-directory=$(SIM_SCRIPT_DIR)
+	@$(MKDIR) $(SIM_SCRIPT_DIR)
+	$(CREATE_TOP_SIM_SCRIPT) --spd=$(SPD) --mem-init-spd=$(abspath $(MEM_INIT_DESCRIPTOR_FILE)) --output-directory=$(SIM_SCRIPT_DIR)
 
 VSIM_COMMAND = \
-    cd $(dir $(LOAD_SIM_SCRIPT)) && \
-    $(VSIM) -do "do $(notdir $(LOAD_SIM_SCRIPT)); ld; $(if $(VSIM_RUN_TIME),run ${VSIM_RUN_TIME};quit;)"
+	cd $(dir $(LOAD_SIM_SCRIPT)) && \
+	$(VSIM) -do "do $(notdir $(LOAD_SIM_SCRIPT)); ld; $(if $(VSIM_RUN_TIME),run ${VSIM_RUN_TIME};quit;)"
 
 .PHONY: sim
 sim: $(LOAD_SIM_SCRIPT) mem_init_generate
 ifeq ($(LOAD_SIM_SCRIPT),)
-    $(error LOAD_SIM_SCRIPT not set)
+	$(error LOAD_SIM_SCRIPT not set)
 endif
-    $(VSIM_COMMAND)
+	$(VSIM_COMMAND)
 
 endif # QSYS == 1
 
@@ -1066,22 +1070,22 @@ endif # QSYS == 1
 #------------------------------------------------------------------------------
 # Rule for constructing the executable elf file.
 $(ELF) : $(APP_OBJS) $(LINKER_SCRIPT) $(APP_LDDEPS)
-    @$(ECHO) Info: Linking $@
-    $(LD) $(APP_LDFLAGS) $(APP_CFLAGS) -o $@ $(filter-out $(CRT0),$(APP_OBJS)) $(APP_LIBS) $(APP_BSP_DEP_LIBS)
+	@$(ECHO) Info: Linking $@
+	$(LD) $(APP_LDFLAGS) $(APP_CFLAGS) -o $@ $(filter-out $(CRT0),$(APP_OBJS)) $(APP_LIBS) $(APP_BSP_DEP_LIBS)
 ifneq ($(DISABLE_ELFPATCH),1)
-    $(ELFPATCH) $@ $(ELF_PATCH_FLAG)
+	$(ELFPATCH) $@ $(ELF_PATCH_FLAG)
 endif
 ifneq ($(DISABLE_STACKREPORT),1)
-    @bash -c "$(STACKREPORT) $@"
+	@bash -c "$(STACKREPORT) $@"
 endif
 
 $(OBJDUMP_NAME) : $(ELF)
-    @$(ECHO) Info: Creating $@
-    $(OBJDUMP) $(OBJDUMP_FLAGS) $< >$@
+	@$(ECHO) Info: Creating $@
+	$(OBJDUMP) $(OBJDUMP_FLAGS) $< >$@
 
 # Rule for printing the name of the elf file
 .PHONY: print-elf-name
 print-elf-name:
-    @$(ECHO) $(ELF)
+	@$(ECHO) $(ELF)
 
 
