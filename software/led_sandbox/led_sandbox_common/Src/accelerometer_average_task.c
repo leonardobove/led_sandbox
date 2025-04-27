@@ -1,15 +1,13 @@
 
-#include <stdint.h>
-#include "../Inc/hal.h"
 #include "../Inc/accelerometer_average_task.h"
 
 
 //Define average counter;
-static uint32_t counter=0;
+static uint32_t counter = 0;
 
-//Declear array vector
-static accelerometer_output_t acceleration_array[10]; 
-//chosen 10 becuse it's a good tradeoff between precision and reactivity
+//Define array vector
+static accelerometer_output_t acceleration_array[NUM_AVERAGES] = {{0}};
+
 
 //Assign initialization value
 accelerometer_output_t acceleration_average = {
@@ -21,30 +19,33 @@ accelerometer_output_t acceleration_average = {
 
 //Define sum for average
 static accelerometer_output_t sum = {
-    .a_x=0,
-    .a_y=0,
-    .a_z=0
+    .a_x = 0,
+    .a_y = 0,
+    .a_z = 0
 };
 
 void accelerometer_average_task(){
 
+	if (!hal_accelerometer_init()) {
+	                hal_error(2);   // Accelerometer initialization error
+	    }
 
-    if(counter >= 10){      //in case of full array, average is calculated
-        for (int i=0; i<10; i++){
+    if(counter >= NUM_AVERAGES){      //in case of full array, average is calculated
+        for (int i = 0; i < NUM_AVERAGES; i++){
             sum.a_x += acceleration_array[i].a_x;
             sum.a_y += acceleration_array[i].a_y;
             sum.a_z += acceleration_array[i].a_z;
         }
-        acceleration_average.a_x= sum.a_x/10;
-        acceleration_average.a_y= sum.a_y/10; 
-        acceleration_average.a_z= sum.a_z/10;  
+        acceleration_average.a_x= sum.a_x/NUM_AVERAGES;
+        acceleration_average.a_y= sum.a_y/NUM_AVERAGES;
+        acceleration_average.a_z= sum.a_z/NUM_AVERAGES;
 
         //counter reset
-        counter =0;
+        counter = 0;
         //sum reset
-        sum.a_x=0;
-        sum.a_y=0;
-        sum.a_z=0;
+        sum.a_x = 0;
+        sum.a_y = 0;
+        sum.a_z = 0;
     }
     else{
         acceleration_array[counter]= hal_read_accelerometer();
