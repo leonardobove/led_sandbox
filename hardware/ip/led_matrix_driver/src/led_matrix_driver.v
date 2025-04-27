@@ -68,10 +68,13 @@ module led_matrix_driver (
 
 // Parameters
 //TODO: add eventual parameters
+parameter ENABLE_DEFAULT = 1'b1;
+parameter RESET_DEFAULT  = 1'b0;
 
 // local parameters
 localparam MAT_WIDTH     = 7'd64;
 localparam MAT_HEIGHT    = 6'd32;
+
 
 // Internal signals
 reg [5:0] col_counter;
@@ -79,33 +82,40 @@ reg [3:0] row_counter;
 reg [5:0] pixels_rgb_colors; //TODO: Store here pixels rgb from avalon stream with DMA
 reg enable_register;
 reg reset_register;
+// Internal MM signals
+wire sw_reset;
+wire driving_enable;
+wire reset_wr_strobe;
+wire enable_wr_strobe;
 
 // LED matrix external outputs
-assign R1 = (curr_state == PUSH_ROW) ? data[3] : 1'b0;//pixels_rgb_colors[0];
-assign G1 = (curr_state == PUSH_ROW) ? data[4] : 1'b0;//pixels_rgb_colors[1];
-assign B1 = (curr_state == PUSH_ROW) ? data[5] : 1'b0;//pixels_rgb_colors[2];
-assign R2 = (curr_state == PUSH_ROW) ? data[0] : 1'b0;//pixels_rgb_colors[3];
-assign G2 = (curr_state == PUSH_ROW) ? data[1] : 1'b0;//pixels_rgb_colors[4];
-assign B2 = (curr_state == PUSH_ROW) ? data[2] : 1'b0;//pixels_rgb_colors[5];
-assign A = row_counter[0];
-assign B = row_counter[1];
-assign C = row_counter[2];
-assign D = row_counter[3];
-assign CLK = clock & (curr_state == PUSH_ROW);
-assign LAT = (curr_state == LATCH_ROW) || (curr_state == RESET);
-assign OE_n = 1'b0;
-assign ready = (curr_state == PUSH_ROW);
-assign reset_wr_strobe = write && (address == 1'b0); 
-assign enable_wr_strobe = write && (address == 1'b1);
-assign driving_enable = enable_register;
-assign sw_reset = reset_register;
+assign R1 =                  (curr_state == PUSH_ROW) ? data[3] : 1'b0;//pixels_rgb_colors[0];
+assign G1 =                  (curr_state == PUSH_ROW) ? data[4] : 1'b0;//pixels_rgb_colors[1];
+assign B1 =                  (curr_state == PUSH_ROW) ? data[5] : 1'b0;//pixels_rgb_colors[2];
+assign R2 =                  (curr_state == PUSH_ROW) ? data[0] : 1'b0;//pixels_rgb_colors[3];
+assign G2 =                  (curr_state == PUSH_ROW) ? data[1] : 1'b0;//pixels_rgb_colors[4];
+assign B2 =                  (curr_state == PUSH_ROW) ? data[2] : 1'b0;//pixels_rgb_colors[5];
+assign A =                   row_counter[0];
+assign B =                   row_counter[1];
+assign C =                   row_counter[2];
+assign D =                   row_counter[3];
+assign CLK =                 clock & (curr_state == PUSH_ROW);
+assign LAT =                 (curr_state == LATCH_ROW) || (curr_state == RESET);
+assign OE_n =                1'b0;
+assign ready =               (curr_state == PUSH_ROW);
+
+// Internal MM signals
+assign reset_wr_strobe =     write && (address == 1'b0); 
+assign enable_wr_strobe =    write && (address == 1'b1);
+assign driving_enable =      enable_register;
+assign sw_reset =            reset_register;
 
 // Reset sw
 always @ (posedge clock or negedge areset_n)
 begin 
     if (~areset_n)
     begin
-        state <= (RESET);
+        reset_register <= RESET_DEFAULT;
     end 
     else
     begin
@@ -121,7 +131,7 @@ always @ (posedge clock or negedge areset_n)
 begin 
     if (~areset_n)
     begin
-        state <= (RESET);
+        enable_register = ENABLE_DEFAULT;
     end 
     else
     begin

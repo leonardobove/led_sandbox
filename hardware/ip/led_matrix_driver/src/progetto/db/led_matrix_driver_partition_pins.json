@@ -88,11 +88,19 @@
 					"strict" : false
 				},
 				{
-					"name" : "startofpacket",
+					"name" : "areset_n",
 					"strict" : false
 				},
 				{
-					"name" : "areset_n",
+					"name" : "writedata[0]",
+					"strict" : false
+				},
+				{
+					"name" : "address",
+					"strict" : false
+				},
+				{
+					"name" : "write",
 					"strict" : false
 				}
 			]
