@@ -67,9 +67,9 @@ module led_matrix_driver (
 );
 
 // Parameters
-//TODO: add eventual parameters
-parameter ENABLE_DEFAULT = 1'b1;
-parameter RESET_DEFAULT  = 1'b0;
+
+parameter ENABLE_DEFAULT = 1'b1;    //Default value for the enable register
+parameter RESET_DEFAULT  = 1'b0;    //Default value for the reset register
 
 // local parameters
 localparam MAT_WIDTH     = 7'd64;
@@ -82,6 +82,7 @@ reg [3:0] row_counter;
 reg [5:0] pixels_rgb_colors; //TODO: Store here pixels rgb from avalon stream with DMA
 reg enable_register;
 reg reset_register;
+
 // Internal MM signals
 wire sw_reset;
 wire driving_enable;
@@ -89,20 +90,26 @@ wire reset_wr_strobe;
 wire enable_wr_strobe;
 
 // LED matrix external outputs
-assign R1 =                  (curr_state == PUSH_ROW) ? data[3] : 1'b0;//pixels_rgb_colors[0];
-assign G1 =                  (curr_state == PUSH_ROW) ? data[4] : 1'b0;//pixels_rgb_colors[1];
-assign B1 =                  (curr_state == PUSH_ROW) ? data[5] : 1'b0;//pixels_rgb_colors[2];
-assign R2 =                  (curr_state == PUSH_ROW) ? data[0] : 1'b0;//pixels_rgb_colors[3];
-assign G2 =                  (curr_state == PUSH_ROW) ? data[1] : 1'b0;//pixels_rgb_colors[4];
-assign B2 =                  (curr_state == PUSH_ROW) ? data[2] : 1'b0;//pixels_rgb_colors[5];
+// Color output signals
+assign R1 =                  pixels_rgb_colors[0];
+assign G1 =                  pixels_rgb_colors[1];
+assign B1 =                  pixels_rgb_colors[2];
+assign R2 =                  pixels_rgb_colors[3];
+assign G2 =                  pixels_rgb_colors[4];
+assign B2 =                  pixels_rgb_colors[5];
+// Row select signals
 assign A =                   row_counter[0];
 assign B =                   row_counter[1];
 assign C =                   row_counter[2];
 assign D =                   row_counter[3];
-assign CLK =                 clock & (curr_state == PUSH_ROW);
+// Control signals
+assign CLK =                 (clock & (curr_state == PUSH_ROW));
 assign LAT =                 (curr_state == LATCH_ROW) || (curr_state == RESET);
 assign OE_n =                1'b0;
+// Stream interface signals
 assign ready =               (curr_state == PUSH_ROW);
+// Avalon MM interface signals
+assign readdata =            32'b0; // TODO: add readdata for the registers
 
 // Internal MM signals
 assign reset_wr_strobe =     write && (address == 1'b0); 
@@ -116,12 +123,17 @@ begin
     if (~areset_n)
     begin
         reset_register <= RESET_DEFAULT;
-    end 
+    end
+    //One cycle reset register
     else
     begin
         if (reset_wr_strobe) 
         begin
             reset_register <= writedata[0];
+        end
+        else
+        begin
+            reset_register <= RESET_DEFAULT;
         end 
     end
 end
@@ -133,11 +145,16 @@ begin
     begin
         enable_register = ENABLE_DEFAULT;
     end 
+    //toggle enable register
     else
     begin
         if (enable_wr_strobe) 
         begin
             enable_register <= writedata[0];
+        end
+        else
+        begin
+            enable_register <= enable_register;
         end 
     end
 end
@@ -145,27 +162,66 @@ end
 // Column counter
 always @ (posedge clock or negedge areset_n) begin
     if (~areset_n) begin
-        col_counter <= 1'b0;
+        col_counter <= 6'd0;
     end else begin
         if (curr_state == PUSH_ROW) begin
             if (col_counter == (MAT_WIDTH - 1'b1))
-                col_counter <= 1'b0;
+                col_counter <= 6'd0;
             else
                 col_counter <= col_counter + 1'b1;
+        end
+        if (curr_state == RESET) begin
+            col_counter <= 6'd0;
         end
     end
 end
 
 // Row counter
-always @ (posedge clock or negedge areset_n) begin
-    if (~areset_n) begin
-        row_counter <= 1'b0;
-    end else begin
-        if (curr_state == LATCH_ROW) begin
+always @ (posedge clock or negedge areset_n) 
+begin
+    if (~areset_n) 
+    begin
+        row_counter <= 4'd0;
+    end 
+    else 
+    begin
+        if (curr_state == LATCH_ROW) 
+        begin
             if (row_counter == ((MAT_HEIGHT >> 1'b1) - 1'b1))
-                row_counter <= 1'b0;
+                row_counter <= 4'd0;
             else
                 row_counter <= row_counter + 1'b1;
+        end
+        if (curr_state == RESET) 
+        begin
+            row_counter <= 4'd0;
+        end
+    end
+end
+
+// Pixels RGB colors
+always @ (posedge clock or negedge areset_n) 
+begin
+    if (~areset_n) 
+    begin
+        pixels_rgb_colors <= 6'd0;
+    end
+    else 
+    begin
+        if (curr_state == PUSH_ROW) 
+        begin
+            pixels_rgb_colors <= data[5:0];
+        end 
+        else 
+        begin
+            if (curr_state == RESET)
+            begin
+                pixels_rgb_colors <= 6'd0;
+            end
+            else
+            begin
+                pixels_rgb_colors <= pixels_rgb_colors;
+            end
         end
     end
 end
@@ -194,57 +250,71 @@ end
 always @ (*) begin
     case (curr_state)
         RESET: begin
-            next_state = IDLE;
+            next_state <= IDLE;
         end
 
         IDLE: begin
             if(~sw_reset)
             begin
-		      if(valid && driving_enable)
+		        if(valid && driving_enable)
 				begin
-					next_state = PUSH_ROW;
+					next_state <= PUSH_ROW;
 				end
 				else
 				begin
-				next_state = IDLE;
+				    next_state <= IDLE;
 				end
             end
             else
             begin
-                next_state = RESET;
+                next_state <= RESET;
             end
         end
 
         PUSH_ROW: begin
-            if(driving_enable)
+            if (~sw_reset)
             begin
-            if (col_counter == (MAT_WIDTH - 1'b1))
-                next_state = LATCH_ROW;
-            else
-                next_state = PUSH_ROW;
+                if(driving_enable)
+                begin
+                    if (col_counter == (MAT_WIDTH - 1'b1))
+                        next_state <= LATCH_ROW;
+                    else
+                        next_state <= PUSH_ROW;
+                end
+                else 
+                begin
+                    next_state <= IDLE;
+                end
             end
-            else 
+            else
             begin
-                next_state = IDLE;
+                next_state <= RESET;
             end
         end
 
         LATCH_ROW: begin
-            if (driving_enable)
+            if (~sw_reset)
             begin
-                if (row_counter == ((MAT_HEIGHT >> 1'b1) - 1'b1))
-                    next_state = PUSH_ROW;
+                if (driving_enable)
+                begin
+                    if (row_counter == ((MAT_HEIGHT >> 1'b1) - 1'b1))
+                        next_state <= PUSH_ROW;
+                    else
+                        next_state <= PUSH_ROW;
+                end
                 else
-                    next_state = PUSH_ROW;
+                begin
+                    next_state <= IDLE;
+                end
             end
             else
             begin
-                next_state = IDLE;
+                next_state <= RESET;
             end
         end
 
         default: begin
-            next_state = RESET;
+            next_state <= RESET;
         end
     endcase
 end

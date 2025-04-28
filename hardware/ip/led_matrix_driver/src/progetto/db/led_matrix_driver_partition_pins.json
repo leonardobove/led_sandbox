@@ -56,15 +56,15 @@
 					"strict" : false
 				},
 				{
-					"name" : "data[3]",
+					"name" : "clock",
 					"strict" : false
 				},
 				{
-					"name" : "data[4]",
+					"name" : "valid",
 					"strict" : false
 				},
 				{
-					"name" : "data[5]",
+					"name" : "areset_n",
 					"strict" : false
 				},
 				{
@@ -80,15 +80,19 @@
 					"strict" : false
 				},
 				{
-					"name" : "clock",
+					"name" : "data[3]",
 					"strict" : false
 				},
 				{
-					"name" : "valid",
+					"name" : "data[4]",
 					"strict" : false
 				},
 				{
-					"name" : "areset_n",
+					"name" : "data[5]",
+					"strict" : false
+				},
+				{
+					"name" : "write",
 					"strict" : false
 				},
 				{
@@ -97,10 +101,6 @@
 				},
 				{
 					"name" : "address",
-					"strict" : false
-				},
-				{
-					"name" : "write",
 					"strict" : false
 				}
 			]
