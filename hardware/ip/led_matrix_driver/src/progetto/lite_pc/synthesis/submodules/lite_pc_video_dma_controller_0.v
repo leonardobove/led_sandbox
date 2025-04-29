@@ -68,18 +68,18 @@ module lite_pc_video_dma_controller_0 (
 parameter DW								= 15; // Frame's datawidth
 parameter EW								= 0; // Frame's empty width
 parameter WIDTH							= 64; // Frame's width in pixels
-parameter HEIGHT							= 32; // Frame's height in lines
+parameter HEIGHT							= 16; // Frame's height in lines
 
-parameter AW								= 10; // Frame's address width
+parameter AW								= 9; // Frame's address width
 parameter WW								= 5; // Frame width's address width
-parameter HW								= 4; // Frame height's address width
+parameter HW								= 3; // Frame height's address width
 
 parameter MDW								= 15; // Avalon master's datawidth
 
 parameter DEFAULT_BUFFER_ADDRESS		= 32'd0;
 parameter DEFAULT_BACK_BUF_ADDRESS	= 32'd0;
 
-parameter ADDRESSING_BITS				= 16'd11;
+parameter ADDRESSING_BITS				= 16'd10;
 parameter COLOR_BITS						= 4'd15;
 parameter COLOR_PLANES					= 2'd0;
 

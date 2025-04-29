@@ -49,7 +49,7 @@ module lite_pc_system_id (
 
   wire    [ 31: 0] readdata;
   //control_slave, which is an e_avalon_slave
-  assign readdata = address ? 1745930277 : 3;
+  assign readdata = address ? 1745943907 : 3;
 
 endmodule
 

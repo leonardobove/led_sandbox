@@ -13,7 +13,7 @@
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "7";
          type = "int";
       }
    }
@@ -109,7 +109,7 @@
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "6";
          type = "int";
       }
    }
@@ -125,7 +125,7 @@
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "8";
          type = "int";
       }
    }
@@ -612,7 +612,7 @@
   <parameter name="color_bits" value="16" />
   <parameter name="color_planes" value="1" />
   <parameter name="dma_enabled" value="true" />
-  <parameter name="height" value="32" />
+  <parameter name="height" value="16" />
   <parameter name="mode">From Memory to Stream</parameter>
   <parameter name="start_address" value="0" />
   <parameter name="width" value="64" />
@@ -764,17 +764,17 @@
    kind="reset"
    version="18.1"
    start="clk_50.clk_reset"
-   end="video_dma_controller_0.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_50.clk_reset"
    end="timer.reset" />
  <connection
    kind="reset"
    version="18.1"
    start="clk_50.clk_reset"
    end="Led_Matrix_driver_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_50.clk_reset"
+   end="video_dma_controller_0.reset" />
  <connection
    kind="reset"
    version="18.1"
@@ -804,17 +804,17 @@
    kind="reset"
    version="18.1"
    start="cpu.debug_reset_request"
-   end="video_dma_controller_0.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="cpu.debug_reset_request"
    end="timer.reset" />
  <connection
    kind="reset"
    version="18.1"
    start="cpu.debug_reset_request"
    end="Led_Matrix_driver_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="cpu.debug_reset_request"
+   end="video_dma_controller_0.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />

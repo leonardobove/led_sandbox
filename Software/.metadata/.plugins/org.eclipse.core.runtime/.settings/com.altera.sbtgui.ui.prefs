@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+newSoftwareExampleWizardPage.defaultLocation=D\:\\led_sandbox\\Software\\test_matrix
+newSoftwareExampleWizardPage.sopcinfoFile=D\:\\led_sandbox\\sopc\\lite_pc.sopcinfo
+newSoftwareExampleWizardPage2.newBspLocation=D\:\\led_sandbox\\Software\\test_matrix_bsp
