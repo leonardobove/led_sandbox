@@ -7,10 +7,10 @@ The animation is displayed in a led matrix.
 
 We use a SOPC approach with hardware periferial driver and sw for physics elaborations.
 
-
 # Periferial PINOUT
 
 ## LED Matrix
+
 | name | External PIN | Board PIN  |           Description                           |
 | ---- | ------------ | ---------  |     ------------------------                    |
 |  R1  |      1       | ARD_IO[0]  | RED led upper Sub-matrix                        |
