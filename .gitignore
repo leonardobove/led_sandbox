@@ -1,4 +1,4 @@
-cd **/db/
+**/db/
 **/incremental_db/
 **/simulation/
 **/.qsys_edit/
@@ -11,6 +11,7 @@ cd **/db/
 **/*.bak
 **/*.log
 **/*.htm
+**/*.html
 **/*.cdf
 **/*.pin
 **/*.jdi
@@ -23,23 +24,36 @@ cd **/db/
 **/*.debuginfo
 
 
-./hardware/led_sandbox_sopc/synthesis/submodules/*
-./hardware/pin_assignment/CodeGenerated
-./hardware/pin_assignment/DE10_Lite_SystemBuilder.INI
-./hardware/pin_assignment/led_sandbox.qpf
-./hardware/pin_assignment/led_sandbox.sdc
-./hardware/pin_assignment/led_sandbox.v
+**/synthesis/submodules/
+CodeGenerated
+DE10_Lite_SystemBuilder.INI
+**/pin_assignment/led_sandbox.qpf
+**/pin_assignment/led_sandbox.sdc
+**/pin_assignment/led_sandbox.v
 
-./software/RemoteSystemsTempFiles/
-./software/.metadata/
+# Eclipse files
+RemoteSystemsTempFiles
+.metadata
+readme.txt
+obj
+.settings
+.cproject
+.force_relink
+.project
+create-this-app
+*.map
+*.objdump
+*.html
+*_bsp
 
-python/bin/
-python/include/
-python/lib/
-python/pyvenv.cfg
-python/etc/
-python/share/
-python/lib64
-python/.ipynb_checkpoints/
-python/Scripts/
-python/results/.ipynb_checkpoints/
+# Python environment
+bin/
+include/
+lib/
+pyvenv.cfg
+etc/
+share/
+lib64
+.ipynb_checkpoints/
+Scripts/
+docs/

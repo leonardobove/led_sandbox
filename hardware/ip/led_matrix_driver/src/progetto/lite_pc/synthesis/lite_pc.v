@@ -31,13 +31,13 @@ module lite_pc (
 		output wire        sdram_wire_we_n               //                   .we_n
 	);
 
-	wire         video_dma_controller_0_avalon_pixel_source_valid;                             // video_dma_controller_0:stream_valid -> Led_Matrix_driver_0:valid
-	wire  [15:0] video_dma_controller_0_avalon_pixel_source_data;                              // video_dma_controller_0:stream_data -> Led_Matrix_driver_0:data
-	wire         video_dma_controller_0_avalon_pixel_source_ready;                             // Led_Matrix_driver_0:ready -> video_dma_controller_0:stream_ready
-	wire         video_dma_controller_0_avalon_pixel_source_startofpacket;                     // video_dma_controller_0:stream_startofpacket -> Led_Matrix_driver_0:startofpacket
-	wire         video_dma_controller_0_avalon_pixel_source_endofpacket;                       // video_dma_controller_0:stream_endofpacket -> Led_Matrix_driver_0:endofpacket
-	wire         pll_c0_clk;                                                                   // pll:c0 -> [cpu:clk, irq_mapper:clk, jtag_uart:clk, mm_interconnect_0:pll_c0_clk, rst_controller_001:clk, sdram:clk, system_id:clock, timer:clk]
-	wire         pll_c2_clk;                                                                   // pll:c2 -> [Led_Matrix_driver_0:clock, mm_interconnect_0:pll_c2_clk, rst_controller:clk, video_dma_controller_0:clk]
+	wire         video_dma_controller_0_avalon_pixel_source_valid;                             // video_dma_controller_0:stream_valid -> led_matrix_driver_0:valid
+	wire  [15:0] video_dma_controller_0_avalon_pixel_source_data;                              // video_dma_controller_0:stream_data -> led_matrix_driver_0:data
+	wire         video_dma_controller_0_avalon_pixel_source_ready;                             // led_matrix_driver_0:ready -> video_dma_controller_0:stream_ready
+	wire         video_dma_controller_0_avalon_pixel_source_startofpacket;                     // video_dma_controller_0:stream_startofpacket -> led_matrix_driver_0:startofpacket
+	wire         video_dma_controller_0_avalon_pixel_source_endofpacket;                       // video_dma_controller_0:stream_endofpacket -> led_matrix_driver_0:endofpacket
+	wire         pll_c0_clk;                                                                   // pll:c0 -> [cpu:clk, irq_mapper:clk, jtag_uart:clk, mm_interconnect_0:pll_c0_clk, rst_controller:clk, sdram:clk, system_id:clock, timer:clk]
+	wire         pll_c2_clk;                                                                   // pll:c2 -> [led_matrix_driver_0:clock, mm_interconnect_0:pll_c2_clk, rst_controller_001:clk, video_dma_controller_0:clk]
 	wire         video_dma_controller_0_avalon_dma_master_waitrequest;                         // mm_interconnect_0:video_dma_controller_0_avalon_dma_master_waitrequest -> video_dma_controller_0:master_waitrequest
 	wire  [15:0] video_dma_controller_0_avalon_dma_master_readdata;                            // mm_interconnect_0:video_dma_controller_0_avalon_dma_master_readdata -> video_dma_controller_0:master_readdata
 	wire  [31:0] video_dma_controller_0_avalon_dma_master_address;                             // video_dma_controller_0:master_address -> mm_interconnect_0:video_dma_controller_0_avalon_dma_master_address
@@ -86,11 +86,11 @@ module lite_pc (
 	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_read;                           // mm_interconnect_0:jtag_uart_avalon_jtag_slave_read -> jtag_uart:av_read_n
 	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_write;                          // mm_interconnect_0:jtag_uart_avalon_jtag_slave_write -> jtag_uart:av_write_n
 	wire  [31:0] mm_interconnect_0_jtag_uart_avalon_jtag_slave_writedata;                      // mm_interconnect_0:jtag_uart_avalon_jtag_slave_writedata -> jtag_uart:av_writedata
-	wire  [31:0] mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_readdata;                // Led_Matrix_driver_0:readdata -> mm_interconnect_0:Led_Matrix_driver_0_avalon_slave_0_readdata
-	wire   [0:0] mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_address;                 // mm_interconnect_0:Led_Matrix_driver_0_avalon_slave_0_address -> Led_Matrix_driver_0:address
-	wire         mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_read;                    // mm_interconnect_0:Led_Matrix_driver_0_avalon_slave_0_read -> Led_Matrix_driver_0:read
-	wire         mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_write;                   // mm_interconnect_0:Led_Matrix_driver_0_avalon_slave_0_write -> Led_Matrix_driver_0:write
-	wire  [31:0] mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_writedata;               // mm_interconnect_0:Led_Matrix_driver_0_avalon_slave_0_writedata -> Led_Matrix_driver_0:writedata
+	wire  [31:0] mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_readdata;                // led_matrix_driver_0:readdata -> mm_interconnect_0:led_matrix_driver_0_avalon_slave_0_readdata
+	wire   [0:0] mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_address;                 // mm_interconnect_0:led_matrix_driver_0_avalon_slave_0_address -> led_matrix_driver_0:address
+	wire         mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_read;                    // mm_interconnect_0:led_matrix_driver_0_avalon_slave_0_read -> led_matrix_driver_0:read
+	wire         mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_write;                   // mm_interconnect_0:led_matrix_driver_0_avalon_slave_0_write -> led_matrix_driver_0:write
+	wire  [31:0] mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_writedata;               // mm_interconnect_0:led_matrix_driver_0_avalon_slave_0_writedata -> led_matrix_driver_0:writedata
 	wire  [31:0] mm_interconnect_0_system_id_control_slave_readdata;                           // system_id:readdata -> mm_interconnect_0:system_id_control_slave_readdata
 	wire   [0:0] mm_interconnect_0_system_id_control_slave_address;                            // mm_interconnect_0:system_id_control_slave_address -> system_id:address
 	wire  [31:0] mm_interconnect_0_pll_pll_slave_readdata;                                     // pll:readdata -> mm_interconnect_0:pll_pll_slave_readdata
@@ -106,49 +106,16 @@ module lite_pc (
 	wire         irq_mapper_receiver0_irq;                                                     // jtag_uart:av_irq -> irq_mapper:receiver0_irq
 	wire         irq_mapper_receiver1_irq;                                                     // timer:irq -> irq_mapper:receiver1_irq
 	wire  [31:0] cpu_irq_irq;                                                                  // irq_mapper:sender_irq -> cpu:irq
-	wire         rst_controller_reset_out_reset;                                               // rst_controller:reset_out -> [Led_Matrix_driver_0:areset_n, mm_interconnect_0:video_dma_controller_0_reset_reset_bridge_in_reset_reset, video_dma_controller_0:reset]
+	wire         rst_controller_reset_out_reset;                                               // rst_controller:reset_out -> [cpu:reset_n, irq_mapper:reset, jtag_uart:rst_n, mm_interconnect_0:cpu_reset_reset_bridge_in_reset_reset, rst_translator:in_reset, sdram:reset_n, system_id:reset_n, timer:reset_n]
+	wire         rst_controller_reset_out_reset_req;                                           // rst_controller:reset_req -> [cpu:reset_req, rst_translator:reset_req_in]
 	wire         cpu_debug_reset_request_reset;                                                // cpu:debug_reset_request -> [rst_controller:reset_in1, rst_controller_001:reset_in1, rst_controller_002:reset_in1]
-	wire         rst_controller_001_reset_out_reset;                                           // rst_controller_001:reset_out -> [cpu:reset_n, irq_mapper:reset, jtag_uart:rst_n, mm_interconnect_0:cpu_reset_reset_bridge_in_reset_reset, rst_translator:in_reset, sdram:reset_n, system_id:reset_n, timer:reset_n]
-	wire         rst_controller_001_reset_out_reset_req;                                       // rst_controller_001:reset_req -> [cpu:reset_req, rst_translator:reset_req_in]
+	wire         rst_controller_001_reset_out_reset;                                           // rst_controller_001:reset_out -> [led_matrix_driver_0:areset_n, mm_interconnect_0:video_dma_controller_0_reset_reset_bridge_in_reset_reset, video_dma_controller_0:reset]
 	wire         rst_controller_002_reset_out_reset;                                           // rst_controller_002:reset_out -> [mm_interconnect_0:pll_inclk_interface_reset_reset_bridge_in_reset_reset, pll:reset]
-
-	led_matrix_driver #(
-		.ENABLE_DEFAULT (1),
-		.RESET_DEFAULT  (0),
-		.MAT_WIDTH      (64),
-		.MAT_HEIGHT     (32)
-	) led_matrix_driver_0 (
-		.address       (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_address),   //        avalon_slave_0.address
-		.write         (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_write),     //                      .write
-		.writedata     (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_writedata), //                      .writedata
-		.readdata      (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_readdata),  //                      .readdata
-		.read          (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_read),      //                      .read
-		.ready         (video_dma_controller_0_avalon_pixel_source_ready),               // avalon_streaming_sink.ready
-		.valid         (video_dma_controller_0_avalon_pixel_source_valid),               //                      .valid
-		.data          (video_dma_controller_0_avalon_pixel_source_data),                //                      .data
-		.startofpacket (video_dma_controller_0_avalon_pixel_source_startofpacket),       //                      .startofpacket
-		.endofpacket   (video_dma_controller_0_avalon_pixel_source_endofpacket),         //                      .endofpacket
-		.CLK           (led_matrix_clock_clk),                                           //             clock_out.clk
-		.clock         (pll_c2_clk),                                                     //              clock_in.clk
-		.areset_n      (~rst_controller_reset_out_reset),                                //                 reset.reset_n
-		.A             (led_matrix_control_row_sel_a),                                   //           conduit_out.row_sel_a
-		.B             (led_matrix_control_row_sel_b),                                   //                      .row_sel_b
-		.B1            (led_matrix_control_blue_1),                                      //                      .blue_1
-		.B2            (led_matrix_control_blue_2),                                      //                      .blue_2
-		.C             (led_matrix_control_row_sel_c),                                   //                      .row_sel_c
-		.D             (led_matrix_control_row_sel_d),                                   //                      .row_sel_d
-		.G1            (led_matrix_control_green_1),                                     //                      .green_1
-		.G2            (led_matrix_control_green_2),                                     //                      .green_2
-		.LAT           (led_matrix_control_latch),                                       //                      .latch
-		.OE_n          (led_matrix_control_output_en),                                   //                      .output_en
-		.R1            (led_matrix_control_red_1),                                       //                      .red_1
-		.R2            (led_matrix_control_red_2)                                        //                      .red_2
-	);
 
 	lite_pc_cpu cpu (
 		.clk                                 (pll_c0_clk),                                        //                       clk.clk
-		.reset_n                             (~rst_controller_001_reset_out_reset),               //                     reset.reset_n
-		.reset_req                           (rst_controller_001_reset_out_reset_req),            //                          .reset_req
+		.reset_n                             (~rst_controller_reset_out_reset),                   //                     reset.reset_n
+		.reset_req                           (rst_controller_reset_out_reset_req),                //                          .reset_req
 		.d_address                           (cpu_data_master_address),                           //               data_master.address
 		.d_byteenable                        (cpu_data_master_byteenable),                        //                          .byteenable
 		.d_read                              (cpu_data_master_read),                              //                          .read
@@ -176,7 +143,7 @@ module lite_pc (
 
 	lite_pc_jtag_uart jtag_uart (
 		.clk            (pll_c0_clk),                                                //               clk.clk
-		.rst_n          (~rst_controller_001_reset_out_reset),                       //             reset.reset_n
+		.rst_n          (~rst_controller_reset_out_reset),                           //             reset.reset_n
 		.av_chipselect  (mm_interconnect_0_jtag_uart_avalon_jtag_slave_chipselect),  // avalon_jtag_slave.chipselect
 		.av_address     (mm_interconnect_0_jtag_uart_avalon_jtag_slave_address),     //                  .address
 		.av_read_n      (~mm_interconnect_0_jtag_uart_avalon_jtag_slave_read),       //                  .read_n
@@ -185,6 +152,39 @@ module lite_pc (
 		.av_writedata   (mm_interconnect_0_jtag_uart_avalon_jtag_slave_writedata),   //                  .writedata
 		.av_waitrequest (mm_interconnect_0_jtag_uart_avalon_jtag_slave_waitrequest), //                  .waitrequest
 		.av_irq         (irq_mapper_receiver0_irq)                                   //               irq.irq
+	);
+
+	led_matrix_driver #(
+		.ENABLE_DEFAULT (1),
+		.RESET_DEFAULT  (0),
+		.MAT_WIDTH      (64),
+		.MAT_HEIGHT     (32)
+	) led_matrix_driver_0 (
+		.address       (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_address),   //        avalon_slave_0.address
+		.write         (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_write),     //                      .write
+		.writedata     (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_writedata), //                      .writedata
+		.readdata      (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_readdata),  //                      .readdata
+		.read          (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_read),      //                      .read
+		.ready         (video_dma_controller_0_avalon_pixel_source_ready),               // avalon_streaming_sink.ready
+		.valid         (video_dma_controller_0_avalon_pixel_source_valid),               //                      .valid
+		.data          (video_dma_controller_0_avalon_pixel_source_data),                //                      .data
+		.startofpacket (video_dma_controller_0_avalon_pixel_source_startofpacket),       //                      .startofpacket
+		.endofpacket   (video_dma_controller_0_avalon_pixel_source_endofpacket),         //                      .endofpacket
+		.CLK           (led_matrix_clock_clk),                                           //             clock_out.clk
+		.clock         (pll_c2_clk),                                                     //              clock_in.clk
+		.areset_n      (~rst_controller_001_reset_out_reset),                            //                 reset.reset_n
+		.A             (led_matrix_control_row_sel_a),                                   //           conduit_out.row_sel_a
+		.B             (led_matrix_control_row_sel_b),                                   //                      .row_sel_b
+		.B1            (led_matrix_control_blue_1),                                      //                      .blue_1
+		.B2            (led_matrix_control_blue_2),                                      //                      .blue_2
+		.C             (led_matrix_control_row_sel_c),                                   //                      .row_sel_c
+		.D             (led_matrix_control_row_sel_d),                                   //                      .row_sel_d
+		.G1            (led_matrix_control_green_1),                                     //                      .green_1
+		.G2            (led_matrix_control_green_2),                                     //                      .green_2
+		.LAT           (led_matrix_control_latch),                                       //                      .latch
+		.OE_n          (led_matrix_control_output_en),                                   //                      .output_en
+		.R1            (led_matrix_control_red_1),                                       //                      .red_1
+		.R2            (led_matrix_control_red_2)                                        //                      .red_2
 	);
 
 	lite_pc_pll pll (
@@ -216,7 +216,7 @@ module lite_pc (
 
 	lite_pc_sdram sdram (
 		.clk            (pll_c0_clk),                               //   clk.clk
-		.reset_n        (~rst_controller_001_reset_out_reset),      // reset.reset_n
+		.reset_n        (~rst_controller_reset_out_reset),          // reset.reset_n
 		.az_addr        (mm_interconnect_0_sdram_s1_address),       //    s1.address
 		.az_be_n        (~mm_interconnect_0_sdram_s1_byteenable),   //      .byteenable_n
 		.az_cs          (mm_interconnect_0_sdram_s1_chipselect),    //      .chipselect
@@ -239,14 +239,14 @@ module lite_pc (
 
 	lite_pc_system_id system_id (
 		.clock    (pll_c0_clk),                                         //           clk.clk
-		.reset_n  (~rst_controller_001_reset_out_reset),                //         reset.reset_n
+		.reset_n  (~rst_controller_reset_out_reset),                    //         reset.reset_n
 		.readdata (mm_interconnect_0_system_id_control_slave_readdata), // control_slave.readdata
 		.address  (mm_interconnect_0_system_id_control_slave_address)   //              .address
 	);
 
 	lite_pc_timer timer (
 		.clk        (pll_c0_clk),                            //   clk.clk
-		.reset_n    (~rst_controller_001_reset_out_reset),   // reset.reset_n
+		.reset_n    (~rst_controller_reset_out_reset),       // reset.reset_n
 		.address    (mm_interconnect_0_timer_s1_address),    //    s1.address
 		.writedata  (mm_interconnect_0_timer_s1_writedata),  //      .writedata
 		.readdata   (mm_interconnect_0_timer_s1_readdata),   //      .readdata
@@ -257,7 +257,7 @@ module lite_pc (
 
 	lite_pc_video_dma_controller_0 video_dma_controller_0 (
 		.clk                  (pll_c2_clk),                                                                   //                      clk.clk
-		.reset                (rst_controller_reset_out_reset),                                               //                    reset.reset
+		.reset                (rst_controller_001_reset_out_reset),                                           //                    reset.reset
 		.master_address       (video_dma_controller_0_avalon_dma_master_address),                             //        avalon_dma_master.address
 		.master_waitrequest   (video_dma_controller_0_avalon_dma_master_waitrequest),                         //                         .waitrequest
 		.master_arbiterlock   (video_dma_controller_0_avalon_dma_master_lock),                                //                         .lock
@@ -281,9 +281,9 @@ module lite_pc (
 		.clk_50_clk_clk                                             (clk_clk),                                                                      //                                         clk_50_clk.clk
 		.pll_c0_clk                                                 (pll_c0_clk),                                                                   //                                             pll_c0.clk
 		.pll_c2_clk                                                 (pll_c2_clk),                                                                   //                                             pll_c2.clk
-		.cpu_reset_reset_bridge_in_reset_reset                      (rst_controller_001_reset_out_reset),                                           //                    cpu_reset_reset_bridge_in_reset.reset
+		.cpu_reset_reset_bridge_in_reset_reset                      (rst_controller_reset_out_reset),                                               //                    cpu_reset_reset_bridge_in_reset.reset
 		.pll_inclk_interface_reset_reset_bridge_in_reset_reset      (rst_controller_002_reset_out_reset),                                           //    pll_inclk_interface_reset_reset_bridge_in_reset.reset
-		.video_dma_controller_0_reset_reset_bridge_in_reset_reset   (rst_controller_reset_out_reset),                                               // video_dma_controller_0_reset_reset_bridge_in_reset.reset
+		.video_dma_controller_0_reset_reset_bridge_in_reset_reset   (rst_controller_001_reset_out_reset),                                           // video_dma_controller_0_reset_reset_bridge_in_reset.reset
 		.cpu_data_master_address                                    (cpu_data_master_address),                                                      //                                    cpu_data_master.address
 		.cpu_data_master_waitrequest                                (cpu_data_master_waitrequest),                                                  //                                                   .waitrequest
 		.cpu_data_master_byteenable                                 (cpu_data_master_byteenable),                                                   //                                                   .byteenable
@@ -317,11 +317,11 @@ module lite_pc (
 		.jtag_uart_avalon_jtag_slave_writedata                      (mm_interconnect_0_jtag_uart_avalon_jtag_slave_writedata),                      //                                                   .writedata
 		.jtag_uart_avalon_jtag_slave_waitrequest                    (mm_interconnect_0_jtag_uart_avalon_jtag_slave_waitrequest),                    //                                                   .waitrequest
 		.jtag_uart_avalon_jtag_slave_chipselect                     (mm_interconnect_0_jtag_uart_avalon_jtag_slave_chipselect),                     //                                                   .chipselect
-		.Led_Matrix_driver_0_avalon_slave_0_address                 (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_address),                 //                 Led_Matrix_driver_0_avalon_slave_0.address
-		.Led_Matrix_driver_0_avalon_slave_0_write                   (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_write),                   //                                                   .write
-		.Led_Matrix_driver_0_avalon_slave_0_read                    (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_read),                    //                                                   .read
-		.Led_Matrix_driver_0_avalon_slave_0_readdata                (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_readdata),                //                                                   .readdata
-		.Led_Matrix_driver_0_avalon_slave_0_writedata               (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_writedata),               //                                                   .writedata
+		.led_matrix_driver_0_avalon_slave_0_address                 (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_address),                 //                 led_matrix_driver_0_avalon_slave_0.address
+		.led_matrix_driver_0_avalon_slave_0_write                   (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_write),                   //                                                   .write
+		.led_matrix_driver_0_avalon_slave_0_read                    (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_read),                    //                                                   .read
+		.led_matrix_driver_0_avalon_slave_0_readdata                (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_readdata),                //                                                   .readdata
+		.led_matrix_driver_0_avalon_slave_0_writedata               (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_writedata),               //                                                   .writedata
 		.pll_pll_slave_address                                      (mm_interconnect_0_pll_pll_slave_address),                                      //                                      pll_pll_slave.address
 		.pll_pll_slave_write                                        (mm_interconnect_0_pll_pll_slave_write),                                        //                                                   .write
 		.pll_pll_slave_read                                         (mm_interconnect_0_pll_pll_slave_read),                                         //                                                   .read
@@ -352,74 +352,11 @@ module lite_pc (
 	);
 
 	lite_pc_irq_mapper irq_mapper (
-		.clk           (pll_c0_clk),                         //       clk.clk
-		.reset         (rst_controller_001_reset_out_reset), // clk_reset.reset
-		.receiver0_irq (irq_mapper_receiver0_irq),           // receiver0.irq
-		.receiver1_irq (irq_mapper_receiver1_irq),           // receiver1.irq
-		.sender_irq    (cpu_irq_irq)                         //    sender.irq
-	);
-
-	altera_reset_controller #(
-		.NUM_RESET_INPUTS          (2),
-		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
-		.SYNC_DEPTH                (2),
-		.RESET_REQUEST_PRESENT     (0),
-		.RESET_REQ_WAIT_TIME       (1),
-		.MIN_RST_ASSERTION_TIME    (3),
-		.RESET_REQ_EARLY_DSRT_TIME (1),
-		.USE_RESET_REQUEST_IN0     (0),
-		.USE_RESET_REQUEST_IN1     (0),
-		.USE_RESET_REQUEST_IN2     (0),
-		.USE_RESET_REQUEST_IN3     (0),
-		.USE_RESET_REQUEST_IN4     (0),
-		.USE_RESET_REQUEST_IN5     (0),
-		.USE_RESET_REQUEST_IN6     (0),
-		.USE_RESET_REQUEST_IN7     (0),
-		.USE_RESET_REQUEST_IN8     (0),
-		.USE_RESET_REQUEST_IN9     (0),
-		.USE_RESET_REQUEST_IN10    (0),
-		.USE_RESET_REQUEST_IN11    (0),
-		.USE_RESET_REQUEST_IN12    (0),
-		.USE_RESET_REQUEST_IN13    (0),
-		.USE_RESET_REQUEST_IN14    (0),
-		.USE_RESET_REQUEST_IN15    (0),
-		.ADAPT_RESET_REQUEST       (0)
-	) rst_controller (
-		.reset_in0      (~reset_reset_n),                 // reset_in0.reset
-		.reset_in1      (cpu_debug_reset_request_reset),  // reset_in1.reset
-		.clk            (pll_c2_clk),                     //       clk.clk
-		.reset_out      (rst_controller_reset_out_reset), // reset_out.reset
-		.reset_req      (),                               // (terminated)
-		.reset_req_in0  (1'b0),                           // (terminated)
-		.reset_req_in1  (1'b0),                           // (terminated)
-		.reset_in2      (1'b0),                           // (terminated)
-		.reset_req_in2  (1'b0),                           // (terminated)
-		.reset_in3      (1'b0),                           // (terminated)
-		.reset_req_in3  (1'b0),                           // (terminated)
-		.reset_in4      (1'b0),                           // (terminated)
-		.reset_req_in4  (1'b0),                           // (terminated)
-		.reset_in5      (1'b0),                           // (terminated)
-		.reset_req_in5  (1'b0),                           // (terminated)
-		.reset_in6      (1'b0),                           // (terminated)
-		.reset_req_in6  (1'b0),                           // (terminated)
-		.reset_in7      (1'b0),                           // (terminated)
-		.reset_req_in7  (1'b0),                           // (terminated)
-		.reset_in8      (1'b0),                           // (terminated)
-		.reset_req_in8  (1'b0),                           // (terminated)
-		.reset_in9      (1'b0),                           // (terminated)
-		.reset_req_in9  (1'b0),                           // (terminated)
-		.reset_in10     (1'b0),                           // (terminated)
-		.reset_req_in10 (1'b0),                           // (terminated)
-		.reset_in11     (1'b0),                           // (terminated)
-		.reset_req_in11 (1'b0),                           // (terminated)
-		.reset_in12     (1'b0),                           // (terminated)
-		.reset_req_in12 (1'b0),                           // (terminated)
-		.reset_in13     (1'b0),                           // (terminated)
-		.reset_req_in13 (1'b0),                           // (terminated)
-		.reset_in14     (1'b0),                           // (terminated)
-		.reset_req_in14 (1'b0),                           // (terminated)
-		.reset_in15     (1'b0),                           // (terminated)
-		.reset_req_in15 (1'b0)                            // (terminated)
+		.clk           (pll_c0_clk),                     //       clk.clk
+		.reset         (rst_controller_reset_out_reset), // clk_reset.reset
+		.receiver0_irq (irq_mapper_receiver0_irq),       // receiver0.irq
+		.receiver1_irq (irq_mapper_receiver1_irq),       // receiver1.irq
+		.sender_irq    (cpu_irq_irq)                     //    sender.irq
 	);
 
 	altera_reset_controller #(
@@ -447,42 +384,105 @@ module lite_pc (
 		.USE_RESET_REQUEST_IN14    (0),
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
+	) rst_controller (
+		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
+		.reset_in1      (cpu_debug_reset_request_reset),      // reset_in1.reset
+		.clk            (pll_c0_clk),                         //       clk.clk
+		.reset_out      (rst_controller_reset_out_reset),     // reset_out.reset
+		.reset_req      (rst_controller_reset_out_reset_req), //          .reset_req
+		.reset_req_in0  (1'b0),                               // (terminated)
+		.reset_req_in1  (1'b0),                               // (terminated)
+		.reset_in2      (1'b0),                               // (terminated)
+		.reset_req_in2  (1'b0),                               // (terminated)
+		.reset_in3      (1'b0),                               // (terminated)
+		.reset_req_in3  (1'b0),                               // (terminated)
+		.reset_in4      (1'b0),                               // (terminated)
+		.reset_req_in4  (1'b0),                               // (terminated)
+		.reset_in5      (1'b0),                               // (terminated)
+		.reset_req_in5  (1'b0),                               // (terminated)
+		.reset_in6      (1'b0),                               // (terminated)
+		.reset_req_in6  (1'b0),                               // (terminated)
+		.reset_in7      (1'b0),                               // (terminated)
+		.reset_req_in7  (1'b0),                               // (terminated)
+		.reset_in8      (1'b0),                               // (terminated)
+		.reset_req_in8  (1'b0),                               // (terminated)
+		.reset_in9      (1'b0),                               // (terminated)
+		.reset_req_in9  (1'b0),                               // (terminated)
+		.reset_in10     (1'b0),                               // (terminated)
+		.reset_req_in10 (1'b0),                               // (terminated)
+		.reset_in11     (1'b0),                               // (terminated)
+		.reset_req_in11 (1'b0),                               // (terminated)
+		.reset_in12     (1'b0),                               // (terminated)
+		.reset_req_in12 (1'b0),                               // (terminated)
+		.reset_in13     (1'b0),                               // (terminated)
+		.reset_req_in13 (1'b0),                               // (terminated)
+		.reset_in14     (1'b0),                               // (terminated)
+		.reset_req_in14 (1'b0),                               // (terminated)
+		.reset_in15     (1'b0),                               // (terminated)
+		.reset_req_in15 (1'b0)                                // (terminated)
+	);
+
+	altera_reset_controller #(
+		.NUM_RESET_INPUTS          (2),
+		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
+		.SYNC_DEPTH                (2),
+		.RESET_REQUEST_PRESENT     (0),
+		.RESET_REQ_WAIT_TIME       (1),
+		.MIN_RST_ASSERTION_TIME    (3),
+		.RESET_REQ_EARLY_DSRT_TIME (1),
+		.USE_RESET_REQUEST_IN0     (0),
+		.USE_RESET_REQUEST_IN1     (0),
+		.USE_RESET_REQUEST_IN2     (0),
+		.USE_RESET_REQUEST_IN3     (0),
+		.USE_RESET_REQUEST_IN4     (0),
+		.USE_RESET_REQUEST_IN5     (0),
+		.USE_RESET_REQUEST_IN6     (0),
+		.USE_RESET_REQUEST_IN7     (0),
+		.USE_RESET_REQUEST_IN8     (0),
+		.USE_RESET_REQUEST_IN9     (0),
+		.USE_RESET_REQUEST_IN10    (0),
+		.USE_RESET_REQUEST_IN11    (0),
+		.USE_RESET_REQUEST_IN12    (0),
+		.USE_RESET_REQUEST_IN13    (0),
+		.USE_RESET_REQUEST_IN14    (0),
+		.USE_RESET_REQUEST_IN15    (0),
+		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller_001 (
-		.reset_in0      (~reset_reset_n),                         // reset_in0.reset
-		.reset_in1      (cpu_debug_reset_request_reset),          // reset_in1.reset
-		.clk            (pll_c0_clk),                             //       clk.clk
-		.reset_out      (rst_controller_001_reset_out_reset),     // reset_out.reset
-		.reset_req      (rst_controller_001_reset_out_reset_req), //          .reset_req
-		.reset_req_in0  (1'b0),                                   // (terminated)
-		.reset_req_in1  (1'b0),                                   // (terminated)
-		.reset_in2      (1'b0),                                   // (terminated)
-		.reset_req_in2  (1'b0),                                   // (terminated)
-		.reset_in3      (1'b0),                                   // (terminated)
-		.reset_req_in3  (1'b0),                                   // (terminated)
-		.reset_in4      (1'b0),                                   // (terminated)
-		.reset_req_in4  (1'b0),                                   // (terminated)
-		.reset_in5      (1'b0),                                   // (terminated)
-		.reset_req_in5  (1'b0),                                   // (terminated)
-		.reset_in6      (1'b0),                                   // (terminated)
-		.reset_req_in6  (1'b0),                                   // (terminated)
-		.reset_in7      (1'b0),                                   // (terminated)
-		.reset_req_in7  (1'b0),                                   // (terminated)
-		.reset_in8      (1'b0),                                   // (terminated)
-		.reset_req_in8  (1'b0),                                   // (terminated)
-		.reset_in9      (1'b0),                                   // (terminated)
-		.reset_req_in9  (1'b0),                                   // (terminated)
-		.reset_in10     (1'b0),                                   // (terminated)
-		.reset_req_in10 (1'b0),                                   // (terminated)
-		.reset_in11     (1'b0),                                   // (terminated)
-		.reset_req_in11 (1'b0),                                   // (terminated)
-		.reset_in12     (1'b0),                                   // (terminated)
-		.reset_req_in12 (1'b0),                                   // (terminated)
-		.reset_in13     (1'b0),                                   // (terminated)
-		.reset_req_in13 (1'b0),                                   // (terminated)
-		.reset_in14     (1'b0),                                   // (terminated)
-		.reset_req_in14 (1'b0),                                   // (terminated)
-		.reset_in15     (1'b0),                                   // (terminated)
-		.reset_req_in15 (1'b0)                                    // (terminated)
+		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
+		.reset_in1      (cpu_debug_reset_request_reset),      // reset_in1.reset
+		.clk            (pll_c2_clk),                         //       clk.clk
+		.reset_out      (rst_controller_001_reset_out_reset), // reset_out.reset
+		.reset_req      (),                                   // (terminated)
+		.reset_req_in0  (1'b0),                               // (terminated)
+		.reset_req_in1  (1'b0),                               // (terminated)
+		.reset_in2      (1'b0),                               // (terminated)
+		.reset_req_in2  (1'b0),                               // (terminated)
+		.reset_in3      (1'b0),                               // (terminated)
+		.reset_req_in3  (1'b0),                               // (terminated)
+		.reset_in4      (1'b0),                               // (terminated)
+		.reset_req_in4  (1'b0),                               // (terminated)
+		.reset_in5      (1'b0),                               // (terminated)
+		.reset_req_in5  (1'b0),                               // (terminated)
+		.reset_in6      (1'b0),                               // (terminated)
+		.reset_req_in6  (1'b0),                               // (terminated)
+		.reset_in7      (1'b0),                               // (terminated)
+		.reset_req_in7  (1'b0),                               // (terminated)
+		.reset_in8      (1'b0),                               // (terminated)
+		.reset_req_in8  (1'b0),                               // (terminated)
+		.reset_in9      (1'b0),                               // (terminated)
+		.reset_req_in9  (1'b0),                               // (terminated)
+		.reset_in10     (1'b0),                               // (terminated)
+		.reset_req_in10 (1'b0),                               // (terminated)
+		.reset_in11     (1'b0),                               // (terminated)
+		.reset_req_in11 (1'b0),                               // (terminated)
+		.reset_in12     (1'b0),                               // (terminated)
+		.reset_req_in12 (1'b0),                               // (terminated)
+		.reset_in13     (1'b0),                               // (terminated)
+		.reset_req_in13 (1'b0),                               // (terminated)
+		.reset_in14     (1'b0),                               // (terminated)
+		.reset_req_in14 (1'b0),                               // (terminated)
+		.reset_in15     (1'b0),                               // (terminated)
+		.reset_req_in15 (1'b0)                                // (terminated)
 	);
 
 	altera_reset_controller #(

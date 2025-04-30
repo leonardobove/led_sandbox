@@ -48,7 +48,7 @@ module led_matrix_top (
 	 
 
 	 
-	 lite_pc u0 (
+	 lite_pc computer_inst0 (
         .clk_clk                      (MAX10_CLK1_50),             //                clk.clk
         .clk_sdram_clk                (DRAM_CLK),                  //          clk_sdram.clk
         .reset_reset_n                (1'b1),                      //              reset.reset_n
