@@ -88,36 +88,36 @@ initial begin
     valid = 1;
     startofpacket = 1;
 
-    //#1000
-    //data = 16'h0048;
+    #1000
+    data = 16'h0048;
 
     //Test case 3: Enable sw
-    // #10000
-    //write = 1'b1;
-    //address = 1'd1;
-    //writedata = 32'd0;
+     #10000
+    write = 1'b1;
+    address = 1'd1;
+    writedata = 32'd0;
 
-    //#40
-    //write = 1'b0;
-    //address = 1'd1;
+    #40
+    write = 1'b0;
+    address = 1'd1;
 
-    //#200
-    //write = 1'b1;
-    //address = 1'd1;
-    //writedata = 32'd1;
+    #200
+    write = 1'b1;
+    address = 1'd1;
+    writedata = 32'd1;
 
-    //#40
-    //write = 1'b0;
-    //address = 1'd1;
+    #40
+    write = 1'b0;
+    address = 1'd1;
 
     //Test case 4: Reset sw
-    //#10000
-    //write = 1'b1;
-    //address = 1'd0;
-    //writedata = 32'd1;
+    #10000
+    write = 1'b1;
+    address = 1'd0;
+    writedata = 32'd1;
 
-    //#40
-    //write = 1'b0;
+    #40
+    write = 1'b0;
 
     //Finish the simulation after a few cycles
     #50000
