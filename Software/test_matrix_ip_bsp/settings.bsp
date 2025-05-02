@@ -2,11 +2,11 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Apr 30, 2025 11:59:09 AM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1746007149819</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>C:\Users\leona\Desktop\led_sandbox\software\test_matrix_ip_bsp</BspGeneratedLocation>
+        <BspGeneratedTimeStamp>May 2, 2025 2:12:06 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1746187926671</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>C:\Users\leona\Desktop\temp\led_sandbox\Software\test_matrix_ip_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
-        <SopcDesignFile>C:\Users\leona\Desktop\led_sandbox\sopc\lite_pc.sopcinfo</SopcDesignFile>
+        <SopcDesignFile>C:\Users\leona\Desktop\temp\led_sandbox\sopc\lite_pc.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>cpu</Cpu>
         <SchemaVersion>1.9</SchemaVersion>

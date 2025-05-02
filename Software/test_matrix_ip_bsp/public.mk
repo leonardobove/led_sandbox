@@ -86,7 +86,7 @@ ACDS_VERSION := 18.1
 
 # Qsys--generated SOPCINFO file. Required for resolving node instance ID's with 
 # design component names. 
-SOPCINFO_FILE := C:/Users/leona/Desktop/led_sandbox/sopc/lite_pc.sopcinfo
+SOPCINFO_FILE := C:/Users/leona/Desktop/temp/led_sandbox/sopc/lite_pc.sopcinfo
 
 # Big-Endian operation. 
 # setting BIG_ENDIAN is false
@@ -157,9 +157,9 @@ SOPC_SYSID_FLAG += --sidp=0x8001040
 ELF_PATCH_FLAG  += --sidp 0x8001040
 
 # The SOPC Timestamp 
-# setting SOPC_TIMESTAMP is 1746006897
-SOPC_SYSID_FLAG += --timestamp=1746006897
-ELF_PATCH_FLAG  += --timestamp 1746006897
+# setting SOPC_TIMESTAMP is 1746187654
+SOPC_SYSID_FLAG += --timestamp=1746187654
+ELF_PATCH_FLAG  += --timestamp 1746187654
 
 # Enable JTAG UART driver to recover when host is inactive causing buffer to 
 # full without returning error. Printf will not fail with this recovery. none 

@@ -33,22 +33,22 @@ module led_matrix_driver (
     input        clock,
     input        areset_n,
 	 
-	//Input ST sink
+	//Input sink
+    input        address,
     input[15:0]  data,
 	input        valid,
 	input        endofpacket,
 	input        startofpacket,
 	 
-	//Output ST sink
+	//Output sink
 	output       ready,
 	 
 	//Input Memory mapped
-    input        address,
 	input        write,
 	input[31:0]  writedata,
-    input        read,
-	
+	 
 	//Output memory mapped
+    input        read,
 	output[31:0] readdata, 
 
     // LED matrix external outputs
@@ -71,26 +71,16 @@ module led_matrix_driver (
 
 parameter ENABLE_DEFAULT = 1'b1;    //Default value for the enable register
 parameter RESET_DEFAULT  = 1'b0;    //Default value for the reset register
-parameter MAT_WIDTH      = 7'd64;   //Width of the matrix (number of pixels in a row)
-parameter MAT_HEIGHT     = 6'd32;   //Height of the matrix (number of pixels in a column)
-
-// FSM States
-localparam RESET     = 2'd0, 
-           IDLE      = 2'd1,
-           PUSH_ROW  = 2'd2,
-           LATCH_ROW = 2'd3; 
+parameter MAT_WIDTH     = 7'd64;    //Width of the matrix (number of pixels in a row)
+parameter MAT_HEIGHT    = 6'd32;    //Height of the matrix (number of pixels in a column)
 
 
 // Internal signals
 reg [5:0] col_counter;
 reg [3:0] row_counter;
-reg [5:0] pixels_rgb_colors;
+reg [5:0] pixels_rgb_colors; //TODO: Store here pixels rgb from avalon stream with DMA
 reg enable_register;
 reg reset_register;
-
-//FSM reg
-reg [1:0] curr_state;
-reg [1:0] next_state;
 
 // Internal MM signals
 wire sw_reset;
@@ -235,6 +225,12 @@ begin
     end
 end
 
+// FSM States
+reg [1:0] curr_state, next_state;
+localparam RESET     = 2'd0, 
+           IDLE      = 2'd1,
+           PUSH_ROW  = 2'd2,
+           LATCH_ROW = 2'd3; 
 
 
 // Update FSM State
@@ -277,7 +273,7 @@ always @ (*) begin
         PUSH_ROW: begin
             if (~sw_reset)
             begin
-                if(driving_enable && valid)
+                if(driving_enable)
                 begin
                     if (col_counter == (MAT_WIDTH - 1'b1))
                         next_state <= LATCH_ROW;

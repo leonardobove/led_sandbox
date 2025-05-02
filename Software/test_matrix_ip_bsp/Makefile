@@ -101,7 +101,7 @@ ACDS_VERSION := 18.1
 # BUILD_NUMBER: 625
 
 SETTINGS_FILE := settings.bsp
-SOPC_FILE := C:/Users/leona/Desktop/led_sandbox/sopc/lite_pc.sopcinfo
+SOPC_FILE := C:/Users/leona/Desktop/temp/led_sandbox/sopc/lite_pc.sopcinfo
 
 #-------------------------------------------------------------------------------
 #                             TOOL & COMMAND DEFINITIONS

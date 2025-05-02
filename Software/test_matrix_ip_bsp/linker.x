@@ -2,9 +2,9 @@
  * linker.x - Linker script
  *
  * Machine generated for CPU 'cpu' in SOPC Builder design 'lite_pc'
- * SOPC Builder design path: C:/Users/leona/Desktop/led_sandbox/sopc/lite_pc.sopcinfo
+ * SOPC Builder design path: C:/Users/leona/Desktop/temp/led_sandbox/sopc/lite_pc.sopcinfo
  *
- * Generated: Wed Apr 30 10:40:40 CEST 2025
+ * Generated: Fri May 02 09:44:39 CEST 2025
  */
 
 /*

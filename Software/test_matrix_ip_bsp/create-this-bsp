@@ -4,8 +4,8 @@
 
 BSP_TYPE=hal
 BSP_DIR=.
-SOPC_DIR=C:/Users/leona/Desktop/led_sandbox/sopc/
-SOPC_FILE=C:/Users/leona/Desktop/led_sandbox/sopc/lite_pc.sopcinfo
+SOPC_DIR=C:/Users/leona/Desktop/temp/led_sandbox/sopc/
+SOPC_FILE=C:/Users/leona/Desktop/temp/led_sandbox/sopc/lite_pc.sopcinfo
 NIOS2_BSP_ARGS=""
 CPU_NAME=
 
