@@ -6,6 +6,9 @@
  */
 
 #include "../Inc/system_tick.h"
+#include "altera_avalon_timer_regs.h"
+#include "system.h"
+#include "sys/alt_irq.h"
 
 #ifdef ALT_ENHANCED_INTERRUPT_API_PRESENT
 // Interval Timer ISR with enhanced API
@@ -43,7 +46,7 @@ void system_tick_init(uint32_t period_ms, volatile uint32_t* tick_ptr)
     alt_ic_isr_register(0, SYSTEM_TICK_TIMER_IRQ, system_tick_ISR, (void *) tick_ptr, NULL);
     #else
     // register Interval Timer with legacy API
-    alt_irq_register(INTERVAL_TIMER_IRQ, (void *) tick_ptr, system_tick_ISR);
+    alt_irq_register(SYSTEM_TICK_TIMER_IRQ, (void *) tick_ptr, system_tick_ISR);
     #endif
 
 }

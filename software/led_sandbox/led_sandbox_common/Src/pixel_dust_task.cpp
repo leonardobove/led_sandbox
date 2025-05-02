@@ -3,6 +3,7 @@
 
 #include "../Inc/pixel_dust_task.h"
 #include "../Inc/state_machine_task.h"
+#include "../Inc/accelerometer_average_task.h"
 #include "../Inc/hal.h"
 
 // Flag that is true every time the GSENSOR_SANDBOX state is entered
@@ -13,12 +14,6 @@ Adafruit_PixelDust sand(WIDTH, HEIGHT, N_GRAINS, ACCELEROMETER_SCALE, GRAINS_ELA
 
 uint8_t pixel_buf[WIDTH * HEIGHT]; //TODO: maybe it's not really necessary and I can use the class internal bitmap?
 
-// Variable to hold the return values from the accelerometer
-static accelerometer_output_t acceleration = {
-    .a_x = 0,
-    .a_y = 0,
-    .a_z = 0
-};
 
 void pixel_dust_task() {
     if (current_state == GSENSOR_SANDBOX) {
@@ -28,9 +23,6 @@ void pixel_dust_task() {
                 hal_error(1);   // Malloc error
             } //TODO: define error codes in a better way
             
-            if (!hal_accelerometer_init()) {
-                hal_error(2);   // Accelerometer initialization error
-            }
             
             // Initialize RGB LED Matrix driver
             //TODO
@@ -51,12 +43,9 @@ void pixel_dust_task() {
             pixel_buf[y * WIDTH + x] = 0;
         }
 
-        // Read accelerometer
-        acceleration = hal_read_accelerometer();
-
         // Run one frame of the simulation
         // X & Y axes are flipped around here to match physical mounting
-        sand.iterate(acceleration.a_x, acceleration.a_y, acceleration.a_z);
+        sand.iterate(acceleration_average.a_x, acceleration_average.a_y, acceleration_average.a_z);
 
         // Draw new grain positions in pixel_buf[]
         grain_color_t color = BLACK;

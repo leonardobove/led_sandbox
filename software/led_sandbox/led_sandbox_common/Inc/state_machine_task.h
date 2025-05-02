@@ -8,6 +8,10 @@
 #ifndef INC_STATE_MACHINE_TASK_H_
 #define INC_STATE_MACHINE_TASK_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdint.h>
 
 // Buttons and switches definitions useful for the FSM
@@ -39,5 +43,9 @@ typedef struct {
 
 // Declare state machine task subroutine
 void state_machine_task();
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* INC_STATE_MACHINE_TASK_H_ */

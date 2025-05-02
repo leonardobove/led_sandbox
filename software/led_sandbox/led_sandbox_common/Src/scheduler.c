@@ -14,7 +14,7 @@ extern "C" {
 #include "../Inc/scheduler.h"
 
 // Static array of periodic tasks
-static periodic_task_t periodic_tasks[MAX_PERIODIC_TASKS]; 
+static periodic_task_t periodic_tasks[MAX_PERIODIC_TASKS];
 
 // Number of registered tasks
 static uint16_t num_tasks = 0;

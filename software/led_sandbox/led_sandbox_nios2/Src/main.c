@@ -5,9 +5,9 @@
  *      Author: leona
  */
 
-#include "led_sandbox.h"
-#include "hal.h"
-#include "scheduler.h"
+#include "../../led_sandbox_common/Inc/led_sandbox.h"
+#include "../../led_sandbox_common/Inc/hal.h"
+#include "../../led_sandbox_common/Inc/scheduler.h"
 
 int main() {
     led_sandbox_init();
