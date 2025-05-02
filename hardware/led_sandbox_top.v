@@ -6,7 +6,7 @@
 module led_sandbox_top (
 
 	//////////// CLOCK //////////
-	input 		          		MAX10_CLK1_50,
+	input             MAX10_CLK1_50,
 
 
 
@@ -33,10 +33,13 @@ module led_sandbox_top (
 	output            DRAM_RAS_N,
 	
 	////////// ACCELEROMETER ///////
-	input     [1:0]   GSENSOR_INT,
+	input     [2:1]   GSENSOR_INT,
 	output            GSENSOR_SCLK,
 	output            GSENSOR_CS_N,	
-	inout             GSENSOR_SDIO
+	inout             GSENSOR_SDI,
+	
+	///////// LED MATRIX //////////
+	output   [12:0]   ARDUINO_IO
 );
 
 
@@ -54,22 +57,38 @@ module led_sandbox_top (
 
 	 
 led_sandbox_sopc led_sandbox_system (
-        .accelerometer_spi_I2C_SDAT      (GSENSOR_SDIO),      // accelerometer_spi.I2C_SDAT
-        .accelerometer_spi_I2C_SCLK      (GSENSOR_SCLK),      //                  .I2C_SCLK
-        .accelerometer_spi_G_SENSOR_CS_N (GSENSOR_CS_N), //                  .G_SENSOR_CS_N
-        .accelerometer_spi_G_SENSOR_INT  (GSENSOR_INT[0]),  //                  .G_SENSOR_INT
-        .clk_clk                         (MAX10_CLK1_50),                         //               clk.clk
-        .reset_reset_n                   (1'b1),                      //             reset.reset_n
-        .sdram_wire_addr                 (DRAM_ADDR),                 //        sdram_wire.addr
-        .sdram_wire_ba                   (DRAM_BA),                   //                  .ba
-        .sdram_wire_cas_n                (DRAM_CAS_N),                //                  .cas_n
-        .sdram_wire_cke                  (DRAM_CKE),                  //                  .cke
-        .sdram_wire_cs_n                 (DRAM_CS_N),                 //                  .cs_n
-        .sdram_wire_dq                   (DRAM_DQ),                   //                  .dq
-        .sdram_wire_dqm                  ({DRAM_UDQM,DRAM_LDQM}),     //                  .dqm
-        .sdram_wire_ras_n                (DRAM_RAS_N),                //                  .ras_n
-        .sdram_wire_we_n                 (DRAM_WE_N),                 //                  .we_n
-        .clk_sdram_clk                   (DRAM_CLK)                   //         clk_sdram.clk
+		  .clk_clk                         (MAX10_CLK1_50),  // System clock
+        .reset_reset_n                   (1'b1),           // System reset
+		  
+        .accelerometer_spi_I2C_SDAT      (GSENSOR_SDI),    // accelerometer_spi.I2C_SDAT
+        .accelerometer_spi_I2C_SCLK      (GSENSOR_SCLK),   //                  .I2C_SCLK
+        .accelerometer_spi_G_SENSOR_CS_N (GSENSOR_CS_N),   //                  .G_SENSOR_CS_N
+        .accelerometer_spi_G_SENSOR_INT  (GSENSOR_INT[1]), //                  .G_SENSOR_INT
+		  
+        .led_matrix_control_red_1        (ARDUINO_IO[0]),  //                   .red_1
+		  .led_matrix_control_green_1      (ARDUINO_IO[1]),  //                   .green_1
+        .led_matrix_control_blue_1       (ARDUINO_IO[2]),  //                   .blue_1
+        .led_matrix_control_red_2        (ARDUINO_IO[3]),  //                   .red_2
+        .led_matrix_control_green_2      (ARDUINO_IO[4]),  //                   .green_2
+        .led_matrix_control_blue_2       (ARDUINO_IO[5]),  //                   .blue_2
+        .led_matrix_control_row_sel_a    (ARDUINO_IO[6]),  // led_matrix_control.row_sel_a
+        .led_matrix_control_row_sel_b    (ARDUINO_IO[7]),  //                   .row_sel_b
+        .led_matrix_control_row_sel_c    (ARDUINO_IO[8]),  //                   .row_sel_c
+        .led_matrix_control_row_sel_d    (ARDUINO_IO[9]),  //                   .row_sel_d
+        .led_matrix_clock_clk            (ARDUINO_IO[10]), //   led_matrix_clock.clk
+        .led_matrix_control_latch        (ARDUINO_IO[11]), //                   .latch
+        .led_matrix_control_output_en    (ARDUINO_IO[12]), //                   .output_en
+		  
+        .sdram_wire_addr                 (DRAM_ADDR),             // sdram_wire.addr
+        .sdram_wire_ba                   (DRAM_BA),               //           .ba
+        .sdram_wire_cas_n                (DRAM_CAS_N),            //           .cas_n
+        .sdram_wire_cke                  (DRAM_CKE),              //           .cke
+        .sdram_wire_cs_n                 (DRAM_CS_N),             //           .cs_n
+        .sdram_wire_dq                   (DRAM_DQ),               //           .dq
+        .sdram_wire_dqm                  ({DRAM_UDQM,DRAM_LDQM}), //           .dqm
+        .sdram_wire_ras_n                (DRAM_RAS_N),            //           .ras_n
+        .sdram_wire_we_n                 (DRAM_WE_N),             //           .we_n
+        .clk_sdram_clk                   (DRAM_CLK)               // clk_sdram.clk
     );
 
 
