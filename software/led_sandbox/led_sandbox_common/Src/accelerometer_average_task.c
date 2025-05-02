@@ -1,5 +1,7 @@
 
+
 #include "../Inc/accelerometer_average_task.h"
+#include "../Inc/hal.h"
 
 
 //Define average counter;

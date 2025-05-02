@@ -145,14 +145,12 @@ ELF := led_sandbox.elf
 C_SRCS += led_sandbox_common/Src/accelerometer_average_task.c
 C_SRCS += led_sandbox_common/Src/state_machine_task.c
 C_SRCS += led_sandbox_nios2/Src/system_tick.c
-CXX_SRCS += led_sandbox_common/Src/led_sandbox.cpp
+C_SRCS += led_sandbox_nios2/Src/led_sandbox_hal_impl_nios2.c
+C_SRCS += led_sandbox_nios2/Src/main.c
+C_SRCS += led_sandbox_common/Src/scheduler.c
 CXX_SRCS += led_sandbox_common/Src/pixel_dust_task.cpp
 CXX_SRCS += led_sandbox_common/subprojects/Adafruit_PixelDust/Adafruit_PixelDust.cpp
-CXX_SRCS += led_sandbox_common/subprojects/Adafruit_PixelDust/raspberry_pi/demo1-snow.cpp
-CXX_SRCS += led_sandbox_common/subprojects/Adafruit_PixelDust/raspberry_pi/demo2-hourglass.cpp
-CXX_SRCS += led_sandbox_common/subprojects/Adafruit_PixelDust/raspberry_pi/demo3-logo.cpp
-CXX_SRCS += led_sandbox_common/subprojects/Adafruit_PixelDust/raspberry_pi/lis3dh.cpp
-CXX_SRCS += led_sandbox_common/Src/scheduler.cpp
+CXX_SRCS += led_sandbox_common/Src/led_sandbox.cpp
 ASM_SRCS :=
 
 
@@ -186,7 +184,7 @@ CRT0 :=
 SYS_LIB :=
 
 # Define path to the root of the BSP.
-BSP_ROOT_DIR := C:/Users/aless/OneDrive/Desktop/SISTEMI_EMBEDDED/led_sandbox/software/led_sandbox_bsp/
+BSP_ROOT_DIR := ../led_sandbox_bsp/
 
 # List of application specific include directories, library directories and library names
 APP_INCLUDE_DIRS :=

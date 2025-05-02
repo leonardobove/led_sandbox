@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<buildSystem id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1101425421">
+			<storageModule id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1101425421" moduleId="org.eclipse.cdt.core.settings"/>
+		</buildSystem>
+		<cconfiguration id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1101425421">
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildProperties="" description="" id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1101425421" name="Nios II" parent="org.eclipse.cdt.build.core.prefbase.cfg">
+					<folderInfo id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1101425421." name="/" resourcePath="">
+						<toolChain id="altera.nios2.mingw.gcc4.638041288" name="MinGW Nios II GCC4" superClass="altera.nios2.mingw.gcc4">
+							<targetPlatform id="altera.nios2.mingw.gcc4.1495778162" name="Nios II" superClass="altera.nios2.mingw.gcc4"/>
+							<builder buildPath="${workspace_loc://led_sandbox}" id="altera.tool.gnu.builder.mingw.1342561285" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="altera.tool.gnu.builder.mingw">
+								<outputEntries>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name=""/>
+								</outputEntries>
+							</builder>
+							<tool id="altera.tool.gnu.c.compiler.mingw.566530932" name="Nios II GCC C Compiler" superClass="altera.tool.gnu.c.compiler.mingw">
+								<option id="gnu.c.compiler.option.include.paths.453617201" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_bsp/drivers/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_bsp/HAL/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox/led_sandbox_common/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox/led_sandbox_common/subprojects/Adafruit_PixelDust}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox/led_sandbox_nios2/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_common/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_common/subprojects/Adafruit_PixelDust}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_nios2/Inc}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.291787466" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="altera.tool.gnu.cpp.compiler.mingw.2144666275" name="Nios II GCC C++ Compiler" superClass="altera.tool.gnu.cpp.compiler.mingw">
+								<option id="gnu.cpp.compiler.option.include.paths.856897152" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_bsp/drivers/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_bsp/HAL/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox/led_sandbox_common/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox/led_sandbox_common/subprojects/Adafruit_PixelDust}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox/led_sandbox_nios2/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_common/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_common/subprojects/Adafruit_PixelDust}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_nios2/Inc}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1286401335" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="altera.tool.gnu.archiver.mingw.1950596640" name="Nios II GCC Archiver" superClass="altera.tool.gnu.archiver.mingw"/>
+							<tool id="altera.tool.gnu.c.linker.mingw.1538107045" name="Nios II GCC C Linker" superClass="altera.tool.gnu.c.linker.mingw"/>
+							<tool id="altera.tool.gnu.assembler.mingw.850406274" name="Nios II GCC Assembler" superClass="altera.tool.gnu.assembler.mingw">
+								<option id="gnu.both.asm.option.include.paths.934856432" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_nios2/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_common/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_common/subprojects/Adafruit_PixelDust}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1071520131" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<folderInfo id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1101425421.980323321" name="/" resourcePath="led_sandbox_common">
+						<toolChain id="altera.nios2.mingw.gcc4.915367758" name="MinGW Nios II GCC4" superClass="altera.nios2.mingw.gcc4" unusedChildren="">
+							<targetPlatform id="altera.nios2.mingw.gcc4" name="Nios II" superClass="altera.nios2.mingw.gcc4"/>
+							<tool id="altera.tool.gnu.c.compiler.mingw.359500202" name="Nios II GCC C Compiler" superClass="altera.tool.gnu.c.compiler.mingw.566530932">
+								<option id="gnu.c.compiler.option.include.paths.655525564" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox/led_sandbox_common/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox/led_sandbox_common/subprojects/Adafruit_PixelDust}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox/led_sandbox_nios2/Inc}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1887189499" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="altera.tool.gnu.cpp.compiler.mingw.29128924" name="Nios II GCC C++ Compiler" superClass="altera.tool.gnu.cpp.compiler.mingw.2144666275">
+								<option id="gnu.cpp.compiler.option.include.paths.630827991" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox/led_sandbox_common/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox/led_sandbox_common/subprojects/Adafruit_PixelDust}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox/led_sandbox_nios2/Inc}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.69976125" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="altera.tool.gnu.archiver.mingw.637570572" name="Nios II GCC Archiver" superClass="altera.tool.gnu.archiver.mingw.1950596640"/>
+							<tool id="altera.tool.gnu.c.linker.mingw.2056790193" name="Nios II GCC C Linker" superClass="altera.tool.gnu.c.linker.mingw.1538107045"/>
+							<tool id="altera.tool.gnu.assembler.mingw.437780085" name="Nios II GCC Assembler" superClass="altera.tool.gnu.assembler.mingw.850406274">
+								<option id="gnu.both.asm.option.include.paths.1460579366" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox/led_sandbox_common/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox/led_sandbox_common/subprojects/Adafruit_PixelDust}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox/led_sandbox_nios2/Inc}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.672478989" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="led_sandbox_common/subprojects/Adafruit_PixelDust/raspberry_pi|gggg|led_sandbox_common/subprojects/Adafruit_PixelDust/examples" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1101425421" moduleId="org.eclipse.cdt.core.settings" name="Nios II">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
+				<externalSettings containerId="led_sandbox_bsp;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.778222653" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+			</storageModule>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="led_sandbox.null.1180751997" name="led_sandbox"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1101425421;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1101425421.;altera.tool.gnu.c.compiler.mingw.566530932;cdt.managedbuild.tool.gnu.c.compiler.input.291787466">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1101425421;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.1101425421.;altera.tool.gnu.cpp.compiler.mingw.2144666275;cdt.managedbuild.tool.gnu.cpp.compiler.input.1286401335">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
+		<buildTargets>
+			<target name="mem_init_install" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments/>
+				<buildTarget>mem_init_install</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+				<runAllBuilders>false</runAllBuilders>
+			</target>
+			<target name="mem_init_generate" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments/>
+				<buildTarget>mem_init_generate</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+				<runAllBuilders>false</runAllBuilders>
+			</target>
+			<target name="help" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments/>
+				<buildTarget>help</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>false</useDefaultCommand>
+				<runAllBuilders>false</runAllBuilders>
+			</target>
+		</buildTargets>
+	</storageModule>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Nios II">
+			<resource resourceType="PROJECT" workspacePath="/led_sandbox"/>
+		</configuration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+</cproject>

@@ -8,7 +8,7 @@
 #ifndef INC_SYSTEM_TICK_H_
 #define INC_SYSTEM_TICK_H_
 
-#define ALT_ENHANCED_INTERRUPT_API_PRESENT
+//#define ALT_ENHANCED_INTERRUPT_API_PRESENT
 
 #include "altera_avalon_timer_regs.h"
 #include "system.h"

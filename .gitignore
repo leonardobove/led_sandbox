@@ -1,6 +1,7 @@
 # Quartus project files
 **/db/
 **/incremental_db/
+**/synthesis/submodules/
 **/simulation/
 **/.qsys_edit/
 **/*.qws
@@ -36,15 +37,9 @@ RemoteSystemsTempFiles
 .metadata
 readme.txt
 obj
-.settings
-.cproject
-.force_relink
-.project
-create-this-app
 *.map
 *.objdump
 *.html
-*_bsp
 
 # Python environment
 bin/

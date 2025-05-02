@@ -1,9 +1,10 @@
 /*
- * scheduler.cpp
+ * scheduler.c
  *
- *  Created on: 26 apr 2025
- *      Author: aless
+ *  Created on: 14 Apr 2025
+ *      Author: leona
  */
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -103,8 +104,3 @@ bool scheduler_tick() {
 #ifdef __cplusplus
 }
 #endif
-
-
-
-
-
