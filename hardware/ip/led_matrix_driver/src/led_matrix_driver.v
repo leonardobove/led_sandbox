@@ -34,7 +34,6 @@ module led_matrix_driver (
     input        areset_n,
 	 
 	//Input sink
-    input        address,
     input[15:0]  data,
 	input        valid,
 	input        endofpacket,
@@ -44,6 +43,7 @@ module led_matrix_driver (
 	output       ready,
 	 
 	//Input Memory mapped
+    input        address,
 	input        write,
 	input[31:0]  writedata,
 	 
@@ -74,13 +74,21 @@ parameter RESET_DEFAULT  = 1'b0;    //Default value for the reset register
 parameter MAT_WIDTH     = 7'd64;    //Width of the matrix (number of pixels in a row)
 parameter MAT_HEIGHT    = 6'd32;    //Height of the matrix (number of pixels in a column)
 
+// FSM States
+localparam RESET     = 3'd0, 
+           IDLE      = 3'd1,
+           PUSH_ROW  = 3'd2,
+           LATCH_ROW = 3'd3,
+           OUTPUT_EN = 3'd4; 
+
 
 // Internal signals
 reg [5:0] col_counter;
 reg [3:0] row_counter;
-reg [5:0] pixels_rgb_colors; //TODO: Store here pixels rgb from avalon stream with DMA
+reg [5:0] pixels_rgb_colors; 
 reg enable_register;
 reg reset_register;
+reg [2:0] curr_state, next_state;
 
 // Internal MM signals
 wire sw_reset;
@@ -104,7 +112,7 @@ assign D =                   row_counter[3];
 // Control signals
 assign CLK =                 (clock & (curr_state == PUSH_ROW));
 assign LAT =                 (curr_state == LATCH_ROW) || (curr_state == RESET);
-assign OE_n =                1'b0;
+assign OE_n =                (curr_state == OUTPUT_EN);      //TO DO: Fai nuovo stato in cui aggiorna OE_n
 // Stream interface signals
 assign ready =               (curr_state == PUSH_ROW);
 // Avalon MM interface signals
@@ -225,12 +233,6 @@ begin
     end
 end
 
-// FSM States
-reg [1:0] curr_state, next_state;
-localparam RESET     = 2'd0, 
-           IDLE      = 2'd1,
-           PUSH_ROW  = 2'd2,
-           LATCH_ROW = 2'd3; 
 
 
 // Update FSM State
@@ -297,9 +299,13 @@ always @ (*) begin
                 if (driving_enable)
                 begin
                     if (row_counter == ((MAT_HEIGHT >> 1'b1) - 1'b1))
-                        next_state <= PUSH_ROW;
+                    begin
+                        next_state <= OUTPUT_EN;
+                    end
                     else
+                    begin
                         next_state <= PUSH_ROW;
+                    end
                 end
                 else
                 begin
@@ -314,6 +320,24 @@ always @ (*) begin
 
         default: begin
             next_state <= RESET;
+        end
+
+        OUTPUT_EN: begin
+            if (~sw_reset)
+            begin
+                if (driving_enable)
+                begin
+                    next_state <= PUSH_ROW;
+                end
+                else
+                begin
+                    next_state <= IDLE;
+                end
+            end
+            else
+            begin
+                next_state <= RESET;
+            end
         end
     endcase
 end
