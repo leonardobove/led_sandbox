@@ -17,7 +17,7 @@ create_generated_clock -source [get_pins { led_sandbox_system|altpll_0|sd1|pll7|
 #**************************************************************
 # Create Generated Clock
 #**************************************************************
-derive_pll_clocks
+
 
 
 

@@ -1,6 +1,7 @@
 # Quartus project files
 **/db/
 **/incremental_db/
+**/synthesis/submodules/
 **/simulation/
 **/.qsys_edit/
 **/*.qws
@@ -12,6 +13,7 @@
 **/*.bak
 **/*.log
 **/*.htm
+**/*.html
 **/*.cdf
 **/*.pin
 **/*.jdi
@@ -22,6 +24,7 @@
 **/*.xml
 **/*.regmap
 **/*.debuginfo
+*.tcl~
 
 # Pin assignment tool files
 /hardware/led_sandbox_sopc/synthesis/submodules/*
@@ -36,6 +39,8 @@ RemoteSystemsTempFiles
 .metadata
 readme.txt
 obj
+*.gdb
+*.hex
 .settings
 .cproject
 .force_relink
@@ -44,7 +49,6 @@ create-this-app
 *.map
 *.objdump
 *.html
-*_bsp
 
 # Python environment
 bin/

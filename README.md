@@ -7,28 +7,32 @@ The animation is displayed in a led matrix.
 
 We use a SOPC approach with hardware periferial driver and sw for physics elaborations.
 
-
 # Periferial PINOUT
 
 ## LED Matrix
-| name | External PIN | Board PIN |           Description                           |
-| ---- | ------------ | --------- |     ------------------------                    |
-|  R1  |      1       |           | RED led upper Sub-matrix                        |
-|  G1  |      2       |           | GREEN led upper Sub-matrix                      |
-|  B1  |      3       |           | BLUE led upper Sub-matrix                       |
-|  GND |      4       |           | ground                                          |
-|  R2  |      5       |           | RED led lower Sub-matrix                        |
-|  G2  |      6       |           | GREEN led lower Sub-matrix                      |
-|  B2  |      7       |           | BLUE led lower Sub-matrix                       |
-|  GND |      8       |           | ground                                          |
-|  A   |      9       |           | Select which column you are driving             |
-|  B   |      10      |           | Select which column you are driving             |
-|  C   |      11      |           | Select which column you are driving             |
-|  D   |      12      |           | Select which column you are driving             |
-|  CLK |      13      |           | Clock for led visualization                     |
-|  LAT |      14      |           | Latches the value until put low                 |
-|  OE  |      15      |           | Output enable. High until all led values loaded |
-|  GND |      16      |           | ground                                          |
+
+Matrix pin a partire da quello con la fascia rossa.
+
+![Pin su scheda](./datasheet/ordine_pin.png)
+
+| name |  Matrix PIN  |   Board PIN    |           Description                           |
+| ---- | ------------ |   ---------    |     ------------------------                    |
+|  R1  |      1       | ARDUINO_IO[0]  | RED led upper Sub-matrix                        |
+|  G1  |      2       | ARDUINO_IO[1]  | GREEN led upper Sub-matrix                      |
+|  B1  |      3       | ARDUINO_IO[2]  | BLUE led upper Sub-matrix                       |
+|  GND |      4       | GND            | ground                                          |
+|  R2  |      5       | ARDUINO_IO[3]  | RED led lower Sub-matrix                        |
+|  G2  |      6       | ARDUINO_IO[4]  | GREEN led lower Sub-matrix                      |
+|  B2  |      7       | ARDUINO_IO[5]  | BLUE led lower Sub-matrix                       |
+|  GND |      8       | GND            | ground                                          |
+|  A   |      9       | ARDUINO_IO[6]  | Select which column you are driving             |
+|  B   |      10      | ARDUINO_IO[7]  | Select which column you are driving             |
+|  C   |      11      | ARDUINO_IO[8]  | Select which column you are driving             |
+|  D   |      12      | ARDUINO_IO[9]  | Select which column you are driving             |
+|  CLK |      13      | ARDUINO_IO[10] | Clock for led visualization                     |
+|  LAT |      14      | ARDUINO_IO[11] | Latches the value until put low                 |
+|  OE  |      15      | ARDUINO_IO[12] | Output enable. High until all led values loaded |
+|  GND |      16      | GND            | ground                                          |
 
 ## Submodules
 
@@ -92,4 +96,4 @@ To control the NIOS II emulated software you can use your keyboard:
 - `x/X`: decrease/increase X-axis acceleration
 - `y/Y`: decrease/increase Y-axis acceleration
 - `z/Z`: decrease/increase Z-axis acceleration
- 
+
