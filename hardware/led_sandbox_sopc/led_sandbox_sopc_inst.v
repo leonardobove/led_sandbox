@@ -5,6 +5,7 @@
 		.accelerometer_spi_G_SENSOR_INT  (<connected-to-accelerometer_spi_G_SENSOR_INT>),  //                   .G_SENSOR_INT
 		.clk_clk                         (<connected-to-clk_clk>),                         //                clk.clk
 		.clk_sdram_clk                   (<connected-to-clk_sdram_clk>),                   //          clk_sdram.clk
+		.keys_export                     (<connected-to-keys_export>),                     //               keys.export
 		.led_matrix_clock_clk            (<connected-to-led_matrix_clock_clk>),            //   led_matrix_clock.clk
 		.led_matrix_control_row_sel_a    (<connected-to-led_matrix_control_row_sel_a>),    // led_matrix_control.row_sel_a
 		.led_matrix_control_row_sel_b    (<connected-to-led_matrix_control_row_sel_b>),    //                   .row_sel_b
@@ -18,6 +19,7 @@
 		.led_matrix_control_output_en    (<connected-to-led_matrix_control_output_en>),    //                   .output_en
 		.led_matrix_control_red_1        (<connected-to-led_matrix_control_red_1>),        //                   .red_1
 		.led_matrix_control_red_2        (<connected-to-led_matrix_control_red_2>),        //                   .red_2
+		.leds_export                     (<connected-to-leds_export>),                     //               leds.export
 		.reset_reset_n                   (<connected-to-reset_reset_n>),                   //              reset.reset_n
 		.sdram_wire_addr                 (<connected-to-sdram_wire_addr>),                 //         sdram_wire.addr
 		.sdram_wire_ba                   (<connected-to-sdram_wire_ba>),                   //                   .ba
@@ -27,6 +29,7 @@
 		.sdram_wire_dq                   (<connected-to-sdram_wire_dq>),                   //                   .dq
 		.sdram_wire_dqm                  (<connected-to-sdram_wire_dqm>),                  //                   .dqm
 		.sdram_wire_ras_n                (<connected-to-sdram_wire_ras_n>),                //                   .ras_n
-		.sdram_wire_we_n                 (<connected-to-sdram_wire_we_n>)                  //                   .we_n
+		.sdram_wire_we_n                 (<connected-to-sdram_wire_we_n>),                 //                   .we_n
+		.sliders_export                  (<connected-to-sliders_export>)                   //            sliders.export
 	);
 

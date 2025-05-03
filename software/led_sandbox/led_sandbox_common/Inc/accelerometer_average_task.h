@@ -5,8 +5,8 @@
  *      Author: ale_ball
  */
 
- #ifndef INC_ACCELEROMETER_AVERAGE_TASK_H_
- #define INC_ACCELEROMETER_AVERAGE_TASK_H_
+#ifndef INC_ACCELEROMETER_AVERAGE_TASK_H_
+#define INC_ACCELEROMETER_AVERAGE_TASK_H_
 
 #ifdef __cplusplus
 extern "C" {

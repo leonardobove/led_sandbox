@@ -21,7 +21,7 @@
    {
       datum baseAddress
       {
-         value = "134221912";
+         value = "134221960";
          type = "String";
       }
    }
@@ -37,7 +37,7 @@
    {
       datum baseAddress
       {
-         value = "134221856";
+         value = "134221904";
          type = "String";
       }
    }
@@ -77,7 +77,23 @@
    {
       datum baseAddress
       {
-         value = "134221904";
+         value = "134221952";
+         type = "String";
+      }
+   }
+   element keys
+   {
+      datum _sortIndex
+      {
+         value = "11";
+         type = "int";
+      }
+   }
+   element keys.s1
+   {
+      datum baseAddress
+      {
+         value = "134221872";
          type = "String";
       }
    }
@@ -93,7 +109,7 @@
    {
       datum baseAddress
       {
-         value = "134221896";
+         value = "134221944";
          type = "String";
       }
    }
@@ -102,6 +118,22 @@
       datum _originalDeviceFamily
       {
          value = "MAX 10";
+         type = "String";
+      }
+   }
+   element leds
+   {
+      datum _sortIndex
+      {
+         value = "12";
+         type = "int";
+      }
+   }
+   element leds.s1
+   {
+      datum baseAddress
+      {
+         value = "134221856";
          type = "String";
       }
    }
@@ -121,6 +153,22 @@
          type = "String";
       }
    }
+   element sliders
+   {
+      datum _sortIndex
+      {
+         value = "10";
+         type = "int";
+      }
+   }
+   element sliders.s1
+   {
+      datum baseAddress
+      {
+         value = "134221888";
+         type = "String";
+      }
+   }
    element system_id
    {
       datum _sortIndex
@@ -133,7 +181,7 @@
    {
       datum baseAddress
       {
-         value = "134221888";
+         value = "134221936";
          type = "String";
       }
    }
@@ -170,7 +218,7 @@
    {
       datum baseAddress
       {
-         value = "134221872";
+         value = "134221920";
          type = "String";
       }
    }
@@ -203,6 +251,11 @@
  <interface name="clk" internal="clk_50.clk_in" type="clock" dir="end" />
  <interface name="clk_sdram" internal="altpll_0.c1" type="clock" dir="start" />
  <interface
+   name="keys"
+   internal="keys.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
    name="led_matrix_clock"
    internal="led_matrix_driver_0.clock_out"
    type="clock"
@@ -212,8 +265,18 @@
    internal="led_matrix_driver_0.conduit_out"
    type="conduit"
    dir="end" />
+ <interface
+   name="leds"
+   internal="leds.external_connection"
+   type="conduit"
+   dir="end" />
  <interface name="reset" internal="clk_50.clk_in_reset" type="reset" dir="end" />
  <interface name="sdram_wire" internal="sdram.wire" type="conduit" dir="end" />
+ <interface
+   name="sliders"
+   internal="sliders.external_connection"
+   type="conduit"
+   dir="end" />
  <module
    name="accelerometer_spi_0"
    kind="altera_up_avalon_accelerometer_spi"
@@ -415,7 +478,7 @@
   <parameter name="dataAddrWidth" value="28" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='sdram.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='systick_timer.s1' start='0x8001000' end='0x8001020' type='altera_avalon_timer.s1' /><slave name='altpll_0.pll_slave' start='0x8001020' end='0x8001030' type='altpll.pll_slave' /><slave name='video_dma_controller_0.avalon_dma_control_slave' start='0x8001030' end='0x8001040' type='altera_up_avalon_video_dma_controller.avalon_dma_control_slave' /><slave name='system_id.control_slave' start='0x8001040' end='0x8001048' type='altera_avalon_sysid_qsys.control_slave' /><slave name='led_matrix_driver_0.avalon_slave_0' start='0x8001048' end='0x8001050' type='led_matrix_driver.avalon_slave_0' /><slave name='jtag_uart.avalon_jtag_slave' start='0x8001050' end='0x8001058' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='accelerometer_spi_0.avalon_accelerometer_spi_mode_slave' start='0x8001058' end='0x800105A' type='altera_up_avalon_accelerometer_spi.avalon_accelerometer_spi_mode_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='sdram.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='systick_timer.s1' start='0x8001000' end='0x8001020' type='altera_avalon_timer.s1' /><slave name='leds.s1' start='0x8001020' end='0x8001030' type='altera_avalon_pio.s1' /><slave name='keys.s1' start='0x8001030' end='0x8001040' type='altera_avalon_pio.s1' /><slave name='sliders.s1' start='0x8001040' end='0x8001050' type='altera_avalon_pio.s1' /><slave name='altpll_0.pll_slave' start='0x8001050' end='0x8001060' type='altpll.pll_slave' /><slave name='video_dma_controller_0.avalon_dma_control_slave' start='0x8001060' end='0x8001070' type='altera_up_avalon_video_dma_controller.avalon_dma_control_slave' /><slave name='system_id.control_slave' start='0x8001070' end='0x8001078' type='altera_avalon_sysid_qsys.control_slave' /><slave name='led_matrix_driver_0.avalon_slave_0' start='0x8001078' end='0x8001080' type='led_matrix_driver.avalon_slave_0' /><slave name='jtag_uart.avalon_jtag_slave' start='0x8001080' end='0x8001088' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='accelerometer_spi_0.avalon_accelerometer_spi_mode_slave' start='0x8001088' end='0x800108A' type='altera_up_avalon_accelerometer_spi.avalon_accelerometer_spi_mode_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -461,7 +524,7 @@
   <parameter name="instruction_master_high_performance_paddr_size" value="0" />
   <parameter name="instruction_master_paddr_base" value="0" />
   <parameter name="instruction_master_paddr_size" value="0" />
-  <parameter name="internalIrqMaskSystemInfo" value="7" />
+  <parameter name="internalIrqMaskSystemInfo" value="23" />
   <parameter name="io_regionbase" value="0" />
   <parameter name="io_regionsize" value="0" />
   <parameter name="master_addr_map" value="false" />
@@ -592,6 +655,20 @@
   <parameter name="writeBufferDepth" value="64" />
   <parameter name="writeIRQThreshold" value="8" />
  </module>
+ <module name="keys" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="true" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="true" />
+  <parameter name="clockRate" value="100000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="FALLING" />
+  <parameter name="generateIRQ" value="true" />
+  <parameter name="irqType" value="EDGE" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="2" />
+ </module>
  <module
    name="led_matrix_driver_0"
    kind="led_matrix_driver"
@@ -601,6 +678,20 @@
   <parameter name="MAT_HEIGHT" value="32" />
   <parameter name="MAT_WIDTH" value="64" />
   <parameter name="RESET_DEFAULT" value="0" />
+ </module>
+ <module name="leds" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="100000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="10" />
  </module>
  <module
    name="sdram"
@@ -630,6 +721,20 @@
   <parameter name="refreshPeriod" value="15.625" />
   <parameter name="registerDataIn" value="true" />
   <parameter name="rowWidth" value="13" />
+ </module>
+ <module name="sliders" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="100000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="10" />
  </module>
  <module
    name="system_id"
@@ -686,7 +791,7 @@
    start="cpu.data_master"
    end="accelerometer_spi_0.avalon_accelerometer_spi_mode_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001058" />
+  <parameter name="baseAddress" value="0x08001088" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -695,7 +800,7 @@
    start="cpu.data_master"
    end="video_dma_controller_0.avalon_dma_control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001030" />
+  <parameter name="baseAddress" value="0x08001060" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -704,7 +809,7 @@
    start="cpu.data_master"
    end="jtag_uart.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001050" />
+  <parameter name="baseAddress" value="0x08001080" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -713,7 +818,7 @@
    start="cpu.data_master"
    end="led_matrix_driver_0.avalon_slave_0">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001048" />
+  <parameter name="baseAddress" value="0x08001078" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -722,7 +827,7 @@
    start="cpu.data_master"
    end="system_id.control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001040" />
+  <parameter name="baseAddress" value="0x08001070" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -740,7 +845,7 @@
    start="cpu.data_master"
    end="altpll_0.pll_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001020" />
+  <parameter name="baseAddress" value="0x08001050" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="avalon" version="18.1" start="cpu.data_master" end="sdram.s1">
@@ -755,6 +860,21 @@
    end="systick_timer.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x08001000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection kind="avalon" version="18.1" start="cpu.data_master" end="sliders.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x08001040" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection kind="avalon" version="18.1" start="cpu.data_master" end="keys.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x08001030" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection kind="avalon" version="18.1" start="cpu.data_master" end="leds.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x08001020" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -789,6 +909,9 @@
  <connection kind="clock" version="18.1" start="altpll_0.c0" end="system_id.clk" />
  <connection kind="clock" version="18.1" start="altpll_0.c0" end="cpu.clk" />
  <connection kind="clock" version="18.1" start="altpll_0.c0" end="sdram.clk" />
+ <connection kind="clock" version="18.1" start="altpll_0.c0" end="leds.clk" />
+ <connection kind="clock" version="18.1" start="altpll_0.c0" end="keys.clk" />
+ <connection kind="clock" version="18.1" start="altpll_0.c0" end="sliders.clk" />
  <connection
    kind="clock"
    version="18.1"
@@ -814,17 +937,20 @@
    version="18.1"
    start="cpu.irq"
    end="accelerometer_spi_0.interrupt">
-  <parameter name="irqNumber" value="0" />
+  <parameter name="irqNumber" value="2" />
  </connection>
  <connection kind="interrupt" version="18.1" start="cpu.irq" end="jtag_uart.irq">
-  <parameter name="irqNumber" value="1" />
+  <parameter name="irqNumber" value="4" />
  </connection>
  <connection
    kind="interrupt"
    version="18.1"
    start="cpu.irq"
    end="systick_timer.irq">
-  <parameter name="irqNumber" value="2" />
+  <parameter name="irqNumber" value="0" />
+ </connection>
+ <connection kind="interrupt" version="18.1" start="cpu.irq" end="keys.irq">
+  <parameter name="irqNumber" value="1" />
  </connection>
  <connection
    kind="reset"
@@ -870,6 +996,13 @@
  <connection
    kind="reset"
    version="18.1"
+   start="clk_50.clk_reset"
+   end="sliders.reset" />
+ <connection kind="reset" version="18.1" start="clk_50.clk_reset" end="keys.reset" />
+ <connection kind="reset" version="18.1" start="clk_50.clk_reset" end="leds.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
    start="cpu.debug_reset_request"
    end="altpll_0.inclk_interface_reset" />
  <connection
@@ -912,6 +1045,21 @@
    version="18.1"
    start="cpu.debug_reset_request"
    end="led_matrix_driver_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="cpu.debug_reset_request"
+   end="sliders.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="cpu.debug_reset_request"
+   end="keys.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="cpu.debug_reset_request"
+   end="leds.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />

@@ -8,11 +8,13 @@
 #ifndef INC_PIXEL_DUST_TASK_H_
 #define INC_PIXEL_DUST_TASK_H_
 
-#include "../subprojects/Adafruit_PixelDust/Adafruit_PixelDust.h"
+//#include "../subprojects/Adafruit_PixelDust/Adafruit_PixelDust.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#include <stdint.h>
 
 // Useful RGB LED matrix specification definitions
 #define N_GRAINS             (20u) // Number of grains of sand

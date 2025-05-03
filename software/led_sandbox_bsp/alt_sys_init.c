@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'led_sandbox_sopc'
  * SOPC Builder design path: ../../sopc/led_sandbox_sopc.sopcinfo
  *
- * Generated: Fri May 02 00:54:41 CEST 2025
+ * Generated: Fri May 02 17:02:41 CEST 2025
  */
 
 /*
@@ -63,6 +63,7 @@
 #include "altera_avalon_sysid_qsys.h"
 #include "altera_avalon_timer.h"
 #include "altera_up_avalon_accelerometer_spi.h"
+#include "altera_up_avalon_video_dma_controller.h"
 
 /*
  * Allocate the device storage
@@ -73,6 +74,7 @@ ALTERA_AVALON_JTAG_UART_INSTANCE ( JTAG_UART, jtag_uart);
 ALTERA_AVALON_SYSID_QSYS_INSTANCE ( SYSTEM_ID, system_id);
 ALTERA_AVALON_TIMER_INSTANCE ( SYSTICK_TIMER, systick_timer);
 ALTERA_UP_AVALON_ACCELEROMETER_SPI_INSTANCE ( ACCELEROMETER_SPI_0, accelerometer_spi_0);
+ALTERA_UP_AVALON_VIDEO_DMA_CONTROLLER_INSTANCE ( VIDEO_DMA_CONTROLLER_0, video_dma_controller_0);
 
 /*
  * Initialize the interrupt controller devices
@@ -99,4 +101,5 @@ void alt_sys_init( void )
     ALTERA_AVALON_JTAG_UART_INIT ( JTAG_UART, jtag_uart);
     ALTERA_AVALON_SYSID_QSYS_INIT ( SYSTEM_ID, system_id);
     ALTERA_UP_AVALON_ACCELEROMETER_SPI_INIT ( ACCELEROMETER_SPI_0, accelerometer_spi_0);
+    ALTERA_UP_AVALON_VIDEO_DMA_CONTROLLER_INIT ( VIDEO_DMA_CONTROLLER_0, video_dma_controller_0);
 }

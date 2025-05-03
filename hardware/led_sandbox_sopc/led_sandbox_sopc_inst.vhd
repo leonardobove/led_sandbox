@@ -6,6 +6,7 @@
 			accelerometer_spi_G_SENSOR_INT  : in    std_logic                     := 'X';             -- G_SENSOR_INT
 			clk_clk                         : in    std_logic                     := 'X';             -- clk
 			clk_sdram_clk                   : out   std_logic;                                        -- clk
+			keys_export                     : in    std_logic_vector(1 downto 0)  := (others => 'X'); -- export
 			led_matrix_clock_clk            : out   std_logic;                                        -- clk
 			led_matrix_control_row_sel_a    : out   std_logic;                                        -- row_sel_a
 			led_matrix_control_row_sel_b    : out   std_logic;                                        -- row_sel_b
@@ -19,6 +20,7 @@
 			led_matrix_control_output_en    : out   std_logic;                                        -- output_en
 			led_matrix_control_red_1        : out   std_logic;                                        -- red_1
 			led_matrix_control_red_2        : out   std_logic;                                        -- red_2
+			leds_export                     : out   std_logic_vector(9 downto 0);                     -- export
 			reset_reset_n                   : in    std_logic                     := 'X';             -- reset_n
 			sdram_wire_addr                 : out   std_logic_vector(12 downto 0);                    -- addr
 			sdram_wire_ba                   : out   std_logic_vector(1 downto 0);                     -- ba
@@ -28,7 +30,8 @@
 			sdram_wire_dq                   : inout std_logic_vector(15 downto 0) := (others => 'X'); -- dq
 			sdram_wire_dqm                  : out   std_logic_vector(1 downto 0);                     -- dqm
 			sdram_wire_ras_n                : out   std_logic;                                        -- ras_n
-			sdram_wire_we_n                 : out   std_logic                                         -- we_n
+			sdram_wire_we_n                 : out   std_logic;                                        -- we_n
+			sliders_export                  : in    std_logic_vector(9 downto 0)  := (others => 'X')  -- export
 		);
 	end component led_sandbox_sopc;
 
@@ -40,6 +43,7 @@
 			accelerometer_spi_G_SENSOR_INT  => CONNECTED_TO_accelerometer_spi_G_SENSOR_INT,  --                   .G_SENSOR_INT
 			clk_clk                         => CONNECTED_TO_clk_clk,                         --                clk.clk
 			clk_sdram_clk                   => CONNECTED_TO_clk_sdram_clk,                   --          clk_sdram.clk
+			keys_export                     => CONNECTED_TO_keys_export,                     --               keys.export
 			led_matrix_clock_clk            => CONNECTED_TO_led_matrix_clock_clk,            --   led_matrix_clock.clk
 			led_matrix_control_row_sel_a    => CONNECTED_TO_led_matrix_control_row_sel_a,    -- led_matrix_control.row_sel_a
 			led_matrix_control_row_sel_b    => CONNECTED_TO_led_matrix_control_row_sel_b,    --                   .row_sel_b
@@ -53,6 +57,7 @@
 			led_matrix_control_output_en    => CONNECTED_TO_led_matrix_control_output_en,    --                   .output_en
 			led_matrix_control_red_1        => CONNECTED_TO_led_matrix_control_red_1,        --                   .red_1
 			led_matrix_control_red_2        => CONNECTED_TO_led_matrix_control_red_2,        --                   .red_2
+			leds_export                     => CONNECTED_TO_leds_export,                     --               leds.export
 			reset_reset_n                   => CONNECTED_TO_reset_reset_n,                   --              reset.reset_n
 			sdram_wire_addr                 => CONNECTED_TO_sdram_wire_addr,                 --         sdram_wire.addr
 			sdram_wire_ba                   => CONNECTED_TO_sdram_wire_ba,                   --                   .ba
@@ -62,6 +67,7 @@
 			sdram_wire_dq                   => CONNECTED_TO_sdram_wire_dq,                   --                   .dq
 			sdram_wire_dqm                  => CONNECTED_TO_sdram_wire_dqm,                  --                   .dqm
 			sdram_wire_ras_n                => CONNECTED_TO_sdram_wire_ras_n,                --                   .ras_n
-			sdram_wire_we_n                 => CONNECTED_TO_sdram_wire_we_n                  --                   .we_n
+			sdram_wire_we_n                 => CONNECTED_TO_sdram_wire_we_n,                 --                   .we_n
+			sliders_export                  => CONNECTED_TO_sliders_export                   --            sliders.export
 		);
 

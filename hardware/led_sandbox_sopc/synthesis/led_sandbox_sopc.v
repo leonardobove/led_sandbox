@@ -10,6 +10,7 @@ module led_sandbox_sopc (
 		input  wire        accelerometer_spi_G_SENSOR_INT,  //                   .G_SENSOR_INT
 		input  wire        clk_clk,                         //                clk.clk
 		output wire        clk_sdram_clk,                   //          clk_sdram.clk
+		input  wire [1:0]  keys_export,                     //               keys.export
 		output wire        led_matrix_clock_clk,            //   led_matrix_clock.clk
 		output wire        led_matrix_control_row_sel_a,    // led_matrix_control.row_sel_a
 		output wire        led_matrix_control_row_sel_b,    //                   .row_sel_b
@@ -23,6 +24,7 @@ module led_sandbox_sopc (
 		output wire        led_matrix_control_output_en,    //                   .output_en
 		output wire        led_matrix_control_red_1,        //                   .red_1
 		output wire        led_matrix_control_red_2,        //                   .red_2
+		output wire [9:0]  leds_export,                     //               leds.export
 		input  wire        reset_reset_n,                   //              reset.reset_n
 		output wire [12:0] sdram_wire_addr,                 //         sdram_wire.addr
 		output wire [1:0]  sdram_wire_ba,                   //                   .ba
@@ -32,7 +34,8 @@ module led_sandbox_sopc (
 		inout  wire [15:0] sdram_wire_dq,                   //                   .dq
 		output wire [1:0]  sdram_wire_dqm,                  //                   .dqm
 		output wire        sdram_wire_ras_n,                //                   .ras_n
-		output wire        sdram_wire_we_n                  //                   .we_n
+		output wire        sdram_wire_we_n,                 //                   .we_n
+		input  wire [9:0]  sliders_export                   //            sliders.export
 	);
 
 	wire         video_dma_controller_0_avalon_pixel_source_valid;                                      // video_dma_controller_0:stream_valid -> led_matrix_driver_0:valid
@@ -40,7 +43,7 @@ module led_sandbox_sopc (
 	wire         video_dma_controller_0_avalon_pixel_source_ready;                                      // led_matrix_driver_0:ready -> video_dma_controller_0:stream_ready
 	wire         video_dma_controller_0_avalon_pixel_source_startofpacket;                              // video_dma_controller_0:stream_startofpacket -> led_matrix_driver_0:startofpacket
 	wire         video_dma_controller_0_avalon_pixel_source_endofpacket;                                // video_dma_controller_0:stream_endofpacket -> led_matrix_driver_0:endofpacket
-	wire         altpll_0_c0_clk;                                                                       // altpll_0:c0 -> [cpu:clk, irq_mapper:clk, irq_synchronizer:sender_clk, jtag_uart:clk, mm_interconnect_0:altpll_0_c0_clk, rst_controller_002:clk, sdram:clk, system_id:clock, systick_timer:clk]
+	wire         altpll_0_c0_clk;                                                                       // altpll_0:c0 -> [cpu:clk, irq_mapper:clk, irq_synchronizer:sender_clk, jtag_uart:clk, keys:clk, leds:clk, mm_interconnect_0:altpll_0_c0_clk, rst_controller_002:clk, sdram:clk, sliders:clk, system_id:clock, systick_timer:clk]
 	wire         altpll_0_c2_clk;                                                                       // altpll_0:c2 -> [accelerometer_spi_0:clk, irq_synchronizer:receiver_clk, mm_interconnect_0:altpll_0_c2_clk, rst_controller:clk]
 	wire         altpll_0_c3_clk;                                                                       // altpll_0:c3 -> [led_matrix_driver_0:clock, mm_interconnect_0:altpll_0_c3_clk, rst_controller_003:clk, video_dma_controller_0:clk]
 	wire         video_dma_controller_0_avalon_dma_master_waitrequest;                                  // mm_interconnect_0:video_dma_controller_0_avalon_dma_master_waitrequest -> video_dma_controller_0:master_waitrequest
@@ -115,15 +118,28 @@ module led_sandbox_sopc (
 	wire   [2:0] mm_interconnect_0_systick_timer_s1_address;                                            // mm_interconnect_0:systick_timer_s1_address -> systick_timer:address
 	wire         mm_interconnect_0_systick_timer_s1_write;                                              // mm_interconnect_0:systick_timer_s1_write -> systick_timer:write_n
 	wire  [15:0] mm_interconnect_0_systick_timer_s1_writedata;                                          // mm_interconnect_0:systick_timer_s1_writedata -> systick_timer:writedata
+	wire  [31:0] mm_interconnect_0_sliders_s1_readdata;                                                 // sliders:readdata -> mm_interconnect_0:sliders_s1_readdata
+	wire   [1:0] mm_interconnect_0_sliders_s1_address;                                                  // mm_interconnect_0:sliders_s1_address -> sliders:address
+	wire         mm_interconnect_0_keys_s1_chipselect;                                                  // mm_interconnect_0:keys_s1_chipselect -> keys:chipselect
+	wire  [31:0] mm_interconnect_0_keys_s1_readdata;                                                    // keys:readdata -> mm_interconnect_0:keys_s1_readdata
+	wire   [1:0] mm_interconnect_0_keys_s1_address;                                                     // mm_interconnect_0:keys_s1_address -> keys:address
+	wire         mm_interconnect_0_keys_s1_write;                                                       // mm_interconnect_0:keys_s1_write -> keys:write_n
+	wire  [31:0] mm_interconnect_0_keys_s1_writedata;                                                   // mm_interconnect_0:keys_s1_writedata -> keys:writedata
+	wire         mm_interconnect_0_leds_s1_chipselect;                                                  // mm_interconnect_0:leds_s1_chipselect -> leds:chipselect
+	wire  [31:0] mm_interconnect_0_leds_s1_readdata;                                                    // leds:readdata -> mm_interconnect_0:leds_s1_readdata
+	wire   [1:0] mm_interconnect_0_leds_s1_address;                                                     // mm_interconnect_0:leds_s1_address -> leds:address
+	wire         mm_interconnect_0_leds_s1_write;                                                       // mm_interconnect_0:leds_s1_write -> leds:write_n
+	wire  [31:0] mm_interconnect_0_leds_s1_writedata;                                                   // mm_interconnect_0:leds_s1_writedata -> leds:writedata
 	wire         irq_mapper_receiver1_irq;                                                              // jtag_uart:av_irq -> irq_mapper:receiver1_irq
 	wire         irq_mapper_receiver2_irq;                                                              // systick_timer:irq -> irq_mapper:receiver2_irq
+	wire         irq_mapper_receiver3_irq;                                                              // keys:irq -> irq_mapper:receiver3_irq
 	wire  [31:0] cpu_irq_irq;                                                                           // irq_mapper:sender_irq -> cpu:irq
 	wire         irq_mapper_receiver0_irq;                                                              // irq_synchronizer:sender_irq -> irq_mapper:receiver0_irq
 	wire   [0:0] irq_synchronizer_receiver_irq;                                                         // accelerometer_spi_0:irq -> irq_synchronizer:receiver_irq
 	wire         rst_controller_reset_out_reset;                                                        // rst_controller:reset_out -> [accelerometer_spi_0:reset, irq_synchronizer:receiver_reset, mm_interconnect_0:accelerometer_spi_0_reset_reset_bridge_in_reset_reset]
 	wire         cpu_debug_reset_request_reset;                                                         // cpu:debug_reset_request -> [rst_controller:reset_in1, rst_controller_001:reset_in1, rst_controller_002:reset_in1, rst_controller_003:reset_in1]
 	wire         rst_controller_001_reset_out_reset;                                                    // rst_controller_001:reset_out -> [altpll_0:reset, mm_interconnect_0:altpll_0_inclk_interface_reset_reset_bridge_in_reset_reset]
-	wire         rst_controller_002_reset_out_reset;                                                    // rst_controller_002:reset_out -> [cpu:reset_n, irq_mapper:reset, irq_synchronizer:sender_reset, jtag_uart:rst_n, mm_interconnect_0:cpu_reset_reset_bridge_in_reset_reset, rst_translator:in_reset, sdram:reset_n, system_id:reset_n, systick_timer:reset_n]
+	wire         rst_controller_002_reset_out_reset;                                                    // rst_controller_002:reset_out -> [cpu:reset_n, irq_mapper:reset, irq_synchronizer:sender_reset, jtag_uart:rst_n, keys:reset_n, leds:reset_n, mm_interconnect_0:cpu_reset_reset_bridge_in_reset_reset, rst_translator:in_reset, sdram:reset_n, sliders:reset_n, system_id:reset_n, systick_timer:reset_n]
 	wire         rst_controller_002_reset_out_reset_req;                                                // rst_controller_002:reset_req -> [cpu:reset_req, rst_translator:reset_req_in]
 	wire         rst_controller_003_reset_out_reset;                                                    // rst_controller_003:reset_out -> [led_matrix_driver_0:areset_n, mm_interconnect_0:video_dma_controller_0_reset_reset_bridge_in_reset_reset, video_dma_controller_0:reset]
 
@@ -213,6 +229,18 @@ module led_sandbox_sopc (
 		.av_irq         (irq_mapper_receiver1_irq)                                   //               irq.irq
 	);
 
+	led_sandbox_sopc_keys keys (
+		.clk        (altpll_0_c0_clk),                      //                 clk.clk
+		.reset_n    (~rst_controller_002_reset_out_reset),  //               reset.reset_n
+		.address    (mm_interconnect_0_keys_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_keys_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_keys_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_keys_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_keys_s1_readdata),   //                    .readdata
+		.in_port    (keys_export),                          // external_connection.export
+		.irq        (irq_mapper_receiver3_irq)              //                 irq.irq
+	);
+
 	led_matrix_driver #(
 		.ENABLE_DEFAULT (1),
 		.RESET_DEFAULT  (0),
@@ -246,6 +274,17 @@ module led_sandbox_sopc (
 		.R2            (led_matrix_control_red_2)                                        //                      .red_2
 	);
 
+	led_sandbox_sopc_leds leds (
+		.clk        (altpll_0_c0_clk),                      //                 clk.clk
+		.reset_n    (~rst_controller_002_reset_out_reset),  //               reset.reset_n
+		.address    (mm_interconnect_0_leds_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_leds_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_leds_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_leds_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_leds_s1_readdata),   //                    .readdata
+		.out_port   (leds_export)                           // external_connection.export
+	);
+
 	led_sandbox_sopc_sdram sdram (
 		.clk            (altpll_0_c0_clk),                          //   clk.clk
 		.reset_n        (~rst_controller_002_reset_out_reset),      // reset.reset_n
@@ -267,6 +306,14 @@ module led_sandbox_sopc (
 		.zs_dqm         (sdram_wire_dqm),                           //      .export
 		.zs_ras_n       (sdram_wire_ras_n),                         //      .export
 		.zs_we_n        (sdram_wire_we_n)                           //      .export
+	);
+
+	led_sandbox_sopc_sliders sliders (
+		.clk      (altpll_0_c0_clk),                       //                 clk.clk
+		.reset_n  (~rst_controller_002_reset_out_reset),   //               reset.reset_n
+		.address  (mm_interconnect_0_sliders_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_sliders_s1_readdata), //                    .readdata
+		.in_port  (sliders_export)                         // external_connection.export
 	);
 
 	led_sandbox_sopc_system_id system_id (
@@ -363,11 +410,21 @@ module led_sandbox_sopc (
 		.jtag_uart_avalon_jtag_slave_writedata                               (mm_interconnect_0_jtag_uart_avalon_jtag_slave_writedata),                               //                                                        .writedata
 		.jtag_uart_avalon_jtag_slave_waitrequest                             (mm_interconnect_0_jtag_uart_avalon_jtag_slave_waitrequest),                             //                                                        .waitrequest
 		.jtag_uart_avalon_jtag_slave_chipselect                              (mm_interconnect_0_jtag_uart_avalon_jtag_slave_chipselect),                              //                                                        .chipselect
+		.keys_s1_address                                                     (mm_interconnect_0_keys_s1_address),                                                     //                                                 keys_s1.address
+		.keys_s1_write                                                       (mm_interconnect_0_keys_s1_write),                                                       //                                                        .write
+		.keys_s1_readdata                                                    (mm_interconnect_0_keys_s1_readdata),                                                    //                                                        .readdata
+		.keys_s1_writedata                                                   (mm_interconnect_0_keys_s1_writedata),                                                   //                                                        .writedata
+		.keys_s1_chipselect                                                  (mm_interconnect_0_keys_s1_chipselect),                                                  //                                                        .chipselect
 		.led_matrix_driver_0_avalon_slave_0_address                          (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_address),                          //                      led_matrix_driver_0_avalon_slave_0.address
 		.led_matrix_driver_0_avalon_slave_0_write                            (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_write),                            //                                                        .write
 		.led_matrix_driver_0_avalon_slave_0_read                             (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_read),                             //                                                        .read
 		.led_matrix_driver_0_avalon_slave_0_readdata                         (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_readdata),                         //                                                        .readdata
 		.led_matrix_driver_0_avalon_slave_0_writedata                        (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_writedata),                        //                                                        .writedata
+		.leds_s1_address                                                     (mm_interconnect_0_leds_s1_address),                                                     //                                                 leds_s1.address
+		.leds_s1_write                                                       (mm_interconnect_0_leds_s1_write),                                                       //                                                        .write
+		.leds_s1_readdata                                                    (mm_interconnect_0_leds_s1_readdata),                                                    //                                                        .readdata
+		.leds_s1_writedata                                                   (mm_interconnect_0_leds_s1_writedata),                                                   //                                                        .writedata
+		.leds_s1_chipselect                                                  (mm_interconnect_0_leds_s1_chipselect),                                                  //                                                        .chipselect
 		.sdram_s1_address                                                    (mm_interconnect_0_sdram_s1_address),                                                    //                                                sdram_s1.address
 		.sdram_s1_write                                                      (mm_interconnect_0_sdram_s1_write),                                                      //                                                        .write
 		.sdram_s1_read                                                       (mm_interconnect_0_sdram_s1_read),                                                       //                                                        .read
@@ -377,6 +434,8 @@ module led_sandbox_sopc (
 		.sdram_s1_readdatavalid                                              (mm_interconnect_0_sdram_s1_readdatavalid),                                              //                                                        .readdatavalid
 		.sdram_s1_waitrequest                                                (mm_interconnect_0_sdram_s1_waitrequest),                                                //                                                        .waitrequest
 		.sdram_s1_chipselect                                                 (mm_interconnect_0_sdram_s1_chipselect),                                                 //                                                        .chipselect
+		.sliders_s1_address                                                  (mm_interconnect_0_sliders_s1_address),                                                  //                                              sliders_s1.address
+		.sliders_s1_readdata                                                 (mm_interconnect_0_sliders_s1_readdata),                                                 //                                                        .readdata
 		.system_id_control_slave_address                                     (mm_interconnect_0_system_id_control_slave_address),                                     //                                 system_id_control_slave.address
 		.system_id_control_slave_readdata                                    (mm_interconnect_0_system_id_control_slave_readdata),                                    //                                                        .readdata
 		.systick_timer_s1_address                                            (mm_interconnect_0_systick_timer_s1_address),                                            //                                        systick_timer_s1.address
@@ -398,6 +457,7 @@ module led_sandbox_sopc (
 		.receiver0_irq (irq_mapper_receiver0_irq),           // receiver0.irq
 		.receiver1_irq (irq_mapper_receiver1_irq),           // receiver1.irq
 		.receiver2_irq (irq_mapper_receiver2_irq),           // receiver2.irq
+		.receiver3_irq (irq_mapper_receiver3_irq),           // receiver3.irq
 		.sender_irq    (cpu_irq_irq)                         //    sender.irq
 	);
 

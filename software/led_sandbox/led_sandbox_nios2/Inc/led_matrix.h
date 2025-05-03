@@ -1,0 +1,39 @@
+#ifndef INC_LED_MATRIX_H_
+#define INC_LED_MATRIX_H_
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "system.h"
+#include "io.h"
+#include <stdint.h>
+#include <stdio.h>
+
+
+//DMA DEFINITIONS
+#define DMA_EN_OFFSET            (0u)
+#define DMA_START_OFFSET         (3u)
+#define DMA_ENABLE_BIT           ((1u) << 2)
+
+#define DMA_ENABLE(X)            (IOWR(VIDEO_DMA_CONTROLLER_0_BASE, DMA_EN_OFFSET, (X)))
+#define DMA_START                (IOWR(VIDEO_DMA_CONTROLLER_0_BASE, DMA_START_OFFSET, DMA_ENABLE_BIT))
+
+//LED_MATRIX_DRIVER DEFINITIONS
+
+#define RESET_OFFSET              (0u)
+#define ENABLE_OFFSET             (1u)
+#define MATRIX_ENABLE             (1u)
+#define MATRIX_DISABLE            (0u)
+#define MATRIX_RESET              (1u)
+
+#define LED_MATRIX_DRIVER_RESET   (IOWR(LED_MATRIX_DRIVER_0_BASE, RESET_OFFSET,  MATRIX_RESET))
+#define LED_MATRIX_DRIVER_ENABLE  (IOWR(LED_MATRIX_DRIVER_0_BASE, ENABLE_OFFSET, MATRIX_ENABLE))
+#define LED_MATRIX_DRIVER_DISABLE (IOWR(LED_MATRIX_DRIVER_0_BASE, ENABLE_OFFSET, MATRIX_DISABLE))
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* INC_LED_MATRIX_H_ */

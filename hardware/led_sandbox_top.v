@@ -11,13 +11,13 @@ module led_sandbox_top (
 
 
 	//////////// KEY //////////
-	//input 		     [1:0]		KEY,
+	input     [1:0]   KEY,
 
 	//////////// LED //////////
-	//output		     [9:0]		LEDR,
+	output    [9:0]   LEDR,
 
 	//////////// SW //////////
-	//input 		     [9:0]		SW
+	input 	 [9:0]   SW,
 	
 	/////////// DRAM ////////
 	output            DRAM_CLK,
@@ -79,6 +79,10 @@ led_sandbox_sopc led_sandbox_system (
         .led_matrix_control_latch        (ARDUINO_IO[11]), //                   .latch
         .led_matrix_control_output_en    (ARDUINO_IO[12]), //                   .output_en
 		  
+		  .sliders_export                  (SW),             // sliders.export
+        .keys_export                     (KEY),    		  // keys.export
+        .leds_export                     (LEDR),    		  // leds.export
+		  
         .sdram_wire_addr                 (DRAM_ADDR),             // sdram_wire.addr
         .sdram_wire_ba                   (DRAM_BA),               //           .ba
         .sdram_wire_cas_n                (DRAM_CAS_N),            //           .cas_n
@@ -90,7 +94,6 @@ led_sandbox_sopc led_sandbox_system (
         .sdram_wire_we_n                 (DRAM_WE_N),             //           .we_n
         .clk_sdram_clk                   (DRAM_CLK)               // clk_sdram.clk
     );
-
 
 endmodule
 

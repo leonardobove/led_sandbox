@@ -145,12 +145,14 @@ ELF := led_sandbox.elf
 C_SRCS += led_sandbox_common/Src/accelerometer_average_task.c
 C_SRCS += led_sandbox_common/Src/state_machine_task.c
 C_SRCS += led_sandbox_nios2/Src/system_tick.c
-C_SRCS += led_sandbox_nios2/Src/led_sandbox_hal_impl_nios2.c
 C_SRCS += led_sandbox_nios2/Src/main.c
 C_SRCS += led_sandbox_common/Src/scheduler.c
+C_SRCS += led_sandbox_nios2/Src/accelerometer.c
+C_SRCS += led_sandbox_nios2/Src/gpio.c
+C_SRCS += led_sandbox_nios2/Src/led_sandbox_hal_impl_nios2.c
+C_SRCS += led_sandbox_common/Src/led_sandbox.c
 CXX_SRCS += led_sandbox_common/Src/pixel_dust_task.cpp
 CXX_SRCS += led_sandbox_common/subprojects/Adafruit_PixelDust/Adafruit_PixelDust.cpp
-CXX_SRCS += led_sandbox_common/Src/led_sandbox.cpp
 ASM_SRCS :=
 
 
@@ -195,7 +197,7 @@ APP_LIBRARY_NAMES :=
 BUILD_PRE_PROCESS :=
 BUILD_POST_PROCESS :=
 
-QUARTUS_PROJECT_DIR := C:/Users/aless/OneDrive/Desktop/SISTEMI_EMBEDDED/led_sandbox/sopc/
+QUARTUS_PROJECT_DIR := ../../sopc/
 
 
 #END GENERATED

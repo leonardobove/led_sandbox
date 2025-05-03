@@ -6,6 +6,7 @@ module led_sandbox_sopc (
 	accelerometer_spi_G_SENSOR_INT,
 	clk_clk,
 	clk_sdram_clk,
+	keys_export,
 	led_matrix_clock_clk,
 	led_matrix_control_row_sel_a,
 	led_matrix_control_row_sel_b,
@@ -19,6 +20,7 @@ module led_sandbox_sopc (
 	led_matrix_control_output_en,
 	led_matrix_control_red_1,
 	led_matrix_control_red_2,
+	leds_export,
 	reset_reset_n,
 	sdram_wire_addr,
 	sdram_wire_ba,
@@ -28,7 +30,8 @@ module led_sandbox_sopc (
 	sdram_wire_dq,
 	sdram_wire_dqm,
 	sdram_wire_ras_n,
-	sdram_wire_we_n);	
+	sdram_wire_we_n,
+	sliders_export);	
 
 	inout		accelerometer_spi_I2C_SDAT;
 	output		accelerometer_spi_I2C_SCLK;
@@ -36,6 +39,7 @@ module led_sandbox_sopc (
 	input		accelerometer_spi_G_SENSOR_INT;
 	input		clk_clk;
 	output		clk_sdram_clk;
+	input	[1:0]	keys_export;
 	output		led_matrix_clock_clk;
 	output		led_matrix_control_row_sel_a;
 	output		led_matrix_control_row_sel_b;
@@ -49,6 +53,7 @@ module led_sandbox_sopc (
 	output		led_matrix_control_output_en;
 	output		led_matrix_control_red_1;
 	output		led_matrix_control_red_2;
+	output	[9:0]	leds_export;
 	input		reset_reset_n;
 	output	[12:0]	sdram_wire_addr;
 	output	[1:0]	sdram_wire_ba;
@@ -59,4 +64,5 @@ module led_sandbox_sopc (
 	output	[1:0]	sdram_wire_dqm;
 	output		sdram_wire_ras_n;
 	output		sdram_wire_we_n;
+	input	[9:0]	sliders_export;
 endmodule

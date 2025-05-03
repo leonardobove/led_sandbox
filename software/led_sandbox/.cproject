@@ -85,7 +85,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="led_sandbox_common/subprojects/Adafruit_PixelDust/raspberry_pi|gggg|led_sandbox_common/subprojects/Adafruit_PixelDust/examples" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="led_sandbox_posix|led_sandbox_common/subprojects/Adafruit_PixelDust/raspberry_pi|gggg|led_sandbox_common/subprojects/Adafruit_PixelDust/examples" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

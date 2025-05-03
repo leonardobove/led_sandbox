@@ -6,6 +6,8 @@
 #include "../Inc/accelerometer_average_task.h"
 #include "../Inc/hal.h"
 
+#include "../subprojects/Adafruit_PixelDust/Adafruit_PixelDust.h"
+
 // Flag that is true every time the GSENSOR_SANDBOX state is entered
 static uint32_t has_reset = true;
 
@@ -46,7 +48,7 @@ void pixel_dust_task() {
         // Run one frame of the simulation
         // X & Y axes are flipped around here to match physical mounting
         sand.iterate(acceleration_average.a_x, acceleration_average.a_y, acceleration_average.a_z);
-
+        printf("Iteration\n");
         // Draw new grain positions in pixel_buf[]
         grain_color_t color = BLACK;
         for(uint32_t i = 0; i < N_GRAINS; i++) {

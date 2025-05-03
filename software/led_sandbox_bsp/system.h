@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'led_sandbox_sopc'
  * SOPC Builder design path: ../../sopc/led_sandbox_sopc.sopcinfo
  *
- * Generated: Fri May 02 00:54:41 CEST 2025
+ * Generated: Fri May 02 17:41:09 CEST 2025
  */
 
 /*
@@ -135,11 +135,14 @@
 
 #define __ALTERA_AVALON_JTAG_UART
 #define __ALTERA_AVALON_NEW_SDRAM_CONTROLLER
+#define __ALTERA_AVALON_PIO
 #define __ALTERA_AVALON_SYSID_QSYS
 #define __ALTERA_AVALON_TIMER
 #define __ALTERA_NIOS2_GEN2
 #define __ALTERA_UP_AVALON_ACCELEROMETER_SPI
+#define __ALTERA_UP_AVALON_VIDEO_DMA_CONTROLLER
 #define __ALTPLL
+#define __LED_MATRIX_DRIVER
 
 
 /*
@@ -158,19 +161,19 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart"
-#define ALT_STDERR_BASE 0x8001038
+#define ALT_STDERR_BASE 0x8001080
 #define ALT_STDERR_DEV jtag_uart
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart"
-#define ALT_STDIN_BASE 0x8001038
+#define ALT_STDIN_BASE 0x8001080
 #define ALT_STDIN_DEV jtag_uart
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart"
-#define ALT_STDOUT_BASE 0x8001038
+#define ALT_STDOUT_BASE 0x8001080
 #define ALT_STDOUT_DEV jtag_uart
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -183,8 +186,8 @@
  *
  */
 
-#define ACCELEROMETER_SPI_0_BASE 0x8001040
-#define ACCELEROMETER_SPI_0_IRQ 0
+#define ACCELEROMETER_SPI_0_BASE 0x8001088
+#define ACCELEROMETER_SPI_0_IRQ 2
 #define ACCELEROMETER_SPI_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define ACCELEROMETER_SPI_0_NAME "/dev/accelerometer_spi_0"
 #define ACCELEROMETER_SPI_0_SPAN 2
@@ -197,7 +200,7 @@
  *
  */
 
-#define ALTPLL_0_BASE 0x8001020
+#define ALTPLL_0_BASE 0x8001050
 #define ALTPLL_0_IRQ -1
 #define ALTPLL_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define ALTPLL_0_NAME "/dev/altpll_0"
@@ -223,8 +226,8 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart altera_avalon_jtag_uart
-#define JTAG_UART_BASE 0x8001038
-#define JTAG_UART_IRQ 1
+#define JTAG_UART_BASE 0x8001080
+#define JTAG_UART_IRQ 4
 #define JTAG_UART_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_NAME "/dev/jtag_uart"
 #define JTAG_UART_READ_DEPTH 64
@@ -233,6 +236,74 @@
 #define JTAG_UART_TYPE "altera_avalon_jtag_uart"
 #define JTAG_UART_WRITE_DEPTH 64
 #define JTAG_UART_WRITE_THRESHOLD 8
+
+
+/*
+ * keys configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_keys altera_avalon_pio
+#define KEYS_BASE 0x8001030
+#define KEYS_BIT_CLEARING_EDGE_REGISTER 1
+#define KEYS_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define KEYS_CAPTURE 1
+#define KEYS_DATA_WIDTH 2
+#define KEYS_DO_TEST_BENCH_WIRING 0
+#define KEYS_DRIVEN_SIM_VALUE 0
+#define KEYS_EDGE_TYPE "FALLING"
+#define KEYS_FREQ 100000000
+#define KEYS_HAS_IN 1
+#define KEYS_HAS_OUT 0
+#define KEYS_HAS_TRI 0
+#define KEYS_IRQ 1
+#define KEYS_IRQ_INTERRUPT_CONTROLLER_ID 0
+#define KEYS_IRQ_TYPE "EDGE"
+#define KEYS_NAME "/dev/keys"
+#define KEYS_RESET_VALUE 0
+#define KEYS_SPAN 16
+#define KEYS_TYPE "altera_avalon_pio"
+
+
+/*
+ * led_matrix_driver_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_led_matrix_driver_0 led_matrix_driver
+#define LED_MATRIX_DRIVER_0_BASE 0x8001078
+#define LED_MATRIX_DRIVER_0_IRQ -1
+#define LED_MATRIX_DRIVER_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define LED_MATRIX_DRIVER_0_NAME "/dev/led_matrix_driver_0"
+#define LED_MATRIX_DRIVER_0_SPAN 8
+#define LED_MATRIX_DRIVER_0_TYPE "led_matrix_driver"
+
+
+/*
+ * leds configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_leds altera_avalon_pio
+#define LEDS_BASE 0x8001020
+#define LEDS_BIT_CLEARING_EDGE_REGISTER 0
+#define LEDS_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define LEDS_CAPTURE 0
+#define LEDS_DATA_WIDTH 10
+#define LEDS_DO_TEST_BENCH_WIRING 0
+#define LEDS_DRIVEN_SIM_VALUE 0
+#define LEDS_EDGE_TYPE "NONE"
+#define LEDS_FREQ 100000000
+#define LEDS_HAS_IN 0
+#define LEDS_HAS_OUT 1
+#define LEDS_HAS_TRI 0
+#define LEDS_IRQ -1
+#define LEDS_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define LEDS_IRQ_TYPE "NONE"
+#define LEDS_NAME "/dev/leds"
+#define LEDS_RESET_VALUE 0
+#define LEDS_SPAN 16
+#define LEDS_TYPE "altera_avalon_pio"
 
 
 /*
@@ -275,18 +346,45 @@
 
 
 /*
+ * sliders configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_sliders altera_avalon_pio
+#define SLIDERS_BASE 0x8001040
+#define SLIDERS_BIT_CLEARING_EDGE_REGISTER 0
+#define SLIDERS_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define SLIDERS_CAPTURE 0
+#define SLIDERS_DATA_WIDTH 10
+#define SLIDERS_DO_TEST_BENCH_WIRING 0
+#define SLIDERS_DRIVEN_SIM_VALUE 0
+#define SLIDERS_EDGE_TYPE "NONE"
+#define SLIDERS_FREQ 100000000
+#define SLIDERS_HAS_IN 1
+#define SLIDERS_HAS_OUT 0
+#define SLIDERS_HAS_TRI 0
+#define SLIDERS_IRQ -1
+#define SLIDERS_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define SLIDERS_IRQ_TYPE "NONE"
+#define SLIDERS_NAME "/dev/sliders"
+#define SLIDERS_RESET_VALUE 0
+#define SLIDERS_SPAN 16
+#define SLIDERS_TYPE "altera_avalon_pio"
+
+
+/*
  * system_id configuration
  *
  */
 
 #define ALT_MODULE_CLASS_system_id altera_avalon_sysid_qsys
-#define SYSTEM_ID_BASE 0x8001030
+#define SYSTEM_ID_BASE 0x8001070
 #define SYSTEM_ID_ID 3
 #define SYSTEM_ID_IRQ -1
 #define SYSTEM_ID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSTEM_ID_NAME "/dev/system_id"
 #define SYSTEM_ID_SPAN 8
-#define SYSTEM_ID_TIMESTAMP 1744587744
+#define SYSTEM_ID_TIMESTAMP 1746200154
 #define SYSTEM_ID_TYPE "altera_avalon_sysid_qsys"
 
 
@@ -301,7 +399,7 @@
 #define SYSTICK_TIMER_COUNTER_SIZE 32
 #define SYSTICK_TIMER_FIXED_PERIOD 0
 #define SYSTICK_TIMER_FREQ 100000000
-#define SYSTICK_TIMER_IRQ 2
+#define SYSTICK_TIMER_IRQ 0
 #define SYSTICK_TIMER_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define SYSTICK_TIMER_LOAD_VALUE 99999
 #define SYSTICK_TIMER_MULT 0.001
@@ -314,5 +412,19 @@
 #define SYSTICK_TIMER_TICKS_PER_SEC 1000
 #define SYSTICK_TIMER_TIMEOUT_PULSE_OUTPUT 0
 #define SYSTICK_TIMER_TYPE "altera_avalon_timer"
+
+
+/*
+ * video_dma_controller_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_video_dma_controller_0 altera_up_avalon_video_dma_controller
+#define VIDEO_DMA_CONTROLLER_0_BASE 0x8001060
+#define VIDEO_DMA_CONTROLLER_0_IRQ -1
+#define VIDEO_DMA_CONTROLLER_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define VIDEO_DMA_CONTROLLER_0_NAME "/dev/video_dma_controller_0"
+#define VIDEO_DMA_CONTROLLER_0_SPAN 16
+#define VIDEO_DMA_CONTROLLER_0_TYPE "altera_up_avalon_video_dma_controller"
 
 #endif /* __SYSTEM_H_ */
