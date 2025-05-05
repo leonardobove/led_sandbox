@@ -110,11 +110,13 @@ assign B =                   row_counter[1];
 assign C =                   row_counter[2];
 assign D =                   row_counter[3];
 // Control signals
-assign CLK =                 (clock & (curr_state == PUSH_ROW));
+assign CLK =                 ~(clock & (curr_state == PUSH_ROW));
 assign LAT =                 (curr_state == LATCH_ROW) || (curr_state == RESET);
 assign OE_n =                (curr_state == OUTPUT_EN);      //TO DO: Fai nuovo stato in cui aggiorna OE_n
 // Stream interface signals
-assign ready =               (curr_state == PUSH_ROW);
+assign ready =               
+    (curr_state == IDLE) ? valid & ~startofpacket:
+        (curr_state == PUSH_ROW);
 // Avalon MM interface signals
 assign readdata =            32'b0;
 
@@ -257,7 +259,7 @@ always @ (*) begin
         IDLE: begin
             if(~sw_reset)
             begin
-		        if(valid && driving_enable)
+		        if(valid & startofpacket & driving_enable)
 				begin
 					next_state <= PUSH_ROW;
 				end
@@ -325,14 +327,7 @@ always @ (*) begin
         OUTPUT_EN: begin
             if (~sw_reset)
             begin
-                if (driving_enable)
-                begin
-                    next_state <= PUSH_ROW;
-                end
-                else
-                begin
-                    next_state <= IDLE;
-                end
+                next_state <= IDLE;
             end
             else
             begin
