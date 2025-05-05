@@ -41,11 +41,6 @@ readme.txt
 obj
 *.gdb
 *.hex
-.settings
-.cproject
-.force_relink
-.project
-create-this-app
 *.map
 *.objdump
 *.html
