@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'lite_pc'
  * SOPC Builder design path: C:/Users/leona/Desktop/led_sandbox/sopc/lite_pc.sopcinfo
  *
- * Generated: Wed May 07 00:12:33 CEST 2025
+ * Generated: Wed May 07 01:16:06 CEST 2025
  */
 
 /*
@@ -287,7 +287,7 @@
 #define SYSTEM_ID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSTEM_ID_NAME "/dev/system_id"
 #define SYSTEM_ID_SPAN 8
-#define SYSTEM_ID_TIMESTAMP 1746569259
+#define SYSTEM_ID_TIMESTAMP 1746572766
 #define SYSTEM_ID_TYPE "altera_avalon_sysid_qsys"
 
 

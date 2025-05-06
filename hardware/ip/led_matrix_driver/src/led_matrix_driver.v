@@ -110,9 +110,9 @@ assign B =                   row_counter[1];
 assign C =                   row_counter[2];
 assign D =                   row_counter[3];
 // Control signals
-assign CLK =                 (~clock & (curr_state == PUSH_ROW) & valid);
+assign CLK =                 (clock & (curr_state == PUSH_ROW) & valid);
 assign LAT =                 (curr_state == LATCH_ROW) || (curr_state == RESET);
-assign OE_n =                (curr_state == OUTPUT_EN);      //TO DO: Fai nuovo stato in cui aggiorna OE_n
+assign OE_n =                (curr_state == OUTPUT_EN);
 // Stream interface signals
 assign ready =               
     (curr_state == IDLE) ? valid & ~startofpacket:
