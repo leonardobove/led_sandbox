@@ -15,19 +15,20 @@
 #define HEIGHT 	(16u)
 
 int main() {
-	uint32_t frame_buffer[WIDTH*HEIGHT];
+	uint8_t frame_buffer[WIDTH*HEIGHT];
 
 	for (int i = 0; i < WIDTH*HEIGHT; i++) {
-		//if (i < WIDTH) {
-			//frame_buffer[i] = (uint32_t)0b001001;
+		frame_buffer[i] = (i % 8);
+		//if (i < (WIDTH)) {
+			//frame_buffer[i] = 0x01;
 		//} else {
-			//frame_buffer[i] = (uint32_t)0b000000;
+			//frame_buffer[i] = 0;
 		//}
-		frame_buffer[i] = (uint16_t)0b000001;
+		//frame_buffer[i] = (uint16_t)0b000001;
 	}
 
 	alt_up_video_dma_dev* dev = alt_up_video_dma_open_dev("/dev/video_dma_controller_0");
-	if (0 != alt_up_video_dma_ctrl_set_bb_addr(dev, (unsigned int)(&frame_buffer[0]))) {
+	if (0 != alt_up_video_dma_ctrl_set_bb_addr(dev, (&frame_buffer[0]))) {
 		while (1) {
 
 		}

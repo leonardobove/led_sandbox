@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="lite_pc" kind="lite_pc" version="1.0" fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2025.05.05.18:17:05 -->
+ <!-- 2025.05.07.00:07:39 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1746461825</value>
+  <value>1746569259</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -2010,7 +2010,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="dataSlaveMapParam">
    <type>java.lang.String</type>
-   <value><![CDATA[<address-map><slave name='sdram.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='timer.s1' start='0x8001000' end='0x8001020' type='altera_avalon_timer.s1' /><slave name='pll.pll_slave' start='0x8001020' end='0x8001030' type='altpll.pll_slave' /><slave name='video_dma_controller_0.avalon_dma_control_slave' start='0x8001030' end='0x8001040' type='altera_up_avalon_video_dma_controller.avalon_dma_control_slave' /><slave name='led_matrix_driver_0.avalon_slave_0' start='0x8001040' end='0x8001048' type='led_matrix_driver.avalon_slave_0' /><slave name='system_id.control_slave' start='0x8001048' end='0x8001050' type='altera_avalon_sysid_qsys.control_slave' /><slave name='jtag_uart.avalon_jtag_slave' start='0x8001050' end='0x8001058' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></value>
+   <value><![CDATA[<address-map><slave name='sdram.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='timer.s1' start='0x8001000' end='0x8001020' type='altera_avalon_timer.s1' /><slave name='pll.pll_slave' start='0x8001020' end='0x8001030' type='altpll.pll_slave' /><slave name='video_dma_controller_0.avalon_dma_control_slave' start='0x8001030' end='0x8001040' type='altera_up_avalon_video_dma_controller.avalon_dma_control_slave' /><slave name='system_id.control_slave' start='0x8001040' end='0x8001048' type='altera_avalon_sysid_qsys.control_slave' /><slave name='led_matrix_driver_0.avalon_slave_0' start='0x8001048' end='0x8001050' type='led_matrix_driver.avalon_slave_0' /><slave name='jtag_uart.avalon_jtag_slave' start='0x8001050' end='0x8001058' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -2697,7 +2697,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>led_matrix_driver_0</moduleName>
     <slaveName>avalon_slave_0</slaveName>
     <name>led_matrix_driver_0.avalon_slave_0</name>
-    <baseAddress>134221888</baseAddress>
+    <baseAddress>134221896</baseAddress>
     <span>8</span>
    </memoryBlock>
    <memoryBlock>
@@ -2705,7 +2705,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>system_id</moduleName>
     <slaveName>control_slave</slaveName>
     <name>system_id.control_slave</name>
-    <baseAddress>134221896</baseAddress>
+    <baseAddress>134221888</baseAddress>
     <span>8</span>
    </memoryBlock>
    <memoryBlock>
@@ -4852,7 +4852,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="dataBitsPerSymbol">
     <type>int</type>
-    <value>16</value>
+    <value>6</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -4955,7 +4955,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>data</name>
     <direction>Input</direction>
-    <width>16</width>
+    <width>6</width>
     <role>data</role>
    </port>
    <port>
@@ -8302,7 +8302,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1746461825</value>
+   <value>1746569259</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -8322,7 +8322,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1746461825</value>
+   <value>1746569259</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -8338,7 +8338,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1746461825</value>
+   <value>1746569259</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -9630,7 +9630,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="color_bits">
    <type>int</type>
-   <value>16</value>
+   <value>6</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -10083,7 +10083,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>master_readdata</name>
     <direction>Input</direction>
-    <width>16</width>
+    <width>8</width>
     <role>readdata</role>
    </port>
    <port>
@@ -10505,7 +10505,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="dataBitsPerSymbol">
     <type>int</type>
-    <value>16</value>
+    <value>6</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -10602,7 +10602,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>stream_data</name>
     <direction>Output</direction>
-    <width>16</width>
+    <width>6</width>
     <role>data</role>
    </port>
    <port>
@@ -10794,7 +10794,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x08001040</value>
+   <value>0x08001048</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -10845,7 +10845,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x08001048</value>
+   <value>0x08001040</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>

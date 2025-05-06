@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'lite_pc'
  * SOPC Builder design path: C:/Users/leona/Desktop/led_sandbox/sopc/lite_pc.sopcinfo
  *
- * Generated: Sat May 03 11:48:17 CEST 2025
+ * Generated: Tue May 06 19:32:45 CEST 2025
  */
 
 /*

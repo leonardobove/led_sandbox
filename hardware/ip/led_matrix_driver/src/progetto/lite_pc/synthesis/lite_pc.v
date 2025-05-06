@@ -32,14 +32,14 @@ module lite_pc (
 	);
 
 	wire         video_dma_controller_0_avalon_pixel_source_valid;                             // video_dma_controller_0:stream_valid -> led_matrix_driver_0:valid
-	wire  [15:0] video_dma_controller_0_avalon_pixel_source_data;                              // video_dma_controller_0:stream_data -> led_matrix_driver_0:data
+	wire   [5:0] video_dma_controller_0_avalon_pixel_source_data;                              // video_dma_controller_0:stream_data -> led_matrix_driver_0:data
 	wire         video_dma_controller_0_avalon_pixel_source_ready;                             // led_matrix_driver_0:ready -> video_dma_controller_0:stream_ready
 	wire         video_dma_controller_0_avalon_pixel_source_startofpacket;                     // video_dma_controller_0:stream_startofpacket -> led_matrix_driver_0:startofpacket
 	wire         video_dma_controller_0_avalon_pixel_source_endofpacket;                       // video_dma_controller_0:stream_endofpacket -> led_matrix_driver_0:endofpacket
 	wire         pll_c0_clk;                                                                   // pll:c0 -> [cpu:clk, irq_mapper:clk, jtag_uart:clk, mm_interconnect_0:pll_c0_clk, rst_controller:clk, sdram:clk, system_id:clock, timer:clk]
 	wire         pll_c2_clk;                                                                   // pll:c2 -> [led_matrix_driver_0:clock, mm_interconnect_0:pll_c2_clk, rst_controller_001:clk, video_dma_controller_0:clk]
 	wire         video_dma_controller_0_avalon_dma_master_waitrequest;                         // mm_interconnect_0:video_dma_controller_0_avalon_dma_master_waitrequest -> video_dma_controller_0:master_waitrequest
-	wire  [15:0] video_dma_controller_0_avalon_dma_master_readdata;                            // mm_interconnect_0:video_dma_controller_0_avalon_dma_master_readdata -> video_dma_controller_0:master_readdata
+	wire   [7:0] video_dma_controller_0_avalon_dma_master_readdata;                            // mm_interconnect_0:video_dma_controller_0_avalon_dma_master_readdata -> video_dma_controller_0:master_readdata
 	wire  [31:0] video_dma_controller_0_avalon_dma_master_address;                             // video_dma_controller_0:master_address -> mm_interconnect_0:video_dma_controller_0_avalon_dma_master_address
 	wire         video_dma_controller_0_avalon_dma_master_read;                                // video_dma_controller_0:master_read -> mm_interconnect_0:video_dma_controller_0_avalon_dma_master_read
 	wire         video_dma_controller_0_avalon_dma_master_readdatavalid;                       // mm_interconnect_0:video_dma_controller_0_avalon_dma_master_readdatavalid -> video_dma_controller_0:master_readdatavalid

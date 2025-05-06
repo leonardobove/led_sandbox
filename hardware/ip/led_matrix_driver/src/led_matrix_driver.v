@@ -34,7 +34,7 @@ module led_matrix_driver (
     input        areset_n,
 	 
 	//Input sink
-    input[15:0]  data,
+   input [5:0]  data,
 	input        valid,
 	input        endofpacket,
 	input        startofpacket,
@@ -110,7 +110,7 @@ assign B =                   row_counter[1];
 assign C =                   row_counter[2];
 assign D =                   row_counter[3];
 // Control signals
-assign CLK =                 ~(clock & (curr_state == PUSH_ROW));
+assign CLK =                 (~clock & (curr_state == PUSH_ROW) & valid);
 assign LAT =                 (curr_state == LATCH_ROW) || (curr_state == RESET);
 assign OE_n =                (curr_state == OUTPUT_EN);      //TO DO: Fai nuovo stato in cui aggiorna OE_n
 // Stream interface signals
@@ -173,7 +173,7 @@ always @ (posedge clock or negedge areset_n) begin
     if (~areset_n) begin
         col_counter <= 6'd0;
     end else begin
-        if (curr_state == PUSH_ROW) begin
+        if ((curr_state == PUSH_ROW) && valid) begin
             if (col_counter == (MAT_WIDTH - 1'b1))
                 col_counter <= 6'd0;
             else
@@ -320,10 +320,6 @@ always @ (*) begin
             end
         end
 
-        default: begin
-            next_state <= RESET;
-        end
-
         OUTPUT_EN: begin
             if (~sw_reset)
             begin
@@ -333,6 +329,10 @@ always @ (*) begin
             begin
                 next_state <= RESET;
             end
+        end
+		  
+		  default: begin
+            next_state <= RESET;
         end
     endcase
 end
