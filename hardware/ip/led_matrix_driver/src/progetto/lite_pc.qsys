@@ -630,7 +630,7 @@
   <parameter name="casLatency" value="3" />
   <parameter name="clockRate" value="100000000" />
   <parameter name="columnWidth" value="10" />
-  <parameter name="componentName" value="lite_pc_sdram" />
+  <parameter name="componentName" value="$${FILENAME}_sdram" />
   <parameter name="dataWidth" value="16" />
   <parameter name="generateSimulationModel" value="true" />
   <parameter name="initNOPDelay" value="0.0" />

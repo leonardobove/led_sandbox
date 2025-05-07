@@ -7,7 +7,7 @@
 
 #include <stdint.h>
 
-#include "altera_up_avalon_video_dma_controller.h"
+#include "..\test_led_matrix_ip_bsp\drivers\inc\altera_up_avalon_video_dma_controller.h"
 #include "io.h"
 #include "system.h"
 
