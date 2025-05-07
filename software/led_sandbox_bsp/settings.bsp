@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>May 2, 2025 5:49:47 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1746200987325</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>07-May-2025 17:40:27</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1746632427601</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\leona\Desktop\led_sandbox\software\led_sandbox_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\sopc\led_sandbox_sopc.sopcinfo</SopcDesignFile>

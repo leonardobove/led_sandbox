@@ -14,7 +14,7 @@ static uint32_t has_reset = true;
 // Sand object, last 2 args are accelerometer scaling and grain elasticity
 Adafruit_PixelDust sand(WIDTH, HEIGHT, N_GRAINS, ACCELEROMETER_SCALE, GRAINS_ELASTICITY);
 
-uint8_t pixel_buf[WIDTH * HEIGHT]; //TODO: maybe it's not really necessary and I can use the class internal bitmap?
+uint8_t pixel_buf[WIDTH * HEIGHT / 2]; //TODO: maybe it's not really necessary and I can use the class internal bitmap?
 
 
 void pixel_dust_task() {
@@ -38,11 +38,14 @@ void pixel_dust_task() {
         }
 
         // Erase old grain positions in pixel_buf[]
-        uint8_t     i;
         dimension_t x, y;
-        for(i = 0; i < N_GRAINS; i++) {
+        for(uint32_t i = 0; i < N_GRAINS; i++) {
             sand.getPosition(i, &x, &y);
-            pixel_buf[y * WIDTH + x] = 0;
+            if (y >= (HEIGHT / 2)) {	// If the grain is in the upper half, erase the upper pixel
+            	pixel_buf[(y % (HEIGHT / 2)) * WIDTH + x] &= CLEAR_UPPER_PIXEL;
+            } else {	// Otherwise erase the lower pixel
+            	pixel_buf[(y % (HEIGHT / 2)) * WIDTH + x] &= CLEAR_LOWER_PIXEL;
+            }
         }
 
         // Run one frame of the simulation
@@ -54,7 +57,11 @@ void pixel_dust_task() {
         for(uint32_t i = 0; i < N_GRAINS; i++) {
             sand.getPosition(i, &x, &y);
             sand.getColor(i, &color);
-            pixel_buf[y * WIDTH + x] = color;
+            if (y >= (HEIGHT / 2)) { // If the grain is in the upper half, set the upper pixel
+            	pixel_buf[(y % (HEIGHT / 2)) * WIDTH + x] |= SET_UPPER_PIXEL((uint8_t)color);
+            } else { // Otherwise set the lower pixel
+            	pixel_buf[(y % (HEIGHT / 2)) * WIDTH + x] |= SET_LOWER_PIXEL((uint8_t)color);
+            }
         }
     } else {
         has_reset = true;

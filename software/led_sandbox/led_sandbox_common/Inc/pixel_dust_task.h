@@ -25,11 +25,21 @@ extern "C" {
 #define GRAINS_ELASTICITY   (128u)
 
 // Since we're not using the GFX library, it's necessary to buffer the
-// display contents ourselves (8 bits/pixel with the Charlieplex drivers).
-extern uint8_t pixel_buf[WIDTH * HEIGHT];
+// display contents ourselves.
+// 3 bit per pixel. Each uint8_t element contains the pixel value of the i-th row
+// (first LSB bits) and of the (i+16)-th row (from bit 3 to bit 5).
+extern uint8_t pixel_buf[WIDTH * HEIGHT / 2];
  
 // Declare state machine task subroutine
 void pixel_dust_task();
+
+// Useful Macros
+#define LOWER_PIXEL_MASK          (0b00000111)
+#define UPPER_PIXEL_MASK          (0b00111000)
+#define SET_LOWER_PIXEL(x)        ((x) << 0)
+#define SET_UPPER_PIXEL(x)        ((x) << 3)
+#define CLEAR_LOWER_PIXEL		  (0b11111000)
+#define CLEAR_UPPER_PIXEL         (0b11000111)
 
 #ifdef __cplusplus
 }

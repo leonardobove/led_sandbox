@@ -28,7 +28,7 @@ void hal_init() {
     scheduler_init();
 
     // Initialize DMA
-    DMA_ENABLE((unsigned int)(&pixel_buf));
+    DMA_ENABLE((unsigned int)(&pixel_buf[0]));
     DMA_START;
 }
 
