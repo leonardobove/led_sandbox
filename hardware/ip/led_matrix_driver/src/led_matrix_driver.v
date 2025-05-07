@@ -173,12 +173,18 @@ always @ (posedge clock or negedge areset_n) begin
     if (~areset_n) begin
         col_counter <= 6'd0;
     end else begin
-        if ((curr_state == PUSH_ROW) && valid) begin
+        if (curr_state == PUSH_ROW) begin
             if (col_counter == (MAT_WIDTH - 1'b1))
                 col_counter <= 6'd0;
-            else
+            else if(valid)
+            begin
                 col_counter <= col_counter + 1'b1;
-        end
+            end
+        end 
+        else 
+        begin
+		      col_counter <= col_counter;
+		  end
         if (curr_state == RESET) begin
             col_counter <= 6'd0;
         end
@@ -196,11 +202,13 @@ begin
     begin
         if (curr_state == LATCH_ROW) 
         begin
-            if (row_counter == ((MAT_HEIGHT >> 1'b1) - 1'b1))
+            if (row_counter == 15)
                 row_counter <= 4'd0;
             else
                 row_counter <= row_counter + 1'b1;
-        end
+        end else begin
+			   row_counter <= row_counter;
+		  end
         if (curr_state == RESET) 
         begin
             row_counter <= 4'd0;
@@ -337,35 +345,5 @@ always @ (*) begin
     endcase
 end
 
-//// Evaluate outputs based on current state and internal registers
-//always @ (curr_state, col_counter, row_counter) begin
-//    case (curr_state)
-//        RESET: begin
-//
-//        end
-//
-//        IDLE: begin
-//            next_state = PUSH_ROW; // TODO: add enable register
-//        end
-//
-//        PUSH_ROW: begin
-//            if (col_counter == (MAT_WIDTH - 1'b1))
-//                next_state = LATCH_ROW;
-//            else
-//                next_state = PUSH_ROW;
-//        end
-//
-//        LATCH_ROW: begin
-//            if (row_counter == ((MAT_HEIGHT >> 1'b1) - 1'b1))
-//                next_state = PUSH_ROW; //TODO: go to IDLE in normal case (check registers for instructions)
-//            else
-//                next_state = PUSH_ROW;
-//        end
-//
-//        default: begin
-//            next_state = RESET;
-//        end
-//    endcase
-//end
 
 endmodule

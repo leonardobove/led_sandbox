@@ -28,7 +28,7 @@ int main() {
 	}
 
 	alt_up_video_dma_dev* dev = alt_up_video_dma_open_dev("/dev/video_dma_controller_0");
-	if (0 != alt_up_video_dma_ctrl_set_bb_addr(dev, (&frame_buffer[0]))) {
+	if (0 != alt_up_video_dma_ctrl_set_bb_addr(dev, (unsigned int)(&frame_buffer[0]))) {
 		while (1) {
 
 		}
