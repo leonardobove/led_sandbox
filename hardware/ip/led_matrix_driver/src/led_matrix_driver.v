@@ -29,29 +29,44 @@
 */
 
 module led_matrix_driver (
-    // Inputs
+
+    //_________________________
+    // Clock and reset signals
+    //_________________________
     input        clock,
     input        areset_n,
 	 
+    //_________________________
+    // Avalon ST sink interface
+    //_________________________
+
 	//Input sink
-   input [5:0]  data,
+    input [5:0]  data,
 	input        valid,
 	input        endofpacket,
 	input        startofpacket,
 	 
 	//Output sink
 	output       ready,
-	 
-	//Input Memory mapped
+
+         
+    //_________________________
+    // Avalon MM slave interface
+    //_________________________ 
+
+	//Write signals
     input        address,
 	input        write,
 	input[31:0]  writedata,
 	 
-	//Output memory mapped
+	//Read signals
     input        read,
-	output[31:0] readdata, 
+	output[31:0] readdata,
 
-    // LED matrix external outputs
+    //_________________________
+    // Avalon conduit interface
+    //_________________________
+
     output       R1,
     output       G1,
     output       B1,
@@ -69,17 +84,18 @@ module led_matrix_driver (
 
 // Parameters
 
-parameter ENABLE_DEFAULT = 1'b1;    //Default value for the enable register
-parameter RESET_DEFAULT  = 1'b0;    //Default value for the reset register
-parameter MAT_WIDTH     = 7'd64;    //Width of the matrix (number of pixels in a row)
-parameter MAT_HEIGHT    = 6'd32;    //Height of the matrix (number of pixels in a column)
+parameter ENABLE_DEFAULT = 1'b1;                 //Default value for the enable register
+parameter RESET_DEFAULT  = 1'b0;                 //Default value for the reset register
+parameter MAT_WIDTH      = 7'd64;                //Width of the matrix (number of pixels in a row)
+parameter MAT_HEIGHT     = 6'd32;                //Height of the matrix (number of pixels in a column)
+localparam HALF_HEIGHT   = MAT_HEIGHT >> 1'b1;   //Half height of the matrix (number of pixels in a row)
 
 // FSM States
-localparam RESET     = 3'd0, 
-           IDLE      = 3'd1,
-           PUSH_ROW  = 3'd2,
-           LATCH_ROW = 3'd3,
-           OUTPUT_EN = 3'd4; 
+localparam RESET         = 3'd0, 
+           IDLE          = 3'd1,
+           PUSH_ROW      = 3'd2,
+           CHANGE_ROW    = 3'd3,
+           OUTPUT_EN     = 3'd4; 
 
 
 // Internal signals
@@ -117,6 +133,7 @@ assign OE_n =                (curr_state == OUTPUT_EN);
 assign ready =               
     (curr_state == IDLE) ? valid & ~startofpacket:
         (curr_state == PUSH_ROW);
+
 // Avalon MM interface signals
 assign readdata =            32'b0;
 
@@ -172,22 +189,30 @@ end
 always @ (posedge clock or negedge areset_n) begin
     if (~areset_n) begin
         col_counter <= 6'd0;
-    end else begin
-        if (curr_state == PUSH_ROW) begin
+    end 
+    else 
+    begin
+        if (curr_state == PUSH_ROW) 
+        begin
             if (col_counter == (MAT_WIDTH - 1'b1))
                 col_counter <= 6'd0;
             else if(valid)
             begin
                 col_counter <= col_counter + 1'b1;
             end
-        end 
-        else 
-        begin
-		      col_counter <= col_counter;
-		  end
-        if (curr_state == RESET) begin
-            col_counter <= 6'd0;
         end
+        else
+        begin
+            if (curr_state == RESET) 
+            begin
+            col_counter <= 6'd0;
+		    end
+            else
+            begin
+		      col_counter <= col_counter;
+            end
+		end
+
     end
 end
 
@@ -200,18 +225,23 @@ begin
     end 
     else 
     begin
-        if (curr_state == LATCH_ROW) 
+        if (curr_state == CHANGE_ROW) 
         begin
-            if (row_counter == 15)
+            if (row_counter == HALF_HEIGHT - 1'b1)
                 row_counter <= 4'd0;
             else
                 row_counter <= row_counter + 1'b1;
-        end else begin
-			   row_counter <= row_counter;
-		  end
-        if (curr_state == RESET) 
+        end 
+        else 
         begin
-            row_counter <= 4'd0;
+            if (curr_state == RESET) 
+            begin
+                row_counter <= 4'd0;
+		    end
+            else
+            begin
+			    row_counter <= row_counter;
+		    end
         end
     end
 end
@@ -234,10 +264,10 @@ begin
             if (curr_state == RESET)
             begin
                 pixels_rgb_colors <= 6'd0;
-            end
-            else
+            end 
+            else 
             begin
-                pixels_rgb_colors <= pixels_rgb_colors;
+            pixels_rgb_colors <= pixels_rgb_colors;
             end
         end
     end
@@ -288,7 +318,7 @@ always @ (*) begin
                 if(driving_enable)
                 begin
                     if (col_counter == (MAT_WIDTH - 1'b1))
-                        next_state <= LATCH_ROW;
+                        next_state <= CHANGE_ROW;
                     else
                         next_state <= PUSH_ROW;
                 end
@@ -303,12 +333,12 @@ always @ (*) begin
             end
         end
 
-        LATCH_ROW: begin
+        CHANGE_ROW: begin
             if (~sw_reset)
             begin
                 if (driving_enable)
                 begin
-                    if (row_counter == ((MAT_HEIGHT >> 1'b1) - 1'b1))
+                    if (row_counter == (HALF_HEIGHT - 1'b1))
                     begin
                         next_state <= OUTPUT_EN;
                     end

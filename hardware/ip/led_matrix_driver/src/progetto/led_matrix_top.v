@@ -28,7 +28,7 @@ module led_matrix_top (
 	output            DRAM_RAS_N,
 	
    /////////// MATRIX ////////
-	output   [13:0]   ARDUINO_IO
+	output   [12:0]   ARDUINO_IO
 
 );    
 	 
@@ -62,7 +62,7 @@ module led_matrix_top (
         .sdram_wire_ras_n             (DRAM_RAS_N),                //                  .ras_n
         .sdram_wire_we_n              (DRAM_WE_N),                 //                  .we_n
         .led_matrix_clock_clk         (ARDUINO_IO[10]),            //   led_matrix_clock.clk
-        .led_matrix_control_row_sel_a (ARDUINO_IO[13]),             // led_matrix_control.row_sel_a
+        .led_matrix_control_row_sel_a (ARDUINO_IO[6]),             // led_matrix_control.row_sel_a
         .led_matrix_control_row_sel_b (ARDUINO_IO[7]),             //                   .row_sel_b
         .led_matrix_control_blue_1    (ARDUINO_IO[2]),             //                   .blue_1
         .led_matrix_control_blue_2    (ARDUINO_IO[5]),             //                   .blue_2
