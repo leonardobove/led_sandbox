@@ -126,12 +126,12 @@ assign B =                   row_counter[1];
 assign C =                   row_counter[2];
 assign D =                   row_counter[3];
 // Control signals
-assign CLK =                 (~clock & (curr_state == PUSH_ROW) & valid);
+assign CLK =                 (~clock & (curr_state == PUSH_ROW) & valid & ready);
 assign LAT =                 (curr_state == CHANGE_ROW) || (curr_state == RESET);
 assign OE_n =                (curr_state == CHANGE_ROW);
 // Stream interface signals
 assign ready =               
-    (curr_state == IDLE) ? valid & ~startofpacket:
+    (curr_state == IDLE) ||
         (curr_state == PUSH_ROW);
 
 // Avalon MM interface signals
@@ -196,7 +196,7 @@ always @ (posedge clock or negedge areset_n) begin
         begin
             if (col_counter == (MAT_WIDTH - 1'b1))
                 col_counter <= 6'd0;
-            else if(valid)
+            else if(valid && ready)
             begin
                 col_counter <= col_counter + 1'b1;
             end
@@ -207,6 +207,10 @@ always @ (posedge clock or negedge areset_n) begin
             begin
             col_counter <= 6'd0;
 		    end
+            if (curr_state == IDLE)
+            begin
+                col_counter <= 6'd0;
+            end
             else
             begin
 		      col_counter <= col_counter;
@@ -238,6 +242,10 @@ begin
             begin
                 row_counter <= 4'd0;
 		    end
+            if (curr_state == IDLE)
+            begin
+                row_counter <= 4'd0;
+            end
             else
             begin
 			    row_counter <= row_counter;
