@@ -94,8 +94,7 @@ localparam HALF_HEIGHT   = MAT_HEIGHT >> 1'b1;   //Half height of the matrix (nu
 localparam RESET         = 3'd0, 
            IDLE          = 3'd1,
            PUSH_ROW      = 3'd2,
-           CHANGE_ROW    = 3'd3,
-           OUTPUT_EN     = 3'd4; 
+           CHANGE_ROW    = 3'd3;
 
 
 // Internal signals
@@ -126,9 +125,9 @@ assign B =                   row_counter[1];
 assign C =                   row_counter[2];
 assign D =                   row_counter[3];
 // Control signals
-assign CLK =                 (~clock & (curr_state == PUSH_ROW) & valid & ready);
+assign CLK =                 (clock & (curr_state == PUSH_ROW) & valid & ready);
 assign LAT =                 (curr_state == CHANGE_ROW) || (curr_state == RESET);
-assign OE_n =                (curr_state == CHANGE_ROW);
+assign OE_n =                (curr_state == CHANGE_ROW) || (curr_state == RESET);
 // Stream interface signals
 assign ready =               
     (curr_state == IDLE) ||
@@ -192,31 +191,29 @@ always @ (posedge clock or negedge areset_n) begin
     end 
     else 
     begin
-        if (curr_state == PUSH_ROW) 
-        begin
-            if (col_counter == (MAT_WIDTH - 1'b1))
-                col_counter <= 6'd0;
-            else if(valid && ready)
-            begin
-                col_counter <= col_counter + 1'b1;
-            end
-        end
-        else
-        begin
-            if (curr_state == RESET) 
-            begin
-            col_counter <= 6'd0;
-		    end
-            if (curr_state == IDLE)
-            begin
+        case (curr_state)
+            RESET: begin
                 col_counter <= 6'd0;
             end
-            else
-            begin
-		      col_counter <= col_counter;
-            end
-		end
 
+            IDLE: begin
+                col_counter <= 6'd0;
+            end
+
+            PUSH_ROW: begin
+                if (col_counter == (MAT_WIDTH - 1'b1))
+                    col_counter <= 6'd0;
+                else if(valid && ready)
+                begin
+                    col_counter <= col_counter + 1'b1;
+                end
+            end
+
+            CHANGE_ROW: begin
+                col_counter <= 6'd0;
+            end
+
+        endcase
     end
 end
 
@@ -229,28 +226,25 @@ begin
     end 
     else 
     begin
-        if (curr_state == CHANGE_ROW) 
-        begin
-            if (row_counter == HALF_HEIGHT - 1'b1)
-                row_counter <= 4'd0;
-            else
-                row_counter <= row_counter + 1'b1;
-        end 
-        else 
-        begin
-            if (curr_state == RESET) 
-            begin
-                row_counter <= 4'd0;
-		    end
-            if (curr_state == IDLE)
-            begin
+        case (curr_state)
+            RESET: begin
                 row_counter <= 4'd0;
             end
-            else
-            begin
-			    row_counter <= row_counter;
-		    end
-        end
+
+            IDLE: begin
+                row_counter <= 4'd0;
+            end
+
+            PUSH_ROW: begin
+                row_counter <= row_counter;
+            end
+            CHANGE_ROW: begin
+                if (row_counter == (HALF_HEIGHT - 1'b1))
+                    row_counter <= 4'd0;
+                else
+                    row_counter <= row_counter + 1'b1;
+            end
+        endcase
     end
 end
 
@@ -263,21 +257,23 @@ begin
     end
     else 
     begin
-        if (curr_state == PUSH_ROW) 
-        begin
-            pixels_rgb_colors <= data[5:0];
-        end 
-        else 
-        begin
-            if (curr_state == RESET)
-            begin
+        case (curr_state)
+            RESET: begin
                 pixels_rgb_colors <= 6'd0;
-            end 
-            else 
-            begin
-            pixels_rgb_colors <= pixels_rgb_colors;
             end
-        end
+
+            IDLE: begin
+                pixels_rgb_colors <= pixels_rgb_colors;
+            end
+
+            PUSH_ROW: begin
+                pixels_rgb_colors <= data[5:0];
+            end
+
+            CHANGE_ROW: begin
+                pixels_rgb_colors <= pixels_rgb_colors;
+            end
+        endcase
     end
 end
 
@@ -348,7 +344,7 @@ always @ (*) begin
                 begin
                     if (row_counter == (HALF_HEIGHT - 1'b1))
                     begin
-                        next_state <= OUTPUT_EN;
+                        next_state <= IDLE;
                     end
                     else
                     begin
@@ -365,19 +361,8 @@ always @ (*) begin
                 next_state <= RESET;
             end
         end
-
-        OUTPUT_EN: begin
-            if (~sw_reset)
-            begin
-                next_state <= IDLE;
-            end
-            else
-            begin
-                next_state <= RESET;
-            end
-        end
 		  
-		  default: begin
+		default: begin
             next_state <= RESET;
         end
     endcase
