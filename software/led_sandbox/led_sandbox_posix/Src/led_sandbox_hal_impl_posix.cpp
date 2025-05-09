@@ -3,6 +3,7 @@
 #include "../../led_sandbox_common/Inc/pixel_dust_task.h"
 
 #include <string.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>
@@ -148,17 +149,22 @@ void* keyboard_logger_task(void*) {
     return NULL;
 }
 
-// Converts a 3-bit value to a 3-character binary string
+// Converts a 6-bit value to a 6-character binary string.
+// The 6-bit value corresponds to the lower and upper
+// pixels 3-bit RGB values.
 void get_binary_string(uint8_t value, char *str) {
-    str[0] = (value & 0b100) ? '1' : '0';
-    str[1] = (value & 0b010) ? '1' : '0';
-    str[2] = (value & 0b001) ? '1' : '0';
-    str[3] = '\0';
+    str[0] = (value & 0b100000) ? '1' : '0';
+    str[1] = (value & 0b010000) ? '1' : '0';
+    str[2] = (value & 0b001000) ? '1' : '0';
+    str[3] = (value & 0b000100) ? '1' : '0';
+    str[4] = (value & 0b000010) ? '1' : '0';
+    str[5] = (value & 0b000001) ? '1' : '0';
+    str[6] = '\0';
 }
 
 void* pixel_buf_to_file(void*) {
     FILE *fp;
-    char bin_str[4];
+    char bin_str[7];
 
     while (true) {
         fp = fopen(OUTPUT_FILE, "w");
@@ -167,8 +173,8 @@ void* pixel_buf_to_file(void*) {
             return NULL;
         }
 
-        for (uint32_t i = 0; i < WIDTH * HEIGHT; ++i) {
-            get_binary_string(pixel_buf[i] & 0x07, bin_str);  // mask to 3 bits
+        for (uint32_t i = 0; i < (WIDTH * HEIGHT / 2); ++i) {
+            get_binary_string(pixel_buf[i] & 0x3F, bin_str);  // mask to 6 bits
             fprintf(fp, "%s\n", bin_str);
         }
 

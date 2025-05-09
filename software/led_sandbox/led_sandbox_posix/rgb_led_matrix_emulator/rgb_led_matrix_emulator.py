@@ -88,7 +88,11 @@ class AdafruitRGBMatrix64x32(SampleBase):
         with open(file_path, "r") as f:
             lines = f.readlines()
 
-        if len(lines) != self.options.cols * self.options.rows:
+        # The number of lines is WIDTH*HEIGHT/2, since the matrix is parallel
+        # driven in the lower and upper halves. Each lines of the .txt file
+        # contains the RGB code of the pixel at coordinates (x, y) and of the pixel
+        # at coordinates (x, y + 16).
+        if len(lines) != (self.options.cols * self.options.rows / 2):
             print(f"Expected {self.options.cols * self.options.rows} pixels, got {len(lines)}.")
             return None
 
@@ -96,13 +100,14 @@ class AdafruitRGBMatrix64x32(SampleBase):
     
         for i, line in enumerate(lines):
             line = line.strip()
-            if len(line) != 3 or any(c not in "01" for c in line):
+            if len(line) != 6 or any(c not in "01" for c in line):
                 raise ValueError(f"Invalid pixel format on line {i}: '{line}'")
 
-            r, g, b = (int(bit) * 255 for bit in line)
+            B2, G2, R2, B1, G1, R1 = (int(bit) * 255 for bit in line)
             x = i % self.options.cols
             y = i // self.options.cols
-            image.putpixel((x, y), (r, g, b))
+            image.putpixel((x, y), (R1, G1, B1)) # Print lower-half pixel
+            image.putpixel((x, y + 16), (R2, G2, B2)) # Print upper-half pixel
 
         return image
 
