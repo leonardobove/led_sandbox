@@ -120,7 +120,7 @@ initial begin
     write = 1'b0;
 
     //Finish the simulation after a few cycles
-    #50000
+    #60000
     $finish;
 
 end
