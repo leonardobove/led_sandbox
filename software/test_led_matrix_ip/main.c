@@ -14,18 +14,33 @@
 #define WIDTH 	(64u)
 #define HEIGHT 	(16u)
 
+#define RED     (0x01)
+#define GREEN   (0x02)
+#define BLUE    (0x04)
+#define PURPLE  (0x05)
+#define YELLOW  (0x06)
+#define CIAN    (0x03)
+#define BLACK   (0x00)
+#define WHITE   (0x07)
+
+
 int main() {
 	uint8_t frame_buffer[WIDTH*HEIGHT];
 
 	for (int i = 0; i < WIDTH*HEIGHT; i++) {
-		frame_buffer[i] = (i % 8);
-		//if (i < (WIDTH)) {
-			//frame_buffer[i] = 0x01;
-		//} else {
-			//frame_buffer[i] = 0;
-		//}
+//		frame_buffer[i] = (i % 8);
+		if (i < (1 * WIDTH)) {
+			frame_buffer[i] = RED;
+		}
+		 else {
+			frame_buffer[i] = BLACK;
+		}
+
 		//frame_buffer[i] = (uint16_t)0b000001;
 	}
+
+	//frame_buffer[63] = RED;
+	//frame_buffer[0] = RED;
 
 	alt_up_video_dma_dev* dev = alt_up_video_dma_open_dev("/dev/video_dma_controller_0");
 	if (0 != alt_up_video_dma_ctrl_set_bb_addr(dev, (unsigned int)(&frame_buffer[0]))) {

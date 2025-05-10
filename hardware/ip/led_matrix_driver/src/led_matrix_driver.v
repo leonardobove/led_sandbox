@@ -41,7 +41,7 @@ module led_matrix_driver (
     //_________________________
 
 	//Input sink
-    input [5:0]  data,
+    input [7:0]  data,
 	input        valid,
 	input        endofpacket,
 	input        startofpacket,
@@ -242,7 +242,7 @@ begin
                 if (row_counter == (HALF_HEIGHT - 1'b1))
                     row_counter <= 4'd0;
                 else
-                    row_counter <= row_counter + 1'b1;
+                        row_counter <= row_counter + 1'b1;
             end
         endcase
     end
@@ -342,13 +342,13 @@ always @ (*) begin
             begin
                 if (driving_enable)
                 begin
-                    if (row_counter == (HALF_HEIGHT - 1'b1))
-                    begin
-                        next_state <= IDLE;
-                    end
-                    else
-                    begin
-                        next_state <= PUSH_ROW;
+                        if (row_counter == (HALF_HEIGHT - 1'b1))
+                        begin
+                            next_state <= IDLE;
+                        end
+                        else
+                        begin
+                            next_state <= PUSH_ROW;
                     end
                 end
                 else

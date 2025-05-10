@@ -121,6 +121,14 @@
          type = "String";
       }
    }
+   element lite_pc
+   {
+      datum _originalDeviceFamily
+      {
+         value = "MAX 10";
+         type = "String";
+      }
+   }
    element pll
    {
       datum _sortIndex
@@ -673,7 +681,7 @@
   <parameter name="AUTO_DEVICE_FAMILY" value="MAX 10" />
   <parameter name="addr_mode" value="Consecutive" />
   <parameter name="back_start_address" value="0" />
-  <parameter name="color_bits" value="6" />
+  <parameter name="color_bits" value="8" />
   <parameter name="color_planes" value="1" />
   <parameter name="dma_enabled" value="true" />
   <parameter name="height" value="16" />
