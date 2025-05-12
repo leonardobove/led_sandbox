@@ -2,7 +2,7 @@ set_global_assignment -entity "lite_pc" -library "lite_pc" -name IP_TOOL_NAME "Q
 set_global_assignment -entity "lite_pc" -library "lite_pc" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "lite_pc" -library "lite_pc" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "lite_pc" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../lite_pc.sopcinfo"]
-set_global_assignment -entity "lite_pc" -library "lite_pc" -name SLD_INFO "QSYS_NAME lite_pc HAS_SOPCINFO 1 GENERATION_ID 1746802614"
+set_global_assignment -entity "lite_pc" -library "lite_pc" -name SLD_INFO "QSYS_NAME lite_pc HAS_SOPCINFO 1 GENERATION_ID 1747065177"
 set_global_assignment -library "lite_pc" -name MISC_FILE [file join $::quartus(qip_path) "../lite_pc.cmp"]
 set_global_assignment -library "lite_pc" -name SLD_FILE [file join $::quartus(qip_path) "lite_pc.regmap"]
 set_global_assignment -library "lite_pc" -name SLD_FILE [file join $::quartus(qip_path) "lite_pc.debuginfo"]
@@ -16,7 +16,7 @@ set_global_assignment -entity "lite_pc" -library "lite_pc" -name IP_COMPONENT_DI
 set_global_assignment -entity "lite_pc" -library "lite_pc" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "lite_pc" -library "lite_pc" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "lite_pc" -library "lite_pc" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "lite_pc" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTc0NjgwMjYxNA==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "lite_pc" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTc0NzA2NTE3Nw==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "lite_pc" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "lite_pc" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MTBNNTBEQUY0ODRDN0c=::QXV0byBERVZJQ0U="
 set_global_assignment -entity "lite_pc" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Nw==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
@@ -304,20 +304,20 @@ set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_006" -library
 set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_006" -library "lite_pc" -name IP_COMPONENT_PARAMETER "TUVSTElOX1BBQ0tFVF9GT1JNQVQ=::b3JpX2J1cnN0X3NpemUoMTA3OjEwNSkgcmVzcG9uc2Vfc3RhdHVzKDEwNDoxMDMpIGNhY2hlKDEwMjo5OSkgcHJvdGVjdGlvbig5ODo5NikgdGhyZWFkX2lkKDk1KSBkZXN0X2lkKDk0OjkyKSBzcmNfaWQoOTE6ODkpIHFvcyg4OCkgYmVnaW5fYnVyc3QoODcpIGRhdGFfc2lkZWJhbmQoODYpIGFkZHJfc2lkZWJhbmQoODUpIGJ1cnN0X3R5cGUoODQ6ODMpIGJ1cnN0X3NpemUoODI6ODApIGJ1cnN0d3JhcCg3OTo3NykgYnl0ZV9jbnQoNzY6NzQpIHRyYW5zX2V4Y2x1c2l2ZSg3MykgdHJhbnNfbG9jayg3MikgdHJhbnNfcmVhZCg3MSkgdHJhbnNfd3JpdGUoNzApIHRyYW5zX3Bvc3RlZCg2OSkgdHJhbnNfY29tcHJlc3NlZF9yZWFkKDY4KSBhZGRyKDY3OjM2KSBieXRlZW4oMzU6MzIpIGRhdGEoMzE6MCk=::TWVybGluIHBhY2tldCBmb3JtYXQgZGVzY3JpcHRvcg=="
 set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_006" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_006" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::NTAwMDAwMDA=::QXV0byBDTE9DS19SQVRF"
-set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_003" -library "lite_pc" -name IP_COMPONENT_NAME "bGl0ZV9wY19tbV9pbnRlcmNvbm5lY3RfMF9yc3BfZGVtdXhfMDAz"
-set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_003" -library "lite_pc" -name IP_COMPONENT_DISPLAY_NAME "TWVtb3J5IE1hcHBlZCBEZW11bHRpcGxleGVy"
-set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_003" -library "lite_pc" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
-set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_003" -library "lite_pc" -name IP_COMPONENT_INTERNAL "Off"
-set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_003" -library "lite_pc" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
-set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_003" -library "lite_pc" -name IP_COMPONENT_VERSION "MTguMQ=="
-set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_003" -library "lite_pc" -name IP_COMPONENT_DESCRIPTION "QWNjZXB0cyBjaGFubmVsaXplZCBkYXRhIG9uIGl0cyBzaW5rIGludGVyZmFjZSBhbmQgdHJhbnNtaXRzIHRoZSBkYXRhIG9uIG9uZSBvZiBpdHMgc291cmNlIGludGVyZmFjZXMu"
-set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_003" -library "lite_pc" -name IP_COMPONENT_PARAMETER "U1RfREFUQV9X::MTA4::UGFja2V0IGRhdGEgd2lkdGg="
-set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_003" -library "lite_pc" -name IP_COMPONENT_PARAMETER "U1RfQ0hBTk5FTF9X::OA==::U3RyZWFtaW5nIGNoYW5uZWwgd2lkdGg="
-set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_003" -library "lite_pc" -name IP_COMPONENT_PARAMETER "TlVNX09VVFBVVFM=::MQ==::TnVtYmVyIG9mIGRlbXV4IG91dHB1dHM="
-set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_003" -library "lite_pc" -name IP_COMPONENT_PARAMETER "VkFMSURfV0lEVEg=::MQ==::VmFsaWQgd2lkdGg="
-set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_003" -library "lite_pc" -name IP_COMPONENT_PARAMETER "TUVSTElOX1BBQ0tFVF9GT1JNQVQ=::b3JpX2J1cnN0X3NpemUoMTA3OjEwNSkgcmVzcG9uc2Vfc3RhdHVzKDEwNDoxMDMpIGNhY2hlKDEwMjo5OSkgcHJvdGVjdGlvbig5ODo5NikgdGhyZWFkX2lkKDk1KSBkZXN0X2lkKDk0OjkyKSBzcmNfaWQoOTE6ODkpIHFvcyg4OCkgYmVnaW5fYnVyc3QoODcpIGRhdGFfc2lkZWJhbmQoODYpIGFkZHJfc2lkZWJhbmQoODUpIGJ1cnN0X3R5cGUoODQ6ODMpIGJ1cnN0X3NpemUoODI6ODApIGJ1cnN0d3JhcCg3OTo3NykgYnl0ZV9jbnQoNzY6NzQpIHRyYW5zX2V4Y2x1c2l2ZSg3MykgdHJhbnNfbG9jayg3MikgdHJhbnNfcmVhZCg3MSkgdHJhbnNfd3JpdGUoNzApIHRyYW5zX3Bvc3RlZCg2OSkgdHJhbnNfY29tcHJlc3NlZF9yZWFkKDY4KSBhZGRyKDY3OjM2KSBieXRlZW4oMzU6MzIpIGRhdGEoMzE6MCk=::TWVybGluIHBhY2tldCBmb3JtYXQgZGVzY3JpcHRvcg=="
-set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_003" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
-set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_003" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::MTAwMDAwMDAw::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_004" -library "lite_pc" -name IP_COMPONENT_NAME "bGl0ZV9wY19tbV9pbnRlcmNvbm5lY3RfMF9yc3BfZGVtdXhfMDA0"
+set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_004" -library "lite_pc" -name IP_COMPONENT_DISPLAY_NAME "TWVtb3J5IE1hcHBlZCBEZW11bHRpcGxleGVy"
+set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_004" -library "lite_pc" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_004" -library "lite_pc" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_004" -library "lite_pc" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_004" -library "lite_pc" -name IP_COMPONENT_VERSION "MTguMQ=="
+set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_004" -library "lite_pc" -name IP_COMPONENT_DESCRIPTION "QWNjZXB0cyBjaGFubmVsaXplZCBkYXRhIG9uIGl0cyBzaW5rIGludGVyZmFjZSBhbmQgdHJhbnNtaXRzIHRoZSBkYXRhIG9uIG9uZSBvZiBpdHMgc291cmNlIGludGVyZmFjZXMu"
+set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_004" -library "lite_pc" -name IP_COMPONENT_PARAMETER "U1RfREFUQV9X::MTA4::UGFja2V0IGRhdGEgd2lkdGg="
+set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_004" -library "lite_pc" -name IP_COMPONENT_PARAMETER "U1RfQ0hBTk5FTF9X::OA==::U3RyZWFtaW5nIGNoYW5uZWwgd2lkdGg="
+set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_004" -library "lite_pc" -name IP_COMPONENT_PARAMETER "TlVNX09VVFBVVFM=::MQ==::TnVtYmVyIG9mIGRlbXV4IG91dHB1dHM="
+set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_004" -library "lite_pc" -name IP_COMPONENT_PARAMETER "VkFMSURfV0lEVEg=::MQ==::VmFsaWQgd2lkdGg="
+set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_004" -library "lite_pc" -name IP_COMPONENT_PARAMETER "TUVSTElOX1BBQ0tFVF9GT1JNQVQ=::b3JpX2J1cnN0X3NpemUoMTA3OjEwNSkgcmVzcG9uc2Vfc3RhdHVzKDEwNDoxMDMpIGNhY2hlKDEwMjo5OSkgcHJvdGVjdGlvbig5ODo5NikgdGhyZWFkX2lkKDk1KSBkZXN0X2lkKDk0OjkyKSBzcmNfaWQoOTE6ODkpIHFvcyg4OCkgYmVnaW5fYnVyc3QoODcpIGRhdGFfc2lkZWJhbmQoODYpIGFkZHJfc2lkZWJhbmQoODUpIGJ1cnN0X3R5cGUoODQ6ODMpIGJ1cnN0X3NpemUoODI6ODApIGJ1cnN0d3JhcCg3OTo3NykgYnl0ZV9jbnQoNzY6NzQpIHRyYW5zX2V4Y2x1c2l2ZSg3MykgdHJhbnNfbG9jayg3MikgdHJhbnNfcmVhZCg3MSkgdHJhbnNfd3JpdGUoNzApIHRyYW5zX3Bvc3RlZCg2OSkgdHJhbnNfY29tcHJlc3NlZF9yZWFkKDY4KSBhZGRyKDY3OjM2KSBieXRlZW4oMzU6MzIpIGRhdGEoMzE6MCk=::TWVybGluIHBhY2tldCBmb3JtYXQgZGVzY3JpcHRvcg=="
+set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_004" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_004" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::MzAwMDAw::QXV0byBDTE9DS19SQVRF"
 set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_002" -library "lite_pc" -name IP_COMPONENT_NAME "bGl0ZV9wY19tbV9pbnRlcmNvbm5lY3RfMF9yc3BfZGVtdXhfMDAy"
 set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_002" -library "lite_pc" -name IP_COMPONENT_DISPLAY_NAME "TWVtb3J5IE1hcHBlZCBEZW11bHRpcGxleGVy"
 set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_002" -library "lite_pc" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -331,7 +331,7 @@ set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_002" -library
 set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_002" -library "lite_pc" -name IP_COMPONENT_PARAMETER "VkFMSURfV0lEVEg=::MQ==::VmFsaWQgd2lkdGg="
 set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_002" -library "lite_pc" -name IP_COMPONENT_PARAMETER "TUVSTElOX1BBQ0tFVF9GT1JNQVQ=::b3JpX2J1cnN0X3NpemUoMTA3OjEwNSkgcmVzcG9uc2Vfc3RhdHVzKDEwNDoxMDMpIGNhY2hlKDEwMjo5OSkgcHJvdGVjdGlvbig5ODo5NikgdGhyZWFkX2lkKDk1KSBkZXN0X2lkKDk0OjkyKSBzcmNfaWQoOTE6ODkpIHFvcyg4OCkgYmVnaW5fYnVyc3QoODcpIGRhdGFfc2lkZWJhbmQoODYpIGFkZHJfc2lkZWJhbmQoODUpIGJ1cnN0X3R5cGUoODQ6ODMpIGJ1cnN0X3NpemUoODI6ODApIGJ1cnN0d3JhcCg3OTo3NykgYnl0ZV9jbnQoNzY6NzQpIHRyYW5zX2V4Y2x1c2l2ZSg3MykgdHJhbnNfbG9jayg3MikgdHJhbnNfcmVhZCg3MSkgdHJhbnNfd3JpdGUoNzApIHRyYW5zX3Bvc3RlZCg2OSkgdHJhbnNfY29tcHJlc3NlZF9yZWFkKDY4KSBhZGRyKDY3OjM2KSBieXRlZW4oMzU6MzIpIGRhdGEoMzE6MCk=::TWVybGluIHBhY2tldCBmb3JtYXQgZGVzY3JpcHRvcg=="
 set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_002" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
-set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_002" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::MzAwMDAw::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_002" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::MTAwMDAwMDAw::QXV0byBDTE9DS19SQVRF"
 set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux" -library "lite_pc" -name IP_COMPONENT_NAME "bGl0ZV9wY19tbV9pbnRlcmNvbm5lY3RfMF9yc3BfZGVtdXg="
 set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux" -library "lite_pc" -name IP_COMPONENT_DISPLAY_NAME "TWVtb3J5IE1hcHBlZCBEZW11bHRpcGxleGVy"
 set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux" -library "lite_pc" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -435,7 +435,7 @@ set_global_assignment -entity "lite_pc_mm_interconnect_0_cmd_demux" -library "li
 set_global_assignment -entity "lite_pc_mm_interconnect_0_cmd_demux" -library "lite_pc" -name IP_COMPONENT_PARAMETER "VkFMSURfV0lEVEg=::MQ==::VmFsaWQgd2lkdGg="
 set_global_assignment -entity "lite_pc_mm_interconnect_0_cmd_demux" -library "lite_pc" -name IP_COMPONENT_PARAMETER "TUVSTElOX1BBQ0tFVF9GT1JNQVQ=::b3JpX2J1cnN0X3NpemUoODA6NzgpIHJlc3BvbnNlX3N0YXR1cyg3Nzo3NikgY2FjaGUoNzU6NzIpIHByb3RlY3Rpb24oNzE6NjkpIHRocmVhZF9pZCg2OCkgZGVzdF9pZCg2Nzo2NSkgc3JjX2lkKDY0OjYyKSBxb3MoNjEpIGJlZ2luX2J1cnN0KDYwKSBkYXRhX3NpZGViYW5kKDU5KSBhZGRyX3NpZGViYW5kKDU4KSBidXJzdF90eXBlKDU3OjU2KSBidXJzdF9zaXplKDU1OjUzKSBidXJzdHdyYXAoNTI6NTApIGJ5dGVfY250KDQ5OjQ3KSB0cmFuc19leGNsdXNpdmUoNDYpIHRyYW5zX2xvY2soNDUpIHRyYW5zX3JlYWQoNDQpIHRyYW5zX3dyaXRlKDQzKSB0cmFuc19wb3N0ZWQoNDIpIHRyYW5zX2NvbXByZXNzZWRfcmVhZCg0MSkgYWRkcig0MDo5KSBieXRlZW4oOCkgZGF0YSg3OjAp::TWVybGluIHBhY2tldCBmb3JtYXQgZGVzY3JpcHRvcg=="
 set_global_assignment -entity "lite_pc_mm_interconnect_0_cmd_demux" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
-set_global_assignment -entity "lite_pc_mm_interconnect_0_cmd_demux" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::MzAwMDAw::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "lite_pc_mm_interconnect_0_cmd_demux" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::MTAwMDAwMDAw::QXV0byBDTE9DS19SQVRF"
 set_global_assignment -entity "altera_merlin_burst_adapter" -library "lite_pc" -name IP_COMPONENT_NAME "YWx0ZXJhX21lcmxpbl9idXJzdF9hZGFwdGVy"
 set_global_assignment -entity "altera_merlin_burst_adapter" -library "lite_pc" -name IP_COMPONENT_DISPLAY_NAME "TWVtb3J5IE1hcHBlZCBCdXJzdCBBZGFwdGVy"
 set_global_assignment -entity "altera_merlin_burst_adapter" -library "lite_pc" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -935,11 +935,11 @@ set_global_assignment -entity "lite_pc_video_dma_controller_0" -library "lite_pc
 set_global_assignment -entity "lite_pc_video_dma_controller_0" -library "lite_pc" -name IP_COMPONENT_PARAMETER "YmFja19zdGFydF9hZGRyZXNz::MA==::RGVmYXVsdCBCYWNrIEJ1ZmZlciBTdGFydCBBZGRyZXNz"
 set_global_assignment -entity "lite_pc_video_dma_controller_0" -library "lite_pc" -name IP_COMPONENT_PARAMETER "d2lkdGg=::NjQ=::V2lkdGggKCMgb2YgcGl4ZWxzKQ=="
 set_global_assignment -entity "lite_pc_video_dma_controller_0" -library "lite_pc" -name IP_COMPONENT_PARAMETER "aGVpZ2h0::MTY=::SGVpZ2h0ICgjIG9mIGxpbmVzKQ=="
-set_global_assignment -entity "lite_pc_video_dma_controller_0" -library "lite_pc" -name IP_COMPONENT_PARAMETER "Y29sb3JfYml0cw==::Ng==::RGF0YSBCaXRzIHBlciBTeW1ib2w="
+set_global_assignment -entity "lite_pc_video_dma_controller_0" -library "lite_pc" -name IP_COMPONENT_PARAMETER "Y29sb3JfYml0cw==::OA==::RGF0YSBCaXRzIHBlciBTeW1ib2w="
 set_global_assignment -entity "lite_pc_video_dma_controller_0" -library "lite_pc" -name IP_COMPONENT_PARAMETER "Y29sb3JfcGxhbmVz::MQ==::U3ltYm9scyBwZXIgQmVhdA=="
 set_global_assignment -entity "lite_pc_video_dma_controller_0" -library "lite_pc" -name IP_COMPONENT_PARAMETER "ZG1hX2VuYWJsZWQ=::dHJ1ZQ==::RW5hYmxlZCBETUEgdHJhbnNmZXIgb24gcmVzZXQ="
 set_global_assignment -entity "lite_pc_video_dma_controller_0" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
-set_global_assignment -entity "lite_pc_video_dma_controller_0" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::MzAwMDAw::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "lite_pc_video_dma_controller_0" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::MTAwMDAwMDAw::QXV0byBDTE9DS19SQVRF"
 set_global_assignment -entity "lite_pc_timer" -library "lite_pc" -name IP_COMPONENT_NAME "bGl0ZV9wY190aW1lcg=="
 set_global_assignment -entity "lite_pc_timer" -library "lite_pc" -name IP_COMPONENT_DISPLAY_NAME "SW50ZXJ2YWwgVGltZXIgSW50ZWwgRlBHQSBJUA=="
 set_global_assignment -entity "lite_pc_timer" -library "lite_pc" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -1110,6 +1110,24 @@ set_global_assignment -entity "lite_pc_jtag_uart" -library "lite_pc" -name IP_CO
 set_global_assignment -entity "lite_pc_jtag_uart" -library "lite_pc" -name IP_COMPONENT_PARAMETER "bGVnYWN5U2lnbmFsQWxsb3c=::ZmFsc2U=::bGVnYWN5U2lnbmFsQWxsb3c="
 set_global_assignment -entity "lite_pc_jtag_uart" -library "lite_pc" -name IP_COMPONENT_PARAMETER "ZW5hYmxlSW50ZXJhY3RpdmVJbnB1dA==::ZmFsc2U=::ZW5hYmxlSW50ZXJhY3RpdmVJbnB1dA=="
 set_global_assignment -entity "lite_pc_jtag_uart" -library "lite_pc" -name IP_COMPONENT_PARAMETER "ZW5hYmxlSW50ZXJhY3RpdmVPdXRwdXQ=::ZmFsc2U=::ZW5hYmxlSW50ZXJhY3RpdmVPdXRwdXQ="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_COMPONENT_NAME "YWx0ZXJhX2F2YWxvbl9kY19maWZv"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_COMPONENT_DISPLAY_NAME "QXZhbG9uLVNUIER1YWwgQ2xvY2sgRklGTw=="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_COMPONENT_VERSION "MTguMQ=="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_COMPONENT_PARAMETER "U1lNQk9MU19QRVJfQkVBVA==::MQ==::U3ltYm9scyBwZXIgYmVhdA=="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_COMPONENT_PARAMETER "QklUU19QRVJfU1lNQk9M::OA==::Qml0cyBwZXIgc3ltYm9s"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_COMPONENT_PARAMETER "RklGT19ERVBUSA==::NjQ=::RklGTyBkZXB0aA=="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_COMPONENT_PARAMETER "Q0hBTk5FTF9XSURUSA==::MA==::Q2hhbm5lbCB3aWR0aA=="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_COMPONENT_PARAMETER "RVJST1JfV0lEVEg=::MA==::RXJyb3Igd2lkdGg="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_COMPONENT_PARAMETER "VVNFX1BBQ0tFVFM=::MQ==::VXNlIHBhY2tldHM="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_COMPONENT_PARAMETER "VVNFX0lOX0ZJTExfTEVWRUw=::MA==::VXNlIHNpbmsgZmlsbCBsZXZlbA=="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_COMPONENT_PARAMETER "VVNFX09VVF9GSUxMX0xFVkVM::MA==::VXNlIHNvdXJjZSBmaWxsIGxldmVs"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_COMPONENT_PARAMETER "V1JfU1lOQ19ERVBUSA==::Mw==::V3JpdGUgcG9pbnRlciBzeW5jaHJvbml6ZXIgbGVuZ3Ro"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_COMPONENT_PARAMETER "UkRfU1lOQ19ERVBUSA==::Mw==::UmVhZCBwb2ludGVyIHN5bmNocm9uaXplciBsZW5ndGg="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_COMPONENT_PARAMETER "RU5BQkxFX0VYUExJQ0lUX01BWENIQU5ORUw=::ZmFsc2U=::RW5hYmxlIGV4cGxpY2l0IG1heENoYW5uZWw="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_COMPONENT_PARAMETER "RVhQTElDSVRfTUFYQ0hBTk5FTA==::MA==::RXhwbGljaXQgbWF4Q2hhbm5lbA=="
 set_global_assignment -entity "lite_pc_cpu" -library "lite_pc" -name IP_COMPONENT_NAME "bGl0ZV9wY19jcHU="
 set_global_assignment -entity "lite_pc_cpu" -library "lite_pc" -name IP_COMPONENT_DISPLAY_NAME "TmlvcyBJSSBQcm9jZXNzb3I="
 set_global_assignment -entity "lite_pc_cpu" -library "lite_pc" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -1456,7 +1474,7 @@ set_global_assignment -library "lite_pc" -name SYSTEMVERILOG_FILE [file join $::
 set_global_assignment -library "lite_pc" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/lite_pc_mm_interconnect_0_rsp_mux_001.sv"]
 set_global_assignment -library "lite_pc" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/lite_pc_mm_interconnect_0_rsp_mux.sv"]
 set_global_assignment -library "lite_pc" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/lite_pc_mm_interconnect_0_rsp_demux_006.sv"]
-set_global_assignment -library "lite_pc" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/lite_pc_mm_interconnect_0_rsp_demux_003.sv"]
+set_global_assignment -library "lite_pc" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/lite_pc_mm_interconnect_0_rsp_demux_004.sv"]
 set_global_assignment -library "lite_pc" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/lite_pc_mm_interconnect_0_rsp_demux_002.sv"]
 set_global_assignment -library "lite_pc" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/lite_pc_mm_interconnect_0_rsp_demux.sv"]
 set_global_assignment -library "lite_pc" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/lite_pc_mm_interconnect_0_cmd_mux_002.sv"]
@@ -1495,6 +1513,9 @@ set_global_assignment -library "lite_pc" -name VERILOG_FILE [file join $::quartu
 set_global_assignment -library "lite_pc" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/lite_pc_pll.v"]
 set_global_assignment -library "lite_pc" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/led_matrix_driver.v"]
 set_global_assignment -library "lite_pc" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/lite_pc_jtag_uart.v"]
+set_global_assignment -library "lite_pc" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_avalon_dc_fifo.v"]
+set_global_assignment -library "lite_pc" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_dcfifo_synchronizer_bundle.v"]
+set_global_assignment -library "lite_pc" -name SDC_FILE [file join $::quartus(qip_path) "submodules/altera_avalon_dc_fifo.sdc"]
 set_global_assignment -library "lite_pc" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/lite_pc_cpu.v"]
 set_global_assignment -library "lite_pc" -name SDC_FILE [file join $::quartus(qip_path) "submodules/lite_pc_cpu_cpu.sdc"]
 set_global_assignment -library "lite_pc" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/lite_pc_cpu_cpu.v"]
@@ -1545,9 +1566,9 @@ set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_mux" -library "lite
 set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_006" -library "lite_pc" -name IP_TOOL_NAME "altera_merlin_demultiplexer"
 set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_006" -library "lite_pc" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_006" -library "lite_pc" -name IP_TOOL_ENV "Qsys"
-set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_003" -library "lite_pc" -name IP_TOOL_NAME "altera_merlin_demultiplexer"
-set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_003" -library "lite_pc" -name IP_TOOL_VERSION "18.1"
-set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_003" -library "lite_pc" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_004" -library "lite_pc" -name IP_TOOL_NAME "altera_merlin_demultiplexer"
+set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_004" -library "lite_pc" -name IP_TOOL_VERSION "18.1"
+set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_004" -library "lite_pc" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_002" -library "lite_pc" -name IP_TOOL_NAME "altera_merlin_demultiplexer"
 set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_002" -library "lite_pc" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "lite_pc_mm_interconnect_0_rsp_demux_002" -library "lite_pc" -name IP_TOOL_ENV "Qsys"
@@ -1623,6 +1644,9 @@ set_global_assignment -entity "lite_pc_pll" -library "lite_pc" -name IP_TOOL_ENV
 set_global_assignment -entity "lite_pc_jtag_uart" -library "lite_pc" -name IP_TOOL_NAME "altera_avalon_jtag_uart"
 set_global_assignment -entity "lite_pc_jtag_uart" -library "lite_pc" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "lite_pc_jtag_uart" -library "lite_pc" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_TOOL_NAME "altera_avalon_dc_fifo"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_TOOL_VERSION "18.1"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "lite_pc" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -entity "lite_pc_cpu" -library "lite_pc" -name IP_TOOL_NAME "altera_nios2_gen2"
 set_global_assignment -entity "lite_pc_cpu" -library "lite_pc" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "lite_pc_cpu" -library "lite_pc" -name IP_TOOL_ENV "Qsys"

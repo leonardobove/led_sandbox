@@ -126,8 +126,8 @@ assign C =                   row_counter[2];
 assign D =                   row_counter[3];
 // Control signals
 assign CLK =                 (clock & (curr_state == PUSH_ROW) & valid & ready);
-assign LAT =                 (curr_state == CHANGE_ROW) || (curr_state == RESET);
-assign OE_n =                (curr_state == CHANGE_ROW) || (curr_state == RESET);
+assign LAT =                 ~(curr_state == PUSH_ROW);
+assign OE_n =                ~(curr_state == PUSH_ROW);
 // Stream interface signals
 assign ready =               
     (curr_state == IDLE) ||
