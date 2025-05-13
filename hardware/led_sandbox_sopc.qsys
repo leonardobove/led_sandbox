@@ -48,6 +48,11 @@
          value = "0";
          type = "int";
       }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
    }
    element cpu
    {
@@ -65,12 +70,25 @@
          type = "String";
       }
    }
+   element dc_fifo_0
+   {
+      datum _sortIndex
+      {
+         value = "13";
+         type = "int";
+      }
+   }
    element jtag_uart
    {
       datum _sortIndex
       {
          value = "4";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element jtag_uart.avalon_jtag_slave
@@ -87,6 +105,11 @@
       {
          value = "11";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element keys.s1
@@ -109,7 +132,7 @@
    {
       datum baseAddress
       {
-         value = "134221944";
+         value = "134221936";
          type = "String";
       }
    }
@@ -127,6 +150,11 @@
       {
          value = "12";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element leds.s1
@@ -160,6 +188,11 @@
          value = "10";
          type = "int";
       }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
    }
    element sliders.s1
    {
@@ -176,12 +209,17 @@
          value = "3";
          type = "int";
       }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
    }
    element system_id.control_slave
    {
       datum baseAddress
       {
-         value = "134221936";
+         value = "134221944";
          type = "String";
       }
    }
@@ -191,6 +229,11 @@
       {
          value = "6";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element systick_timer.s1
@@ -478,7 +521,7 @@
   <parameter name="dataAddrWidth" value="28" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='sdram.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='systick_timer.s1' start='0x8001000' end='0x8001020' type='altera_avalon_timer.s1' /><slave name='leds.s1' start='0x8001020' end='0x8001030' type='altera_avalon_pio.s1' /><slave name='keys.s1' start='0x8001030' end='0x8001040' type='altera_avalon_pio.s1' /><slave name='sliders.s1' start='0x8001040' end='0x8001050' type='altera_avalon_pio.s1' /><slave name='altpll_0.pll_slave' start='0x8001050' end='0x8001060' type='altpll.pll_slave' /><slave name='video_dma_controller_0.avalon_dma_control_slave' start='0x8001060' end='0x8001070' type='altera_up_avalon_video_dma_controller.avalon_dma_control_slave' /><slave name='system_id.control_slave' start='0x8001070' end='0x8001078' type='altera_avalon_sysid_qsys.control_slave' /><slave name='led_matrix_driver_0.avalon_slave_0' start='0x8001078' end='0x8001080' type='led_matrix_driver.avalon_slave_0' /><slave name='jtag_uart.avalon_jtag_slave' start='0x8001080' end='0x8001088' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='accelerometer_spi_0.avalon_accelerometer_spi_mode_slave' start='0x8001088' end='0x800108A' type='altera_up_avalon_accelerometer_spi.avalon_accelerometer_spi_mode_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='sdram.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='systick_timer.s1' start='0x8001000' end='0x8001020' type='altera_avalon_timer.s1' /><slave name='leds.s1' start='0x8001020' end='0x8001030' type='altera_avalon_pio.s1' /><slave name='keys.s1' start='0x8001030' end='0x8001040' type='altera_avalon_pio.s1' /><slave name='sliders.s1' start='0x8001040' end='0x8001050' type='altera_avalon_pio.s1' /><slave name='altpll_0.pll_slave' start='0x8001050' end='0x8001060' type='altpll.pll_slave' /><slave name='video_dma_controller_0.avalon_dma_control_slave' start='0x8001060' end='0x8001070' type='altera_up_avalon_video_dma_controller.avalon_dma_control_slave' /><slave name='led_matrix_driver_0.avalon_slave_0' start='0x8001070' end='0x8001078' type='led_matrix_driver.avalon_slave_0' /><slave name='system_id.control_slave' start='0x8001078' end='0x8001080' type='altera_avalon_sysid_qsys.control_slave' /><slave name='jtag_uart.avalon_jtag_slave' start='0x8001080' end='0x8001088' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='accelerometer_spi_0.avalon_accelerometer_spi_mode_slave' start='0x8001088' end='0x800108A' type='altera_up_avalon_accelerometer_spi.avalon_accelerometer_spi_mode_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -637,6 +680,24 @@
   <parameter name="userDefinedSettings" value="" />
  </module>
  <module
+   name="dc_fifo_0"
+   kind="altera_avalon_dc_fifo"
+   version="18.1"
+   enabled="1">
+  <parameter name="BITS_PER_SYMBOL" value="8" />
+  <parameter name="CHANNEL_WIDTH" value="0" />
+  <parameter name="ENABLE_EXPLICIT_MAXCHANNEL" value="false" />
+  <parameter name="ERROR_WIDTH" value="0" />
+  <parameter name="EXPLICIT_MAXCHANNEL" value="0" />
+  <parameter name="FIFO_DEPTH" value="64" />
+  <parameter name="RD_SYNC_DEPTH" value="3" />
+  <parameter name="SYMBOLS_PER_BEAT" value="1" />
+  <parameter name="USE_IN_FILL_LEVEL" value="0" />
+  <parameter name="USE_OUT_FILL_LEVEL" value="0" />
+  <parameter name="USE_PACKETS" value="1" />
+  <parameter name="WR_SYNC_DEPTH" value="3" />
+ </module>
+ <module
    name="jtag_uart"
    kind="altera_avalon_jtag_uart"
    version="18.1"
@@ -764,11 +825,11 @@
    kind="altera_up_avalon_video_dma_controller"
    version="18.0"
    enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_RATE" value="300000" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="100000000" />
   <parameter name="AUTO_DEVICE_FAMILY" value="MAX 10" />
   <parameter name="addr_mode" value="Consecutive" />
   <parameter name="back_start_address" value="0" />
-  <parameter name="color_bits" value="6" />
+  <parameter name="color_bits" value="8" />
   <parameter name="color_planes" value="1" />
   <parameter name="dma_enabled" value="true" />
   <parameter name="height" value="16" />
@@ -818,7 +879,7 @@
    start="cpu.data_master"
    end="led_matrix_driver_0.avalon_slave_0">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001078" />
+  <parameter name="baseAddress" value="0x08001070" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -827,7 +888,7 @@
    start="cpu.data_master"
    end="system_id.control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x08001070" />
+  <parameter name="baseAddress" value="0x08001078" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -899,6 +960,11 @@
    kind="avalon_streaming"
    version="18.1"
    start="video_dma_controller_0.avalon_pixel_source"
+   end="dc_fifo_0.in" />
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
+   start="dc_fifo_0.out"
    end="led_matrix_driver_0.avalon_streaming_sink" />
  <connection
    kind="clock"
@@ -915,18 +981,28 @@
  <connection
    kind="clock"
    version="18.1"
+   start="altpll_0.c0"
+   end="video_dma_controller_0.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="altpll_0.c0"
+   end="dc_fifo_0.in_clk" />
+ <connection
+   kind="clock"
+   version="18.1"
    start="altpll_0.c2"
    end="accelerometer_spi_0.clk" />
  <connection
    kind="clock"
    version="18.1"
    start="altpll_0.c3"
-   end="video_dma_controller_0.clk" />
+   end="led_matrix_driver_0.clock_in" />
  <connection
    kind="clock"
    version="18.1"
    start="altpll_0.c3"
-   end="led_matrix_driver_0.clock_in" />
+   end="dc_fifo_0.out_clk" />
  <connection
    kind="clock"
    version="18.1"
@@ -956,7 +1032,17 @@
    kind="reset"
    version="18.1"
    start="clk_50.clk_reset"
+   end="dc_fifo_0.in_clk_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_50.clk_reset"
    end="altpll_0.inclk_interface_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_50.clk_reset"
+   end="dc_fifo_0.out_clk_reset" />
  <connection kind="reset" version="18.1" start="clk_50.clk_reset" end="cpu.reset" />
  <connection
    kind="reset"
@@ -992,19 +1078,29 @@
    kind="reset"
    version="18.1"
    start="clk_50.clk_reset"
-   end="led_matrix_driver_0.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_50.clk_reset"
    end="sliders.reset" />
  <connection kind="reset" version="18.1" start="clk_50.clk_reset" end="keys.reset" />
  <connection kind="reset" version="18.1" start="clk_50.clk_reset" end="leds.reset" />
  <connection
    kind="reset"
    version="18.1"
+   start="clk_50.clk_reset"
+   end="led_matrix_driver_0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="cpu.debug_reset_request"
+   end="dc_fifo_0.in_clk_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
    start="cpu.debug_reset_request"
    end="altpll_0.inclk_interface_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="cpu.debug_reset_request"
+   end="dc_fifo_0.out_clk_reset" />
  <connection
    kind="reset"
    version="18.1"
@@ -1044,11 +1140,6 @@
    kind="reset"
    version="18.1"
    start="cpu.debug_reset_request"
-   end="led_matrix_driver_0.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="cpu.debug_reset_request"
    end="sliders.reset" />
  <connection
    kind="reset"
@@ -1060,6 +1151,11 @@
    version="18.1"
    start="cpu.debug_reset_request"
    end="leds.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="cpu.debug_reset_request"
+   end="led_matrix_driver_0.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
