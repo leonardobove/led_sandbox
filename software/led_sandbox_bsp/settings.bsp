@@ -2,9 +2,9 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>07-May-2025 17:40:27</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1746632427601</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>C:\Users\leona\Desktop\led_sandbox\software\led_sandbox_bsp</BspGeneratedLocation>
+        <BspGeneratedTimeStamp>14-mag-2025 13.20.32</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1747221632795</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>C:\universita\led_sandbox\software\led_sandbox_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\sopc\led_sandbox_sopc.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
@@ -941,13 +941,13 @@
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>system_id</slaveDescriptor>
+                <slaveDescriptor>led_matrix_driver_0</slaveDescriptor>
                 <addressRange>0x08001070 - 0x08001077</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>led_matrix_driver_0</slaveDescriptor>
+                <slaveDescriptor>system_id</slaveDescriptor>
                 <addressRange>0x08001078 - 0x0800107F</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes/>

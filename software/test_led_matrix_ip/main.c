@@ -29,8 +29,8 @@ int main() {
 
 	for (int i = 0; i < WIDTH*HEIGHT; i++) {
 //		frame_buffer[i] = (i % 8);
-		if (i < (1 * WIDTH)) {
-			frame_buffer[i] = RED;
+		if (i < (15 * WIDTH)) {
+			frame_buffer[i] = 9;
 		}
 		 else {
 			frame_buffer[i] = BLACK;
@@ -43,11 +43,7 @@ int main() {
 	//frame_buffer[0] = RED;
 
 	alt_up_video_dma_dev* dev = alt_up_video_dma_open_dev("/dev/video_dma_controller_0");
-	if (0 != alt_up_video_dma_ctrl_set_bb_addr(dev, (unsigned int)(&frame_buffer[0]))) {
-		while (1) {
-
-		}
-	}
+	alt_up_video_dma_ctrl_set_bb_addr(dev, (unsigned int)(&frame_buffer[0]));
 
 	alt_up_video_dma_ctrl_swap_buffers(dev);
 	//IOWR(VIDEO_DMA_CONTROLLER_0_BASE, 0, (unsigned int)(&frame_buffer[0]));

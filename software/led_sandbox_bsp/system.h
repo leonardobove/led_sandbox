@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'led_sandbox_sopc'
  * SOPC Builder design path: ../../sopc/led_sandbox_sopc.sopcinfo
  *
- * Generated: Wed May 07 17:40:28 CEST 2025
+ * Generated: Wed May 14 13:20:37 CEST 2025
  */
 
 /*
@@ -271,7 +271,7 @@
  */
 
 #define ALT_MODULE_CLASS_led_matrix_driver_0 led_matrix_driver
-#define LED_MATRIX_DRIVER_0_BASE 0x8001078
+#define LED_MATRIX_DRIVER_0_BASE 0x8001070
 #define LED_MATRIX_DRIVER_0_IRQ -1
 #define LED_MATRIX_DRIVER_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define LED_MATRIX_DRIVER_0_NAME "/dev/led_matrix_driver_0"
@@ -378,13 +378,13 @@
  */
 
 #define ALT_MODULE_CLASS_system_id altera_avalon_sysid_qsys
-#define SYSTEM_ID_BASE 0x8001070
+#define SYSTEM_ID_BASE 0x8001078
 #define SYSTEM_ID_ID 3
 #define SYSTEM_ID_IRQ -1
 #define SYSTEM_ID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSTEM_ID_NAME "/dev/system_id"
 #define SYSTEM_ID_SPAN 8
-#define SYSTEM_ID_TIMESTAMP 1746632100
+#define SYSTEM_ID_TIMESTAMP 1747221363
 #define SYSTEM_ID_TYPE "altera_avalon_sysid_qsys"
 
 

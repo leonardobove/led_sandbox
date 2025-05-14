@@ -2,9 +2,9 @@
  * system.h - SOPC Builder system and BSP software package information
  *
  * Machine generated for CPU 'cpu' in SOPC Builder design 'lite_pc'
- * SOPC Builder design path: C:/universita/led_sandbox/sopc/lite_pc.sopcinfo
+ * SOPC Builder design path: ../../sopc/lite_pc.sopcinfo
  *
- * Generated: Thu May 08 10:19:59 CEST 2025
+ * Generated: Wed May 14 11:24:20 CEST 2025
  */
 
 /*
@@ -287,7 +287,7 @@
 #define SYSTEM_ID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSTEM_ID_NAME "/dev/system_id"
 #define SYSTEM_ID_SPAN 8
-#define SYSTEM_ID_TIMESTAMP 1746691851
+#define SYSTEM_ID_TIMESTAMP 1747214563
 #define SYSTEM_ID_TYPE "altera_avalon_sysid_qsys"
 
 

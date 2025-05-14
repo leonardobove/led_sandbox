@@ -2,9 +2,9 @@
  * linker.h - Linker script mapping information
  *
  * Machine generated for CPU 'cpu' in SOPC Builder design 'lite_pc'
- * SOPC Builder design path: C:/Users/leona/Desktop/led_sandbox/sopc/lite_pc.sopcinfo
+ * SOPC Builder design path: ../../sopc/lite_pc.sopcinfo
  *
- * Generated: Tue May 06 19:32:45 CEST 2025
+ * Generated: Tue May 13 16:20:04 CEST 2025
  */
 
 /*

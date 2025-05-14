@@ -17,6 +17,9 @@
 #include "../Inc/accelerometer.h"
 #include "../Inc/gpio.h"
 #include "../Inc/led_matrix.h"
+#include "altera_up_avalon_video_dma_controller.h"
+
+alt_up_video_dma_dev* dev;
 
 
 void hal_init() {
@@ -28,8 +31,11 @@ void hal_init() {
     scheduler_init();
 
     // Initialize DMA
-    DMA_ENABLE((unsigned int)(&pixel_buf[0]));
-    DMA_START;
+//    DMA_ENABLE((unsigned int)(&pixel_buf[0]));
+//    DMA_START;
+	dev = alt_up_video_dma_open_dev("/dev/video_dma_controller_0");
+	alt_up_video_dma_ctrl_set_bb_addr(dev, (unsigned int)(&pixel_buf[0]));
+
 }
 
 // GPIO

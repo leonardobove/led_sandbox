@@ -9,6 +9,7 @@ extern "C" {
 #include "io.h"
 #include <stdint.h>
 #include <stdio.h>
+#include "altera_up_avalon_video_dma_controller.h"
 
 
 //DMA DEFINITIONS
@@ -18,6 +19,8 @@ extern "C" {
 
 #define DMA_ENABLE(X)            (IOWR(VIDEO_DMA_CONTROLLER_0_BASE, DMA_EN_OFFSET, (X)))
 #define DMA_START                (IOWR(VIDEO_DMA_CONTROLLER_0_BASE, DMA_START_OFFSET, DMA_ENABLE_BIT))
+
+extern alt_up_video_dma_dev* dev;
 
 //LED_MATRIX_DRIVER DEFINITIONS
 

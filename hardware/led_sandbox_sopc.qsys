@@ -127,6 +127,11 @@
          value = "9";
          type = "int";
       }
+      datum sopceditor_expanded
+      {
+         value = "1";
+         type = "boolean";
+      }
    }
    element led_matrix_driver_0.avalon_slave_0
    {

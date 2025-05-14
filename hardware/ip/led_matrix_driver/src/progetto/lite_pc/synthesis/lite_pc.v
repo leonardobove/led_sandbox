@@ -31,13 +31,18 @@ module lite_pc (
 		output wire        sdram_wire_we_n               //                   .we_n
 	);
 
-	wire         video_dma_controller_0_avalon_pixel_source_valid;                             // video_dma_controller_0:stream_valid -> led_matrix_driver_0:valid
-	wire   [5:0] video_dma_controller_0_avalon_pixel_source_data;                              // video_dma_controller_0:stream_data -> led_matrix_driver_0:data
-	wire         video_dma_controller_0_avalon_pixel_source_ready;                             // led_matrix_driver_0:ready -> video_dma_controller_0:stream_ready
-	wire         video_dma_controller_0_avalon_pixel_source_startofpacket;                     // video_dma_controller_0:stream_startofpacket -> led_matrix_driver_0:startofpacket
-	wire         video_dma_controller_0_avalon_pixel_source_endofpacket;                       // video_dma_controller_0:stream_endofpacket -> led_matrix_driver_0:endofpacket
-	wire         pll_c0_clk;                                                                   // pll:c0 -> [cpu:clk, irq_mapper:clk, jtag_uart:clk, mm_interconnect_0:pll_c0_clk, rst_controller:clk, sdram:clk, system_id:clock, timer:clk]
-	wire         pll_c2_clk;                                                                   // pll:c2 -> [led_matrix_driver_0:clock, mm_interconnect_0:pll_c2_clk, rst_controller_001:clk, video_dma_controller_0:clk]
+	wire         video_dma_controller_0_avalon_pixel_source_valid;                             // video_dma_controller_0:stream_valid -> dc_fifo_0:in_valid
+	wire   [7:0] video_dma_controller_0_avalon_pixel_source_data;                              // video_dma_controller_0:stream_data -> dc_fifo_0:in_data
+	wire         video_dma_controller_0_avalon_pixel_source_ready;                             // dc_fifo_0:in_ready -> video_dma_controller_0:stream_ready
+	wire         video_dma_controller_0_avalon_pixel_source_startofpacket;                     // video_dma_controller_0:stream_startofpacket -> dc_fifo_0:in_startofpacket
+	wire         video_dma_controller_0_avalon_pixel_source_endofpacket;                       // video_dma_controller_0:stream_endofpacket -> dc_fifo_0:in_endofpacket
+	wire         dc_fifo_0_out_valid;                                                          // dc_fifo_0:out_valid -> led_matrix_driver_0:valid
+	wire   [7:0] dc_fifo_0_out_data;                                                           // dc_fifo_0:out_data -> led_matrix_driver_0:data
+	wire         dc_fifo_0_out_ready;                                                          // led_matrix_driver_0:ready -> dc_fifo_0:out_ready
+	wire         dc_fifo_0_out_startofpacket;                                                  // dc_fifo_0:out_startofpacket -> led_matrix_driver_0:startofpacket
+	wire         dc_fifo_0_out_endofpacket;                                                    // dc_fifo_0:out_endofpacket -> led_matrix_driver_0:endofpacket
+	wire         pll_c0_clk;                                                                   // pll:c0 -> [cpu:clk, dc_fifo_0:in_clk, irq_mapper:clk, jtag_uart:clk, mm_interconnect_0:pll_c0_clk, rst_controller:clk, sdram:clk, system_id:clock, timer:clk, video_dma_controller_0:clk]
+	wire         pll_c2_clk;                                                                   // pll:c2 -> [dc_fifo_0:out_clk, led_matrix_driver_0:clock, mm_interconnect_0:pll_c2_clk, rst_controller_001:clk]
 	wire         video_dma_controller_0_avalon_dma_master_waitrequest;                         // mm_interconnect_0:video_dma_controller_0_avalon_dma_master_waitrequest -> video_dma_controller_0:master_waitrequest
 	wire   [7:0] video_dma_controller_0_avalon_dma_master_readdata;                            // mm_interconnect_0:video_dma_controller_0_avalon_dma_master_readdata -> video_dma_controller_0:master_readdata
 	wire  [31:0] video_dma_controller_0_avalon_dma_master_address;                             // video_dma_controller_0:master_address -> mm_interconnect_0:video_dma_controller_0_avalon_dma_master_address
@@ -106,10 +111,10 @@ module lite_pc (
 	wire         irq_mapper_receiver0_irq;                                                     // jtag_uart:av_irq -> irq_mapper:receiver0_irq
 	wire         irq_mapper_receiver1_irq;                                                     // timer:irq -> irq_mapper:receiver1_irq
 	wire  [31:0] cpu_irq_irq;                                                                  // irq_mapper:sender_irq -> cpu:irq
-	wire         rst_controller_reset_out_reset;                                               // rst_controller:reset_out -> [cpu:reset_n, irq_mapper:reset, jtag_uart:rst_n, mm_interconnect_0:cpu_reset_reset_bridge_in_reset_reset, rst_translator:in_reset, sdram:reset_n, system_id:reset_n, timer:reset_n]
+	wire         rst_controller_reset_out_reset;                                               // rst_controller:reset_out -> [cpu:reset_n, dc_fifo_0:in_reset_n, irq_mapper:reset, jtag_uart:rst_n, mm_interconnect_0:video_dma_controller_0_reset_reset_bridge_in_reset_reset, rst_translator:in_reset, sdram:reset_n, system_id:reset_n, timer:reset_n, video_dma_controller_0:reset]
 	wire         rst_controller_reset_out_reset_req;                                           // rst_controller:reset_req -> [cpu:reset_req, rst_translator:reset_req_in]
 	wire         cpu_debug_reset_request_reset;                                                // cpu:debug_reset_request -> [rst_controller:reset_in1, rst_controller_001:reset_in1, rst_controller_002:reset_in1]
-	wire         rst_controller_001_reset_out_reset;                                           // rst_controller_001:reset_out -> [led_matrix_driver_0:areset_n, mm_interconnect_0:video_dma_controller_0_reset_reset_bridge_in_reset_reset, video_dma_controller_0:reset]
+	wire         rst_controller_001_reset_out_reset;                                           // rst_controller_001:reset_out -> [dc_fifo_0:out_reset_n, led_matrix_driver_0:areset_n, mm_interconnect_0:led_matrix_driver_0_reset_reset_bridge_in_reset_reset]
 	wire         rst_controller_002_reset_out_reset;                                           // rst_controller_002:reset_out -> [mm_interconnect_0:pll_inclk_interface_reset_reset_bridge_in_reset_reset, pll:reset]
 
 	lite_pc_cpu cpu (
@@ -141,6 +146,51 @@ module lite_pc (
 		.dummy_ci_port                       ()                                                   // custom_instruction_master.readra
 	);
 
+	altera_avalon_dc_fifo #(
+		.SYMBOLS_PER_BEAT   (1),
+		.BITS_PER_SYMBOL    (8),
+		.FIFO_DEPTH         (64),
+		.CHANNEL_WIDTH      (0),
+		.ERROR_WIDTH        (0),
+		.USE_PACKETS        (1),
+		.USE_IN_FILL_LEVEL  (0),
+		.USE_OUT_FILL_LEVEL (0),
+		.WR_SYNC_DEPTH      (3),
+		.RD_SYNC_DEPTH      (3)
+	) dc_fifo_0 (
+		.in_clk            (pll_c0_clk),                                               //        in_clk.clk
+		.in_reset_n        (~rst_controller_reset_out_reset),                          //  in_clk_reset.reset_n
+		.out_clk           (pll_c2_clk),                                               //       out_clk.clk
+		.out_reset_n       (~rst_controller_001_reset_out_reset),                      // out_clk_reset.reset_n
+		.in_data           (video_dma_controller_0_avalon_pixel_source_data),          //            in.data
+		.in_valid          (video_dma_controller_0_avalon_pixel_source_valid),         //              .valid
+		.in_ready          (video_dma_controller_0_avalon_pixel_source_ready),         //              .ready
+		.in_startofpacket  (video_dma_controller_0_avalon_pixel_source_startofpacket), //              .startofpacket
+		.in_endofpacket    (video_dma_controller_0_avalon_pixel_source_endofpacket),   //              .endofpacket
+		.out_data          (dc_fifo_0_out_data),                                       //           out.data
+		.out_valid         (dc_fifo_0_out_valid),                                      //              .valid
+		.out_ready         (dc_fifo_0_out_ready),                                      //              .ready
+		.out_startofpacket (dc_fifo_0_out_startofpacket),                              //              .startofpacket
+		.out_endofpacket   (dc_fifo_0_out_endofpacket),                                //              .endofpacket
+		.in_csr_address    (1'b0),                                                     //   (terminated)
+		.in_csr_read       (1'b0),                                                     //   (terminated)
+		.in_csr_write      (1'b0),                                                     //   (terminated)
+		.in_csr_readdata   (),                                                         //   (terminated)
+		.in_csr_writedata  (32'b00000000000000000000000000000000),                     //   (terminated)
+		.out_csr_address   (1'b0),                                                     //   (terminated)
+		.out_csr_read      (1'b0),                                                     //   (terminated)
+		.out_csr_write     (1'b0),                                                     //   (terminated)
+		.out_csr_readdata  (),                                                         //   (terminated)
+		.out_csr_writedata (32'b00000000000000000000000000000000),                     //   (terminated)
+		.in_empty          (1'b0),                                                     //   (terminated)
+		.out_empty         (),                                                         //   (terminated)
+		.in_error          (1'b0),                                                     //   (terminated)
+		.out_error         (),                                                         //   (terminated)
+		.in_channel        (1'b0),                                                     //   (terminated)
+		.out_channel       (),                                                         //   (terminated)
+		.space_avail_data  ()                                                          //   (terminated)
+	);
+
 	lite_pc_jtag_uart jtag_uart (
 		.clk            (pll_c0_clk),                                                //               clk.clk
 		.rst_n          (~rst_controller_reset_out_reset),                           //             reset.reset_n
@@ -165,11 +215,11 @@ module lite_pc (
 		.writedata     (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_writedata), //                      .writedata
 		.readdata      (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_readdata),  //                      .readdata
 		.read          (mm_interconnect_0_led_matrix_driver_0_avalon_slave_0_read),      //                      .read
-		.ready         (video_dma_controller_0_avalon_pixel_source_ready),               // avalon_streaming_sink.ready
-		.valid         (video_dma_controller_0_avalon_pixel_source_valid),               //                      .valid
-		.data          (video_dma_controller_0_avalon_pixel_source_data),                //                      .data
-		.startofpacket (video_dma_controller_0_avalon_pixel_source_startofpacket),       //                      .startofpacket
-		.endofpacket   (video_dma_controller_0_avalon_pixel_source_endofpacket),         //                      .endofpacket
+		.ready         (dc_fifo_0_out_ready),                                            // avalon_streaming_sink.ready
+		.valid         (dc_fifo_0_out_valid),                                            //                      .valid
+		.data          (dc_fifo_0_out_data),                                             //                      .data
+		.startofpacket (dc_fifo_0_out_startofpacket),                                    //                      .startofpacket
+		.endofpacket   (dc_fifo_0_out_endofpacket),                                      //                      .endofpacket
 		.CLK           (led_matrix_clock_clk),                                           //             clock_out.clk
 		.clock         (pll_c2_clk),                                                     //              clock_in.clk
 		.areset_n      (~rst_controller_001_reset_out_reset),                            //                 reset.reset_n
@@ -256,8 +306,8 @@ module lite_pc (
 	);
 
 	lite_pc_video_dma_controller_0 video_dma_controller_0 (
-		.clk                  (pll_c2_clk),                                                                   //                      clk.clk
-		.reset                (rst_controller_001_reset_out_reset),                                           //                    reset.reset
+		.clk                  (pll_c0_clk),                                                                   //                      clk.clk
+		.reset                (rst_controller_reset_out_reset),                                               //                    reset.reset
 		.master_address       (video_dma_controller_0_avalon_dma_master_address),                             //        avalon_dma_master.address
 		.master_waitrequest   (video_dma_controller_0_avalon_dma_master_waitrequest),                         //                         .waitrequest
 		.master_arbiterlock   (video_dma_controller_0_avalon_dma_master_lock),                                //                         .lock
@@ -281,9 +331,9 @@ module lite_pc (
 		.clk_50_clk_clk                                             (clk_clk),                                                                      //                                         clk_50_clk.clk
 		.pll_c0_clk                                                 (pll_c0_clk),                                                                   //                                             pll_c0.clk
 		.pll_c2_clk                                                 (pll_c2_clk),                                                                   //                                             pll_c2.clk
-		.cpu_reset_reset_bridge_in_reset_reset                      (rst_controller_reset_out_reset),                                               //                    cpu_reset_reset_bridge_in_reset.reset
+		.led_matrix_driver_0_reset_reset_bridge_in_reset_reset      (rst_controller_001_reset_out_reset),                                           //    led_matrix_driver_0_reset_reset_bridge_in_reset.reset
 		.pll_inclk_interface_reset_reset_bridge_in_reset_reset      (rst_controller_002_reset_out_reset),                                           //    pll_inclk_interface_reset_reset_bridge_in_reset.reset
-		.video_dma_controller_0_reset_reset_bridge_in_reset_reset   (rst_controller_001_reset_out_reset),                                           // video_dma_controller_0_reset_reset_bridge_in_reset.reset
+		.video_dma_controller_0_reset_reset_bridge_in_reset_reset   (rst_controller_reset_out_reset),                                               // video_dma_controller_0_reset_reset_bridge_in_reset.reset
 		.cpu_data_master_address                                    (cpu_data_master_address),                                                      //                                    cpu_data_master.address
 		.cpu_data_master_waitrequest                                (cpu_data_master_waitrequest),                                                  //                                                   .waitrequest
 		.cpu_data_master_byteenable                                 (cpu_data_master_byteenable),                                                   //                                                   .byteenable
