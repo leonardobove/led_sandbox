@@ -7,6 +7,10 @@
 #include "../Inc/hal.h"
 
 #include "../subprojects/Adafruit_PixelDust/Adafruit_PixelDust.h"
+#include "altera_up_avalon_video_dma_controller.h"
+#include "../../led_sandbox_nios2/Inc/led_matrix.h"
+
+
 
 // Flag that is true every time the GSENSOR_SANDBOX state is entered
 static uint32_t has_reset = true;
@@ -47,6 +51,7 @@ void pixel_dust_task() {
             	pixel_buf[(y % (HEIGHT / 2)) * WIDTH + x] &= CLEAR_LOWER_PIXEL;
             }
         }
+        alt_up_video_dma_ctrl_swap_buffers(dev);
 
         // Run one frame of the simulation
         // X & Y axes are flipped around here to match physical mounting
@@ -63,6 +68,7 @@ void pixel_dust_task() {
             	pixel_buf[(y % (HEIGHT / 2)) * WIDTH + x] |= SET_LOWER_PIXEL((uint8_t)color);
             }
         }
+        alt_up_video_dma_ctrl_swap_buffers(dev);
     } else {
         has_reset = true;
     }

@@ -10,18 +10,8 @@
 #include "..\test_led_matrix_ip_bsp\drivers\inc\altera_up_avalon_video_dma_controller.h"
 #include "io.h"
 #include "system.h"
+#include "../Inc/utility.h"
 
-#define WIDTH 	(64u)
-#define HEIGHT 	(16u)
-
-#define RED     (0x01)
-#define GREEN   (0x02)
-#define BLUE    (0x04)
-#define PURPLE  (0x05)
-#define YELLOW  (0x06)
-#define CIAN    (0x03)
-#define BLACK   (0x00)
-#define WHITE   (0x07)
 
 
 int main() {
@@ -38,6 +28,7 @@ int main() {
 
 		//frame_buffer[i] = (uint16_t)0b000001;
 	}
+	swap_lines (frame_buffer);
 
 	//frame_buffer[63] = RED;
 	//frame_buffer[0] = RED;

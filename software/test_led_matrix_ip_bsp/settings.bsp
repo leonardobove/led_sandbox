@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>10-mag-2025 18.10.49</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1746893449964</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>15-mag-2025 14.54.48</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1747313688504</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\universita\led_sandbox\software\test_led_matrix_ip_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\sopc\lite_pc.sopcinfo</SopcDesignFile>

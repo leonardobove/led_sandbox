@@ -2,7 +2,7 @@ set_global_assignment -entity "led_sandbox_sopc" -library "led_sandbox_sopc" -na
 set_global_assignment -entity "led_sandbox_sopc" -library "led_sandbox_sopc" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "led_sandbox_sopc" -library "led_sandbox_sopc" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "led_sandbox_sopc" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../led_sandbox_sopc.sopcinfo"]
-set_global_assignment -entity "led_sandbox_sopc" -library "led_sandbox_sopc" -name SLD_INFO "QSYS_NAME led_sandbox_sopc HAS_SOPCINFO 1 GENERATION_ID 1746632100"
+set_global_assignment -entity "led_sandbox_sopc" -library "led_sandbox_sopc" -name SLD_INFO "QSYS_NAME led_sandbox_sopc HAS_SOPCINFO 1 GENERATION_ID 1747313956"
 set_global_assignment -library "led_sandbox_sopc" -name MISC_FILE [file join $::quartus(qip_path) "../led_sandbox_sopc.cmp"]
 set_global_assignment -library "led_sandbox_sopc" -name SLD_FILE [file join $::quartus(qip_path) "led_sandbox_sopc.regmap"]
 set_global_assignment -library "led_sandbox_sopc" -name SLD_FILE [file join $::quartus(qip_path) "led_sandbox_sopc.debuginfo"]
@@ -16,7 +16,7 @@ set_global_assignment -entity "led_sandbox_sopc" -library "led_sandbox_sopc" -na
 set_global_assignment -entity "led_sandbox_sopc" -library "led_sandbox_sopc" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "led_sandbox_sopc" -library "led_sandbox_sopc" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "led_sandbox_sopc" -library "led_sandbox_sopc" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "led_sandbox_sopc" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTc0NjYzMjEwMA==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "led_sandbox_sopc" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTc0NzMxMzk1Ng==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "led_sandbox_sopc" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "led_sandbox_sopc" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MTBNNTBEQUY0ODRDN0c=::QXV0byBERVZJQ0U="
 set_global_assignment -entity "led_sandbox_sopc" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Nw==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
@@ -358,20 +358,20 @@ set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_007"
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_007" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "TUVSTElOX1BBQ0tFVF9GT1JNQVQ=::b3JpX2J1cnN0X3NpemUoMTA5OjEwNykgcmVzcG9uc2Vfc3RhdHVzKDEwNjoxMDUpIGNhY2hlKDEwNDoxMDEpIHByb3RlY3Rpb24oMTAwOjk4KSB0aHJlYWRfaWQoOTcpIGRlc3RfaWQoOTY6OTMpIHNyY19pZCg5Mjo4OSkgcW9zKDg4KSBiZWdpbl9idXJzdCg4NykgZGF0YV9zaWRlYmFuZCg4NikgYWRkcl9zaWRlYmFuZCg4NSkgYnVyc3RfdHlwZSg4NDo4MykgYnVyc3Rfc2l6ZSg4Mjo4MCkgYnVyc3R3cmFwKDc5Ojc3KSBieXRlX2NudCg3Njo3NCkgdHJhbnNfZXhjbHVzaXZlKDczKSB0cmFuc19sb2NrKDcyKSB0cmFuc19yZWFkKDcxKSB0cmFuc193cml0ZSg3MCkgdHJhbnNfcG9zdGVkKDY5KSB0cmFuc19jb21wcmVzc2VkX3JlYWQoNjgpIGFkZHIoNjc6MzYpIGJ5dGVlbigzNTozMikgZGF0YSgzMTowKQ==::TWVybGluIHBhY2tldCBmb3JtYXQgZGVzY3JpcHRvcg=="
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_007" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_007" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::NTAwMDAwMDA=::QXV0byBDTE9DS19SQVRF"
-set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_004" -library "led_sandbox_sopc" -name IP_COMPONENT_NAME "bGVkX3NhbmRib3hfc29wY19tbV9pbnRlcmNvbm5lY3RfMF9yc3BfZGVtdXhfMDA0"
-set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_004" -library "led_sandbox_sopc" -name IP_COMPONENT_DISPLAY_NAME "TWVtb3J5IE1hcHBlZCBEZW11bHRpcGxleGVy"
-set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_004" -library "led_sandbox_sopc" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
-set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_004" -library "led_sandbox_sopc" -name IP_COMPONENT_INTERNAL "Off"
-set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_004" -library "led_sandbox_sopc" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
-set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_004" -library "led_sandbox_sopc" -name IP_COMPONENT_VERSION "MTguMQ=="
-set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_004" -library "led_sandbox_sopc" -name IP_COMPONENT_DESCRIPTION "QWNjZXB0cyBjaGFubmVsaXplZCBkYXRhIG9uIGl0cyBzaW5rIGludGVyZmFjZSBhbmQgdHJhbnNtaXRzIHRoZSBkYXRhIG9uIG9uZSBvZiBpdHMgc291cmNlIGludGVyZmFjZXMu"
-set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_004" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "U1RfREFUQV9X::MTEw::UGFja2V0IGRhdGEgd2lkdGg="
-set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_004" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "U1RfQ0hBTk5FTF9X::MTI=::U3RyZWFtaW5nIGNoYW5uZWwgd2lkdGg="
-set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_004" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "TlVNX09VVFBVVFM=::MQ==::TnVtYmVyIG9mIGRlbXV4IG91dHB1dHM="
-set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_004" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "VkFMSURfV0lEVEg=::MQ==::VmFsaWQgd2lkdGg="
-set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_004" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "TUVSTElOX1BBQ0tFVF9GT1JNQVQ=::b3JpX2J1cnN0X3NpemUoMTA5OjEwNykgcmVzcG9uc2Vfc3RhdHVzKDEwNjoxMDUpIGNhY2hlKDEwNDoxMDEpIHByb3RlY3Rpb24oMTAwOjk4KSB0aHJlYWRfaWQoOTcpIGRlc3RfaWQoOTY6OTMpIHNyY19pZCg5Mjo4OSkgcW9zKDg4KSBiZWdpbl9idXJzdCg4NykgZGF0YV9zaWRlYmFuZCg4NikgYWRkcl9zaWRlYmFuZCg4NSkgYnVyc3RfdHlwZSg4NDo4MykgYnVyc3Rfc2l6ZSg4Mjo4MCkgYnVyc3R3cmFwKDc5Ojc3KSBieXRlX2NudCg3Njo3NCkgdHJhbnNfZXhjbHVzaXZlKDczKSB0cmFuc19sb2NrKDcyKSB0cmFuc19yZWFkKDcxKSB0cmFuc193cml0ZSg3MCkgdHJhbnNfcG9zdGVkKDY5KSB0cmFuc19jb21wcmVzc2VkX3JlYWQoNjgpIGFkZHIoNjc6MzYpIGJ5dGVlbigzNTozMikgZGF0YSgzMTowKQ==::TWVybGluIHBhY2tldCBmb3JtYXQgZGVzY3JpcHRvcg=="
-set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_004" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
-set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_004" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::MTAwMDAwMDAw::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_005" -library "led_sandbox_sopc" -name IP_COMPONENT_NAME "bGVkX3NhbmRib3hfc29wY19tbV9pbnRlcmNvbm5lY3RfMF9yc3BfZGVtdXhfMDA1"
+set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_005" -library "led_sandbox_sopc" -name IP_COMPONENT_DISPLAY_NAME "TWVtb3J5IE1hcHBlZCBEZW11bHRpcGxleGVy"
+set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_005" -library "led_sandbox_sopc" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_005" -library "led_sandbox_sopc" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_005" -library "led_sandbox_sopc" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_005" -library "led_sandbox_sopc" -name IP_COMPONENT_VERSION "MTguMQ=="
+set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_005" -library "led_sandbox_sopc" -name IP_COMPONENT_DESCRIPTION "QWNjZXB0cyBjaGFubmVsaXplZCBkYXRhIG9uIGl0cyBzaW5rIGludGVyZmFjZSBhbmQgdHJhbnNtaXRzIHRoZSBkYXRhIG9uIG9uZSBvZiBpdHMgc291cmNlIGludGVyZmFjZXMu"
+set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_005" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "U1RfREFUQV9X::MTEw::UGFja2V0IGRhdGEgd2lkdGg="
+set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_005" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "U1RfQ0hBTk5FTF9X::MTI=::U3RyZWFtaW5nIGNoYW5uZWwgd2lkdGg="
+set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_005" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "TlVNX09VVFBVVFM=::MQ==::TnVtYmVyIG9mIGRlbXV4IG91dHB1dHM="
+set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_005" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "VkFMSURfV0lEVEg=::MQ==::VmFsaWQgd2lkdGg="
+set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_005" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "TUVSTElOX1BBQ0tFVF9GT1JNQVQ=::b3JpX2J1cnN0X3NpemUoMTA5OjEwNykgcmVzcG9uc2Vfc3RhdHVzKDEwNjoxMDUpIGNhY2hlKDEwNDoxMDEpIHByb3RlY3Rpb24oMTAwOjk4KSB0aHJlYWRfaWQoOTcpIGRlc3RfaWQoOTY6OTMpIHNyY19pZCg5Mjo4OSkgcW9zKDg4KSBiZWdpbl9idXJzdCg4NykgZGF0YV9zaWRlYmFuZCg4NikgYWRkcl9zaWRlYmFuZCg4NSkgYnVyc3RfdHlwZSg4NDo4MykgYnVyc3Rfc2l6ZSg4Mjo4MCkgYnVyc3R3cmFwKDc5Ojc3KSBieXRlX2NudCg3Njo3NCkgdHJhbnNfZXhjbHVzaXZlKDczKSB0cmFuc19sb2NrKDcyKSB0cmFuc19yZWFkKDcxKSB0cmFuc193cml0ZSg3MCkgdHJhbnNfcG9zdGVkKDY5KSB0cmFuc19jb21wcmVzc2VkX3JlYWQoNjgpIGFkZHIoNjc6MzYpIGJ5dGVlbigzNTozMikgZGF0YSgzMTowKQ==::TWVybGluIHBhY2tldCBmb3JtYXQgZGVzY3JpcHRvcg=="
+set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_005" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_005" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::MzAwMDAw::QXV0byBDTE9DS19SQVRF"
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_003" -library "led_sandbox_sopc" -name IP_COMPONENT_NAME "bGVkX3NhbmRib3hfc29wY19tbV9pbnRlcmNvbm5lY3RfMF9yc3BfZGVtdXhfMDAz"
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_003" -library "led_sandbox_sopc" -name IP_COMPONENT_DISPLAY_NAME "TWVtb3J5IE1hcHBlZCBEZW11bHRpcGxleGVy"
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_003" -library "led_sandbox_sopc" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -385,7 +385,7 @@ set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_003"
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_003" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "VkFMSURfV0lEVEg=::MQ==::VmFsaWQgd2lkdGg="
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_003" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "TUVSTElOX1BBQ0tFVF9GT1JNQVQ=::b3JpX2J1cnN0X3NpemUoMTA5OjEwNykgcmVzcG9uc2Vfc3RhdHVzKDEwNjoxMDUpIGNhY2hlKDEwNDoxMDEpIHByb3RlY3Rpb24oMTAwOjk4KSB0aHJlYWRfaWQoOTcpIGRlc3RfaWQoOTY6OTMpIHNyY19pZCg5Mjo4OSkgcW9zKDg4KSBiZWdpbl9idXJzdCg4NykgZGF0YV9zaWRlYmFuZCg4NikgYWRkcl9zaWRlYmFuZCg4NSkgYnVyc3RfdHlwZSg4NDo4MykgYnVyc3Rfc2l6ZSg4Mjo4MCkgYnVyc3R3cmFwKDc5Ojc3KSBieXRlX2NudCg3Njo3NCkgdHJhbnNfZXhjbHVzaXZlKDczKSB0cmFuc19sb2NrKDcyKSB0cmFuc19yZWFkKDcxKSB0cmFuc193cml0ZSg3MCkgdHJhbnNfcG9zdGVkKDY5KSB0cmFuc19jb21wcmVzc2VkX3JlYWQoNjgpIGFkZHIoNjc6MzYpIGJ5dGVlbigzNTozMikgZGF0YSgzMTowKQ==::TWVybGluIHBhY2tldCBmb3JtYXQgZGVzY3JpcHRvcg=="
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_003" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
-set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_003" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::MzAwMDAw::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_003" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::MTAwMDAwMDAw::QXV0byBDTE9DS19SQVRF"
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_002" -library "led_sandbox_sopc" -name IP_COMPONENT_NAME "bGVkX3NhbmRib3hfc29wY19tbV9pbnRlcmNvbm5lY3RfMF9yc3BfZGVtdXhfMDAy"
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_002" -library "led_sandbox_sopc" -name IP_COMPONENT_DISPLAY_NAME "TWVtb3J5IE1hcHBlZCBEZW11bHRpcGxleGVy"
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_002" -library "led_sandbox_sopc" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -519,7 +519,7 @@ set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_cmd_demux" -li
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_cmd_demux" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "VkFMSURfV0lEVEg=::MQ==::VmFsaWQgd2lkdGg="
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_cmd_demux" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "TUVSTElOX1BBQ0tFVF9GT1JNQVQ=::b3JpX2J1cnN0X3NpemUoODI6ODApIHJlc3BvbnNlX3N0YXR1cyg3OTo3OCkgY2FjaGUoNzc6NzQpIHByb3RlY3Rpb24oNzM6NzEpIHRocmVhZF9pZCg3MCkgZGVzdF9pZCg2OTo2Nikgc3JjX2lkKDY1OjYyKSBxb3MoNjEpIGJlZ2luX2J1cnN0KDYwKSBkYXRhX3NpZGViYW5kKDU5KSBhZGRyX3NpZGViYW5kKDU4KSBidXJzdF90eXBlKDU3OjU2KSBidXJzdF9zaXplKDU1OjUzKSBidXJzdHdyYXAoNTI6NTApIGJ5dGVfY250KDQ5OjQ3KSB0cmFuc19leGNsdXNpdmUoNDYpIHRyYW5zX2xvY2soNDUpIHRyYW5zX3JlYWQoNDQpIHRyYW5zX3dyaXRlKDQzKSB0cmFuc19wb3N0ZWQoNDIpIHRyYW5zX2NvbXByZXNzZWRfcmVhZCg0MSkgYWRkcig0MDo5KSBieXRlZW4oOCkgZGF0YSg3OjAp::TWVybGluIHBhY2tldCBmb3JtYXQgZGVzY3JpcHRvcg=="
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_cmd_demux" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
-set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_cmd_demux" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::MzAwMDAw::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_cmd_demux" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::MTAwMDAwMDAw::QXV0byBDTE9DS19SQVRF"
 set_global_assignment -entity "altera_merlin_burst_adapter" -library "led_sandbox_sopc" -name IP_COMPONENT_NAME "YWx0ZXJhX21lcmxpbl9idXJzdF9hZGFwdGVy"
 set_global_assignment -entity "altera_merlin_burst_adapter" -library "led_sandbox_sopc" -name IP_COMPONENT_DISPLAY_NAME "TWVtb3J5IE1hcHBlZCBCdXJzdCBBZGFwdGVy"
 set_global_assignment -entity "altera_merlin_burst_adapter" -library "led_sandbox_sopc" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -1052,11 +1052,11 @@ set_global_assignment -entity "led_sandbox_sopc_video_dma_controller_0" -library
 set_global_assignment -entity "led_sandbox_sopc_video_dma_controller_0" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "YmFja19zdGFydF9hZGRyZXNz::MA==::RGVmYXVsdCBCYWNrIEJ1ZmZlciBTdGFydCBBZGRyZXNz"
 set_global_assignment -entity "led_sandbox_sopc_video_dma_controller_0" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "d2lkdGg=::NjQ=::V2lkdGggKCMgb2YgcGl4ZWxzKQ=="
 set_global_assignment -entity "led_sandbox_sopc_video_dma_controller_0" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "aGVpZ2h0::MTY=::SGVpZ2h0ICgjIG9mIGxpbmVzKQ=="
-set_global_assignment -entity "led_sandbox_sopc_video_dma_controller_0" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "Y29sb3JfYml0cw==::Ng==::RGF0YSBCaXRzIHBlciBTeW1ib2w="
+set_global_assignment -entity "led_sandbox_sopc_video_dma_controller_0" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "Y29sb3JfYml0cw==::OA==::RGF0YSBCaXRzIHBlciBTeW1ib2w="
 set_global_assignment -entity "led_sandbox_sopc_video_dma_controller_0" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "Y29sb3JfcGxhbmVz::MQ==::U3ltYm9scyBwZXIgQmVhdA=="
 set_global_assignment -entity "led_sandbox_sopc_video_dma_controller_0" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "ZG1hX2VuYWJsZWQ=::dHJ1ZQ==::RW5hYmxlZCBETUEgdHJhbnNmZXIgb24gcmVzZXQ="
 set_global_assignment -entity "led_sandbox_sopc_video_dma_controller_0" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
-set_global_assignment -entity "led_sandbox_sopc_video_dma_controller_0" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::MzAwMDAw::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "led_sandbox_sopc_video_dma_controller_0" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::MTAwMDAwMDAw::QXV0byBDTE9DS19SQVRF"
 set_global_assignment -entity "led_sandbox_sopc_systick_timer" -library "led_sandbox_sopc" -name IP_COMPONENT_NAME "bGVkX3NhbmRib3hfc29wY19zeXN0aWNrX3RpbWVy"
 set_global_assignment -entity "led_sandbox_sopc_systick_timer" -library "led_sandbox_sopc" -name IP_COMPONENT_DISPLAY_NAME "SW50ZXJ2YWwgVGltZXIgSW50ZWwgRlBHQSBJUA=="
 set_global_assignment -entity "led_sandbox_sopc_systick_timer" -library "led_sandbox_sopc" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -1210,6 +1210,24 @@ set_global_assignment -entity "led_sandbox_sopc_jtag_uart" -library "led_sandbox
 set_global_assignment -entity "led_sandbox_sopc_jtag_uart" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "bGVnYWN5U2lnbmFsQWxsb3c=::ZmFsc2U=::bGVnYWN5U2lnbmFsQWxsb3c="
 set_global_assignment -entity "led_sandbox_sopc_jtag_uart" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "ZW5hYmxlSW50ZXJhY3RpdmVJbnB1dA==::ZmFsc2U=::ZW5hYmxlSW50ZXJhY3RpdmVJbnB1dA=="
 set_global_assignment -entity "led_sandbox_sopc_jtag_uart" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "ZW5hYmxlSW50ZXJhY3RpdmVPdXRwdXQ=::ZmFsc2U=::ZW5hYmxlSW50ZXJhY3RpdmVPdXRwdXQ="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_COMPONENT_NAME "YWx0ZXJhX2F2YWxvbl9kY19maWZv"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_COMPONENT_DISPLAY_NAME "QXZhbG9uLVNUIER1YWwgQ2xvY2sgRklGTw=="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_COMPONENT_VERSION "MTguMQ=="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "U1lNQk9MU19QRVJfQkVBVA==::MQ==::U3ltYm9scyBwZXIgYmVhdA=="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "QklUU19QRVJfU1lNQk9M::OA==::Qml0cyBwZXIgc3ltYm9s"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "RklGT19ERVBUSA==::NjQ=::RklGTyBkZXB0aA=="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "Q0hBTk5FTF9XSURUSA==::MA==::Q2hhbm5lbCB3aWR0aA=="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "RVJST1JfV0lEVEg=::MA==::RXJyb3Igd2lkdGg="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "VVNFX1BBQ0tFVFM=::MQ==::VXNlIHBhY2tldHM="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "VVNFX0lOX0ZJTExfTEVWRUw=::MA==::VXNlIHNpbmsgZmlsbCBsZXZlbA=="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "VVNFX09VVF9GSUxMX0xFVkVM::MA==::VXNlIHNvdXJjZSBmaWxsIGxldmVs"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "V1JfU1lOQ19ERVBUSA==::Mw==::V3JpdGUgcG9pbnRlciBzeW5jaHJvbml6ZXIgbGVuZ3Ro"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "UkRfU1lOQ19ERVBUSA==::Mw==::UmVhZCBwb2ludGVyIHN5bmNocm9uaXplciBsZW5ndGg="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "RU5BQkxFX0VYUExJQ0lUX01BWENIQU5ORUw=::ZmFsc2U=::RW5hYmxlIGV4cGxpY2l0IG1heENoYW5uZWw="
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_COMPONENT_PARAMETER "RVhQTElDSVRfTUFYQ0hBTk5FTA==::MA==::RXhwbGljaXQgbWF4Q2hhbm5lbA=="
 set_global_assignment -entity "led_sandbox_sopc_cpu" -library "led_sandbox_sopc" -name IP_COMPONENT_NAME "bGVkX3NhbmRib3hfc29wY19jcHU="
 set_global_assignment -entity "led_sandbox_sopc_cpu" -library "led_sandbox_sopc" -name IP_COMPONENT_DISPLAY_NAME "TmlvcyBJSSBQcm9jZXNzb3I="
 set_global_assignment -entity "led_sandbox_sopc_cpu" -library "led_sandbox_sopc" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -1651,7 +1669,7 @@ set_global_assignment -library "led_sandbox_sopc" -name SYSTEMVERILOG_FILE [file
 set_global_assignment -library "led_sandbox_sopc" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/led_sandbox_sopc_mm_interconnect_0_rsp_mux_001.sv"]
 set_global_assignment -library "led_sandbox_sopc" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/led_sandbox_sopc_mm_interconnect_0_rsp_mux.sv"]
 set_global_assignment -library "led_sandbox_sopc" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/led_sandbox_sopc_mm_interconnect_0_rsp_demux_007.sv"]
-set_global_assignment -library "led_sandbox_sopc" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/led_sandbox_sopc_mm_interconnect_0_rsp_demux_004.sv"]
+set_global_assignment -library "led_sandbox_sopc" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/led_sandbox_sopc_mm_interconnect_0_rsp_demux_005.sv"]
 set_global_assignment -library "led_sandbox_sopc" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/led_sandbox_sopc_mm_interconnect_0_rsp_demux_003.sv"]
 set_global_assignment -library "led_sandbox_sopc" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/led_sandbox_sopc_mm_interconnect_0_rsp_demux_002.sv"]
 set_global_assignment -library "led_sandbox_sopc" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/led_sandbox_sopc_mm_interconnect_0_rsp_demux.sv"]
@@ -1695,6 +1713,9 @@ set_global_assignment -library "led_sandbox_sopc" -name VERILOG_FILE [file join 
 set_global_assignment -library "led_sandbox_sopc" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/led_matrix_driver.v"]
 set_global_assignment -library "led_sandbox_sopc" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/led_sandbox_sopc_keys.v"]
 set_global_assignment -library "led_sandbox_sopc" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/led_sandbox_sopc_jtag_uart.v"]
+set_global_assignment -library "led_sandbox_sopc" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_avalon_dc_fifo.v"]
+set_global_assignment -library "led_sandbox_sopc" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_dcfifo_synchronizer_bundle.v"]
+set_global_assignment -library "led_sandbox_sopc" -name SDC_FILE [file join $::quartus(qip_path) "submodules/altera_avalon_dc_fifo.sdc"]
 set_global_assignment -library "led_sandbox_sopc" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/led_sandbox_sopc_cpu.v"]
 set_global_assignment -library "led_sandbox_sopc" -name SDC_FILE [file join $::quartus(qip_path) "submodules/led_sandbox_sopc_cpu_cpu.sdc"]
 set_global_assignment -library "led_sandbox_sopc" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/led_sandbox_sopc_cpu_cpu.v"]
@@ -1760,9 +1781,9 @@ set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_mux" -libr
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_007" -library "led_sandbox_sopc" -name IP_TOOL_NAME "altera_merlin_demultiplexer"
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_007" -library "led_sandbox_sopc" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_007" -library "led_sandbox_sopc" -name IP_TOOL_ENV "Qsys"
-set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_004" -library "led_sandbox_sopc" -name IP_TOOL_NAME "altera_merlin_demultiplexer"
-set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_004" -library "led_sandbox_sopc" -name IP_TOOL_VERSION "18.1"
-set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_004" -library "led_sandbox_sopc" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_005" -library "led_sandbox_sopc" -name IP_TOOL_NAME "altera_merlin_demultiplexer"
+set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_005" -library "led_sandbox_sopc" -name IP_TOOL_VERSION "18.1"
+set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_005" -library "led_sandbox_sopc" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_003" -library "led_sandbox_sopc" -name IP_TOOL_NAME "altera_merlin_demultiplexer"
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_003" -library "led_sandbox_sopc" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "led_sandbox_sopc_mm_interconnect_0_rsp_demux_003" -library "led_sandbox_sopc" -name IP_TOOL_ENV "Qsys"
@@ -1853,6 +1874,9 @@ set_global_assignment -entity "led_sandbox_sopc_keys" -library "led_sandbox_sopc
 set_global_assignment -entity "led_sandbox_sopc_jtag_uart" -library "led_sandbox_sopc" -name IP_TOOL_NAME "altera_avalon_jtag_uart"
 set_global_assignment -entity "led_sandbox_sopc_jtag_uart" -library "led_sandbox_sopc" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "led_sandbox_sopc_jtag_uart" -library "led_sandbox_sopc" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_TOOL_NAME "altera_avalon_dc_fifo"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_TOOL_VERSION "18.1"
+set_global_assignment -entity "altera_avalon_dc_fifo" -library "led_sandbox_sopc" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -entity "led_sandbox_sopc_cpu" -library "led_sandbox_sopc" -name IP_TOOL_NAME "altera_nios2_gen2"
 set_global_assignment -entity "led_sandbox_sopc_cpu" -library "led_sandbox_sopc" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "led_sandbox_sopc_cpu" -library "led_sandbox_sopc" -name IP_TOOL_ENV "Qsys"

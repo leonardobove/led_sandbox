@@ -142,7 +142,8 @@ ACDS_VERSION := 18.1
 ELF := test_led_matrix_ip.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := main.c
+C_SRCS += Src/main.c
+C_SRCS += Src/utility.c
 CXX_SRCS :=
 ASM_SRCS :=
 

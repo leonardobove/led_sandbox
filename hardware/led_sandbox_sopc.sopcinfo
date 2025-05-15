@@ -5,11 +5,11 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2025.05.13.18:42:11 -->
+ <!-- 2025.05.15.14:59:17 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1747154531</value>
+  <value>1747313956</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -4849,7 +4849,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="dataSlaveMapParam">
    <type>java.lang.String</type>
-   <value><![CDATA[<address-map><slave name='sdram.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='systick_timer.s1' start='0x8001000' end='0x8001020' type='altera_avalon_timer.s1' /><slave name='leds.s1' start='0x8001020' end='0x8001030' type='altera_avalon_pio.s1' /><slave name='keys.s1' start='0x8001030' end='0x8001040' type='altera_avalon_pio.s1' /><slave name='sliders.s1' start='0x8001040' end='0x8001050' type='altera_avalon_pio.s1' /><slave name='altpll_0.pll_slave' start='0x8001050' end='0x8001060' type='altpll.pll_slave' /><slave name='video_dma_controller_0.avalon_dma_control_slave' start='0x8001060' end='0x8001070' type='altera_up_avalon_video_dma_controller.avalon_dma_control_slave' /><slave name='led_matrix_driver_0.avalon_slave_0' start='0x8001070' end='0x8001078' type='led_matrix_driver.avalon_slave_0' /><slave name='system_id.control_slave' start='0x8001078' end='0x8001080' type='altera_avalon_sysid_qsys.control_slave' /><slave name='jtag_uart.avalon_jtag_slave' start='0x8001080' end='0x8001088' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='accelerometer_spi_0.avalon_accelerometer_spi_mode_slave' start='0x8001088' end='0x800108A' type='altera_up_avalon_accelerometer_spi.avalon_accelerometer_spi_mode_slave' /></address-map>]]></value>
+   <value><![CDATA[<address-map><slave name='sdram.s1' start='0x4000000' end='0x8000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='cpu.debug_mem_slave' start='0x8000800' end='0x8001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='systick_timer.s1' start='0x8001000' end='0x8001020' type='altera_avalon_timer.s1' /><slave name='leds.s1' start='0x8001020' end='0x8001030' type='altera_avalon_pio.s1' /><slave name='keys.s1' start='0x8001030' end='0x8001040' type='altera_avalon_pio.s1' /><slave name='sliders.s1' start='0x8001040' end='0x8001050' type='altera_avalon_pio.s1' /><slave name='altpll_0.pll_slave' start='0x8001050' end='0x8001060' type='altpll.pll_slave' /><slave name='video_dma_controller_0.avalon_dma_control_slave' start='0x8001060' end='0x8001070' type='altera_up_avalon_video_dma_controller.avalon_dma_control_slave' /><slave name='system_id.control_slave' start='0x8001070' end='0x8001078' type='altera_avalon_sysid_qsys.control_slave' /><slave name='led_matrix_driver_0.avalon_slave_0' start='0x8001078' end='0x8001080' type='led_matrix_driver.avalon_slave_0' /><slave name='jtag_uart.avalon_jtag_slave' start='0x8001080' end='0x8001088' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='accelerometer_spi_0.avalon_accelerometer_spi_mode_slave' start='0x8001088' end='0x800108A' type='altera_up_avalon_accelerometer_spi.avalon_accelerometer_spi_mode_slave' /></address-map>]]></value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -5544,7 +5544,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>led_matrix_driver_0</moduleName>
     <slaveName>avalon_slave_0</slaveName>
     <name>led_matrix_driver_0.avalon_slave_0</name>
-    <baseAddress>134221936</baseAddress>
+    <baseAddress>134221944</baseAddress>
     <span>8</span>
    </memoryBlock>
    <memoryBlock>
@@ -5552,7 +5552,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>system_id</moduleName>
     <slaveName>control_slave</slaveName>
     <name>system_id.control_slave</name>
-    <baseAddress>134221944</baseAddress>
+    <baseAddress>134221936</baseAddress>
     <span>8</span>
    </memoryBlock>
    <memoryBlock>
@@ -12126,7 +12126,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1747154531</value>
+   <value>1747313956</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -12146,7 +12146,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1747154531</value>
+   <value>1747313956</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -12162,7 +12162,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1747154531</value>
+   <value>1747313956</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -14673,7 +14673,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x08001070</value>
+   <value>0x08001078</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -14724,7 +14724,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x08001078</value>
+   <value>0x08001070</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
