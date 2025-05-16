@@ -19,7 +19,7 @@
 #include "../Inc/led_matrix.h"
 #include "altera_up_avalon_video_dma_controller.h"
 
-alt_up_video_dma_dev* dev;
+
 
 void hal_init() {
     // Initialize system tick
