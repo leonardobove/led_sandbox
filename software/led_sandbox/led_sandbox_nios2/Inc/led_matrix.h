@@ -21,6 +21,7 @@ extern "C" {
 //#define DMA_START                (IOWR(VIDEO_DMA_CONTROLLER_0_BASE, DMA_START_OFFSET, DMA_ENABLE_BIT))
 
 extern alt_up_video_dma_dev* dev;
+void swap_lines (uint8_t *temp_buf);
 
 //LED_MATRIX_DRIVER DEFINITIONS
 

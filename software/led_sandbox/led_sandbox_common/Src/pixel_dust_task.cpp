@@ -18,7 +18,6 @@ static uint32_t has_reset = true;
 // Sand object, last 2 args are accelerometer scaling and grain elasticity
 Adafruit_PixelDust sand(WIDTH, HEIGHT, N_GRAINS, ACCELEROMETER_SCALE, GRAINS_ELASTICITY);
 
-//uint8_t pixel_buf[WIDTH * HEIGHT / 2]; //TODO: maybe it's not really necessary and I can use the class internal bitmap?
 
 
 void pixel_dust_task() {
@@ -33,7 +32,7 @@ void pixel_dust_task() {
             // Initialize RGB LED Matrix driver
             //TODO
 
-            memset(pixel_buf, 0, sizeof(pixel_buf));   // Clear pixel buffer
+            memset(temp_buf, 0, sizeof(temp_buf));   // Clear pixel buffer
 
             sand.randomize(); // Initialize random sand positions
 
@@ -46,12 +45,14 @@ void pixel_dust_task() {
         for(uint32_t i = 0; i < N_GRAINS; i++) {
             sand.getPosition(i, &x, &y);
             if (y >= (HEIGHT / 2)) {	// If the grain is in the upper half, erase the upper pixel
-            	pixel_buf[(y % (HEIGHT / 2)) * WIDTH + x] &= CLEAR_UPPER_PIXEL;
+            	temp_buf[(y % (HEIGHT / 2)) * WIDTH + x] &= CLEAR_UPPER_PIXEL;
             } else {	// Otherwise erase the lower pixel
-            	pixel_buf[(y % (HEIGHT / 2)) * WIDTH + x] &= CLEAR_LOWER_PIXEL;
+            	temp_buf[(y % (HEIGHT / 2)) * WIDTH + x] &= CLEAR_LOWER_PIXEL;
             }
         }
-        alt_up_video_dma_ctrl_swap_buffers(dev);
+//        swap_lines (temp_buf);
+
+//        alt_up_video_dma_ctrl_swap_buffers(dev);
 
         // Run one frame of the simulation
         // X & Y axes are flipped around here to match physical mounting
@@ -63,12 +64,16 @@ void pixel_dust_task() {
             sand.getPosition(i, &x, &y);
             sand.getColor(i, &color);
             if (y >= (HEIGHT / 2)) { // If the grain is in the upper half, set the upper pixel
-            	pixel_buf[(y % (HEIGHT / 2)) * WIDTH + x] |= SET_UPPER_PIXEL((uint8_t)color);
+            	temp_buf[(y % (HEIGHT / 2)) * WIDTH + x] |= SET_UPPER_PIXEL((uint8_t)color);
             } else { // Otherwise set the lower pixel
-            	pixel_buf[(y % (HEIGHT / 2)) * WIDTH + x] |= SET_LOWER_PIXEL((uint8_t)color);
+            	temp_buf[(y % (HEIGHT / 2)) * WIDTH + x] |= SET_LOWER_PIXEL((uint8_t)color);
             }
         }
-        alt_up_video_dma_ctrl_swap_buffers(dev);
+//    	swap_lines (temp_buf);
+    	for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {
+    		pixel_buf[i] = temp_buf[i];
+    	}
+//        alt_up_video_dma_ctrl_swap_buffers(dev);
     } else {
         has_reset = true;
     }
