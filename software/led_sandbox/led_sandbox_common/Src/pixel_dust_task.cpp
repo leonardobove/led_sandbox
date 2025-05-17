@@ -69,9 +69,12 @@ void pixel_dust_task() {
             	temp_buf[(y % (HEIGHT / 2)) * WIDTH + x] |= SET_LOWER_PIXEL((uint8_t)color);
             }
         }
-//    	swap_lines (temp_buf);
     	for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {
-    		pixel_buf[i] = temp_buf[i];
+    		temp_buf2[i] = temp_buf[i];
+    	}
+    	swap_lines (temp_buf2);
+    	for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {
+    		pixel_buf[i] = temp_buf2[i];
     	}
 //        alt_up_video_dma_ctrl_swap_buffers(dev);
     } else {

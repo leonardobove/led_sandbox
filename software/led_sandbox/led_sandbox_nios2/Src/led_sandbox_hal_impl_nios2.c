@@ -78,17 +78,15 @@ void hal_error(uint32_t error_code) {
 void swap_lines (uint8_t *temp_buf) {
 	uint8_t temp_line[WIDTH];
 
-	for (int i = 0; i < (WIDTH * HEIGHT / 2); i++) {
+	for (int i = 0; i < (WIDTH * (HEIGHT / 2)); i++) {
 		if(i < (WIDTH)) {
 			temp_line[i] = temp_buf[i];
 		}
-		else {
-		    if(i >= (((HEIGHT / 2) - 1) * WIDTH)) {
-			temp_buf[i] = temp_line[i -(WIDTH * ((HEIGHT / 2) - 1))];
+		if(i >= (((HEIGHT / 2) - 1) * WIDTH)) {
+	        temp_buf[i] = temp_line[i -(WIDTH * ((HEIGHT / 2) - 1))];
 		}
-		    else {
-			    temp_buf[i - (WIDTH)] = temp_buf[i];
-		    }
+		if(i < (((HEIGHT / 2) - 1) * WIDTH)) {
+			temp_buf[i] = temp_buf[i + WIDTH];
 		}
 	}
 }

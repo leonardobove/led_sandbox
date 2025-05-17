@@ -14,6 +14,7 @@
 
 uint8_t pixel_buf[WIDTH * HEIGHT / 2];
 uint8_t temp_buf[WIDTH * HEIGHT / 2];
+uint8_t temp_buf2[WIDTH * HEIGHT / 2];
 alt_up_video_dma_dev* dev;
 
 int main() {

@@ -30,6 +30,7 @@ extern "C" {
 // (first LSB bits) and of the (i+16)-th row (from bit 3 to bit 5).
 extern uint8_t pixel_buf[WIDTH * HEIGHT / 2];
 extern uint8_t temp_buf[WIDTH * HEIGHT / 2];
+extern uint8_t temp_buf2[WIDTH * HEIGHT / 2];
  
 // Declare state machine task subroutine
 void pixel_dust_task();
