@@ -7,10 +7,6 @@
 #include "../Inc/hal.h"
 
 #include "../subprojects/Adafruit_PixelDust/Adafruit_PixelDust.h"
-#include "altera_up_avalon_video_dma_controller.h"
-#include "../../led_sandbox_nios2/Inc/led_matrix.h"
-
-
 
 // Flag that is true every time the GSENSOR_SANDBOX state is entered
 static uint32_t has_reset = true;

@@ -174,7 +174,7 @@ void* pixel_buf_to_file(void*) {
         }
 
         for (uint32_t i = 0; i < (WIDTH * HEIGHT / 2); ++i) {
-            get_binary_string(pixel_buf[i] & 0x3F, bin_str);  // mask to 6 bits
+            get_binary_string(pixel_back_buf[i] & 0x3F, bin_str);  // mask to 6 bits
             fprintf(fp, "%s\n", bin_str);
         }
 
@@ -257,4 +257,8 @@ accelerometer_output_t hal_read_accelerometer() {
 void hal_error(uint32_t error_code) {
     printf("The program terminated with an error (error code: %d).\n", error_code);
     while (true) {;}
+}
+
+void hal_shift_rows(uint8_t *temp_buf) {
+    return;
 }
