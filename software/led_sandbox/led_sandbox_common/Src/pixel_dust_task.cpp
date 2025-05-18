@@ -76,8 +76,6 @@ void pixel_dust_task() {
 
     	hal_shift_rows(temp_buf);
 
-    	//hal_update_frame();
-
     	for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {
     		pixel_buf[i] = temp_buf[i];
     	}

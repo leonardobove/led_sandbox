@@ -40,10 +40,9 @@ void hal_init() {
     // Set front and back DMA buffer addresses.
     // The front buffer contains the frame that will be effectively displayed
     // The front buffer address cannot be directly set, because it is a read-only register
-    hal_set_back_buf_addr((unsigned int)(&pixel_buf[0])); // Load the front buffer address onto the back buffer address register
-    hal_swap_buffers();	// Swap the front and back buffer addresses, so to set the front buffer address to "pixel_buf"
-    while (hal_check_swap_status() != 0) {;} // Wait for the swap to effectively occur
-    //hal_set_back_buf_addr((unsigned int)(&temp_buf[0])); // Load the back buffer address onto the back buffer address register
+    alt_up_video_dma_ctrl_set_bb_addr(dev, (unsigned int)(&pixel_buf[0])); // Load the front buffer address onto the back buffer address register
+    alt_up_video_dma_ctrl_swap_buffers(dev); // Swap the front and back buffer addresses, so to set the front buffer address to "pixel_buf"
+    while (alt_up_video_dma_ctrl_check_swap_status(dev) != 0) {;} // Wait for the swap to effectively occur
 }
 
 // GPIO
@@ -100,24 +99,4 @@ void hal_shift_rows(uint8_t *temp_buf) {
 			temp_buf[i] = temp_buf[i + WIDTH];
 		}
 	}
-}
-
-void hal_set_back_buf_addr(unsigned int addr) {
-	alt_up_video_dma_ctrl_set_bb_addr(dev, addr);
-}
-
-void hal_swap_buffers(void) {
-	alt_up_video_dma_ctrl_swap_buffers(dev);
-	return;
-}
-
-int hal_check_swap_status(void) {
-	return alt_up_video_dma_ctrl_check_swap_status(dev);
-}
-
-void hal_update_frame(void) {
-	hal_swap_buffers();
-	while (hal_check_swap_status() != 0) {;}
-	hal_swap_buffers();
-	while (hal_check_swap_status() != 0) {;}
 }
