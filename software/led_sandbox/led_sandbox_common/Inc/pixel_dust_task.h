@@ -15,10 +15,10 @@ extern "C" {
 #include <stdint.h>
 
 // Useful RGB LED matrix specification definitions
-#define N_GRAINS             (20u) // Number of grains of sand
+#define N_GRAINS             (50u) // Number of grains of sand
 #define WIDTH                (64u) // Display width in pixels
 #define HEIGHT               (32u) // Display height in pixels
-#define MATRIX_FPS          (100u) // Maximum redraw rate, frames/second
+#define MATRIX_FPS          (60u) // Maximum redraw rate, frames/second
 #define ACCELEROMETER_SCALE (255u) // The accelerometer output values will be scaled by (ACCELEROMETER_SCALE / 256)
 #define GRAINS_ELASTICITY   (128u)
 
@@ -28,7 +28,7 @@ extern "C" {
 // (first LSB bits) and of the (i+16)-th row (from bit 3 to bit 5).
 extern uint8_t pixel_buf[WIDTH * HEIGHT / 2];
 extern uint8_t pixel_back_buf[WIDTH * HEIGHT / 2];
-//extern uint8_t temp_buf[WIDTH * HEIGHT / 2];
+extern uint8_t temp_buf[WIDTH * HEIGHT / 2];
 //extern uint8_t temp_buf2[WIDTH * HEIGHT / 2];
  
 // Declare state machine task subroutine

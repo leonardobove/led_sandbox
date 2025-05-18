@@ -43,7 +43,7 @@ void hal_init() {
     hal_set_back_buf_addr((unsigned int)(&pixel_buf[0])); // Load the front buffer address onto the back buffer address register
     hal_swap_buffers();	// Swap the front and back buffer addresses, so to set the front buffer address to "pixel_buf"
     while (hal_check_swap_status() != 0) {;} // Wait for the swap to effectively occur
-    hal_set_back_buf_addr((unsigned int)(&pixel_back_buf[0])); // Load the back buffer address onto the back buffer address register
+    //hal_set_back_buf_addr((unsigned int)(&temp_buf[0])); // Load the back buffer address onto the back buffer address register
 }
 
 // GPIO

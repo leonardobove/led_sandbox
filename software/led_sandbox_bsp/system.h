@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'led_sandbox_sopc'
  * SOPC Builder design path: ../../sopc/led_sandbox_sopc.sopcinfo
  *
- * Generated: Sun May 18 17:34:24 CDT 2025
+ * Generated: Mon May 19 00:34:38 CEST 2025
  */
 
 /*
@@ -384,7 +384,7 @@
 #define SYSTEM_ID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSTEM_ID_NAME "/dev/system_id"
 #define SYSTEM_ID_SPAN 8
-#define SYSTEM_ID_TIMESTAMP 1747493881
+#define SYSTEM_ID_TIMESTAMP 1747607499
 #define SYSTEM_ID_TYPE "altera_avalon_sysid_qsys"
 
 

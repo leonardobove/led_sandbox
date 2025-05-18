@@ -20,8 +20,8 @@ Adafruit_PixelDust sand(WIDTH, HEIGHT, N_GRAINS, ACCELEROMETER_SCALE, GRAINS_ELA
 
 // Frame buffers
 uint8_t pixel_buf[WIDTH * HEIGHT / 2];
+uint8_t pixel_back_buf[WIDTH * HEIGHT / 2];
 uint8_t temp_buf[WIDTH * HEIGHT / 2];
-uint8_t temp_buf2[WIDTH * HEIGHT / 2];
 
 void pixel_dust_task() {
     if (current_state == GSENSOR_SANDBOX) {
@@ -34,6 +34,7 @@ void pixel_dust_task() {
             // Initialize RGB LED Matrix driver
             memset(pixel_buf, 0, sizeof(pixel_buf));   // Clear pixel front buffer
             memset(pixel_back_buf, 0, sizeof(pixel_back_buf));   // Clear pixel back buffer
+            memset(temp_buf, 0, sizeof(temp_buf));	// Clear temporary buffer
 
             sand.randomize(); // Initialize random sand positions
 
@@ -68,17 +69,18 @@ void pixel_dust_task() {
             	pixel_back_buf[(y % (HEIGHT / 2)) * WIDTH + x] |= SET_LOWER_PIXEL((uint8_t)color);
             }
         }
-    	//for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {
-    	//	temp_buf2[i] = temp_buf[i];
-    	//}
 
-    	hal_shift_rows(pixel_back_buf);
+        for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {
+    		temp_buf[i] = pixel_back_buf[i];
+    	}
 
-    	hal_update_frame();
+    	hal_shift_rows(temp_buf);
 
-    	//for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {
-    	//	pixel_buf[i] = temp_buf2[i];
-    	//}
+    	//hal_update_frame();
+
+    	for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {
+    		pixel_buf[i] = temp_buf[i];
+    	}
         
     } else {
         has_reset = true;
