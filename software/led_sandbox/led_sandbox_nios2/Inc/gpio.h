@@ -21,7 +21,7 @@ extern "C" {
 // SLIDERS
 #define SLIDERS_DATA_REG      (*(volatile uint32_t *) SLIDERS_BASE)
 
-// KEYS
+// KEYS with edgecapture
 #define KEY_EDGE_REG          (*(volatile uint32_t *) (KEYS_BASE + 12))
 
 

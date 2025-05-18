@@ -17,9 +17,6 @@ extern "C" {
 #define DMA_START_OFFSET         (3u)
 #define DMA_ENABLE_BIT           ((1u) << 2)
 
-//#define DMA_ENABLE(X)            (IOWR(VIDEO_DMA_CONTROLLER_0_BASE, DMA_EN_OFFSET, (X)))
-//#define DMA_START                (IOWR(VIDEO_DMA_CONTROLLER_0_BASE, DMA_START_OFFSET, DMA_ENABLE_BIT))
-
 extern alt_up_video_dma_dev* dev;
 void swap_lines (uint8_t *temp_buf);
 

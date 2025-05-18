@@ -26,6 +26,7 @@ static accelerometer_output_t sum = {
     .a_z = 0
 };
 
+//Function Description
 void accelerometer_average_task(){
 
 	if (!hal_accelerometer_init()) {

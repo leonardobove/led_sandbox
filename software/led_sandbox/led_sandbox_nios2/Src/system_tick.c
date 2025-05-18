@@ -28,6 +28,7 @@ void system_tick_ISR(void* context, alt_u32 id)
 
 }
 
+//Initialization of counter period
 void system_tick_init(uint32_t period_ms, volatile uint32_t* tick_ptr)
 {
 

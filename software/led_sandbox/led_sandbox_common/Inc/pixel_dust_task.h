@@ -8,8 +8,6 @@
 #ifndef INC_PIXEL_DUST_TASK_H_
 #define INC_PIXEL_DUST_TASK_H_
 
-//#include "../subprojects/Adafruit_PixelDust/Adafruit_PixelDust.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif

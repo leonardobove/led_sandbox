@@ -30,8 +30,6 @@ void hal_init() {
     scheduler_init();
 
     // Initialize DMA
-    //DMA_ENABLE((unsigned int)(&pixel_buf[0]));
-    //DMA_START;
     dev = alt_up_video_dma_open_dev("/dev/video_dma_controller_0");
     alt_up_video_dma_ctrl_set_bb_addr(dev, (unsigned int)(&pixel_buf[0]));
 }
@@ -69,7 +67,7 @@ accelerometer_output_t hal_read_accelerometer() {
 	return output_data;
 }
 
-// Miscellaneous
+// Hal for errors
 void hal_error(uint32_t error_code) {
 	printf("Error %d", (int)error_code);
 }

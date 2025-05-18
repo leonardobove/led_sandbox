@@ -30,7 +30,6 @@ void pixel_dust_task() {
             
             
             // Initialize RGB LED Matrix driver
-            //TODO
 
             memset(temp_buf, 0, sizeof(temp_buf));   // Clear pixel buffer
 
@@ -76,7 +75,7 @@ void pixel_dust_task() {
     	for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {
     		pixel_buf[i] = temp_buf2[i];
     	}
-//        alt_up_video_dma_ctrl_swap_buffers(dev);
+        
     } else {
         has_reset = true;
     }

@@ -12,8 +12,10 @@
 extern "C" {
 #endif
 
+
 #include "state_machine_task.h"
 
+// Declaration funxtion for init
 void led_sandbox_init();
 void led_sandbox_loop();
 

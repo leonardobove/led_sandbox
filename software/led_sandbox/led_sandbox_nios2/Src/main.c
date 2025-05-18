@@ -18,8 +18,10 @@ uint8_t temp_buf2[WIDTH * HEIGHT / 2];
 alt_up_video_dma_dev* dev;
 
 int main() {
+    // System initialization
     led_sandbox_init();
 
+    //Clearing buffer
 	for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {
 		if (i < (1 * WIDTH)) {
 			temp_buf[i] = 0x1;
@@ -32,6 +34,7 @@ int main() {
 	for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {
 		pixel_buf[i] = temp_buf[i];
 	}
+    // Swap buffer of the DMA
     alt_up_video_dma_ctrl_swap_buffers(dev);
 
     while (1) {

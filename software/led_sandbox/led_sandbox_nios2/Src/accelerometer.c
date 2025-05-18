@@ -7,7 +7,7 @@
 
 #include "../Inc/accelerometer.h"
 
-//static accelerometer_range_t current_range = ACCELEROMETER_RANGE_2G; //Default init has 2G
+//Default init has 2G of range
 
 //**** type accelerometer ****
 static alt_up_accelerometer_spi_dev *accel_dev;
@@ -18,14 +18,6 @@ alt_up_accelerometer_spi_dev* accelerometer_init(void){
 	
 	return accel_dev; //if initialization fails accel_dev = NULL
 }
-
-
-
-/*int accelerometer_set_range(accelerometer_range_t range){
-	current_range = range;
-	return alt_up_accelerometer_spi_write(accel_dev, REG_DATA_FORMAT, range);
-}*/
-
 
 
 int32_t accelerometer_get_data_raw(accelerometer_data_t* data){
@@ -39,7 +31,7 @@ int32_t accelerometer_get_data_raw(accelerometer_data_t* data){
 
 int32_t accelerometer_get_data_g (accelerometer_data_t* data_g){
 
-	float	scale= 0.039;	//for rage of 2g
+	float	scale= 0.039;	//For range of 2g
 	accelerometer_data_t data_raw;
 	accelerometer_get_data_raw(&data_raw);
 

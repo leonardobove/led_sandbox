@@ -25,6 +25,7 @@ static oneshot_event_t oneshot_events[MAX_ONESHOT_EVENTS];
 // Flag used to check when one system tick has elapsed
 volatile uint32_t tick_flag = 0;
 
+// Declare scheduler initaliazation
 void scheduler_init() {
     for (size_t i = 0u; i < MAX_PERIODIC_TASKS; ++i)
     {
@@ -40,6 +41,7 @@ void scheduler_init() {
     }
 }
 
+// Add a periodic task to the scheduler
 bool scheduler_add_periodic_task(uint16_t ms_period, CallbackType callback) {
     if (num_tasks == MAX_PERIODIC_TASKS) {
         return false;
@@ -54,6 +56,7 @@ bool scheduler_add_periodic_task(uint16_t ms_period, CallbackType callback) {
     return true;
 }
 
+// Add a one shot task to the scheduler
 bool scheduler_add_oneshot_task(uint16_t ms_delay, CallbackType callback)     {
     bool ret = false;
 
@@ -72,7 +75,7 @@ bool scheduler_add_oneshot_task(uint16_t ms_delay, CallbackType callback)     {
     return ret;
 }
 
-bool scheduler_tick() {
+bool     scheduler_tick() {
     for (uint16_t i = 0; i < num_tasks; i++) {
         periodic_tasks[i].tick_counter -= 1;
 

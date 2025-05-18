@@ -36,6 +36,8 @@ typedef struct {
     int32_t a_z;
 } accelerometer_output_t;
 
+
+//Initialization and read functions
 bool hal_accelerometer_init();
 accelerometer_output_t hal_read_accelerometer();
 
