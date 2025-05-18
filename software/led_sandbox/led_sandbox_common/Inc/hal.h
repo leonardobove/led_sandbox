@@ -22,9 +22,6 @@ void hal_init();
 void hal_start_timers();
 void hal_stop_timers();
 
-// Return the number of milliseconds elapsed since the start of the execution
-uint32_t hal_get_millis(); // TODO: add time-stamp timer
-
 // UI peripherals HAL interface
 uint32_t hal_read_switches();
 uint32_t hal_read_sliders();
@@ -36,10 +33,13 @@ typedef struct {
     int32_t a_z;
 } accelerometer_output_t;
 
-
 //Initialization and read functions
 bool hal_accelerometer_init();
 accelerometer_output_t hal_read_accelerometer();
+
+// LED matrix utility functions
+void hal_shift_rows(uint8_t *temp_buf);
+
 
 // Error return function
 void hal_error(uint32_t error_code);

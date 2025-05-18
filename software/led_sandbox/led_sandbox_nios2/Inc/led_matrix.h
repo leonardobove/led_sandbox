@@ -20,7 +20,7 @@ extern "C" {
 extern alt_up_video_dma_dev* dev;
 void swap_lines (uint8_t *temp_buf);
 
-//LED_MATRIX_DRIVER DEFINITIONS
+// LED_MATRIX_DRIVER DEFINITIONS
 
 #define RESET_OFFSET              (0u)
 #define ENABLE_OFFSET             (1u)

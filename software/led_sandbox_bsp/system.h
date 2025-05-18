@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'led_sandbox_sopc'
  * SOPC Builder design path: ../../sopc/led_sandbox_sopc.sopcinfo
  *
- * Generated: Sat May 17 17:05:28 CEST 2025
+ * Generated: Sun May 18 17:34:24 CDT 2025
  */
 
 /*

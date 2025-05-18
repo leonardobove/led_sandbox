@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include <string.h>
 #include <stdbool.h>
 
 #include "../../led_sandbox_common/Inc/hal.h"
@@ -19,7 +20,7 @@
 #include "../Inc/led_matrix.h"
 #include "altera_up_avalon_video_dma_controller.h"
 
-
+alt_up_video_dma_dev* dev;
 
 void hal_init() {
     // Initialize system tick
@@ -32,6 +33,13 @@ void hal_init() {
     // Initialize DMA
     dev = alt_up_video_dma_open_dev("/dev/video_dma_controller_0");
     alt_up_video_dma_ctrl_set_bb_addr(dev, (unsigned int)(&pixel_buf[0]));
+
+    // Clear pixel buffer for first use
+    memset(temp_buf, 0, sizeof(temp_buf));
+    memset(pixel_buf, 0, sizeof(pixel_buf));
+
+    // Swap buffer of the DMA
+    alt_up_video_dma_ctrl_swap_buffers(dev);
 }
 
 // GPIO
@@ -42,7 +50,7 @@ uint32_t hal_read_sliders() {
 }
 
 uint32_t hal_read_switches() {
-	uint32_t val = KEY_EDGE_REG; //TODO: make another function to clean edge detection
+	uint32_t val = KEY_EDGE_REG;
 	KEY_EDGE_REG = 0xFFFFFFFF;
 	return val;
 }
@@ -72,8 +80,9 @@ void hal_error(uint32_t error_code) {
 	printf("Error %d", (int)error_code);
 }
 
-//Fix offset
-void swap_lines (uint8_t *temp_buf) {
+// This function is used to fix via software the 1 row offset in the LED matrix.
+// Each row is shifted back by one.
+void hal_shift_rows(uint8_t *temp_buf) {
 	uint8_t temp_line[WIDTH];
 
 	for (int i = 0; i < (WIDTH * (HEIGHT / 2)); i++) {

@@ -25,6 +25,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_common/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_common/subprojects/Adafruit_PixelDust}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_nios2/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox_bsp/drivers/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox_bsp}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.291787466" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -38,6 +40,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_common/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_common/subprojects/Adafruit_PixelDust}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_nios2/Inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox_bsp/drivers/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox_bsp}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1286401335" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -48,6 +52,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_nios2/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_common/Inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox/led_sandbox_common/subprojects/Adafruit_PixelDust}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox_bsp/drivers/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/led_sandbox_bsp}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1071520131" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>

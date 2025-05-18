@@ -148,7 +148,6 @@ C_SRCS += led_sandbox_nios2/Src/system_tick.c
 C_SRCS += led_sandbox_nios2/Src/main.c
 C_SRCS += led_sandbox_common/Src/scheduler.c
 C_SRCS += led_sandbox_nios2/Src/accelerometer.c
-C_SRCS += led_sandbox_nios2/Src/gpio.c
 C_SRCS += led_sandbox_nios2/Src/led_sandbox_hal_impl_nios2.c
 C_SRCS += led_sandbox_common/Src/led_sandbox.c
 CXX_SRCS += led_sandbox_common/Src/pixel_dust_task.cpp

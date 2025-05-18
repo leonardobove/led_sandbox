@@ -18,7 +18,10 @@ static uint32_t has_reset = true;
 // Sand object, last 2 args are accelerometer scaling and grain elasticity
 Adafruit_PixelDust sand(WIDTH, HEIGHT, N_GRAINS, ACCELEROMETER_SCALE, GRAINS_ELASTICITY);
 
-
+// Frame buffers
+uint8_t pixel_buf[WIDTH * HEIGHT / 2];
+uint8_t temp_buf[WIDTH * HEIGHT / 2];
+uint8_t temp_buf2[WIDTH * HEIGHT / 2];
 
 void pixel_dust_task() {
     if (current_state == GSENSOR_SANDBOX) {
@@ -26,11 +29,9 @@ void pixel_dust_task() {
             // Initialize pixel dust grains and obstacles
             if (!sand.begin()) {
                 hal_error(1);   // Malloc error
-            } //TODO: define error codes in a better way
-            
+            }
             
             // Initialize RGB LED Matrix driver
-
             memset(temp_buf, 0, sizeof(temp_buf));   // Clear pixel buffer
 
             sand.randomize(); // Initialize random sand positions
@@ -49,14 +50,12 @@ void pixel_dust_task() {
             	temp_buf[(y % (HEIGHT / 2)) * WIDTH + x] &= CLEAR_LOWER_PIXEL;
             }
         }
-//        swap_lines (temp_buf);
-
-//        alt_up_video_dma_ctrl_swap_buffers(dev);
 
         // Run one frame of the simulation
         // X & Y axes are flipped around here to match physical mounting
         sand.iterate(acceleration_average.a_x, acceleration_average.a_y, acceleration_average.a_z);
         printf("Iteration\n");
+
         // Draw new grain positions in pixel_buf[]
         grain_color_t color = BLACK;
         for(uint32_t i = 0; i < N_GRAINS; i++) {
@@ -71,7 +70,9 @@ void pixel_dust_task() {
     	for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {
     		temp_buf2[i] = temp_buf[i];
     	}
-    	swap_lines (temp_buf2);
+
+    	hal_shift_rows(temp_buf2);
+
     	for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {
     		pixel_buf[i] = temp_buf2[i];
     	}

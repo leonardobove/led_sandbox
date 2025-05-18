@@ -18,14 +18,12 @@ extern "C" {
 #define RESET_KEY                       (0u)
 #define START_KEY                       (1u)
 #define GSENSOR_MODE_SLIDER             (0u)
-#define GESTURE_RECOGNITION_MODE_SLIDER (1u)
 
 // Define FSM states and declare current/next state variables
 typedef enum {
     RESET               = 0,
     IDLE                = 1,
     GSENSOR_SANDBOX     = 2,
-    GESTURE_RECOGNITION = 3,
 } fsm_state_t;
 
 extern fsm_state_t current_state, next_state;

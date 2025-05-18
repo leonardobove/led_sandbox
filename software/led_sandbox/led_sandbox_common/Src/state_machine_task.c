@@ -39,8 +39,6 @@ void state_machine_task() {
             if (inputs.switch_inputs & (1 << START_KEY)) {
                 if (inputs.slider_inputs & (1 << GSENSOR_MODE_SLIDER)) {
                     next_state = GSENSOR_SANDBOX;
-                } else if (inputs.slider_inputs & (1 << GESTURE_RECOGNITION_MODE_SLIDER)) {
-                    next_state = GESTURE_RECOGNITION;
                 }
             } else {
                 next_state = IDLE;
@@ -49,9 +47,6 @@ void state_machine_task() {
 
         case GSENSOR_SANDBOX:
 
-            break;
-
-        case GESTURE_RECOGNITION:
             break;
 
         default:
@@ -70,16 +65,10 @@ void state_machine_task() {
     // Update FSM outputs
     switch (current_state) {
         case RESET:
-            //printf("reset\n");
             break;
         case IDLE:
-            //printf("idle\n");
             break;
         case GSENSOR_SANDBOX:
-            //printf("gsensor\n");
-            break;
-        case GESTURE_RECOGNITION:
-            //printf("gesture\n");
             break;
     }
 }
