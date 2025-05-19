@@ -15,14 +15,16 @@ extern "C" {
 #include <stdint.h>
 #include "system.h"
 
+#define SKIP_CACHE (1 << 31)
+
 // LEDS
-#define LED_DATA_REG (*(volatile uint32_t *) LEDS_BASE)
+#define LED_DATA_REG (*(volatile uint32_t *) (LEDS_BASE | SKIP_CACHE))
 
 // SLIDERS
-#define SLIDERS_DATA_REG      (*(volatile uint32_t *) SLIDERS_BASE)
+#define SLIDERS_DATA_REG      (*(volatile uint32_t *) (SLIDERS_BASE  | SKIP_CACHE))
 
 // KEYS with edge capture
-#define KEY_EDGE_REG          (*(volatile uint32_t *) (KEYS_BASE + 12))
+#define KEY_EDGE_REG          (*(volatile uint32_t *) ((KEYS_BASE | SKIP_CACHE) + 12))
 
 
 #ifdef __cplusplus

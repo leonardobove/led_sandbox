@@ -15,7 +15,7 @@ extern "C" {
 #include <stdint.h>
 
 // Useful RGB LED matrix specification definitions
-#define N_GRAINS             (50u) // Number of grains of sand
+#define N_GRAINS             (500u) // Number of grains of sand
 #define WIDTH                (64u) // Display width in pixels
 #define HEIGHT               (32u) // Display height in pixels
 #define MATRIX_FPS          (60u) // Maximum redraw rate, frames/second
