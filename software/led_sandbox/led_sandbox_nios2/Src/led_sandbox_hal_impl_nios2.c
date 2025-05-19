@@ -35,7 +35,9 @@ void hal_init() {
 
     // Clear pixel buffer for first use
     memset(pixel_back_buf, 0, sizeof(pixel_back_buf));
-    memset(pixel_buf, 0, sizeof(pixel_buf));
+	for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {
+		IOWR_8DIRECT(&pixel_buf[0], i, 0);
+	}
 
     // Set front and back DMA buffer addresses.
     // The front buffer contains the frame that will be effectively displayed
