@@ -17,8 +17,8 @@ extern "C" {
 
 //Define MACROs
 
-#define NUM_AVERAGES 	(10u)
-//chosen 10 because it's a good trade-off between precision and reactivity
+#define NUM_AVERAGES 	(50u)
+//chosen 50 because it's a good trade-off between precision and reactivity
 
 //Define average acceleration struct
 extern accelerometer_output_t acceleration_average;

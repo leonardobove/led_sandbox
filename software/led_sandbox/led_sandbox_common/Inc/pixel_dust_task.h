@@ -15,10 +15,10 @@ extern "C" {
 #include <stdint.h>
 
 // Useful RGB LED matrix specification definitions
-#define N_GRAINS             (50u) // Number of grains of sand
+#define N_GRAINS             (750u) // Number of grains of sand
 #define WIDTH                (64u) // Display width in pixels
 #define HEIGHT               (32u) // Display height in pixels
-#define MATRIX_FPS          (60u) // Maximum redraw rate, frames/second
+#define MATRIX_FPS          (100u) // Maximum redraw rate, frames/second
 #define ACCELEROMETER_SCALE (255u) // The accelerometer output values will be scaled by (ACCELEROMETER_SCALE / 256)
 #define GRAINS_ELASTICITY   (128u)
 

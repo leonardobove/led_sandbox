@@ -5,6 +5,7 @@
 #include "../Inc/state_machine_task.h"
 #include "../Inc/accelerometer_average_task.h"
 #include "../Inc/hal.h"
+#include "io.h"
 
 #include "../subprojects/Adafruit_PixelDust/Adafruit_PixelDust.h"
 
@@ -28,7 +29,9 @@ void pixel_dust_task() {
             }
             
             // Initialize RGB LED Matrix driver
-            memset(pixel_buf, 0, sizeof(pixel_buf));   // Clear pixel front buffer
+        	for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {  // Clear pixel front buffer
+        		IOWR_8DIRECT(&pixel_buf[0], i, 0);
+        	}
             memset(pixel_back_buf, 0, sizeof(pixel_back_buf));   // Clear pixel back buffer
             memset(temp_buf, 0, sizeof(temp_buf));	// Clear temporary buffer
 
@@ -73,7 +76,7 @@ void pixel_dust_task() {
     	hal_shift_rows(temp_buf);
 
     	for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {
-    		pixel_buf[i] = temp_buf[i];
+    		IOWR_8DIRECT(&pixel_buf[0], i, temp_buf[i]);
     	}
         
     } else {
