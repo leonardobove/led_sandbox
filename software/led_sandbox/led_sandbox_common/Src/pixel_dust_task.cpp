@@ -32,7 +32,8 @@ void pixel_dust_task() {
             }
             
             // Initialize RGB LED Matrix driver
-            memset(temp_buf, 0, sizeof(temp_buf));   // Clear pixel buffer
+            memset(pixel_buf, 0, sizeof(pixel_buf));   // Clear pixel front buffer
+            memset(pixel_back_buf, 0, sizeof(pixel_back_buf));   // Clear pixel back buffer
 
             sand.randomize(); // Initialize random sand positions
 
@@ -45,9 +46,9 @@ void pixel_dust_task() {
         for(uint32_t i = 0; i < N_GRAINS; i++) {
             sand.getPosition(i, &x, &y);
             if (y >= (HEIGHT / 2)) {	// If the grain is in the upper half, erase the upper pixel
-            	temp_buf[(y % (HEIGHT / 2)) * WIDTH + x] &= CLEAR_UPPER_PIXEL;
+            	pixel_back_buf[(y % (HEIGHT / 2)) * WIDTH + x] &= CLEAR_UPPER_PIXEL;
             } else {	// Otherwise erase the lower pixel
-            	temp_buf[(y % (HEIGHT / 2)) * WIDTH + x] &= CLEAR_LOWER_PIXEL;
+            	pixel_back_buf[(y % (HEIGHT / 2)) * WIDTH + x] &= CLEAR_LOWER_PIXEL;
             }
         }
 
@@ -62,20 +63,22 @@ void pixel_dust_task() {
             sand.getPosition(i, &x, &y);
             sand.getColor(i, &color);
             if (y >= (HEIGHT / 2)) { // If the grain is in the upper half, set the upper pixel
-            	temp_buf[(y % (HEIGHT / 2)) * WIDTH + x] |= SET_UPPER_PIXEL((uint8_t)color);
+            	pixel_back_buf[(y % (HEIGHT / 2)) * WIDTH + x] |= SET_UPPER_PIXEL((uint8_t)color);
             } else { // Otherwise set the lower pixel
-            	temp_buf[(y % (HEIGHT / 2)) * WIDTH + x] |= SET_LOWER_PIXEL((uint8_t)color);
+            	pixel_back_buf[(y % (HEIGHT / 2)) * WIDTH + x] |= SET_LOWER_PIXEL((uint8_t)color);
             }
         }
-    	for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {
-    		temp_buf2[i] = temp_buf[i];
-    	}
+    	//for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {
+    	//	temp_buf2[i] = temp_buf[i];
+    	//}
 
-    	hal_shift_rows(temp_buf2);
+    	hal_shift_rows(pixel_back_buf);
 
-    	for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {
-    		pixel_buf[i] = temp_buf2[i];
-    	}
+    	hal_update_frame();
+
+    	//for (uint32_t i = 0; i < WIDTH * HEIGHT / 2; i++) {
+    	//	pixel_buf[i] = temp_buf2[i];
+    	//}
         
     } else {
         has_reset = true;

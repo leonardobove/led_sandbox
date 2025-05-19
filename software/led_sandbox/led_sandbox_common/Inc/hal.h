@@ -39,6 +39,10 @@ accelerometer_output_t hal_read_accelerometer();
 
 // LED matrix utility functions
 void hal_shift_rows(uint8_t *temp_buf);
+void hal_set_back_buf_addr(unsigned int addr);
+void hal_swap_buffers(void);
+int hal_check_swap_status(void);
+void hal_update_frame(void);
 
 
 // Error return function
