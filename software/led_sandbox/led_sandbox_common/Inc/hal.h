@@ -39,6 +39,7 @@ accelerometer_output_t hal_read_accelerometer();
 
 // LED matrix utility functions
 void hal_shift_rows(uint8_t *temp_buf);
+void hal_write8_bypass_cache(uint8_t* base, uint32_t offset, uint8_t data);
 
 // Error return function
 void hal_error(uint32_t error_code);

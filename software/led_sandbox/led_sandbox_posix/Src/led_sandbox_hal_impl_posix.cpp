@@ -262,3 +262,7 @@ void hal_error(uint32_t error_code) {
 void hal_shift_rows(uint8_t *temp_buf) {
     return;
 }
+
+void hal_write8_bypass_cache(uint8_t* base, uint32_t offset, uint8_t data) {
+	*(uint8_t *)(base + offset) = data;
+}

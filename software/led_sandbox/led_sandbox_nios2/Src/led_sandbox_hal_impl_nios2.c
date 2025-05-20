@@ -13,12 +13,16 @@
 #include "../../led_sandbox_common/Inc/hal.h"
 #include "../../led_sandbox_common/Inc/scheduler.h"
 #include "../../led_sandbox_common/Inc/pixel_dust_task.h"
+
 #include "../Inc/nios2_config.h"
 #include "../Inc/system_tick.h"
 #include "../Inc/accelerometer.h"
 #include "../Inc/gpio.h"
 #include "../Inc/led_matrix.h"
+
 #include "altera_up_avalon_video_dma_controller.h"
+#include "io.h"
+
 
 alt_up_video_dma_dev* dev;
 
@@ -80,7 +84,7 @@ accelerometer_output_t hal_read_accelerometer() {
 	return output_data;
 }
 
-// Hal for errors
+// HAL for errors
 void hal_error(uint32_t error_code) {
 	printf("Error %d", (int)error_code);
 }
@@ -101,4 +105,10 @@ void hal_shift_rows(uint8_t *temp_buf) {
 			temp_buf[i] = temp_buf[i + WIDTH];
 		}
 	}
+}
+
+// This function implements a 1 byte memory write operation with
+// cache bypass.
+void hal_write8_bypass_cache(uint8_t* base, uint32_t offset, uint8_t data) {
+	IOWR_8DIRECT(base, offset, data);
 }
