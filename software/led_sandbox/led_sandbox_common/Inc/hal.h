@@ -43,6 +43,9 @@ void hal_shift_rows(uint8_t *temp_buf);
 // Error return function
 void hal_error(uint32_t error_code);
 
+// Return elapsed time from initialization in microseconds
+uint32_t hal_elapsed_usec();
+
 #ifdef __cplusplus
 }
 #endif

@@ -13,12 +13,15 @@
 #include "../../led_sandbox_common/Inc/hal.h"
 #include "../../led_sandbox_common/Inc/scheduler.h"
 #include "../../led_sandbox_common/Inc/pixel_dust_task.h"
+
 #include "../Inc/nios2_config.h"
 #include "../Inc/system_tick.h"
 #include "../Inc/accelerometer.h"
 #include "../Inc/gpio.h"
 #include "../Inc/led_matrix.h"
+
 #include "altera_up_avalon_video_dma_controller.h"
+#include "sys/alt_timestamp.h"
 
 alt_up_video_dma_dev* dev;
 
@@ -81,6 +84,13 @@ accelerometer_output_t hal_read_accelerometer() {
 // Hal for errors
 void hal_error(uint32_t error_code) {
 	printf("Error %d", (int)error_code);
+}
+
+// Return elapsed time in milliseconds
+// The timeout value of the timer is 500ms, with a clock speed of 100 MHz
+// Therefore, the value timer snapshot must be divided by (500e-3 * 100e6) = 5e7.
+uint32_t hal_elapsed_usec() {
+	return (uint32_t)(alt_timestamp()/5e4);
 }
 
 // This function is used to fix via software the 1 row offset in the LED matrix.

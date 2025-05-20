@@ -20,6 +20,9 @@ uint8_t pixel_back_buf[WIDTH * HEIGHT / 2];
 uint8_t temp_buf[WIDTH * HEIGHT / 2];
 
 void pixel_dust_task() {
+	// Start profiler
+	uint32_t start_time = hal_elapsed_usec();
+
     if (current_state == GSENSOR_SANDBOX) {
         if (has_reset) {    // First time entering in the task
             // Initialize pixel dust grains and obstacles
@@ -79,4 +82,8 @@ void pixel_dust_task() {
     } else {
         has_reset = true;
     }
+
+    // Stop profiler and print the elapsed time in microseconds
+    uint32_t stop_time = hal_elapsed_usec();
+    printf("Elapsed time: %d us\n", (int)(stop_time - start_time));
 }
