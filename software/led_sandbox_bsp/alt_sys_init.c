@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'led_sandbox_sopc'
  * SOPC Builder design path: ../../sopc/led_sandbox_sopc.sopcinfo
  *
- * Generated: Sun May 18 23:21:02 CDT 2025
+ * Generated: Mon May 19 22:33:00 CDT 2025
  */
 
 /*
@@ -73,6 +73,7 @@ ALTERA_NIOS2_GEN2_IRQ_INSTANCE ( CPU, cpu);
 ALTERA_AVALON_JTAG_UART_INSTANCE ( JTAG_UART, jtag_uart);
 ALTERA_AVALON_SYSID_QSYS_INSTANCE ( SYSTEM_ID, system_id);
 ALTERA_AVALON_TIMER_INSTANCE ( SYSTICK_TIMER, systick_timer);
+ALTERA_AVALON_TIMER_INSTANCE ( TIMER_0, timer_0);
 ALTERA_UP_AVALON_ACCELEROMETER_SPI_INSTANCE ( ACCELEROMETER_SPI_0, accelerometer_spi_0);
 ALTERA_UP_AVALON_VIDEO_DMA_CONTROLLER_INSTANCE ( VIDEO_DMA_CONTROLLER_0, video_dma_controller_0);
 
@@ -98,6 +99,7 @@ void alt_irq_init ( const void* base )
 void alt_sys_init( void )
 {
     ALTERA_AVALON_TIMER_INIT ( SYSTICK_TIMER, systick_timer);
+    ALTERA_AVALON_TIMER_INIT ( TIMER_0, timer_0);
     ALTERA_AVALON_JTAG_UART_INIT ( JTAG_UART, jtag_uart);
     ALTERA_AVALON_SYSID_QSYS_INIT ( SYSTEM_ID, system_id);
     ALTERA_UP_AVALON_ACCELEROMETER_SPI_INIT ( ACCELEROMETER_SPI_0, accelerometer_spi_0);

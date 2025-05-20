@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'led_sandbox_sopc'
  * SOPC Builder design path: ../../sopc/led_sandbox_sopc.sopcinfo
  *
- * Generated: Mon May 19 12:36:22 CEST 2025
+ * Generated: Mon May 19 22:36:10 CDT 2025
  */
 
 /*
@@ -169,19 +169,19 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart"
-#define ALT_STDERR_BASE 0x8001080
+#define ALT_STDERR_BASE 0x80010a0
 #define ALT_STDERR_DEV jtag_uart
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart"
-#define ALT_STDIN_BASE 0x8001080
+#define ALT_STDIN_BASE 0x80010a0
 #define ALT_STDIN_DEV jtag_uart
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart"
-#define ALT_STDOUT_BASE 0x8001080
+#define ALT_STDOUT_BASE 0x80010a0
 #define ALT_STDOUT_DEV jtag_uart
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -194,7 +194,7 @@
  *
  */
 
-#define ACCELEROMETER_SPI_0_BASE 0x8001088
+#define ACCELEROMETER_SPI_0_BASE 0x80010a8
 #define ACCELEROMETER_SPI_0_IRQ 2
 #define ACCELEROMETER_SPI_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define ACCELEROMETER_SPI_0_NAME "/dev/accelerometer_spi_0"
@@ -208,7 +208,7 @@
  *
  */
 
-#define ALTPLL_0_BASE 0x8001050
+#define ALTPLL_0_BASE 0x8001070
 #define ALTPLL_0_IRQ -1
 #define ALTPLL_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define ALTPLL_0_NAME "/dev/altpll_0"
@@ -225,7 +225,7 @@
 #define ALT_INCLUDE_INSTRUCTION_RELATED_EXCEPTION_API
 #define ALT_MAX_FD 32
 #define ALT_SYS_CLK SYSTICK_TIMER
-#define ALT_TIMESTAMP_CLK none
+#define ALT_TIMESTAMP_CLK TIMER_0
 
 
 /*
@@ -234,7 +234,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart altera_avalon_jtag_uart
-#define JTAG_UART_BASE 0x8001080
+#define JTAG_UART_BASE 0x80010a0
 #define JTAG_UART_IRQ 4
 #define JTAG_UART_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_NAME "/dev/jtag_uart"
@@ -252,7 +252,7 @@
  */
 
 #define ALT_MODULE_CLASS_keys altera_avalon_pio
-#define KEYS_BASE 0x8001030
+#define KEYS_BASE 0x8001050
 #define KEYS_BIT_CLEARING_EDGE_REGISTER 1
 #define KEYS_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define KEYS_CAPTURE 1
@@ -279,7 +279,7 @@
  */
 
 #define ALT_MODULE_CLASS_led_matrix_driver_0 led_matrix_driver
-#define LED_MATRIX_DRIVER_0_BASE 0x8001078
+#define LED_MATRIX_DRIVER_0_BASE 0x8001098
 #define LED_MATRIX_DRIVER_0_IRQ -1
 #define LED_MATRIX_DRIVER_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define LED_MATRIX_DRIVER_0_NAME "/dev/led_matrix_driver_0"
@@ -293,7 +293,7 @@
  */
 
 #define ALT_MODULE_CLASS_leds altera_avalon_pio
-#define LEDS_BASE 0x8001020
+#define LEDS_BASE 0x8001040
 #define LEDS_BIT_CLEARING_EDGE_REGISTER 0
 #define LEDS_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LEDS_CAPTURE 0
@@ -359,7 +359,7 @@
  */
 
 #define ALT_MODULE_CLASS_sliders altera_avalon_pio
-#define SLIDERS_BASE 0x8001040
+#define SLIDERS_BASE 0x8001060
 #define SLIDERS_BIT_CLEARING_EDGE_REGISTER 0
 #define SLIDERS_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define SLIDERS_CAPTURE 0
@@ -386,13 +386,13 @@
  */
 
 #define ALT_MODULE_CLASS_system_id altera_avalon_sysid_qsys
-#define SYSTEM_ID_BASE 0x8001070
+#define SYSTEM_ID_BASE 0x8001090
 #define SYSTEM_ID_ID 3
 #define SYSTEM_ID_IRQ -1
 #define SYSTEM_ID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSTEM_ID_NAME "/dev/system_id"
 #define SYSTEM_ID_SPAN 8
-#define SYSTEM_ID_TIMESTAMP 1747649905
+#define SYSTEM_ID_TIMESTAMP 1747711514
 #define SYSTEM_ID_TYPE "altera_avalon_sysid_qsys"
 
 
@@ -403,7 +403,7 @@
 
 #define ALT_MODULE_CLASS_systick_timer altera_avalon_timer
 #define SYSTICK_TIMER_ALWAYS_RUN 0
-#define SYSTICK_TIMER_BASE 0x8001000
+#define SYSTICK_TIMER_BASE 0x8001020
 #define SYSTICK_TIMER_COUNTER_SIZE 32
 #define SYSTICK_TIMER_FIXED_PERIOD 0
 #define SYSTICK_TIMER_FREQ 100000000
@@ -423,12 +423,38 @@
 
 
 /*
+ * timer_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_timer_0 altera_avalon_timer
+#define TIMER_0_ALWAYS_RUN 0
+#define TIMER_0_BASE 0x8001000
+#define TIMER_0_COUNTER_SIZE 32
+#define TIMER_0_FIXED_PERIOD 0
+#define TIMER_0_FREQ 100000000
+#define TIMER_0_IRQ 3
+#define TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID 0
+#define TIMER_0_LOAD_VALUE 49999999
+#define TIMER_0_MULT 0.001
+#define TIMER_0_NAME "/dev/timer_0"
+#define TIMER_0_PERIOD 500
+#define TIMER_0_PERIOD_UNITS "ms"
+#define TIMER_0_RESET_OUTPUT 0
+#define TIMER_0_SNAPSHOT 1
+#define TIMER_0_SPAN 32
+#define TIMER_0_TICKS_PER_SEC 2
+#define TIMER_0_TIMEOUT_PULSE_OUTPUT 0
+#define TIMER_0_TYPE "altera_avalon_timer"
+
+
+/*
  * video_dma_controller_0 configuration
  *
  */
 
 #define ALT_MODULE_CLASS_video_dma_controller_0 altera_up_avalon_video_dma_controller
-#define VIDEO_DMA_CONTROLLER_0_BASE 0x8001060
+#define VIDEO_DMA_CONTROLLER_0_BASE 0x8001080
 #define VIDEO_DMA_CONTROLLER_0_IRQ -1
 #define VIDEO_DMA_CONTROLLER_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define VIDEO_DMA_CONTROLLER_0_NAME "/dev/video_dma_controller_0"
